@@ -1,17 +1,17 @@
 # linux-evil-toolkit
 
     Linux evil toolkit e um framework de pentest que tem como objetivo 
-centralizar, padronizar e simplificar a utilização de varias ferramentas 
-por proficionais de segurança. LITK (Linux evil toolkit) dispôem de varios
-comandos comuns,como, por exemplo o dnsenum, nmap, netcat, telnet, ssh, 
-ferramentas para clonar sites, e um repositorio de paginas utilizada para
- Engenharia social.
+    centralizar, padronizar e simplificar a utilização de varias ferramentas 
+    por proficionais de segurança. LITK (Linux evil toolkit) dispôem de varios
+    comandos comuns,como, por exemplo o dnsenum, nmap, netcat, telnet, ssh, 
+    ferramentas para clonar sites, e um repositorio de paginas utilizada para
+     Engenharia social.
 
     LITK e melhor que o setoolkit? Sim, e Não, são frameworks que servem para
-a mesma coisa e fazem isso de forma semelhante, porem o LITK e feito para ser
-um alias com funções a mais, e não uma suite que até passa café.
+    a mesma coisa e fazem isso de forma semelhante, porem o LITK e feito para ser
+    um alias com funções a mais, e não uma suite que até passa café.
 
-    Dispenço script kiddies.
+    Dispenso script kiddies.
 
 ## Modulos
 
