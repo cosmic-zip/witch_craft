@@ -5,7 +5,7 @@
     por proficionais de segurança. LITK (Linux evil toolkit) dispôem de varios
     comandos comuns,como, por exemplo o dnsenum, nmap, netcat, telnet, ssh, 
     ferramentas para clonar sites, e um repositorio de paginas utilizada para
-     Engenharia social.
+    engenharia social.
 
     LITK e melhor que o setoolkit? Sim, e Não, são frameworks que servem para
     a mesma coisa e fazem isso de forma semelhante, porem o LITK e feito para ser
