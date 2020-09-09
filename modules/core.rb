@@ -52,7 +52,7 @@ module Core
         
     def install() 
     
-        IO.foreach('./wordlist/tools.ttx',) do |line|  
+        IO.foreach('./config/tools.conf',) do |line|  
             cmd = system("sudo pacman --noconfirm -S #{line}")
             getErro('INSTALL OUTPUT', command)
         end
@@ -140,8 +140,4 @@ module Core
         
     end
     
-    
-
-
-
 end # END CORE MODULE
