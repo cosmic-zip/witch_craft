@@ -1,29 +1,26 @@
-#! /bin/ruby
 #-------------------------------------------------------------
 #
 #                     Linux Evil Toolkit
 # 
-#                       By Xx_VOID_xX
+#                          By v0id
+#
+#                        2019 - 2020
 #
 #-------------------------------------------------------------
 
 module Shell
 
-    def init()
-        
-    end
+    
+    def PS1()
+        print("\033[93m[ANON]::[LETK]:: \033[00m")
+        props = gets.chomp.to_s
 
-    def ps1()
-        # read shell.conf
-        ps1 = '[LETK]@[v0id]: '
-        print(ps1)
-        
     end
 
     def props(msg)
-        
+
         print("#{msg}: ")
-        props = gets.chomp()
+        props = gets.chomp.to_s
     
     end
 
@@ -31,7 +28,17 @@ module Shell
 
         if command == 'server'
             port = props('SET HTTP PORT')
-            server(port)                                
+            server(port)            
+        elsif command == 'help'
+            general_help()
+        elsif command == 'wdns'
+            webDns()
+        elsif command == 'clear'
+            system('clear')
+        elsif command == 'exit'
+            exit()
+        elsif command == 'reset'
+            system('reset')                    
         elsif command == 'ngrok'
             port = props('SET HTTP PORT')
             ngrok(port)                                 
@@ -55,20 +62,20 @@ module Shell
             mac(pl)                                     
         elsif command == 'footprint'
             opt = props('SET ADICIONAL OPTIONS')
-            pl = props('SET HOST')
-            pl = props('USE PROXY [yes|no]')
+            host = props('SET HOST')
+            proxy = props('USE PROXY [yes|no]')
             footprint(opt = '', host, proxy = nil)      
         elsif command == 'scanner'
             pl = props('SET INTERFACE')
-            pl = props('USE PROXY [yes|no]')
-            scanner(hst, proxy = nil)
+            proxy = props('USE PROXY [yes|no]')
+            scanner(pl, proxy = nil)
         elsif command == 'nmap'
-            pl = props('SET HOST')
-            pl = props('USE ADICIONAL OPTIONS')
-            pl = props('USE PROXY [yes|no]')
+            host = props('SET HOST')
+            opt = props('USE ADICIONAL OPTIONS')
+            proxy = props('USE PROXY [yes|no]')
             nmap(host, opt, proxy = nil)
         else
-            puts "LETK command not found, ti vira com o shell\n"
+            prPurple("LETK command not found, ti vira com o shell\n")
             system(command)
         end                   
         

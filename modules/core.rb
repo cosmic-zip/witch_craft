@@ -1,9 +1,10 @@
-#! /bin/ruby
 #-------------------------------------------------------------
 #
 #                     Linux Evil Toolkit
 # 
-#                       By Xx_VOID_xX
+#                          By v0id
+#
+#                        2019 - 2020
 #
 #-------------------------------------------------------------
 
@@ -126,7 +127,7 @@ module Core
         
       end
 
-    def nmap(host, opt, proxy = nil)
+    def nmap(hst, opt, proxy = nil)
 
         line = "\n\n[+]----------------------------------------[+]\n\n"
         proxy = proxy(proxy)

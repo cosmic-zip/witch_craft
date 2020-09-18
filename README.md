@@ -4,7 +4,6 @@
 ![LINUX EVIL TOOLKIT](https://user-images.githubusercontent.com/36008397/92520390-83da0980-f1e9-11ea-821a-4f4fe3420e2e.png)
 
 
-
     Linux evil toolkit e um framework de pentest que tem como objetivo 
     centralizar, padronizar e simplificar a utilização de varias ferramentas 
     por proficionais de segurança. LITK (Linux evil toolkit) dispôem de varios
@@ -33,29 +32,33 @@
 
 ## Comandos
 
-    server(port)                                Criar um servidor em localhost
-    ngrok(port)                                 Criar um servidor web externo
-    metasploit()                                Instala o metasploit
-    install                                     Instala todas as ferramentas no Arch Linux
-    ssh(user, ip)                               Faz uso de ssh
-    telnet(ip)                                  Faz uso de telnet
-    dumptcp(pl, file)                           Faz dump de pacote da rede atual
-    mac(pl)                                     Altera o endereço mac
-    footprint(opt = '', host, proxy = nil)      Faz o ping scan    
-    scanner(hst, proxy = nil)                   Faz Varredura de pportas, whois, encontra flahas,
-                                                pequisa dns, e brute force de dns
-    nmap(host, opt, proxy = nil)                Faz uso de nmap com alias TCP SYN, UDP, e bypass 
-                                                de firewall
-                                                                    
+    Outros: clear, reset, logout, exit, rawCommands
+
+    doc               Gera um arquivo de documentação
+    wdns              Mostra servidores web para pesquida de dns
+    help              Exibe ajuda
+    server            Criar um servidor em localhost
+    ngrok             Criar um servidor web externo
+    metasploit        Instala o metasploit
+    install           Instala todas as ferramentas no ArchLinux
+    ssh               Faz uso de ssh
+    telnet            Faz uso de telnet
+    dumptcp           Faz dump de pacote da rede atual
+    mac               Altera o endereço mac
+    footprint         Faz o ping scan
+    scanner           Faz Varredura de pportas, whois, 
+                      encontra flahas,pequisa dns, e brute
+                      force de dns
+    nmap              Faz uso de nmap com alias TCP SYN, UDP,
+                      e bypass de firewall"                                                
 
 ## Função INIT()
 
     Não implementado 
 
-
-
 ## Funções backend
 
+    props(msg)                              Exibe uma mensagem e recebe um valor (gets)
     getErro(msg = '', command = nil)        Exibe uma mensagem em caso de erro
     proxy(props)                            Faz uso de proxy, props != null
     interpreter(command)                    Interpreta comandos do LETK e do shell
