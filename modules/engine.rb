@@ -12,11 +12,17 @@ module Engine
 
     # Line Line Line Line Line Line Line Line
     $line = "\n\n[+]----------------------------------------------[+]\n\n"
+    $docmentation = false
     $proxy = false
 
     # Alias for system()
     def sys(props)
-        system("#{props}")
+        if $docmentation = true
+            system("#{line}  >> LETK_Documentation.txt")
+            system("#{props} >> LETK_Documentation.txt")
+        else
+            system("#{props}")
+        end
     end
 
     # Extract files
@@ -87,5 +93,6 @@ module Engine
     end
 
     # init, web_scanner, host_scanner, dns_scanner, dir_scanner
+
 
 end
