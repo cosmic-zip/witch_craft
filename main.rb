@@ -10,18 +10,13 @@
 #
 #-------------------------------------------------------------
 
-require_relative "./modules/core.rb"
-require_relative "./modules/shell.rb"
+require_relative "./modules/engine.rb"
 require_relative "./modules/visual.rb"
 
 include Core
-include Shell
+include Engine
 include Visual
 
 # INIT
-Visual.banner()
-while true
-    Shell.interpreter(Shell.PS1())    
-end
 
 # END MAIN
