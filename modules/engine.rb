@@ -11,15 +11,45 @@
 module Engine
 
     # Line Line Line Line Line Line Line Line
-    $line = "\n\n[+]----------------------------------------------[+]\n\n"
+    $line = "\n\n[+]---------------------------------------[+]\n\n"
     $docmentation = false
     $proxy = false
+    $target = nil
+    $ip     = nil
+
+    # Init options and set target
+    def INIT()
+        while $target == nil || $ip == nil
+            if $docmentation == false
+                print "Enable documentation [true|false]: "; $docmentation = gets.chomp.to_b
+                if $docmentation; puts "Documentation running"; end
+            end
+            if $proxy == false
+                print "Enable proxy [true|false]: "; $proxy = gets.chomp.to_b
+                if $proxy; puts "Proxy running"; end
+            end
+            # but
+            puts "Set target dns name and/or ip address"
+            if $target == nil
+                print "Set Target URL"; $target = gets.chomp.to_s
+                puts "Target set to #{$target}"
+            end
+            if $ip == nil
+                print "Set Target IP"; $ip = gets.chomp.to_s
+                puts "Target set to #{$ip}"
+            
+            else; puts "Set target, or die!"; end
+        end
+    end
 
     # Alias for system()
     def sys(props)
         if $docmentation = true
-            system("#{line}  >> LETK_Documentation.txt")
-            system("#{props} >> LETK_Documentation.txt")
+            date_time = 'TIME_00-00_DATE_01-01-1999_'
+            doc_name = "#{date_time}documentation"
+            system("#{line}  >> ./docs/#{doc_name}")
+            system("echo date >> ")
+            system("#{props} >> ./docs/#{doc_name}")
         else
             system("#{props}")
         end
@@ -92,7 +122,39 @@ module Engine
 
     end
 
-    # init, web_scanner, host_scanner, dns_scanner, dir_scanner
+    # Status
+
+
+    # Web vul scanner
+    def web_scanner($target)
+        prRed($line)
+        sys("whois #{target}")
+        sys("whois #{target}")
+        sys("whois #{target}")
+        sys("whois #{target}")
+        sys("whois #{target}")
+        sys("whois #{target}")
+        sys("whois #{target}")
+        sys("whois #{target}")
+
+
+    end
+    
+    def host_scanner($target)
+        
+    end
+    
+    def dns_scanner($target)
+        commands = ["whois -a #{target}", "host #{target}", "host -t ns #{target}"]
+        for ip in  do
+            
+        end
+        
+    end
+
+    def dir_scanner($target)
+        
+    end
 
 
 end
