@@ -12,21 +12,25 @@ module Engine
 
     # Line Line Line Line Line Line Line Line
     $line = "\n\n[+]---------------------------------------[+]\n\n"
-    $docmentation = false
-    $proxy = false
-    $target = nil
-    $ip     = nil
+
+    # GLOBALS
+    $docmentation   = false
+    $proxy          = false
+    $doc_name       = nil
+    $target         = nil
+    $ip             = nil
 
     # Init options and set target
     def INIT()
         while $target == nil || $ip == nil
             if $docmentation == false
-                print "Enable documentation [true|false]: "; $docmentation = gets.chomp.to_b
-                if $docmentation; puts "Documentation running"; end
+                print "Enable documentation [true|false]: "; $docmentation = gets.chomp
+                if $docmentation == true; puts "Documentation running"; end
             end
             if $proxy == false
-                print "Enable proxy [true|false]: "; $proxy = gets.chomp.to_b
-                if $proxy; puts "Proxy running"; end
+                print "Enable proxy [true|false]: "; $proxy = gets.chomp
+                if $proxy == true; puts "Proxy running"
+                else; $proxy = ''; end
             end
             # but
             puts "Set target dns name and/or ip address"
@@ -47,8 +51,9 @@ module Engine
         if $docmentation = true
             date_time = 'TIME_00-00_DATE_01-01-1999_'
             doc_name = "#{date_time}documentation"
+            form = 
             system("#{line}  >> ./docs/#{doc_name}")
-            system("echo date >> ")
+            system("echo date >> ./docs/#{doc_name}")
             system("#{props} >> ./docs/#{doc_name}")
         else
             system("#{props}")
@@ -57,8 +62,7 @@ module Engine
 
     # Extract files
     def extract(file_name)
-
-        puts $line
+        prRed($line)
         if File.extname(file_name) == ".tar"
             sys("tar xf #{file_name}.tar")
         elsif File.extname(file_name) == ".gz"
@@ -70,13 +74,11 @@ module Engine
         else
             puts "not accepted this format"
         end
-
     end
     
     # Compress files
     def compress(file_name, files, ext)
-        
-        puts $line
+        prRed($line)
         if ext = "tar"
             sys("tar cf #{file_name}.tar #{files}")
         elsif ext = "gz"
@@ -88,14 +90,11 @@ module Engine
         else
             puts "not accepted this format"
         end
-
     end
 
     # Set cover your tracks (or not)
     def cover()
-
-        puts $line
-
+        prRed($line)
         puts "[+] Clear auth log"
         sys('echo "" /var/log/auth.log')
 
@@ -119,7 +118,6 @@ module Engine
         sys('ln /dev/null -/.bash_historj -sf')
 
         puts "\n\n"
-
     end
 
     # Status
@@ -128,27 +126,49 @@ module Engine
     # Web vul scanner
     def web_scanner($target)
         prRed($line)
-        sys("whois #{target}")
-        sys("whois #{target}")
-        sys("whois #{target}")
-        sys("whois #{target}")
-        sys("whois #{target}")
-        sys("whois #{target}")
-        sys("whois #{target}")
-        sys("whois #{target}")
-
-
-    end
-    
-    def host_scanner($target)
+        sys("whois -a #{target}")
         
     end
     
-    def dns_scanner($target)
-        commands = ["whois -a #{target}", "host #{target}", "host -t ns #{target}"]
-        for ip in  do
+    def port_scanner($target, opt)
+        prRed($line)
+        spoof_mac = ''
+        print "Spoof mac? [yes|no]: "; spoof_mac = gets.chomp.to_s
+        if spoof_mac == 'yes'; spoof_mac = '--spoof-mac cisco'; and
+        print "Add nmap custom flag: [type enter for skip]: "; custom = gets.chomp.to_s
+        if opt == 'local' 
+            puts $line; puts "LocalHost scan"
+            sys("#{$proxy} nmap #{custom_flag} 127.0.0.1")
+        elsif opt == 'list-scan'
+            puts $line; puts "List Scan"
+            sys("#{$proxy} nmap -sS -sL #{spoof_mac} #{$ip}")
+        elsif opt == 'no-ping'
+            puts $line; puts "No ping scan"
+            sys("#{$proxy} nmap #{custom_flag} -PN #{spoof_mac} #{$ip} ")
+        elsif opt == 'scan'
+            puts $line; puts "Default TCP scan"
+            sys("#{$proxy} nmap #{custom_flag} -sS -sv -A -O #{spoof_mac} #{$ip}")
+        elsif opt == 'udp-scan'
+            puts $line; puts "Default UDP scan"
+            sys("#{$proxy} nmap #{custom_flag} -sUV #{spoof_mac} #{$ip}")
+        elsif opt == 'all'            
+            puts $line; puts "LocalHost scan"
+            sys("#{$proxy} nmap #{custom_flag} 127.0.0.1")
+            puts "List Scan"
+            sys("#{$proxy} nmap #{custom_flag} -sS -sL #{spoof_mac} #{$ip}")
+            puts "No ping scan"
+            sys("#{$proxy} nmap #{custom_flag} -PN #{spoof_mac} #{$ip} ")
+            puts "Default TCP scan"
+            sys("#{$proxy} nmap #{custom_flag} -sS -sv -A -O #{spoof_mac} #{$ip}")
+            puts "Default UDP scan"
+            sys("#{$proxy} nmap #{custom_flag} -sUV #{spoof_mac} #{$ip}")
+        else 
+            prRed("[ERROR]: invalid option")
+        end         
             
-        end
+    end
+    
+    def dns_scanner($target)
         
     end
 
