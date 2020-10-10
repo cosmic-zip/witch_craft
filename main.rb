@@ -12,11 +12,13 @@
 
 require_relative "./modules/engine.rb"
 require_relative "./modules/visual.rb"
+require_relative "./modules/colors.rb"
 
-include Core
+
 include Engine
+include Colors
 include Visual
 
-# INIT
+#INIT
 
 # END MAIN
