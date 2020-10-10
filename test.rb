@@ -19,6 +19,29 @@ include Engine
 include Colors
 include Visual
 
-#INIT
+puts "Cheep debug, hole shit!"; puts "Visual module"
 
-# END MAIN
+Visual.banner()
+Visual.web_dns()
+Visual.linux_files()
+Visual.linux_folders()
+Visual.linux_util()
+
+puts "Engine module"
+
+
+# Test Function
+puts "init"
+Engine.INIT()
+puts "system sys"
+Engine.sys("ls")
+puts "compress"
+Engine.compress()
+puts "port scanner"
+Engine.port_scanner()
+puts "search"
+Engine.search()
+puts "status"
+Engine.status()
+puts "dns scanner"
+Engine.dns_scanner()

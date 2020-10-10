@@ -3,9 +3,12 @@
     # Set output url
     $URL = 'www.google.com'
 
-    $logfile= 'log.txt';
-    $IP = $_SERVER['REMOTE_ADDR'];
-    $logdetails= date("F j, Y, g:i a") . ': ' . '<a href=http://dnsstuff.com/tools/city.ch?ip='.    $_SERVER['REMOTE_ADDR'].' target=_blank>'.$_SERVER['REMOTE_ADDR'].'</a>';
+    $logfile = 'log.txt';
+    $date = date("F j, Y, g:i a");
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $dnsstuff = "<a href=http://dnsstuff.com/tools/city.ch?ip=$iptarget=_blank>$ip</a>";
+
+    $logdetails = "DATE: $date | USER: $ip | ";
 
     // open the file for reading and writing
     $fp = fopen($logfile, "r+");

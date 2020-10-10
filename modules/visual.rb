@@ -18,8 +18,9 @@ module Visual
   def prCyan(string);           puts "\033[96m #{string}\033[00m"; end
   def prLightGray(string);      puts "\033[97m #{string}\033[00m"; end
   def prBlack(string);          puts "\033[98m #{string}\033[00m"; end
+
   # Line Line Line Line Line Line Line Line, fuck Line
-  $line = "\n\n[+]----------------------------------------------[+]\n\n"
+  # $line = "\n\n[+]----------------------------------------------[+]\n\n"
 
   def banner()
       puts "\n"

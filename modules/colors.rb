@@ -1,13 +1,13 @@
 module Colors
     
-    def black(string)          "\e[30m#{string}\e[0m" end
-    def red(string)            "\e[31m#{string}\e[0m" end
-    def green(string)          "\e[32m#{string}\e[0m" end
-    def brown(string)          "\e[33m#{string}\e[0m" end
-    def blue(string)           "\e[34m#{string}\e[0m" end
-    def magenta(string)        "\e[35m#{string}\e[0m" end
-    def cyan(string)           "\e[36m#{string}\e[0m" end
-    def gray(string)           "\e[37m#{string}\e[0m" end
+    def prRed(string);            puts "\033[91m #{string}\033[00m"; end
+    def prGreen(string);          puts "\033[92m #{string}\033[00m"; end
+    def prYellow(string);         puts "\033[93m #{string}\033[00m"; end
+    def prLightPurple(string);    puts "\033[94m #{string}\033[00m"; end
+    def prPurple(string);         puts "\033[95m #{string}\033[00m"; end
+    def prCyan(string);           puts "\033[96m #{string}\033[00m"; end
+    def prLightGray(string);      puts "\033[97m #{string}\033[00m"; end
+    def prBlack(string);          puts "\033[98m #{string}\033[00m"; end    
 
     def bg_black(string)       "\e[40m#{string}\e[0m" end
     def bg_red(string)         "\e[41m#{string}\e[0m" end
