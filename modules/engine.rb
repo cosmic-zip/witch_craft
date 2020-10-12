@@ -10,14 +10,9 @@
 
 module Engine
 
-
-    def prRed(s)
-        puts s
-    end
-
     # Line Line Line Line Line Line Line Line
     $line = "\n\n[+]---------------------------------------[+]\n\n"
-
+    
     # GLOBALS
     $docmentation   = false
     $proxy          = false
@@ -37,7 +32,7 @@ module Engine
                 if $proxy == true; puts "Proxy running"
                 else; $proxy = ''; end
             end
-            # but
+            # but, but, but, but, fuck but!
             puts "Set target dns name and/or ip address"
             if $target == nil
                 print "Set Target URL: "; $target = gets.chomp.to_s
@@ -45,31 +40,41 @@ module Engine
             end
             if $ip == nil
                 print "Set Target IP: "; $ip = gets.chomp.to_s
-                puts "Target set to #{$ip}"
-            
+                puts "Target set to #{$ip}"          
             else; puts "Set target, or die!"; end
         end
     end
 
+    # Reset to default values
     def R()
         system("clear && reset")
+        # Default values or not
+        $docmentation = false
+        $proxy = false
+        $doc_name = nil
+        $target = nil
+        $ip = nil
     end
 
-    # Alias for system()
+    # Alias for system(), why?
     def sys(props)
-        
         if $proxy == true
-            system("proxychains #{props}")
+            cmd = system("proxychains #{props}")
+            if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
         elsif $proxy == false
-            system("#{props}")
+            cmd = system("#{props}")
+            if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
         elsif $docmentation == true && $proxy == false
             puts $docmentation
             date_time = Time.now.strftime("%d-%m-%Y_%H-%M")
             doc_name = "#{date_time}_documentation"
             form = 
-            system("#{line}  >> ./docs/#{doc_name}")
-            system("echo date >> ./docs/#{doc_name}")
-            system("#{props} >> ./docs/#{doc_name}")
+            cmd = system("#{line}  >> ./docs/#{doc_name}")
+            if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
+            cmd = system("echo date >> ./docs/#{doc_name}")
+            if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
+            cmd = system("#{props} >> ./docs/#{doc_name}")
+            if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
         else
             puts "[ERROR]: globals varibles is invalid"
         end
@@ -114,34 +119,34 @@ module Engine
     # Set cover your tracks (or not)
     def cover()
         prRed($line)
+        # Clear
         puts "[+] Clear auth log"
         sys('echo "" /var/log/auth.log')
-
+        # History
         puts "[+] Clear bash_history"
         sys('echo "" -/.bash_history')
         sys('rm -rf ~/.bash_history')
-
         puts "[+] Clear history"
         sys('history -c')
-
+        # Disable history
         puts "[+] Disable history"
         sys('export HISTFILESIZE=O')
         sys('export HISTSIZE=O')
         sys('unset HISTFILE')
-
+        # kill your sel... session
         puts "[+] Kill session";
         sys('kill -9 $$')
-
+        # No history, (UwU)
         puts "[+] Perrnanentlj send all bash history
         commands to /dev/null"
         sys('ln /dev/null -/.bash_historj -sf')
-
         puts "\n\n"
     end
 
-    # Status
+    # Machine status
     def status()
-       prRed("\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+       $pline ="\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+       prRed($pline)
        date_time = Time.now.strftime("%d-%m-%Y_%H-%M")
        prRed("\n[+] #{date_time} [+]"); 
        prGreen("\n[+] Memory:\n")
@@ -150,10 +155,9 @@ module Engine
        system("uname -a")
        prGreen("\n[+] Temp:\n")
        system("sensors")
-       prRed("\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+       prRed($pline)
 
     end
-
 
     # Web vul scanner
     def search()
@@ -168,51 +172,24 @@ module Engine
         sys("ncat -v #{$ip} 80")
         puts "HTTPS Banner grep"
         sys("openssl s_client -quiet -connect #{$target}:443")
-        puts ""
     end
     
     def port_scanner()
         prRed($line)    
-        spoof_mac = ''
-        print "Spoof mac? [yes|no]: "; spoof_mac = gets.chomp.to_s
+        print "Spoof mac? [brand|no]: "; spoof_mac = gets.chomp.to_s
+        if spoof_mac != 'no'; spoof_mac = '--spoof-mac #{spoof_mac}'; 
+        else; spoof_mac = ''; end
         print "Set option [type help for help, or not]: "; opt = gets.chomp.to_s
-        if spoof_mac == 'yes'; spoof_mac = '--spoof-mac cisco'; end
-        print "Add nmap custom flag: [type enter for skip]: "; custom = gets.chomp.to_s
-        if opt == 'help'
-            prRed($line); puts "HELP: "
-            puts "Local eojfejofeoejofeoj"
-        elsif opt == 'local' 
-            puts $line; puts "LocalHost scan"
-            sys("nmap #{custom_flag} 127.0.0.1")
-        elsif opt == 'list-scan'
-            puts $line; puts "List Scan"
-            sys("nmap -sS -sL #{spoof_mac} #{$ip}")
-        elsif opt == 'no-ping'
-            puts $line; puts "No ping scan"
-            sys("nmap #{custom_flag} -PN #{spoof_mac} #{$ip} ")
-        elsif opt == 'scan'
-            puts $line; puts "Default TCP scan"
-            sys("nmap #{custom_flag} -sS -sv -A -O #{spoof_mac} #{$ip}")
-            puts "Default FYN scan"
-            sys("nmap -sF #{$ip}")
-        elsif opt == 'udp-scan'
-            puts $line; puts "Default UDP scan"
-            sys("nmap #{custom_flag} -sUV #{spoof_mac} #{$ip}")
-        elsif opt == 'all'            
-            puts $line; puts "LocalHost scan"
-            sys("nmap #{custom_flag} 127.0.0.1")
-            puts "List Scan"
-            sys("nmap #{custom_flag} -sS -sL #{spoof_mac} #{$ip}")
-            puts "No ping scan"
-            sys("nmap #{custom_flag} -PN #{spoof_mac} #{$ip} ")
-            puts "Default TCP scan"
-            sys("nmap #{custom_flag} -sS -sv -A -O #{spoof_mac} #{$ip}")
-            puts "Default UDP scan"
-            sys("nmap #{custom_flag} -sUV #{spoof_mac} #{$ip}")
-        else 
-            prRed("[ERROR]: invalid option")
-        end         
-            
+        print "Add nmap custom flag: [flag|no]: "; custom_flag = gets.chomp.to_s
+        if custom_flag == 'no'; custom_flag = ''; end
+
+        raw = "nmap #{custom_flag} #{spoof_mac} #{$ip}"
+        flag = [
+            ['List Scan', '-sS -sL -A -O'], 
+            ['Ping scan', '-PN'],
+            ['Default TCP scan', '-sS -sv -A -O '],
+            ['Default UDP scan', '-sU -sV -A'],
+        ]   
     end
     
     def dns_scanner()
@@ -228,6 +205,4 @@ module Engine
     def dir_scanner()
        puts "scanner" 
     end
-
-
 end
