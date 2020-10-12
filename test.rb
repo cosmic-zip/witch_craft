@@ -21,27 +21,32 @@ include Visual
 
 puts "Cheep debug, hole shit!"; puts "Visual module"
 
-Visual.banner()
-Visual.web_dns()
-Visual.linux_files()
-Visual.linux_folders()
-Visual.linux_util()
+def debug_visual
+	Visual.banner()
+	Visual.web_dns()
+	Visual.linux_files()
+	Visual.linux_folders()
+	Visual.linux_util()	
+end
 
-puts "Engine module"
+def debug_engine()
 
+	puts "Engine module"
 
-# Test Function
-puts "init"
-Engine.INIT()
-puts "system sys"
-Engine.sys("ls")
-puts "compress"
-Engine.compress()
-puts "port scanner"
-Engine.port_scanner()
-puts "search"
-Engine.search()
-puts "status"
-Engine.status()
-puts "dns scanner"
-Engine.dns_scanner()
+	#puts "init"
+	#Engine.INIT()
+	#puts "system sys"
+	#Engine.sys("ls")
+	#puts "compress"
+	#Engine.compress()
+	#puts "port scanner"
+	#Engine.port_scanner()
+	#puts "search"
+	#Engine.search()
+	#puts "status"
+	#Engine.status()
+	puts "dns scanner"
+	Engine.dns_scanner()
+end
+
+debug_engine()
