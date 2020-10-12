@@ -51,9 +51,18 @@ module Engine
         end
     end
 
+    def R()
+        system("clear && reset")
+    end
+
     # Alias for system()
     def sys(props)
-        if $docmentation == true
+        
+        if $proxy == true
+            system("proxychains #{props}")
+        elsif $proxy == false
+            system("#{props}")
+        elsif $docmentation == true && $proxy == false
             puts $docmentation
             date_time = Time.now.strftime("%d-%m-%Y_%H-%M")
             doc_name = "#{date_time}_documentation"
@@ -62,7 +71,7 @@ module Engine
             system("echo date >> ./docs/#{doc_name}")
             system("#{props} >> ./docs/#{doc_name}")
         else
-            system("#{props}")
+            puts "[ERROR]: globals varibles is invalid"
         end
     end
 
@@ -132,7 +141,17 @@ module Engine
 
     # Status
     def status()
-       puts "status" 
+       prRed("\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+       date_time = Time.now.strftime("%d-%m-%Y_%H-%M")
+       prRed("\n[+] #{date_time} [+]"); 
+       prGreen("\n[+] Memory:\n")
+       system("free -l")
+       prGreen("\n[+] Machine:\n")
+       system("uname -a")
+       prGreen("\n[+] Temp:\n")
+       system("sensors")
+       prRed("\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+
     end
 
 
@@ -164,32 +183,32 @@ module Engine
             puts "Local eojfejofeoejofeoj"
         elsif opt == 'local' 
             puts $line; puts "LocalHost scan"
-            sys("#{$proxy} nmap #{custom_flag} 127.0.0.1")
+            sys("nmap #{custom_flag} 127.0.0.1")
         elsif opt == 'list-scan'
             puts $line; puts "List Scan"
-            sys("#{$proxy} nmap -sS -sL #{spoof_mac} #{$ip}")
+            sys("nmap -sS -sL #{spoof_mac} #{$ip}")
         elsif opt == 'no-ping'
             puts $line; puts "No ping scan"
-            sys("#{$proxy} nmap #{custom_flag} -PN #{spoof_mac} #{$ip} ")
+            sys("nmap #{custom_flag} -PN #{spoof_mac} #{$ip} ")
         elsif opt == 'scan'
             puts $line; puts "Default TCP scan"
-            sys("#{$proxy} nmap #{custom_flag} -sS -sv -A -O #{spoof_mac} #{$ip}")
+            sys("nmap #{custom_flag} -sS -sv -A -O #{spoof_mac} #{$ip}")
             puts "Default FYN scan"
             sys("nmap -sF #{$ip}")
         elsif opt == 'udp-scan'
             puts $line; puts "Default UDP scan"
-            sys("#{$proxy} nmap #{custom_flag} -sUV #{spoof_mac} #{$ip}")
+            sys("nmap #{custom_flag} -sUV #{spoof_mac} #{$ip}")
         elsif opt == 'all'            
             puts $line; puts "LocalHost scan"
-            sys("#{$proxy} nmap #{custom_flag} 127.0.0.1")
+            sys("nmap #{custom_flag} 127.0.0.1")
             puts "List Scan"
-            sys("#{$proxy} nmap #{custom_flag} -sS -sL #{spoof_mac} #{$ip}")
+            sys("nmap #{custom_flag} -sS -sL #{spoof_mac} #{$ip}")
             puts "No ping scan"
-            sys("#{$proxy} nmap #{custom_flag} -PN #{spoof_mac} #{$ip} ")
+            sys("nmap #{custom_flag} -PN #{spoof_mac} #{$ip} ")
             puts "Default TCP scan"
-            sys("#{$proxy} nmap #{custom_flag} -sS -sv -A -O #{spoof_mac} #{$ip}")
+            sys("nmap #{custom_flag} -sS -sv -A -O #{spoof_mac} #{$ip}")
             puts "Default UDP scan"
-            sys("#{$proxy} nmap #{custom_flag} -sUV #{spoof_mac} #{$ip}")
+            sys("nmap #{custom_flag} -sUV #{spoof_mac} #{$ip}")
         else 
             prRed("[ERROR]: invalid option")
         end         
@@ -199,6 +218,11 @@ module Engine
     def dns_scanner()
         puts "DNS Enumeration"
         sys("dnsenum --enum #{$target} ./wordlist/dns2.txt") 
+        reg_dns = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA']
+        for reg in reg_dns
+            puts "Search for #{reg} in #{$target}"
+            sys("host -t #{reg} #{$target}")
+        end
     end
 
     def dir_scanner()
