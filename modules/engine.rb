@@ -14,11 +14,11 @@ module Engine
     $line = "\n\n[+]---------------------------------------[+]\n\n"
     
     # GLOBALS
-    $docmentation   = false
-    $proxy          = false
-    $doc_name       = nil
-    $target         = nil
-    $ip             = nil
+    $docmentation = false
+    $proxy        = false
+    $doc_name     = nil
+    $target       = nil
+    $ip           = nil
 
     # Init options and set target
     def INIT()
@@ -150,7 +150,7 @@ module Engine
        date_time = Time.now.strftime("%d-%m-%Y_%H-%M")
        prRed("\n[+] #{date_time} [+]"); 
        prGreen("\n[+] Memory:\n")
-       system("free -l")
+       system("free -lh")
        prGreen("\n[+] Machine:\n")
        system("uname -a")
        prGreen("\n[+] Temp:\n")
@@ -162,36 +162,14 @@ module Engine
     # Web vul scanner
     def search()
         prRed($line)
-        puts "WHOIS"
-        sys("whois -a #{$target}")
-        puts "Test connection"
-        sys("ping -c4 #{$ip}")
-        puts "Email Enumeration"
-        sys("theharvester -d #{$target} -l 500 -b all")
-        puts "HTTP Banner grep"
-        sys("ncat -v #{$ip} 80")
-        puts "HTTPS Banner grep"
-        sys("openssl s_client -quiet -connect #{$target}:443")
+        puts "WHOIS"; sys("whois -a #{$target}")
+        puts "Test connection"; sys("ping -c4 #{$ip}")
+        puts "Email Enumeration"; sys("theharvester -d #{$target} -l 500 -b all")
+        puts "HTTP Banner grep"; sys("ncat -v #{$ip} 80")
+        puts "HTTPS Banner grep"; sys("openssl s_client -quiet -connect #{$target}:443")
     end
-    
-    def port_scanner()
-        prRed($line)    
-        print "Spoof mac? [brand|no]: "; spoof_mac = gets.chomp.to_s
-        if spoof_mac != 'no'; spoof_mac = '--spoof-mac #{spoof_mac}'; 
-        else; spoof_mac = ''; end
-        print "Set option [type help for help, or not]: "; opt = gets.chomp.to_s
-        print "Add nmap custom flag: [flag|no]: "; custom_flag = gets.chomp.to_s
-        if custom_flag == 'no'; custom_flag = ''; end
 
-        raw = "nmap #{custom_flag} #{spoof_mac} #{$ip}"
-        flag = [
-            ['List Scan', '-sS -sL -A -O'], 
-            ['Ping scan', '-PN'],
-            ['Default TCP scan', '-sS -sv -A -O '],
-            ['Default UDP scan', '-sU -sV -A'],
-        ]   
-    end
-    
+    # Web dns scanner
     def dns_scanner()
         puts "DNS Enumeration"
         sys("dnsenum --enum #{$target} ./wordlist/dns2.txt") 
@@ -202,7 +180,9 @@ module Engine
         end
     end
 
+    # Web directory scanner
     def dir_scanner()
        puts "scanner" 
     end
+
 end
