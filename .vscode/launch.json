@@ -9,7 +9,7 @@
             "name": "Debug Local File",
             "type": "Ruby",
             "request": "launch",
-            "program": "${workspaceRoot}/main.rb"
+            "program": "${workspaceRoot}/test.rb"
         }
     ]
 }
