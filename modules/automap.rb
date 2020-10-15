@@ -36,7 +36,7 @@ module Automap
         ["-sX", "Xmas scans"]
     ]
         
-      $EVASION = [
+    $EVASION = [
         ["--spoof-mac", "<mac address, prefix, or vendor name>: Spoof your MAC address"],
         ["--data-length", "<num>: Append random data to sent packets"],
         ["-T", "[0-5] Set timing template (higher is faster)"],
@@ -55,7 +55,7 @@ module Automap
         ["--max-scan-delay", "<time>: Adjust delay between probes"]
     ]
   
-    OS_DETECTION = [
+    $OS_DETECTION = [
         ["-O", "Enable OS detection (try 2nd generation, then 1st if that fails)"],
         ["-O1", "Only use the old (1st generation) OS detection system"],
         ["-O2", "Only use the new OS detection system (no fallback)"]
