@@ -25,7 +25,7 @@ module Automap
         ["--system-dns", "Use OS's DNS resolver"]
     ]
   
-      $SCAN_TECHNIQUES = [
+    $SCAN_TECHNIQUES = [
         ["-sS", "TCP SYN"],
         ["-sT", "Connect()"],
         ["-sA", "ACK"],
@@ -39,12 +39,12 @@ module Automap
     $EVASION = [
         ["--spoof-mac", "<mac address, prefix, or vendor name>: Spoof your MAC address"],
         ["--data-length", "<num>: Append random data to sent packets"],
-        ["-T", "[0-5] Set timing template (higher is faster)"],
-        ["-sV", "Probe open ports to determine service/version info"],
         ["--version-intensity", "<level>: Set from 0 (light) to 9 (try all probes)"],
         ["--mtu", "<val>:  optionally w/given MTU"],
         ["--source-port", "<portnum>: Use given port number"],
         ["--ttl", "<val>: Set IP time-to-live field"],
+        ["-sV", "Probe open ports to determine service/version info"],
+        ["-T", "[0-5] Set timing template (higher is faster)"],
         ["-f", "<val>: fragment packets"],
         ["-D", "<decoy1,decoy2[,ME],...>: Cloak a scan with decoys"],
         ["-S", "<IP_Address>: Spoof source address"],
