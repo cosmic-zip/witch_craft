@@ -10,22 +10,26 @@
 
 module Automap
 
-    $HOST_DISCOVERY = [
-        ["-sL", "List Scan - simply list targets to scan"],
-        ["-sP", "Ping Scan - go no further than determining if host is online"],
+    $HOS = [
         ["-P0", "Treat all hosts as online -- skip host discovery"],
         ["-PS", "[portlist]: TCP SYN discovery probes to given ports"],
         ["-PA", "[portlist]: TCP ACK discovery probes to given ports"],
         ["-PU", "[portlist]: TCP UDP discovery probes to given ports"],
-        ["-PE", "ICMP echo, timestamp, and netmask request discovery probes"],
-        ["-PP", "ICMP echo, timestamp, and netmask request discovery probes"],
-        ["-PM", "ICMP echo, timestamp, and netmask request discovery probes"],
-        ["-n",  "Never do DNS resolution/Always resolve [default: sometimes resolve]"],
-        ["-R",  "Never do DNS resolution/Always resolve [default: sometimes resolve]"],
+        ["-PE", "ICMP echo discovery probes"],
+        ["-sV", "Probe open ports to determine service/version info"],
+        ["-PP", "timestamp request discovery probes"],
+        ["-PM", "netmask request discovery probes"],
+        ["-n",  "Never do DNS resolution [default: sometimes resolve]"],
+        ["-R",  "Always resolve [default: sometimes resolve]"],
         ["--system-dns", "Use OS's DNS resolver"]
     ]
+
+    $ALO = [
+        ["-sL", "List Scan - simply list targets to scan"],
+        ["-sP", "Ping Scan - go no further than determining if host is online"],
+    ]
   
-    $SCAN_TECHNIQUES = [
+    $SCA = [
         ["-sS", "TCP SYN"],
         ["-sT", "Connect()"],
         ["-sA", "ACK"],
@@ -35,30 +39,45 @@ module Automap
         ["-sF", "FIN"],
         ["-sX", "Xmas scans"]
     ]
-        
-    $EVASION = [
-        ["--spoof-mac", "<mac address, prefix, or vendor name>: Spoof your MAC address"],
-        ["--data-length", "<num>: Append random data to sent packets"],
-        ["--version-intensity", "<level>: Set from 0 (light) to 9 (try all probes)"],
-        ["--mtu", "<val>:  optionally w/given MTU"],
-        ["--source-port", "<portnum>: Use given port number"],
-        ["--ttl", "<val>: Set IP time-to-live field"],
-        ["-sV", "Probe open ports to determine service/version info"],
-        ["-T", "[0-5] Set timing template (higher is faster)"],
-        ["-f", "<val>: fragment packets"],
-        ["-D", "<decoy1,decoy2[,ME],...>: Cloak a scan with decoys"],
-        ["-S", "<IP_Address>: Spoof source address"],
-        ["-e", "<iface>: Use specified interface"],
-        ["--max-retries", "<tries>: Caps number of port scan probe retransmissions."],
-        ["--host-timeout", "<time>: Give up on target after this long"],
-        ["--scan-delay", "<time>: Adjust delay between probes"],
-        ["--max-scan-delay", "<time>: Adjust delay between probes"]
-    ]
-  
-    $OS_DETECTION = [
-        ["-O", "Enable OS detection (try 2nd generation, then 1st if that fails)"],
-        ["-O1", "Only use the old (1st generation) OS detection system"],
-        ["-O2", "Only use the new OS detection system (no fallback)"]
+
+    $VEN = [
+        ["006017", "Tokimec"],
+        ["006018", "Stellar ONE"],
+        ["006019", "Roche Diagnostics"],
+        ["00601A", "Keithley Instruments"],
+        ["00601B", "Mesa Electronics"],
+        ["00601C", "Telxon"],
+        ["00601D", "Lucent Technologies"],
+        ["00601E", "Softlab"],
+        ["00601F", "Stallion Technologies"],
+        ["006020", "Pivotal Networking"],
+        ["006021", "DSC"],
+        ["006022", "Vicom Systems"],
+        ["006023", "Pericom Semiconductor"],
+        ["006024", "Gradient Technologies"],
+        ["006025", "Active Imaging PLC"],
+        ["006026", "Viking Modular Solutions"]
     ]
 
+    # test
+    def sys(p)
+        system(p)
+    end
+
+    def assembly(method_flag, host_dicovery, os)
+        mac = $VEN[rand(0..14)]
+        return "nmap #{method_flag} #{host_dicovery} #{os} #{$target} --spoof-mac #{mac[0]} --data-length #{rand(2..256)} --max-retries 10 --mtu 1024 --host-timeout 30 --ttl 60 -f #{rand(1..6)}"
+    end
+
+    def simple()
+        for flag in $SCA 
+            
+        end
+    end
+
 end
+
+
+include Automap
+
+Automap.simple()

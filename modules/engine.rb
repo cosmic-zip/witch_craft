@@ -65,18 +65,11 @@ module Engine
             cmd = system("#{props}")
             if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
         elsif $docmentation == true && $proxy == false
-            puts $docmentation
-            date_time = Time.now.strftime("%d-%m-%Y_%H-%M")
-            doc_name = "#{date_time}_documentation"
-            form = 
-            cmd = system("#{line}  >> ./docs/#{doc_name}")
-            if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
-            cmd = system("echo date >> ./docs/#{doc_name}")
-            if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
-            cmd = system("#{props} >> ./docs/#{doc_name}")
+            doc_name = "#{Time.now.strftime("%d-%m-%Y_%H-%M")}_documentation"
+            cmd = system("#{props}  >> ./docs/#{doc_name}")
             if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
         else
-            puts "[ERROR]: globals varibles is invalid"
+            puts "[ERROR]: UNDEFINED"; exit
         end
     end
 
