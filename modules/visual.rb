@@ -19,9 +19,6 @@ module Visual
   def prLightGray(string);      puts "\033[97m #{string}\033[00m"; end
   def prBlack(string);          puts "\033[98m #{string}\033[00m"; end
 
-  # Line Line Line Line Line Line Line Line, fuck Line
-  # $line = "\n\n[+]----------------------------------------------[+]\n\n"
-
   def banner()
       puts "\n"
       prRed(' _      _                    ______     _ _   _______          _ _    _ _   ')
@@ -111,11 +108,3 @@ module Visual
   end
 
 end
-
-# Cheep debug, hole shit!
-# include Visual
-# banner()
-# web_dns()
-# linux_files()
-# linux_folders()
-# linux_util()

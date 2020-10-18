@@ -10,68 +10,69 @@
 
 module Engine
 
-
-    def prRed(s)
-        puts s
-    end
-
-    # Line Line Line Line Line Line Line Line
+    # LINE
     $line = "\n\n[+]---------------------------------------[+]\n\n"
-
+    
     # GLOBALS
-    $docmentation   = false
-    $proxy          = false
-    $doc_name       = nil
-    $target         = nil
-    $ip             = nil
+    $documentation = false
+    $proxy        = false
+    $target       = nil
+    $ip           = nil
 
-    # Init options and set target
+    # INIT options and set target
     def INIT()
         while $target == nil || $ip == nil
-            if $docmentation == false
-                print "Enable documentation [true|false]: "; $docmentation = gets.chomp
-                if $docmentation == true; puts "Documentation running"; end
+            if $documentation == false
+                print "Enable documentation [true|false]: "
+                $documentation = gets.chomp
+                $documentation ? puts("Documentation running") : nil
             end
             if $proxy == false
-                print "Enable proxy [true|false]: "; $proxy = gets.chomp
-                if $proxy == true; puts "Proxy running"
-                else; $proxy = ''; end
+                print "Enable proxy [true|false]: "
+                $proxy = gets.chomp
+                $proxy ? puts("Proxy running") : $proxy = ''
             end
-            # but
+            # Simplicity as supreme sophistication ~Leonardo da Vinci
             puts "Set target dns name and/or ip address"
             if $target == nil
-                print "Set Target URL: "; $target = gets.chomp.to_s
+                print "Set Target URL: "
+                $target = gets.chomp.to_s
                 puts "Target set to #{$target}"
             end
             if $ip == nil
                 print "Set Target IP: "; $ip = gets.chomp.to_s
-                puts "Target set to #{$ip}"
-            
-            else; puts "Set target, or die!"; end
+                puts "Target set to #{$ip}"          
+            else
+                puts "Set target, or die!"
+            end
         end
     end
 
+    # Reset to default values
     def R()
         system("clear && reset")
+        $documentation = false
+        $proxy = false
+        $target = nil
+        $ip = nil
     end
 
-    # Alias for system()
+    # Alias for system(), why?
     def sys(props)
-        
-        if $proxy == true
-            system("proxychains #{props}")
-        elsif $proxy == false
-            system("#{props}")
-        elsif $docmentation == true && $proxy == false
-            puts $docmentation
-            date_time = Time.now.strftime("%d-%m-%Y_%H-%M")
-            doc_name = "#{date_time}_documentation"
-            form = 
-            system("#{line}  >> ./docs/#{doc_name}")
-            system("echo date >> ./docs/#{doc_name}")
-            system("#{props} >> ./docs/#{doc_name}")
+        if $proxy == false && $documentation == false
+            cmd = system("#{props}")
+            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}\n")
+        elsif $proxy == true && $documentation == false
+            cmd = system("proxychains #{props}")
+            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd} | proxy fail?\n")
+        elsif $poxy == false && $documentation == true
+            system('mkdir logs >> /dev/null')
+            cmd = system("#{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
+            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}")
         else
-            puts "[ERROR]: globals varibles is invalid"
+            system('mkdir logs >> /dev/null')
+            cmd = system("proxychains #{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
+            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}")
         end
     end
 
@@ -79,17 +80,11 @@ module Engine
     def extract()
         prRed($line)
         print "Set file name: "; file_name = gets.chomp.to_s
-        if File.extname(file_name) == ".tar"
-            sys("tar xf #{file_name}.tar")
-        elsif File.extname(file_name) == ".gz"
-            sys("tar xzf #{file_name}.tar.gz")
-        elsif File.extname(file_name) == ".bz2"
-            sys("tar xjf #{file_name}.tar.bz2")
-        elsif File.extname(file_name) == ".zip"
-            sys("unzip #{file_name}")
-        else
-            puts "not accepted this format"
-        end
+        msg = "[ERROR]: File extension fail"
+        File.extname(file_name) == ".tar" ? sys("tar xf #{file_name}.tar") : puts(msg)
+        File.extname(file_name) == ".gz" ? sys("tar xzf #{file_name}.tar.gz") : puts(msg)
+        File.extname(file_name) == ".bz2" ? sys("tar xjf #{file_name}.tar.bz2") : puts(msg)
+        File.extname(file_name) == ".zip" ? sys("unzip #{file_name}") : puts(msg)
     end
     
     # Compress files
@@ -97,124 +92,68 @@ module Engine
         print "Set file name: "; file_name = gets.chomp.to_s
         print "Set output file name: "; files = gets.chomp.to_s
         print "Set format [tar/gz/bz2/zip]: "; ext = gets.chomp.to_s
+        msg = "[ERROR]: wrong parameters"
         prRed($line)
-        if ext == "tar"
-            sys("tar cf #{file_name}.tar #{files}")
-        elsif ext == "gz"
-            sys("tar czf #{file_name}.tar.gz #{files}")
-        elsif ext == "bz2"
-            sys("tar cjf #{file_name}.tar.bz2 #{files}")
-        elsif ext == "zip"
-            sys("gzip #{file_name}")
-        else
-            puts "not accepted this format"
-        end
+        ext == "tar" ? sys("tar cf #{file_name}.tar #{files}"): puts(msg)
+        ext == "gz" ? sys("tar czf #{file_name}.tar.gz #{files}"): puts(msg)
+        ext == "bz2" ? sys("tar cjf #{file_name}.tar.bz2 #{files}"): puts(msg)
+        ext == "zip" ? sys("gzip #{file_name}"): puts(msg)
     end
 
     # Set cover your tracks (or not)
     def cover()
         prRed($line)
+        # Clear
         puts "[+] Clear auth log"
         sys('echo "" /var/log/auth.log')
-
+        # History
         puts "[+] Clear bash_history"
         sys('echo "" -/.bash_history')
         sys('rm -rf ~/.bash_history')
-
         puts "[+] Clear history"
         sys('history -c')
-
+        # Disable history
         puts "[+] Disable history"
         sys('export HISTFILESIZE=O')
         sys('export HISTSIZE=O')
         sys('unset HISTFILE')
-
+        # kill your sel... session
         puts "[+] Kill session";
         sys('kill -9 $$')
-
+        # No history, (UwU)
         puts "[+] Perrnanentlj send all bash history
         commands to /dev/null"
         sys('ln /dev/null -/.bash_historj -sf')
-
         puts "\n\n"
     end
 
-    # Status
+    # Machine status
     def status()
-       prRed("\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+       $pline ="\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+       prRed($pline)
        date_time = Time.now.strftime("%d-%m-%Y_%H-%M")
        prRed("\n[+] #{date_time} [+]"); 
        prGreen("\n[+] Memory:\n")
-       system("free -l")
+       system("free -lh")
        prGreen("\n[+] Machine:\n")
        system("uname -a")
        prGreen("\n[+] Temp:\n")
        system("sensors")
-       prRed("\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+       prRed($pline)
 
     end
-
 
     # Web vul scanner
     def search()
         prRed($line)
-        puts "WHOIS"
-        sys("whois -a #{$target}")
-        puts "Test connection"
-        sys("ping -c4 #{$ip}")
-        puts "Email Enumeration"
-        sys("theharvester -d #{$target} -l 500 -b all")
-        puts "HTTP Banner grep"
-        sys("ncat -v #{$ip} 80")
-        puts "HTTPS Banner grep"
-        sys("openssl s_client -quiet -connect #{$target}:443")
-        puts ""
+        puts "WHOIS"; sys("whois -a #{$target}")
+        puts "Test connection"; sys("ping -c4 #{$ip}")
+        puts "Email Enumeration"; sys("theharvester -d #{$target} -l 500 -b all")
+        puts "HTTP Banner grep"; sys("ncat -v #{$ip} 80")
+        puts "HTTPS Banner grep"; sys("openssl s_client -quiet -connect #{$target}:443")
     end
-    
-    def port_scanner()
-        prRed($line)    
-        spoof_mac = ''
-        print "Spoof mac? [yes|no]: "; spoof_mac = gets.chomp.to_s
-        print "Set option [type help for help, or not]: "; opt = gets.chomp.to_s
-        if spoof_mac == 'yes'; spoof_mac = '--spoof-mac cisco'; end
-        print "Add nmap custom flag: [type enter for skip]: "; custom = gets.chomp.to_s
-        if opt == 'help'
-            prRed($line); puts "HELP: "
-            puts "Local eojfejofeoejofeoj"
-        elsif opt == 'local' 
-            puts $line; puts "LocalHost scan"
-            sys("nmap #{custom_flag} 127.0.0.1")
-        elsif opt == 'list-scan'
-            puts $line; puts "List Scan"
-            sys("nmap -sS -sL #{spoof_mac} #{$ip}")
-        elsif opt == 'no-ping'
-            puts $line; puts "No ping scan"
-            sys("nmap #{custom_flag} -PN #{spoof_mac} #{$ip} ")
-        elsif opt == 'scan'
-            puts $line; puts "Default TCP scan"
-            sys("nmap #{custom_flag} -sS -sv -A -O #{spoof_mac} #{$ip}")
-            puts "Default FYN scan"
-            sys("nmap -sF #{$ip}")
-        elsif opt == 'udp-scan'
-            puts $line; puts "Default UDP scan"
-            sys("nmap #{custom_flag} -sUV #{spoof_mac} #{$ip}")
-        elsif opt == 'all'            
-            puts $line; puts "LocalHost scan"
-            sys("nmap #{custom_flag} 127.0.0.1")
-            puts "List Scan"
-            sys("nmap #{custom_flag} -sS -sL #{spoof_mac} #{$ip}")
-            puts "No ping scan"
-            sys("nmap #{custom_flag} -PN #{spoof_mac} #{$ip} ")
-            puts "Default TCP scan"
-            sys("nmap #{custom_flag} -sS -sv -A -O #{spoof_mac} #{$ip}")
-            puts "Default UDP scan"
-            sys("nmap #{custom_flag} -sUV #{spoof_mac} #{$ip}")
-        else 
-            prRed("[ERROR]: invalid option")
-        end         
-            
-    end
-    
+
+    # Web dns scanner
     def dns_scanner()
         puts "DNS Enumeration"
         sys("dnsenum --enum #{$target} ./wordlist/dns2.txt") 
@@ -225,9 +164,9 @@ module Engine
         end
     end
 
+    # Web directory scanner
     def dir_scanner()
        puts "scanner" 
     end
-
 
 end

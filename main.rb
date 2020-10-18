@@ -13,12 +13,16 @@
 require_relative "./modules/engine.rb"
 require_relative "./modules/visual.rb"
 require_relative "./modules/colors.rb"
-
+require_relative "./modules/automap.rb"
+require_relative "./modules/test.rb"
 
 include Engine
 include Colors
 include Visual
+include Automap
+include Test
 
-#INIT
+# ------------- start ----------------------------------------
 
-# END MAIN
+
+Test.debug_all()
