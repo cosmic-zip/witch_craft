@@ -14,7 +14,7 @@ module Engine
     $line = "\n\n[+]---------------------------------------[+]\n\n"
     
     # GLOBALS
-    $docmentation = false
+    $documentation = false
     $proxy        = false
     $target       = nil
     $ip           = nil
@@ -22,10 +22,10 @@ module Engine
     # INIT options and set target
     def INIT()
         while $target == nil || $ip == nil
-            if $docmentation == false
+            if $documentation == false
                 print "Enable documentation [true|false]: "
-                $docmentation = gets.chomp
-                $docmentation ? puts("Documentation running") : nil
+                $documentation = gets.chomp
+                $documentation ? puts("Documentation running") : nil
             end
             if $proxy == false
                 print "Enable proxy [true|false]: "
@@ -51,7 +51,7 @@ module Engine
     # Reset to default values
     def R()
         system("clear && reset")
-        $docmentation = false
+        $documentation = false
         $proxy = false
         $target = nil
         $ip = nil
@@ -59,19 +59,20 @@ module Engine
 
     # Alias for system(), why?
     def sys(props)
-        if $proxy == true
-            cmd = system("proxychains #{props}")
-            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd} | proxy fail?\n")
-        elsif $proxy == false
+        if $proxy == false && $documentation == false
             cmd = system("#{props}")
             cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}\n")
-        elsif $docmentation == true && $proxy == false
+        elsif $proxy == true && $documentation == false
+            cmd = system("proxychains #{props}")
+            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd} | proxy fail?\n")
+        elsif $poxy == false && $documentation == true
             system('mkdir logs >> /dev/null')
             cmd = system("#{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
             cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}")
         else
-            puts "[ERROR]: Undefined error on sys execution"
-            exit
+            system('mkdir logs >> /dev/null')
+            cmd = system("proxychains #{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
+            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}")
         end
     end
 
