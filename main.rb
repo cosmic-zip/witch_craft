@@ -22,4 +22,6 @@ include Visual
 include Automap
 include Test
 
-Test.debug_all()
+# ------------- start ----------------------------------------
+
+
