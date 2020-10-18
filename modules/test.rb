@@ -9,6 +9,7 @@
 #                        2019 - 2020
 #
 #-------------------------------------------------------------
+
 module Test
 
 	def set()
@@ -18,7 +19,6 @@ module Test
 	    $target       = "www.uol.com"
 	    $ip           = "1.1.1.1"
 	end
-
 
 	def debug_visual
 		puts "Visual module"
