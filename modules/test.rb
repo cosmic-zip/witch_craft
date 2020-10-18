@@ -30,7 +30,8 @@ module Test
 	end
 
 	def debug_automap()
-		# ...
+		puts "Automap"
+		Automap.less_boring()
 	end
 
 	def debug_engine()
