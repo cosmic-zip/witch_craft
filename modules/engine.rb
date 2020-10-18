@@ -97,6 +97,7 @@ module Engine
         ext == "gz" ? sys("tar czf #{file_name}.tar.gz #{files}"): puts(msg)
         ext == "bz2" ? sys("tar cjf #{file_name}.tar.bz2 #{files}"): puts(msg)
         ext == "zip" ? sys("gzip #{file_name}"): puts(msg)
+    end
 
     # Set cover your tracks (or not)
     def cover()
