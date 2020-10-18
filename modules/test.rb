@@ -13,9 +13,8 @@
 module Test
 
 	def set()
-		$docmentation = false
-	    $proxy        = false
-	    $doc_name     = false
+		$docmentation = true
+	    $proxy        = true
 	    $target       = "www.uol.com"
 	    $ip           = "1.1.1.1"
 	end
@@ -53,7 +52,7 @@ module Test
 	end
 
 	def debug_all()
-		puts "Cheep debug, hole shit!"
+		puts "[CHEAP DEBUG]"
 		Test.set()
 		Test.debug_visual()
 		Test.debug_automap()
