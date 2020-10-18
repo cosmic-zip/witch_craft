@@ -9,7 +9,8 @@
 #-------------------------------------------------------------
 
 module Engine
-    # Line Line Line Line Line Line Line Line
+
+    # LINE
     $line = "\n\n[+]---------------------------------------[+]\n\n"
     
     # GLOBALS
@@ -19,35 +20,38 @@ module Engine
     $target       = nil
     $ip           = nil
 
-    # Init options and set target
+    # INIT options and set target
     def INIT()
         while $target == nil || $ip == nil
             if $docmentation == false
-                print "Enable documentation [true|false]: "; $docmentation = gets.chomp
-                if $docmentation == true; puts "Documentation running"; end
+                print "Enable documentation [true|false]: "
+                $docmentation = gets.chomp
+                $docmentation ? puts("Documentation running") : nil
             end
             if $proxy == false
-                print "Enable proxy [true|false]: "; $proxy = gets.chomp
-                if $proxy == true; puts "Proxy running"
-                else; $proxy = ''; end
+                print "Enable proxy [true|false]: "
+                $proxy = gets.chomp
+                $proxy ? puts("Proxy running") : $proxy = ''
             end
-            # but, but, but, but, fuck but!
+            # Simplicity as supreme sophistication ~Leonardo da Vinci
             puts "Set target dns name and/or ip address"
             if $target == nil
-                print "Set Target URL: "; $target = gets.chomp.to_s
+                print "Set Target URL: "
+                $target = gets.chomp.to_s
                 puts "Target set to #{$target}"
             end
             if $ip == nil
                 print "Set Target IP: "; $ip = gets.chomp.to_s
                 puts "Target set to #{$ip}"          
-            else; puts "Set target, or die!"; end
+            else
+                puts "Set target, or die!"
+            end
         end
     end
 
     # Reset to default values
     def R()
         system("clear && reset")
-        # Default values or not
         $docmentation = false
         $proxy = false
         $doc_name = nil
@@ -59,16 +63,17 @@ module Engine
     def sys(props)
         if $proxy == true
             cmd = system("proxychains #{props}")
-            if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
+            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd} | proxy fail?\n")
         elsif $proxy == false
             cmd = system("#{props}")
-            if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
+            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}\n")
         elsif $docmentation == true && $proxy == false
-            doc_name = "#{Time.now.strftime("%d-%m-%Y_%H-%M")}_documentation"
-            cmd = system("#{props}  >> ./docs/#{doc_name}")
-            if cmd == false; puts "[COMMAND_ERROR] #{cmd}"; end
+            system('mkdir logs >> /dev/null')
+            cmd = system("#{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
+            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}")
         else
-            puts "[ERROR]: UNDEFINED"; exit
+            puts "[ERROR]: Undefined error on sys execution"
+            exit
         end
     end
 
@@ -76,17 +81,11 @@ module Engine
     def extract()
         prRed($line)
         print "Set file name: "; file_name = gets.chomp.to_s
-        if File.extname(file_name) == ".tar"
-            sys("tar xf #{file_name}.tar")
-        elsif File.extname(file_name) == ".gz"
-            sys("tar xzf #{file_name}.tar.gz")
-        elsif File.extname(file_name) == ".bz2"
-            sys("tar xjf #{file_name}.tar.bz2")
-        elsif File.extname(file_name) == ".zip"
-            sys("unzip #{file_name}")
-        else
-            puts "not accepted this format"
-        end
+        msg = "[ERROR]: File extension fail"
+        File.extname(file_name) == ".tar" ? sys("tar xf #{file_name}.tar") : puts(msg)
+        File.extname(file_name) == ".gz" ? sys("tar xzf #{file_name}.tar.gz") : puts(msg)
+        File.extname(file_name) == ".bz2" ? sys("tar xjf #{file_name}.tar.bz2") : puts(msg)
+        File.extname(file_name) == ".zip" ? sys("unzip #{file_name}") : puts(msg)
     end
     
     # Compress files
@@ -94,19 +93,12 @@ module Engine
         print "Set file name: "; file_name = gets.chomp.to_s
         print "Set output file name: "; files = gets.chomp.to_s
         print "Set format [tar/gz/bz2/zip]: "; ext = gets.chomp.to_s
+        msg = "[ERROR]: wrong parameters"
         prRed($line)
-        if ext == "tar"
-            sys("tar cf #{file_name}.tar #{files}")
-        elsif ext == "gz"
-            sys("tar czf #{file_name}.tar.gz #{files}")
-        elsif ext == "bz2"
-            sys("tar cjf #{file_name}.tar.bz2 #{files}")
-        elsif ext == "zip"
-            sys("gzip #{file_name}")
-        else
-            puts "not accepted this format"
-        end
-    end
+        ext == "tar" ? sys("tar cf #{file_name}.tar #{files}"): puts(msg)
+        ext == "gz" ? sys("tar czf #{file_name}.tar.gz #{files}"): puts(msg)
+        ext == "bz2" ? sys("tar cjf #{file_name}.tar.bz2 #{files}"): puts(msg)
+        ext == "zip" ? sys("gzip #{file_name}"): puts(msg)
 
     # Set cover your tracks (or not)
     def cover()
