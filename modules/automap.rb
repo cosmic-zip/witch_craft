@@ -18,10 +18,7 @@ module Automap
         ["-PE", "ICMP echo discovery probes"],
         ["-sV", "Probe open ports to determine service/version info"],
         ["-PP", "timestamp request discovery probes"],
-        ["-PM", "netmask request discovery probes"],
-        ["-n",  "Never do DNS resolution [default: sometimes resolve]"],
-        ["-R",  "Always resolve [default: sometimes resolve]"],
-        ["--system-dns", "Use OS's DNS resolver"]
+        ["-PM", "netmask request discovery probes"]
     ]
 
     $ALO = [
@@ -59,25 +56,61 @@ module Automap
         ["006026", "Viking Modular Solutions"]
     ]
 
-    # test
-    def sys(p)
-        system(p)
-    end
-
-    def assembly(method_flag, host_dicovery, os)
+    def assembly(unity)
+        # Define hidden flag
         mac = $VEN[rand(0..14)]
-        return "nmap #{method_flag} #{host_dicovery} #{os} #{$target} --spoof-mac #{mac[0]} --data-length #{rand(2..256)} --max-retries 10 --mtu 1024 --host-timeout 30 --ttl 60 -f #{rand(1..6)}"
+        return "nmap #{unity} -O #{$target} --spoof-mac #{mac[0]} --data-length #{rand(2..256)} --max-retries 10 --mtu 1024 --host-timeout 30 --ttl 60 -f #{rand(1..6)}"
     end
 
-    def simple()
-        for flag in $SCA 
-            
+    def exec(method, list)
+        for ht_method in list
+            puts "[AUTO EXEC]: #{ht_method[1]}\n"
+            command = sys(assembly("#{method} #{ht_method[0]}"))
+            if command == true
+                print("#{$line}\n[SUCCESSFUL]\n")
+            else
+                print("#{$line}\n[ERROR]: External command fail: Keep calm, monkeys working\n")
+            end
         end
     end
 
+    def less_boring()
+        
+        # Why?
+        method = $SCA
+        ht_method = $HOS
+        # List all option
+        for var in method
+            puts "flag: #{var[0]} | value: #{var[1]}"
+        end
+        # Get value from monkey user
+        print("#{$line}\nSet flarg option: [ex: -sS]: ")
+        flag = gets.chomp.to_s
+        # Test flag option
+        case flag
+        when "-sS"
+            exec("-sS", ht_method)
+        when "-sT"
+            exec("-sT", ht_method)
+        when "-sA"
+            exec("-sA", ht_method)
+        when "-sW"
+            exec("-sW", ht_method)
+        when "-sM"
+            exec("-sM", ht_method)
+        when "-sN"
+            exec("-sN", ht_method)
+        when "-sF"
+            exec("-sF", ht_method)
+        when "-sX"
+            exec("-sX", ht_method)
+        when "-all"
+            for f_all in method
+                exec(f_all[0], ht_method)
+            end
+        else
+            print("#{$line}\n[ERROR]: less_boring() execution fail, sad monkey\n")    
+        end   
+    end
+    
 end
-
-
-include Automap
-
-Automap.simple()
