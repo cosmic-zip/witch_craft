@@ -81,6 +81,7 @@ module Automap
         ht_method = $HOS
         # List all option
         for var in method
+            puts "flag: -all      | value: Use all options"
             puts "flag: #{var[0]} | value: #{var[1]}"
         end
         # Get value from monkey user
