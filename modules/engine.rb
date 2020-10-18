@@ -16,7 +16,6 @@ module Engine
     # GLOBALS
     $docmentation = false
     $proxy        = false
-    $doc_name     = nil
     $target       = nil
     $ip           = nil
 
@@ -54,7 +53,6 @@ module Engine
         system("clear && reset")
         $docmentation = false
         $proxy = false
-        $doc_name = nil
         $target = nil
         $ip = nil
     end
