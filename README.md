@@ -20,7 +20,30 @@
 
 ## Functions
 
-    
+###     From engine module
+    Engine.INIT()              
+    Engine.sys("ls")
+    Engine.R()
+    Engine.cover()
+    Engine.compress()
+    Engine.port_scanner()
+    Engine.search()
+    Engine.status()
+    Engine.dns_scanner()
+
+###     From Automap module
+    Automap.less_boring()
+    Automap.assembly()
+    Automap.exec()
+
+
+###     From Visual module
+    Visual.banner()
+	Visual.web_dns()
+	Visual.linux_files()
+	Visual.linux_folders()
+	Visual.linux_util()
+  
 
 ## Etc
 
