@@ -19,7 +19,7 @@ module Test
 	    $ip           = "1.1.1.1"
 	end
 
-	def debug_visual
+	def debug_visual()
 		puts "Visual module"
 		Visual.banner()
 		Visual.web_dns()
