@@ -19,15 +19,22 @@
     
     § 1 About use
 
-        This script was made to automate the steps of gathering information about web targets, the misuse and responsibility of the user, to report bugs or make suggestions open a report on github.
+        This script was made to automate the steps of gathering information about web
+        targets, the misuse and responsibility of the user, to report bugs or make
+        suggestions open a report on github.
 
     § 2 About automap
 
-        The automap module is extremely heavy and not very discreet if used in the wrong way, so enable the proxy, and leave the search with the parameter -T3 (hardcoded), this will avoid problems,
+        The automap module is extremely heavy and not very discreet if used in the wrong
+        way, so enable the proxy, and leave the search with the parameter -T3 (
+        hardcoded), this will avoid problems,
 
     § 3 About Console
 
-        The output of the script can be extremely long, so see if your console, (gnome-terminal, cmd, konsole) is configured to display 1000 lines (I particularly recommend 10,000 lines), for professional purposes it allows the documentation, it records the commands, exits and formats the text.  
+        The output of the script can be extremely long, so see if your console, 
+        (gnome-terminal, cmd, konsole) is configured to display 1000 lines 
+        (I particularly recommend 10,000 lines), for professional purposes it allows
+        the documentation, it records the commands, exits and formats the text.  
 
 
 ##  Usage
