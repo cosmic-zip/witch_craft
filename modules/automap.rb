@@ -59,7 +59,7 @@ module Automap
     def assembly(unity)
         # Define hidden flag
         mac = $VEN[rand(0..14)]
-        return "nmap #{unity} -O #{$target} --spoof-mac #{mac[0]} --data-length #{rand(2..256)} --max-retries 10 --mtu 1024 --host-timeout 30 --ttl 60 -f #{rand(1..6)}"
+        return "nmap #{unity} -O -T3 #{$target} --spoof-mac #{mac[0]} --data-length #{rand(2..256)} --max-retries 10 --mtu 1024 --host-timeout 30 --ttl 60 -f #{rand(1..6)}"
     end
 
     def exec(method, list)
