@@ -166,12 +166,36 @@ module Engine
 
     # Web directory scanner
     def dir_scanner()
-       puts "scanner" 
-    end
+        puts "======================== HOTKEYS ========================"
+        puts " 'n' -> Go to next directory."
+        puts " 'q' -> Stop scan. (Saving state for resume)"
+        puts " 'r' -> Remaining scan stats.\n\n#{$line}\n"
 
-    def secure_execution()
-        
-    end
-    
+        print('Set custom config? [yes|no]: '); opt = gets.chomp.to_s
+        if opt == 'yes'
+            print('Show terminal dump? [yes|no]: '); silent = gets.chomp.to_s
+            silent == 'yes' ? silent = '-S' : silent = ''
+            print('Write output in file? [yes|no]: '); output = gets.chomp.to_s
+            output == 'yes' ? output = '-o ./dir_dump.txt' : output = ''
+            print('Search for extension? [.type|no]: '); ext = gets.chomp.to_s
+            extension != 'no' ?  extension = "-x #{ext}" : extension = ''
+            print('Time delay mode "1: normal |2: slow |3: paranoid" [1|2|3]: ')
+            delay = gets.chomp.to_i
+            case delay
+            when 1
+                delay = '0'
+            when 2
+                delay = '500' 
+            when 3
+                delay = '2000'
+            else
+                delay = '100'
+            end
+            flags = ' -i -w '+silent+' '+output+' '+extension+' -z '+delay+'' 
+            sys("dirb #{$target} ./wordlist/directory_list.txt #{flags}")
+        else  
+            sys("dirb -i -w -S #{$target} ./wordlist/directory_list.txt")
+        end 
+    end 
 
 end
