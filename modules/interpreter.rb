@@ -10,12 +10,14 @@
 
 module Interpreter
 
-    $PS1 = "[lookForMonkeys]: " 
+    $PS1 = "\033[92m[LETK]::[anon]$ \033[00m" 
 
     def interpreter(props)    
         case props
             when 'exit'
                 exit
+            when 'clear'
+                Engine.sys('clear')
             when 'update'
                 Engine.sys('git pull')
             when 'train'
@@ -62,8 +64,9 @@ module Interpreter
     def main()
         # main while in russia
         while true
+            interpreter('clear')
             interpreter('banner')
-            INTI()
+            INIT()
             while true
                 print($PS1); command = gets.chomp.to_s
                 interpreter(command)
