@@ -25,12 +25,12 @@ module Engine
             if $documentation == false
                 print "Enable documentation [true|false]: "
                 $documentation = gets.chomp
-                $documentation ? puts("Documentation running") : nil
+                $documentation == true ? puts("Documentation running") : nil
             end
             if $proxy == false
                 print "Enable proxy [true|false]: "
                 $proxy = gets.chomp
-                $proxy ? puts("Proxy running") : $proxy = ''
+                $proxy == true ? puts("Proxy running") : $proxy = ''
             end
             # Simplicity as supreme sophistication ~Leonardo da Vinci
             puts "Set target dns name and/or ip address"
@@ -61,18 +61,18 @@ module Engine
     def sys(props)
         if $proxy == false && $documentation == false
             cmd = system("#{props}")
-            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}\n")
+            cmd == false ? nil : puts("[SYS_COMMAND_ERROR]: #{cmd}\n")
         elsif $proxy == true && $documentation == false
             cmd = system("proxychains #{props}")
-            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd} | proxy fail?\n")
+            cmd ? nil : puts("[SYS_COMMAND_ERROR]: #{cmd} | proxy fail?\n")
         elsif $poxy == false && $documentation == true
             system('mkdir logs >> /dev/null')
             cmd = system("#{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
-            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}")
+            cmd ? nil : puts("[SYS_COMMAND_ERROR]: #{cmd}")
         else
             system('mkdir logs >> /dev/null')
             cmd = system("proxychains #{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
-            cmd ? nil : puts("[COMMAND_ERROR]: #{cmd}")
+            cmd ? nil : puts("[SYS_COMMAND_ERROR]: #{cmd}")
         end
     end
 
