@@ -17,7 +17,7 @@ module Colors
     def prPurple(string);         puts "\033[95m #{string}\033[00m"; end
     def prCyan(string);           puts "\033[96m #{string}\033[00m"; end
     def prLightGray(string);      puts "\033[97m #{string}\033[00m"; end
-    def prBlack(string);          puts "\033[98m #{string}\033[00m"; end    
+    def prBlack(string);          puts "\033[98m #{string}\033[00m"; end
 
     def bg_black(string)       "\e[40m#{string}\e[0m" end
     def bg_red(string)         "\e[41m#{string}\e[0m" end
