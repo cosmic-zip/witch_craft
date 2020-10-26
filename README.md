@@ -3,15 +3,15 @@
 ![LINUX EVIL TOOLKIT](https://user-images.githubusercontent.com/36008397/92520390-83da0980-f1e9-11ea-821a-4f4fe3420e2e.png)
 
 
-    Linux evil toolkit is a pentest framework that aims to centralize, 
-    standardize and simplify the use of various tools by security 
-    professionals. LITK (Linux evil toolkit) have several common commands, 
-    such as dnsenum, nmap, netcat, telnet, ssh, etc. Tools to clone 
-    websites, and a page repository used to social engineering.
+    Linux evil toolkit is a framework that aims to centralize, standardize 
+    and simplify the use of various security tools for pentest professionals.
+    LETK (Linux evil toolkit) has few simple commands, one of which is the
+    INIT that allows you to define a target, and thus use all the tools 
+    without typing anything else.
 
-    Is LETK better than setoolkit? Yes, and No, they are frameworks that serve to
-    the same thing and do it in a similar way, but LITK is meant to be
-    an alias with more functions, not a suite that even passes coffee.
+    Is LETK better than setoolkit? Yes and no, there are two that serve the
+    same thing and in a different way, the Linux Evil Toolkit and an 
+    automated attack information automation script.
 
 
 ##  considerations
@@ -39,7 +39,7 @@
 
 ##  Usage
 
-    NOTE: When you start a pentest, type the INIT command and define the target
+***NOTE: When you start a pentest, type the INIT command and define the target
 
     
     |exit           |   Close this script                                           
