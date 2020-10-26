@@ -15,6 +15,8 @@ module Interpreter
     def interpreter(props)    
         case props
             when 'exit'
+                Engine.R()
+                Engine.sys('clear')
                 exit
             when 'clear'                    
                 Engine.sys('clear')

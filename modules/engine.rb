@@ -15,32 +15,31 @@ module Engine
     
     # GLOBALS
     $documentation = false
-    $proxy        = false
-    $target       = nil
-    $ip           = nil
+    $proxy         = false
+    $target        = false
+    $ip            = false
 
     # INIT options and set target
     def INIT()
         while $target == nil && $ip == nil
             if $documentation == false
-                print "Enable documentation [true|false]: "
-                $documentation = gets.chomp
-                $documentation == true ? prCyan("Documentation running") : nil
+                print "Enable documentation? [yes|no]: "
+                $documentation = gets.chomp.to_s
+                $documentation == 'yes' ? $documentation = true : nil
             end
             if $proxy == false
-                print "Enable proxy [true|false]: "
-                $proxy = gets.chomp
-                $proxy == true ? prCyan("Proxy running") : $proxy = ''
+                print "Enable proxy? [yes|no]: "
+                $proxy = gets.chomp.to_s
+                $proxy == 'yes' ? $proxy = true : $proxy = ''
             end
             prCyan "Set target dns name and/or ip address"
-            if $target == nil
-                print "Set Target URL: "
-                $target = gets.chomp.to_s
-                prYellow "Target set to #{$target}"
+            if $target == false
+                print "Set Target URL: "; $target = gets.chomp.to_s
+                $target != nil ? prYellow("Target set to #{$target}") : prRed("No target")
             end
-            if $ip == nil
+            if $ip == false
                 print "Set Target IP: "; $ip = gets.chomp.to_s
-                prYellow "Target set to #{$ip}"          
+                $proxy != nil ? prYellow("Target set to #{$ip}") : prRed("No target ip")
             else
                 prYellow "Set target, or die!"
             end
@@ -51,9 +50,9 @@ module Engine
     def R()
         system("clear && reset")
         $documentation = false
-        $proxy = false
-        $target = nil
-        $ip = nil
+        $proxy         = false
+        $target        = false
+        $ip            = false
     end
 
     # Alias for system(), why?
@@ -65,12 +64,12 @@ module Engine
             cmd = system("proxychains #{props}")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd} | proxy fail?\n")
         elsif $poxy == false && $documentation == true
-            system('mkdir logs >> /dev/null')
-            cmd = system("#{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
+            time = Time.now.strftime("%d-%m-%Y_%H-%M")
+            cmd = system("#{props}  >> #{}_documentation_no_proxy.txt")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
-        else
-            system('mkdir logs >> /dev/null')
-            cmd = system("proxychains #{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
+        else 
+            time = Time.now.strftime("%d-%m-%Y_%H-%M")
+            cmd = system("proxychains #{props}  >> #{}_documentation_with_proxy.txt")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
         end
     end
