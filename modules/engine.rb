@@ -12,12 +12,6 @@ module Engine
 
     # LINE
     $line = "\n\n[+]---------------------------------------[+]\n\n"
-    
-    # GLOBALS
-    $documentation = false
-    $proxy         = false
-    $target        = false
-    $ip            = false
 
     # INIT options and set target
     def INIT()
