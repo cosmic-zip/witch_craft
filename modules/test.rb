@@ -20,7 +20,7 @@ module Test
 	end
 
 	def debug_visual()
-		puts "Visual module"
+		prCyan "Visual module"
 		Visual.help()
 		Visual.banner()
 		Visual.web_dns()
@@ -30,30 +30,28 @@ module Test
 	end
 
 	def debug_automap()
-		puts "Automap"
+		prCyan "Automap"
 		Automap.less_boring()
 	end
 
 	def debug_engine()
-		puts "Engine module"
-		puts "init"
+		prCyan "Engine module"
+		prCyan "init"
 		Engine.INIT()
-		puts "system sys"
+		prCyan "system sys"
 		Engine.sys("ls")
-		puts "compress"
+		prCyan "compress"
 		Engine.compress()
-		puts "port scanner"
-		Engine.port_scanner()
-		puts "search"
+		prCyan "search"
 		Engine.search()
-		puts "status"
+		prCyan "status"
 		Engine.status()
-		puts "dns scanner"
+		prCyan "dns scanner"
 		Engine.dns_scanner()
 	end
 
 	def debug_all()
-		puts "[CHEAP DEBUG]"
+		prCyan "[CHEAP DEBUG]"
 		Test.set()
 		Test.debug_visual()
 		Test.debug_automap()

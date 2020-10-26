@@ -16,7 +16,7 @@ module Interpreter
         case props
             when 'exit'
                 exit
-            when 'clear'
+            when 'clear'                    
                 Engine.sys('clear')
             when 'update'
                 Engine.sys('git pull')
@@ -44,6 +44,8 @@ module Interpreter
                 Engine.dir_scanner()
             when "banner"
                 Visual.banner()
+            when "help"
+                Visual.help()
             when "webdns"
                 Visual.web_dns()
             when "linuxfiles"
@@ -57,7 +59,7 @@ module Interpreter
             when "test"
                 Test.debug_all()
             else
-                puts "#{$line}\n[COMMAND ERROR]: Option is ivalid, look for monkeys"
+                prCyan "\n[COMMAND ERROR]: Option is ivalid, look for monkeys"
         end
     end
 
@@ -66,7 +68,6 @@ module Interpreter
         while true
             interpreter('clear')
             interpreter('banner')
-            INIT()
             while true
                 print($PS1); command = gets.chomp.to_s
                 interpreter(command)

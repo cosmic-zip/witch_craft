@@ -64,12 +64,12 @@ module Automap
 
     def exec(method, list)
         for ht_method in list
-            puts "[AUTO EXEC]: #{ht_method[1]}\n"
+            prCyan "[AUTO EXEC]: #{ht_method[1]}\n"
             command = sys(assembly("#{method} #{ht_method[0]}"))
             if command == true
-                print("#{$line}\n[SUCCESSFUL]\n")
+                prRed("#{$line}\n[SUCCESSFUL]\n")
             else
-                print("#{$line}\n[ERROR]: External command fail: Keep calm, monkeys working\n")
+                prGreen("#{$line}\n[ERROR]: External command fail: Keep calm, monkeys working\n")
             end
         end
     end
@@ -81,8 +81,8 @@ module Automap
         ht_method = $HOS
         # List all option
         for var in method
-            puts "flag: -all      | value: Use all options"
-            puts "flag: #{var[0]} | value: #{var[1]}"
+            prCyan "flag: -all      | value: Use all options"
+            prCyan "flag: #{var[0]} | value: #{var[1]}"
         end
         # Get value from monkey user
         print("#{$line}\nSet flarg option: [ex: -sS]: ")
@@ -110,7 +110,7 @@ module Automap
                 exec(f_all[0], ht_method)
             end
         else
-            print("#{$line}\n[ERROR]: less_boring() execution fail, sad monkey\n")    
+            prRed("#{$line}\n[ERROR]: less_boring() execution fail, sad monkeys")    
         end   
     end
     

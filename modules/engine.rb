@@ -21,29 +21,28 @@ module Engine
 
     # INIT options and set target
     def INIT()
-        while $target == nil || $ip == nil
+        while $target == nil && $ip == nil
             if $documentation == false
                 print "Enable documentation [true|false]: "
                 $documentation = gets.chomp
-                $documentation == true ? puts("Documentation running") : nil
+                $documentation == true ? prCyan("Documentation running") : nil
             end
             if $proxy == false
                 print "Enable proxy [true|false]: "
                 $proxy = gets.chomp
-                $proxy == true ? puts("Proxy running") : $proxy = ''
+                $proxy == true ? prCyan("Proxy running") : $proxy = ''
             end
-            # Simplicity as supreme sophistication ~Leonardo da Vinci
-            puts "Set target dns name and/or ip address"
+            prCyan "Set target dns name and/or ip address"
             if $target == nil
                 print "Set Target URL: "
                 $target = gets.chomp.to_s
-                puts "Target set to #{$target}"
+                prYellow "Target set to #{$target}"
             end
             if $ip == nil
                 print "Set Target IP: "; $ip = gets.chomp.to_s
-                puts "Target set to #{$ip}"          
+                prYellow "Target set to #{$ip}"          
             else
-                puts "Set target, or die!"
+                prYellow "Set target, or die!"
             end
         end
     end
@@ -61,18 +60,18 @@ module Engine
     def sys(props)
         if $proxy == false && $documentation == false
             cmd = system("#{props}")
-            cmd == false ? nil : puts("[SYS_COMMAND_ERROR]: #{cmd}\n")
+            cmd == false ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}\n")
         elsif $proxy == true && $documentation == false
             cmd = system("proxychains #{props}")
-            cmd ? nil : puts("[SYS_COMMAND_ERROR]: #{cmd} | proxy fail?\n")
+            cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd} | proxy fail?\n")
         elsif $poxy == false && $documentation == true
             system('mkdir logs >> /dev/null')
             cmd = system("#{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
-            cmd ? nil : puts("[SYS_COMMAND_ERROR]: #{cmd}")
+            cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
         else
             system('mkdir logs >> /dev/null')
             cmd = system("proxychains #{props}  >> ./logs/#{Time.now.strftime("%d-%m-%Y_%H-%M")}_docfile.log}")
-            cmd ? nil : puts("[SYS_COMMAND_ERROR]: #{cmd}")
+            cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
         end
     end
 
@@ -81,10 +80,10 @@ module Engine
         prRed($line)
         print "Set file name: "; file_name = gets.chomp.to_s
         msg = "[ERROR]: File extension fail"
-        File.extname(file_name) == ".tar" ? sys("tar xf #{file_name}.tar") : puts(msg)
-        File.extname(file_name) == ".gz" ? sys("tar xzf #{file_name}.tar.gz") : puts(msg)
-        File.extname(file_name) == ".bz2" ? sys("tar xjf #{file_name}.tar.bz2") : puts(msg)
-        File.extname(file_name) == ".zip" ? sys("unzip #{file_name}") : puts(msg)
+        File.extname(file_name) == ".tar" ? sys("tar xf #{file_name}.tar") : prCyan(msg)
+        File.extname(file_name) == ".gz" ? sys("tar xzf #{file_name}.tar.gz") : prCyan(msg)
+        File.extname(file_name) == ".bz2" ? sys("tar xjf #{file_name}.tar.bz2") : prCyan(msg)
+        File.extname(file_name) == ".zip" ? sys("unzip #{file_name}") : prCyan(msg)
     end
     
     # Compress files
@@ -94,37 +93,37 @@ module Engine
         print "Set format [tar/gz/bz2/zip]: "; ext = gets.chomp.to_s
         msg = "[ERROR]: wrong parameters"
         prRed($line)
-        ext == "tar" ? sys("tar cf #{file_name}.tar #{files}"): puts(msg)
-        ext == "gz" ? sys("tar czf #{file_name}.tar.gz #{files}"): puts(msg)
-        ext == "bz2" ? sys("tar cjf #{file_name}.tar.bz2 #{files}"): puts(msg)
-        ext == "zip" ? sys("gzip #{file_name}"): puts(msg)
+        ext == "tar" ? sys("tar cf #{file_name}.tar #{files}"): prCyan(msg)
+        ext == "gz" ? sys("tar czf #{file_name}.tar.gz #{files}"): prCyan(msg)
+        ext == "bz2" ? sys("tar cjf #{file_name}.tar.bz2 #{files}"): prCyan(msg)
+        ext == "zip" ? sys("gzip #{file_name}"): prCyan(msg)
     end
 
     # Set cover your tracks (or not)
     def cover()
         prRed($line)
         # Clear
-        puts "[+] Clear auth log"
+        prCyan "[+] Clear auth log"
         sys('echo "" /var/log/auth.log')
         # History
-        puts "[+] Clear bash_history"
+        prCyan "[+] Clear bash_history"
         sys('echo "" -/.bash_history')
         sys('rm -rf ~/.bash_history')
-        puts "[+] Clear history"
+        prCyan "[+] Clear history"
         sys('history -c')
         # Disable history
-        puts "[+] Disable history"
+        prCyan "[+] Disable history"
         sys('export HISTFILESIZE=O')
         sys('export HISTSIZE=O')
         sys('unset HISTFILE')
         # kill your sel... session
-        puts "[+] Kill session";
+        prCyan "[+] Kill session";
         sys('kill -9 $$')
         # No history, (UwU)
-        puts "[+] Perrnanentlj send all bash history
+        prCyan "[+] Perrnanentlj send all bash history
         commands to /dev/null"
         sys('ln /dev/null -/.bash_historj -sf')
-        puts "\n\n"
+        prCyan "\n\n"
     end
 
     # Machine status
@@ -146,30 +145,30 @@ module Engine
     # Web vul scanner
     def search()
         prRed($line)
-        puts "WHOIS"; sys("whois -a #{$target}")
-        puts "Test connection"; sys("ping -c4 #{$ip}")
-        puts "Email Enumeration"; sys("theharvester -d #{$target} -l 500 -b all")
-        puts "HTTP Banner grep"; sys("ncat -v #{$ip} 80")
-        puts "HTTPS Banner grep"; sys("openssl s_client -quiet -connect #{$target}:443")
+        prYellow "WHOIS"; sys("whois -a #{$target}")
+        prYellow "Test connection"; sys("ping -c4 #{$ip}")
+        prYellow "Email Enumeration"; sys("theharvester -d #{$target} -l 500 -b all")
+        prYellow "HTTP Banner grep"; sys("ncat -v #{$ip} 80")
+        prYellow "HTTPS Banner grep"; sys("openssl s_client -quiet -connect #{$target}:443")
     end
 
     # Web dns scanner
     def dns_scanner()
-        puts "DNS Enumeration"
+        prYellow "DNS Enumeration"
         sys("dnsenum --enum #{$target} ./wordlist/dns2.txt") 
         reg_dns = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA']
         for reg in reg_dns
-            puts "Search for #{reg} in #{$target}"
+            prYellow "Search for #{reg} in #{$target}"
             sys("host -t #{reg} #{$target}")
         end
     end
 
     # Web directory scanner
     def dir_scanner()
-        puts "======================== HOTKEYS ========================"
-        puts " 'n' -> Go to next directory."
-        puts " 'q' -> Stop scan. (Saving state for resume)"
-        puts " 'r' -> Remaining scan stats.\n\n#{$line}\n"
+        prCyan "======================== HOTKEYS ========================"
+        prCyan " 'n' -> Go to next directory."
+        prCyan " 'q' -> Stop scan. (Saving state for resume)"
+        prCyan " 'r' -> Remaining scan stats.\n\n#{$line}\n"
 
         print('Set custom config? [yes|no]: '); opt = gets.chomp.to_s
         if opt == 'yes'
