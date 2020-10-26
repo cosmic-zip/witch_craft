@@ -10,6 +10,8 @@
 #
 #-------------------------------------------------------------
 
+# Simplicity as supreme sophistication ~Leonardo da Vinci
+
 require_relative "./modules/interpreter.rb"
 require_relative "./modules/automap.rb"
 require_relative "./modules/engine.rb"
