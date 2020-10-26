@@ -21,6 +21,7 @@ module Test
 
 	def debug_visual()
 		puts "Visual module"
+		Visual.help()
 		Visual.banner()
 		Visual.web_dns()
 		Visual.linux_files()
