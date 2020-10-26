@@ -1,4 +1,6 @@
 # CONFIG FILE FOR AUTOMATION 
+# Set time
+$time = time = Time.now.strftime("%d-%m-%Y_%H-%M")
 # Write results in file?
 $documentation = false
 # Enable proxy
