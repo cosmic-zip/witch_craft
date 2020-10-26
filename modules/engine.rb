@@ -50,19 +50,21 @@ module Engine
 
     # Alias for system(), why?
     def sys(props)
-        if $proxy == false && $documentation == false
+        if $silent == true
+            cmd = system("proxychains #{props}  >> /dev/null")
+            cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
+            system('systemctl restart tor')
+        elsif $proxy == false && $documentation == false
             cmd = system("#{props}")
             cmd == false ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}\n")
         elsif $proxy == true && $documentation == false
             cmd = system("proxychains #{props}")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd} | proxy fail?\n")
         elsif $poxy == false && $documentation == true
-            time = Time.now.strftime("%d-%m-%Y_%H-%M")
             cmd = system("#{props}  >> #{}_documentation_no_proxy.txt")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
         else 
-            time = Time.now.strftime("%d-%m-%Y_%H-%M")
-            cmd = system("proxychains #{props}  >> #{}_documentation_with_proxy.txt")
+            cmd = system("proxychains #{props}  >> #{$time}_documentation_with_proxy.txt")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
         end
     end
