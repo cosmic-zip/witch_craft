@@ -99,4 +99,29 @@ module Visual
 
     end
 
+    def help()
+        puts $line
+        prRed('|exit           |   Close this script                                           ')
+        prRed('|clear          |   Clear terminal                                              ')
+        prRed('|update         |   Update Linux evil toolkit                                   ')
+        prRed('|train          |   Show train in terminal, tuutuu                              ')
+        prRed('|INIT           |   Setup global variables                                      ')
+        prRed('|reset          |   Clear terminal and reset global variables                   ')
+        prRed('|cover          |   Cover your tracks on your computer                          ')
+        prRed('|portscanner    |   This command is replaced by automap                         ')
+        prRed('|automap        |   Scanner target, grep ports, services, operational system,   ')
+        prRed('|               |   firewall rules and more.                                    ')
+        prRed('|search         |   Search email, whois and banner grep                         ')
+        prRed('|status         |   Show machine status                                         ')
+        prRed("|dnsscanner     |   Scan for 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA'     ")
+        prRed('|dirscanner     |   Scan files and folders                                      ')
+        prRed('|banner         |   Show Linux evil Toolkit banner in terminal                  ')
+        prRed('|webdns         |   Show Web Sites for dns scanner                              ')
+        prRed('|linuxfiles     |   Show important linux files                                  ')
+        prRed('|linuxfolders   |   Show important linux folders                                ')
+        prRed('|linuxutil      |   Show useful commands in linux                               ')
+        prRed('|test           |   For development only                                        ')
+        puts "\n\n"
+    end
+        
 end
