@@ -46,6 +46,7 @@ module Engine
         $proxy         = false
         $target        = false
         $ip            = false
+        $silent        = false
     end
 
     # Alias for system(), why?
