@@ -97,3 +97,6 @@
 
     Interpreter.interpreter()   | Backend function
     Interpreter.main()          | Backend function
+
+
+### ERROR CODES & COLORS
