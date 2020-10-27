@@ -33,6 +33,7 @@ module Engine
             if $ip == false
                 print "Set Target IP: "; $ip = gets.chomp.to_s
                 $proxy != nil ? prYellow("Target set to #{$ip}") : prRed("No target ip")
+            end
             if $change_mac == false
                 print "Set network interface name: [wlan0, wlp2s0]: "; $interface = gets.chomp.to_s
                 command = sys("ip link set #{interface} down")
