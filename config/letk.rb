@@ -11,3 +11,5 @@ $target        = 'www.google.com'
 $ip            = 'localhost'
 # automatically generate new ip. [true| false]
 $silent_mode   = false
+# Change mac [true| false]
+$change_mac = false

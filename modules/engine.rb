@@ -33,6 +33,12 @@ module Engine
             if $ip == false
                 print "Set Target IP: "; $ip = gets.chomp.to_s
                 $proxy != nil ? prYellow("Target set to #{$ip}") : prRed("No target ip")
+            if $change_mac == false
+                print "Set network interface name: [wlan0, wlp2s0]: "; $interface = gets.chomp.to_s
+                command = sys("ip link set #{interface} down")
+                command = sys("macchanger -r #{interface}")
+                command = sys("ip link set #{interface} up")
+                $command == false ? prYellow("Change mac address") : prRed("[ERROR]: Interface not found")
             else
                 prYellow "Set target, or die!"
             end
@@ -47,6 +53,8 @@ module Engine
         $target        = false
         $ip            = false
         $silent        = false
+        $change_mac    = false
+        prCyan "\nClear console and reset values...[done]"
     end
 
     # Alias for system(), why?
