@@ -153,6 +153,7 @@ module Engine
         prYellow "Email Enumeration"; sys("theharvester -d #{$target} -l 500 -b all")
         prYellow "HTTP Banner grep"; sys("ncat -v #{$ip} 80")
         prYellow "HTTPS Banner grep"; sys("openssl s_client -quiet -connect #{$target}:443")
+        prYellow "Nikto scanner"; sys("nikto -h #{$ip}:443 -ssl")
     end
 
     # Web dns scanner
