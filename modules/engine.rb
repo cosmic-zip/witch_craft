@@ -4,7 +4,6 @@
 # 
 #                          By v0id
 #
-#                        2019 - 2020
 #
 #-------------------------------------------------------------
 
@@ -12,12 +11,6 @@ module Engine
 
     # LINE
     $line = "\n\n[+]---------------------------------------[+]\n\n"
-    
-    # GLOBALS
-    $documentation = false
-    $proxy         = false
-    $target        = false
-    $ip            = false
 
     # INIT options and set target
     def INIT()
@@ -40,6 +33,13 @@ module Engine
             if $ip == false
                 print "Set Target IP: "; $ip = gets.chomp.to_s
                 $proxy != nil ? prYellow("Target set to #{$ip}") : prRed("No target ip")
+            end
+            if $change_mac == false
+                print "Set network interface name: [wlan0, wlp2s0]: "; $interface = gets.chomp.to_s
+                command = sys("ip link set #{interface} down")
+                command = sys("macchanger -r #{interface}")
+                command = sys("ip link set #{interface} up")
+                $command == false ? prYellow("Change mac address") : prRed("[ERROR]: Interface not found")
             else
                 prYellow "Set target, or die!"
             end
@@ -53,23 +53,28 @@ module Engine
         $proxy         = false
         $target        = false
         $ip            = false
+        $silent        = false
+        $change_mac    = false
+        prCyan "\nClear console and reset values...[done]"
     end
 
     # Alias for system(), why?
     def sys(props)
-        if $proxy == false && $documentation == false
+        if $silent == true
+            cmd = system("proxychains #{props}  >> /dev/null")
+            cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
+            system('systemctl restart tor')
+        elsif $proxy == false && $documentation == false
             cmd = system("#{props}")
             cmd == false ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}\n")
         elsif $proxy == true && $documentation == false
             cmd = system("proxychains #{props}")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd} | proxy fail?\n")
         elsif $poxy == false && $documentation == true
-            time = Time.now.strftime("%d-%m-%Y_%H-%M")
             cmd = system("#{props}  >> #{}_documentation_no_proxy.txt")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
         else 
-            time = Time.now.strftime("%d-%m-%Y_%H-%M")
-            cmd = system("proxychains #{props}  >> #{}_documentation_with_proxy.txt")
+            cmd = system("proxychains #{props}  >> #{$time}_documentation_with_proxy.txt")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
         end
     end
@@ -149,6 +154,7 @@ module Engine
         prYellow "Email Enumeration"; sys("theharvester -d #{$target} -l 500 -b all")
         prYellow "HTTP Banner grep"; sys("ncat -v #{$ip} 80")
         prYellow "HTTPS Banner grep"; sys("openssl s_client -quiet -connect #{$target}:443")
+        prYellow "Nikto scanner"; sys("nikto -h #{$ip}:443 -ssl")
     end
 
     # Web dns scanner
@@ -195,5 +201,11 @@ module Engine
             sys("dirb -i -w -S #{$target} ./wordlist/directory_list.txt")
         end 
     end 
+
+    def dump()
+
+    def silent()
+    end
+
 
 end

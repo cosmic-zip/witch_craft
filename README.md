@@ -40,7 +40,6 @@
 ##  Usage
 
 	NOTE: When you start a pentest, type the INIT command and define the target
-
     
     |exit           |   Close this script                                           
     |clear          |   Clear terminal                                              
