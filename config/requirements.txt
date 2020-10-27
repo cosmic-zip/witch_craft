@@ -6,7 +6,6 @@ ruby
 php
 clang
 gdb
-tilix
 tmux
 links
 code
@@ -20,7 +19,6 @@ nodejs
 composer
 findtools
 tor
-squid
 proxychains
 nmap
 ncrack
