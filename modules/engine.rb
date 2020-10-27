@@ -202,4 +202,10 @@ module Engine
         end 
     end 
 
+    def dump()
+
+    def silent()
+    end
+
+
 end
