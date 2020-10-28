@@ -1,6 +1,6 @@
 # CONFIG FILE FOR AUTOMATION 
 # Set time
-$time = time = Time.now.strftime("%d-%m-%Y_%H-%M")
+$time = Time.now.strftime("%d-%m-%Y_%H-%M")
 # Write results in file?
 $documentation = false
 # Enable proxy
@@ -13,3 +13,5 @@ $ip            = 'localhost'
 $silent_mode   = false
 # Change mac [true| false]
 $change_mac = false
+#Set network interface name: [wlan0, wlp2s0]: "
+$interface = false
