@@ -39,8 +39,10 @@
 
 ##  Usage
 
-   NOTE: When you start a pentest, type the INIT command and define the target
+### NOTE: When you start a pentest, type the INIT command and define the target, or write 
+### values in linux-evil-toolkit/config/letk.rb
 
+### Basics
     
     |exit           |   Close this script                                           
     |clear          |   Clear terminal                                              
@@ -49,9 +51,7 @@
     |INIT           |   Setup global variables                                      
     |reset          |   Clear terminal and reset global variables                   
     |cover          |   Cover your tracks on your computer                          
-    |portscanner    |   This command is replaced by automap                         
-    |automap        |   Scanner target, grep ports, services, operational system,   
-    |               |   firewall rules and more.                                       
+    |simple_map     |   This command execute automap (auto namap)
     |search         |   Search email, whois and banner grep      
     |status         |   Show machine status         
     |dnsscanner     |   Scan for 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA'         
@@ -62,6 +62,40 @@
     |linuxfolders   |   Show important linux folders        
     |linuxutil      |   Show useful commands in linux       
     |test           |   For development only        
+
+
+### simple_scan options 
+
+    alone
+
+        "-sL" --> "List Scan - simply list targets to scan"
+        "-sP" --> "Ping Scan - go no further than determining if host is online"
+
+    default
+
+        "-sS -sV" --> "TCP SYN"
+        "-sU -sV" --> "UDP Scan"
+
+    icmp_echo
+
+        "-sS -sV -PE" --> "TCP SYN + ICMP echo discovery probes"
+        "-sU -sV -PE" --> "UDP Scan + ICMP echo discovery probes"
+        "-sA -sV -PE" --> "ACK + ICMP echo discovery probes"
+
+    port_list
+
+        "-sS" --> "TCP SYN + [portlist]: TCP SYN discovery probes to given ports"
+        "-sA" --> "ACK + [portlist]: TCP ACK discovery probes to given ports"
+        "-sU" --> "UDP Scan + [portlist]: TCP UDP discovery probes to given ports"
+
+    special
+
+        "-sT -sV" --> "Connect()"
+        "-sW -sV" --> "Window"
+        "-sM -sV" --> "Maimon scans"
+        "-sN -sV" --> "TCP Null"
+        "-sF -sV" --> "FIN"
+        "-sX -sV" --> "Xmas scans"
 
 
 ##  Backend Functions
@@ -78,13 +112,9 @@
     Engine.status()             | Show machine status
     Engine.dns_scanner()        | Scan for 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA'
     Emgine.dir_scanner()        | Brute force for search files and folders
-
-###     From Automap module
-
-    Automap.less_boring()       | Execute automap host scan
-    Automap.assembly()          | Backend function
-    Automap.exec()              | Backend function 
-
+    Engine.simple_scan()        | Execute automap
+    Engine.assembly()           | Backend function
+    Engine.exec()               | Backend function 
 
 ###     From Visual module
 
@@ -93,7 +123,6 @@
 	Visual.linux_files()        | Function for show text
 	Visual.linux_folders()      | Function for show text
 	Visual.linux_util()         | Function for show text
-  
 
 ###     From Interpreter Module
 
@@ -101,4 +130,10 @@
     Interpreter.main()          | Backend function
 
 
-### ERROR CODES & COLORS
+## ERROR CODES & COLORS
+
+    prGreen()                   | Succesful
+    prRed()                     | Error 
+    Other[Cyan, yellow]         | Execultion error
+
+### Donate
