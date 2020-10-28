@@ -25,7 +25,7 @@
 
     § 2 About simple_scan
 
-        Automap was replaced by simple_scan, it is lighter and faster, in addition to being less detectable, now it has different modes of execution that make it possible from a quick and simple execution to more complex modes
+        Automap was replaced by simple_scan, it is lighter and faster, in addition to being less detectable, now it has different modes of execution that make it possible from a quick and simple execution to more complex modes.
 
     § 3 About Console
 
