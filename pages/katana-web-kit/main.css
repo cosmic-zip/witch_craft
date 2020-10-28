@@ -1,0 +1,186 @@
+body {
+  position: relative;
+  background-color: #0000AF;
+}
+
+p {
+  color: #AFA8AF;
+}
+
+#menu {
+  border: inset 1px #AFA8AF;
+  padding: 0;
+  background-color: #AFA8AF;
+}
+
+ul {
+  background-color: #AFA8AF;
+  display: block;
+  border: outset 1px #AFA8AF;
+  position: relative;
+}
+
+li {
+  background-color: #AFA8AF;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  display: inline;
+  margin-right: 20px;
+}
+
+li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#title {
+  float: right;
+}
+
+#title:hover {
+  text-decoration: none;
+  cursor: default;
+}
+
+#fileSub {
+  display: none;
+  width: 50px;
+  float: left;
+  position: absolute;
+  left: 0;
+  padding-left: 2px;
+  margin-left: 40px;
+  text-align: center;
+}
+
+#newBox {
+  border: outset 2px grey;
+  position: absolute;
+  padding: 10px;
+  top: 200px;
+  left: 100px;
+  display: none;
+
+}
+
+#newBox * {
+  color: #AFA8AF;
+  text-align: center;
+}
+
+#newBox p {
+  cursor: pointer;
+}
+
+#newBox p:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+#saveBox {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  background-color: #AFAFAA;
+  border: outset;
+  display: none;
+}
+
+#saveBox input[type=text] {
+  display: block;
+}
+
+#saveBox * {
+  background-color: #AFA8AF;
+  color: black;
+  margin: 10px 10px;
+  
+}
+
+#saveTitle {
+  background-color: #AFA8AA;
+  border: outset;
+  display: block;
+  text-align: center;
+}
+
+#saveButton {
+  float: left;
+}
+
+#saveClose {
+  float: right;
+}
+
+#aboutBox {
+  position: absolute;
+  border: outset 2px grey;
+  top: 200px;
+  background-color: #AFA8AF;
+  display: none;
+}
+
+#aboutBox * {
+  background-color: #AFA8AF;
+  color: black;
+  text-align: center;
+  padding: 0 10px;
+}
+
+#aboutClose {
+  text-align: right;
+  padding-right: 10px;
+  border-bottom: outset 1px;
+}
+
+#aboutClose p {
+  text-align: right;
+  margin: 0 auto;
+  width: 10px;
+  margin-right: 0;
+  padding-left: 16px;
+  padding-right: 8px;
+  font-weight: bold;
+  border-left: outset 1px;
+}
+
+#aboutClose p:hover {
+  color: white;
+  cursor: pointer;
+}
+
+section {
+  width: 100%;
+}
+.txt{
+  padding: 10px;
+}
+
+#fileSub{
+  padding: 10px  ;
+}
+
+.textarea {
+  padding: 10px;
+  margin: 0px;
+  resize: none;
+  float: both;
+  border-style: outset;
+  width: 96%;
+  background-color: #0000AF;
+}
+
+.textarea[type=text] {
+  font-size: 15px;
+  color: #AFA8AF;
+  font-weight: bold;
+}
+
+.footer{
+  background-color: #AFA8AF;
+  font-size: 17px;
+  height: 2em;
+  padding: 10px;
+  color: #0000AF;
+}
