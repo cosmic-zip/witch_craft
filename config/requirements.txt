@@ -10,6 +10,7 @@ tmux
 links
 code
 vim
+srm
 gedit
 net-tools
 adb
