@@ -10,7 +10,8 @@
 module Engine
 
     # LINE
-    $line = "\n\n[+]---------------------------------------[+]\n\n"
+    $line = "\n\n[+]----------------------------------------------------[+]\n\n"
+    $pline ="\n ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
 
     # INIT options and set target
     def INIT()
@@ -36,9 +37,9 @@ module Engine
             end
             if $change_mac == false
                 print "Set network interface name: [wlan0, wlp2s0]: "; $interface = gets.chomp.to_s
-                command = sys("ip link set #{interface} down")
-                command = sys("macchanger -r #{interface}")
-                command = sys("ip link set #{interface} up")
+                command = sys("ip link set #{$interface} down")
+                command = sys("macchanger -r #{$interface}")
+                command = sys("ip link set #{$interface} up")
                 $command == false ? prYellow("Change mac address") : prRed("[ERROR]: Interface not found")
             else
                 prYellow "Set target, or die!"
@@ -103,16 +104,15 @@ module Engine
         ext == "zip" ? sys("gzip #{file_name}"): prCyan(msg)
     end
 
-    # Set cover your tracks (or not)
+    # Set cover your tracks (or yes)
     def cover()
         prRed($line)
         # Clear
         prCyan "[+] Clear auth log"
-        sys('echo "" /var/log/auth.log')
+        sys('srm -rfD /var/log/')
         # History
         prCyan "[+] Clear bash_history"
-        sys('echo "" -/.bash_history')
-        sys('rm -rf ~/.bash_history')
+        sys('srm -rfD -/.bash_history')
         prCyan "[+] Clear history"
         sys('history -c')
         # Disable history
@@ -121,45 +121,41 @@ module Engine
         sys('export HISTSIZE=O')
         sys('unset HISTFILE')
         # kill your sel... session
-        prCyan "[+] Kill session";
-        sys('kill -9 $$')
         # No history, (UwU)
         prCyan "[+] Perrnanentlj send all bash history
         commands to /dev/null"
-        sys('ln /dev/null -/.bash_historj -sf')
-        prCyan "\n\n"
+        sys('ln /dev/null ~/.bash_history -sf')
+        puts "\n\n"
     end
 
     # Machine status
     def status()
-       $pline ="\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
-       prRed($pline)
-       date_time = Time.now.strftime("%d-%m-%Y_%H-%M")
-       prRed("\n[+] #{date_time} [+]"); 
-       prGreen("\n[+] Memory:\n")
+       prRed $pline
+       prRed "\n[+] #{$time} [+]"
+       prGreen "\n[+] Memory:\n"
        system("free -lh")
-       prGreen("\n[+] Machine:\n")
+       prGreen "\n[+] Machine:\n"
        system("uname -a")
-       prGreen("\n[+] Temp:\n")
+       prGreen "\n[+] Temp:\n"
        system("sensors")
-       prRed($pline)
+       prRed $pline
 
     end
 
     # Web vul scanner
     def search()
         prRed($line)
-        prYellow "WHOIS"; sys("whois -a #{$target}")
-        prYellow "Test connection"; sys("ping -c4 #{$ip}")
-        prYellow "Email Enumeration"; sys("theharvester -d #{$target} -l 500 -b all")
-        prYellow "HTTP Banner grep"; sys("ncat -v #{$ip} 80")
-        prYellow "HTTPS Banner grep"; sys("openssl s_client -quiet -connect #{$target}:443")
-        prYellow "Nikto scanner"; sys("nikto -h #{$ip}:443 -ssl")
+        prYellow "#{$line}[+] WHOIS"; sys("whois -a #{$target}")
+        prYellow "#{$line}[+] Test connection"; sys("ping -c4 #{$ip}")
+        prYellow "#{$line}[+] Email Enumeration"; sys("theharvester -d #{$target} -l 500 -b all")
+        prYellow "#{$line}[+] HTTP Banner grep"; sys("ncat -v #{$ip} 80")
+        prYellow "#{$line}[+] HTTPS Banner grep"; sys("openssl s_client -quiet -connect #{$target}:443")
+        prYellow "#{$line}[+] Nikto scanner"; sys("nikto -h #{$ip}:443 -ssl")
     end
 
     # Web dns scanner
     def dns_scanner()
-        prYellow "DNS Enumeration"
+        prYellow "#{$line}DNS Enumeration"
         sys("dnsenum --enum #{$target} ./wordlist/dns2.txt") 
         reg_dns = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA']
         for reg in reg_dns
@@ -170,6 +166,7 @@ module Engine
 
     # Web directory scanner
     def dir_scanner()
+        prCyan $line
         prCyan "======================== HOTKEYS ========================"
         prCyan " 'n' -> Go to next directory."
         prCyan " 'q' -> Stop scan. (Saving state for resume)"
@@ -202,10 +199,67 @@ module Engine
         end 
     end 
 
-    def dump()
-
-    def silent()
+    def assembly(string, timing, ipv6)
+        # Define hidden flag
+        mac_vendor = [ "006017", "006018", "006019", "00601A", "00601B", "00601C", "00601D", "00601E", "00601F", "006020", "006021", "006022", "006023", "006024", "006025", "006026" ]
+        sys "nmap #{string} -O -T#{timing} #{$target} --spoof-mac #{mac_vendor[rand(0..15)]} --data-length #{rand(2..256)} --max-retries 10 --mtu 1024 --host-timeout 30 --ttl 60 -f #{rand(1..6)} #{ipv6 != nil ? '-6' : ''}"
     end
 
+    def exec(list)
+        for opt in list
+            prYellow "[EXEC]: #{opt[1]}"
+            cmd = assembly(opt[0])
+            cmd == true ? prGreen("[SYS_COMMAND]: Done") : prRed("[COMMAND_ERROR]: Fail")
+        end
+    end
+  
+    def simple_scan(props)
+
+        alone = [
+            ["-sL", "List Scan - simply list targets to scan"],
+            ["-sP", "Ping Scan - go no further than determining if host is online"],
+        ]
+
+        default = [
+            ["-sS -sV", "TCP SYN"],
+            ["-sU -sV", "UDP Scan"],
+        ]
+
+
+        icmp_echo = [
+            ["-sS -sV -PE", "TCP SYN + ICMP echo discovery probes"],
+            ["-sU -sV -PE", "UDP Scan + ICMP echo discovery probes"],
+            ["-sA -sV -PE", "ACK + ICMP echo discovery probes"],
+        ]
+            
+        port_list = [
+            ["-sS", "TCP SYN + [portlist]: TCP SYN discovery probes to given ports"],
+            ["-sA", "ACK + [portlist]: TCP ACK discovery probes to given ports"],
+            ["-sU", "UDP Scan + [portlist]: TCP UDP discovery probes to given ports"],
+        ]
+            
+        special = [
+            ["-sT -sV", "Connect()"],
+            ["-sW -sV", "Window"],
+            ["-sM -sV", "Maimon scans"],
+            ["-sN -sV", "TCP Null"],
+            ["-sF -sV", "FIN"],
+            ["-sX -sV", "Xmas scans"]
+        ]
+
+        case props
+        when 'alone'
+            exec(alone)
+        when 'default'
+            exec(default)
+        when 'icmp_echo'
+            exec(icmp_echo)
+        when 'port_list'
+            exec(port_list)
+        when 'special'
+            exec(special)
+
+
+    end
 
 end
