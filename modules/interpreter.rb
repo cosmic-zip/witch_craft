@@ -33,8 +33,8 @@ module Interpreter
                 Engine.extract()
             when "compress"
                 Engine.compress()
-            when "portscanner"
-                Engine.port_scanner()
+            when "simple_map"
+                Engine.simple_map()
             when "search"
                 Engine.search()
             when "status"
@@ -55,8 +55,6 @@ module Interpreter
                 Visual.linux_folders()
             when "linuxutil"
                 Visual.linux_util()	
-            when "automap"
-                Automap.less_boring()
             when "test"
                 Test.debug_all()
             else
