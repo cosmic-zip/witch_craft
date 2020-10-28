@@ -23,11 +23,9 @@
         targets, the misuse and responsibility of the user, to report bugs or make
         suggestions open a report on github.
 
-    § 2 About automap
+    § 2 About simple_scan
 
-        The automap module is extremely heavy and not very discreet if used in the wrong
-        way, so enable the proxy, and leave the search with the parameter -T3 (
-        hardcoded), this will avoid problems,
+        Automap was replaced by simple_scan, it is lighter and faster, in addition to being less detectable, now it has different modes of execution that make it possible from a quick and simple execution to more complex modes
 
     § 3 About Console
 
@@ -39,8 +37,7 @@
 
 ##  Usage
 
-### NOTE: When you start a pentest, type the INIT command and define the target, or write 
-### values in linux-evil-toolkit/config/letk.rb
+### NOTE: When you start a pentest, type the INIT command and define the target, or write values in linux-evil-toolkit/config/letk.rb
 
 ### Basics
     
@@ -135,5 +132,3 @@
     prGreen()                   | Succesful
     prRed()                     | Error 
     Other[Cyan, yellow]         | Execultion error
-
-### Donate
