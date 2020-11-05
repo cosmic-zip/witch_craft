@@ -1,6 +1,6 @@
 # linux-evil-toolkit
 
-![LINUX EVIL TOOLKIT](https://user-images.githubusercontent.com/36008397/92520390-83da0980-f1e9-11ea-821a-4f4fe3420e2e.png)
+![0018](https://user-images.githubusercontent.com/36008397/98290810-f4529c00-1f88-11eb-8559-3a6a93815332.png)
 
 
     Linux evil toolkit is a framework that aims to centralize, standardize 
