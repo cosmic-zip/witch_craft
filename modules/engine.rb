@@ -139,7 +139,6 @@ module Engine
        prGreen "\n[+] Temp:\n"
        system("sensors")
        prRed $pline
-
     end
 
     # Web vul scanner
@@ -258,8 +257,9 @@ module Engine
             exec(port_list)
         when 'special'
             exec(special)
-
-
+        else 
+            prRed "[COMMAND_ERROR]: Invalid option"
+        end
     end
 
 end
