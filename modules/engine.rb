@@ -224,7 +224,6 @@ module Engine
             ["-sU -sV", "UDP Scan"],
         ]
 
-
         icmp_echo = [
             ["-sS -sV -PE", "TCP SYN + ICMP echo discovery probes"],
             ["-sU -sV -PE", "UDP Scan + ICMP echo discovery probes"],
@@ -262,4 +261,23 @@ module Engine
         end
     end
 
-end
+    def deeplink(opt)
+        cat = 'cat ./database/'
+        if opt == '--site' 
+            system cat 'best-site.db'
+        elsif opt == '--darklinks' 
+            system cat 'dark-web-links.db'
+        elsif opt == '--onionlinks' 
+            system cat 'onion_links.db'
+        elsif opt == '--onionlinks-active' 
+            system cat 'onion_links.db | grep active'
+        elsif opt == '--searchlinks' 
+            system cat 'search-and-fonts.db'
+        elsif opt == '--toralt' 
+            system cat 'tor-alternatives.db'
+        else
+            prRed "[COMMAND_ERROR]: Invalid option"
+        end
+    end
+
+end # MODULE END    
