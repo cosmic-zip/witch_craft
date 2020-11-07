@@ -95,6 +95,18 @@
         "-sX -sV" --> "Xmas scans"
 
 
+## DeepLink
+
+    DeepLink is a deepweb (tor onion domain) database for your test and explore "deep web" for fun
+
+    usage: type deeplink and type option
+        --site                  | Cat best site for your learn about deepweb
+        --darklinks             | show dark-net links
+        --onionlinks            | show more 500 deep web links
+        --onionlinks-active     | show more links, but active links only
+        --searchlinks           | show tor search (google-like)
+        --toralt                | show tor alternatives (i2-, freenet, etc)
+
 ##  Backend Functions
 
 ###     From engine module
