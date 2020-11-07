@@ -22,7 +22,6 @@ module Visual
   
     end 
 
-
     def web_dns()
   
         prRed("Netcraft      – endereços fora do Brasil      http://news.netcraft.com/")
@@ -64,6 +63,7 @@ module Visual
 
     def linux_folders()
 
+        prRed($line)
         prGreen("User binaries                      /bin")
         prGreen("Boot-up related files              /boot")
         prGreen("Interface for system devices       /dev")
@@ -81,8 +81,26 @@ module Visual
 
     end
  
+    def windows_files()
+
+        prRed($line)
+        prPurple 'WINDOWS FILES'
+        prPurple 'Typically C:\Windows        %SYSTEMROOT%'
+        prPurple 'DNS entries                 %SYSTEMROOT%\\System32\\drivers\\etc\\hosts'
+        prPurple 'Network settings            %SYSTEMROOT%\\System32\\drivers\\etc\\networks'
+        prPurple 'User & password hashes      %SYSTEMROOT%\\system32\\config\\SAM'
+        prPurple 'Backup copy of SAM          %SYSTEMROOT%\\repair\\SAM'
+        prPurple 'Backup copy of SAM          %SYSTEMROOT%\\System32\\config\\RegBack\\SAM'
+        prPurple 'Application Log             %WINDIR%\\system32\\config\\AppEvent.Evt'
+        prPurple 'Security Log                %WINDIR%\\system32\\config\\SecEvent.Evt'
+        prPurple 'Startup Location            %ALLUSERSPROFILE%\Start Menu\Programs\Startup\\'
+        prPurple 'Startup Location            %USERPROFILE%\\Start Menu\\Programs\\Startup\\'
+        prPurple 'Prefetch dir (EXE logs)     %SYSTEMROOT%\\Prefetch'
+        puts "\n\n"
+
     def linux_util()
 
+        prRed($line)
         prYellow("Grab url                      wget http:// url -0 url.txt -o /dev/null")
         prYellow("Remote Desktop to ip          desktop ip")
         prYellow("Put file                      cp /tmp/file user@x.x.x.x:/tmp/file")
@@ -99,6 +117,7 @@ module Visual
     end
 
     def help()
+
         puts $line
         prRed('|exit           |   Close this script                                           ')
         prRed('|clear          |   Clear terminal                                              ')
@@ -108,8 +127,7 @@ module Visual
         prRed('|reset          |   Clear terminal and reset global variables                   ')
         prRed('|cover          |   Cover your tracks on your computer                          ')
         prRed('|portscanner    |   This command is replaced by automap                         ')
-        prRed('|automap        |   Scanner target, grep ports, services, operational system,   ')
-        prRed('|               |   firewall rules and more.                                    ')
+        prRed('|simple_map     |   This command execute automap (auto namap)                   ')
         prRed('|search         |   Search email, whois and banner grep                         ')
         prRed('|status         |   Show machine status                                         ')
         prRed("|dnsscanner     |   Scan for 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA'     ")
@@ -121,6 +139,7 @@ module Visual
         prRed('|linuxutil      |   Show useful commands in linux                               ')
         prRed('|test           |   For development only                                        ')
         puts "\n\n"
+
     end
         
 end
