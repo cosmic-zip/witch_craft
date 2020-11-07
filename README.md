@@ -56,7 +56,8 @@
     |banner         |   Show Linux evil Toolkit banner in terminal      
     |webdns         |   Show Web Sites for dns scanner      
     |linuxfiles     |   Show important linux files      
-    |linuxfolders   |   Show important linux folders        
+    |linuxfolders   |   Show important linux folders    
+    |windowsfolders |   Show important windows folders  
     |linuxutil      |   Show useful commands in linux       
     |test           |   For development only        
 
