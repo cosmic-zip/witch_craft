@@ -15,10 +15,11 @@
 
 
 
+# Warning
 
-## Warning: I am not responsible for the way that this software 
-## will be used by third parties. The purpose of this software 
-## is only educational.
+    Warning: I am not responsible for the way that this software 	
+    will be used by third parties. The purpose of this software 
+    is only educational.
 
 
 ##  considerations
