@@ -98,6 +98,8 @@ module Visual
         prPurple 'Prefetch dir (EXE logs)     %SYSTEMROOT%\\Prefetch'
         puts "\n\n"
 
+    end
+
     def linux_util()
 
         prRed($line)
