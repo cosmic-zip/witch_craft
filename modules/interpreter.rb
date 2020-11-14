@@ -18,7 +18,7 @@ module Interpreter
                 Engine.sys('clear')
                 exit
             when 'clear'                    
-                Engine.sys('clear')
+                system('clear')
             when 'update'
                 Engine.sys('git pull')
             when 'train'

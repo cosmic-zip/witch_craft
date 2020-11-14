@@ -65,18 +65,20 @@ module Engine
             cmd = system("proxychains #{props}  >> /dev/null")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
             system('systemctl restart tor')
-        elsif $proxy == false && $documentation == false
-            cmd = system("#{props}")
-            cmd == false ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}\n")
-        elsif $proxy == true && $documentation == false
-            cmd = system("proxychains #{props}")
-            cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd} | proxy fail?\n")
-        elsif $poxy == false && $documentation == true
-            cmd = system("#{props}  >> #{}_documentation_no_proxy.txt")
-            cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
         else 
-            cmd = system("proxychains #{props}  >> #{$time}_documentation_with_proxy.txt")
-            cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
+            if $proxy == false && $documentation == false
+                cmd = system("#{props}")
+                cmd == false ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}\n")
+            elsif $proxy == true && $documentation == false
+                cmd = system("proxychains #{props}")
+                cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd} | proxy fail?\n")
+            elsif $poxy == false && $documentation == true
+                cmd = system("#{props}  >> #{}_documentation_no_proxy.txt")
+                cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
+            elsif $proxy == true && $documentation == true
+                cmd = system("proxychains #{props}  >> #{$time}_documentation_with_proxy.txt")
+                cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
+            end
         end
     end
 
