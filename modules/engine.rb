@@ -15,7 +15,7 @@ module Engine
 
     # INIT options and set target
     def INIT()
-        while $target == nil && $ip == nil
+        while $target == false || $ip == false
             if $documentation == false
                 print "Enable documentation? [yes|no]: "
                 $documentation = gets.chomp.to_s
@@ -65,19 +65,19 @@ module Engine
             cmd = system("proxychains #{props}  >> /dev/null")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
             system('systemctl restart tor')
-        else 
+        else
             if $proxy == false && $documentation == false
                 cmd = system("#{props}")
-                cmd == false ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}\n")
+                cmd == true ? nil : prRed("[SYS_COMMAND_ERROR]: #{props}::#{cmd}\n")
             elsif $proxy == true && $documentation == false
                 cmd = system("proxychains #{props}")
-                cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd} | proxy fail?\n")
+                cmd == true ? nil : prRed("[SYS_PROXY__ERROR]: #{props}::#{cmd} | proxy failed\n")
             elsif $poxy == false && $documentation == true
                 cmd = system("#{props}  >> #{}_documentation_no_proxy.txt")
-                cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
+                cmd == true ? nil : prRed("[SYS_DOCUMENTATION_ERROR]: #{cmd}\n")
             elsif $proxy == true && $documentation == true
                 cmd = system("proxychains #{props}  >> #{$time}_documentation_with_proxy.txt")
-                cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
+                cmd == true ? nil : prRed("[SYS_DOC_PROXY_ERROR]: #{props}::#{cmd}\n")
             end
         end
     end
@@ -200,21 +200,16 @@ module Engine
         end 
     end 
 
-    def assembly(string, timing, ipv6)
-        # Define hidden flag
+    def exec(list, timing, ipv6)
         mac_vendor = [ "006017", "006018", "006019", "00601A", "00601B", "00601C", "00601D", "00601E", "00601F", "006020", "006021", "006022", "006023", "006024", "006025", "006026" ]
-        sys "nmap #{string} -O -T#{timing} #{$target} --spoof-mac #{mac_vendor[rand(0..15)]} --data-length #{rand(2..256)} --max-retries 10 --mtu 1024 --host-timeout 30 --ttl 60 -f #{rand(1..6)} #{ipv6 != nil ? '-6' : ''}"
-    end
-
-    def exec(list)
         for opt in list
             prYellow "[EXEC]: #{opt[1]}"
-            cmd = assembly(opt[0])
-            cmd == true ? prGreen("[SYS_COMMAND]: Done") : prRed("[COMMAND_ERROR]: Fail")
+            cmd = sys "nmap #{opt[0]} #{$target} -O -T#{timing} --spoof-mac #{mac_vendor[rand(0..15)]} --data-length #{rand(2..256)} --max-retries 10 --mtu 1024 --host-timeout 30 --ttl 60 -f #{rand(1..6)} #{ipv6 != nil ? '-6' : ''}"
+            cmd == true ? prGreen("[SYS_COMMAND]: Done") : prRed("[SYS_OPTION_ERROR]: Bad option or invalid timing::#{cmd}\n")
         end
     end
   
-    def simple_scan(props)
+    def simple_map()
 
         alone = [
             ["-sL", "List Scan - simply list targets to scan"],
@@ -247,20 +242,24 @@ module Engine
             ["-sX -sV", "Xmas scans"]
         ]
 
+        print 'USE ipv6: [yes|no]: '; ipv6 = gets.chomp.to_s
+        print 'SET TIMING: [0..5]: '; timing = gets.chomp.to_s
+        print 'SET OPTION: '; props = gets.chomp.to_s
+        puts props
         case props
         when 'alone'
-            exec(alone)
+            exec(alone, timing, ipv6)
         when 'default'
-            exec(default)
+            exec(default, timing, ipv6)
         when 'icmp_echo'
-            exec(icmp_echo)
+            exec(icmp_echo, timing, ipv6)
         when 'port_list'
-            exec(port_list)
+            exec(port_list, timing, ipv6)
         when 'special'
-            exec(special)
+            exec(special, timing, ipv6)
         else 
-            prRed "[COMMAND_ERROR]: Invalid option"
-        end
+            prRed "[SYS_OPTION_ERROR]: #{props}::Invalid option"
+        end 
     end
 
     def deeplink(opt)
