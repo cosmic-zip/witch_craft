@@ -15,10 +15,10 @@ module Interpreter
         case props
             when 'exit'
                 Engine.R()
-                Engine.sys('clear')
+                system 'clear'
                 exit
             when 'clear'                    
-                Engine.sys('clear')
+                system 'clear'
             when 'update'
                 Engine.sys('git pull')
             when 'train'
@@ -58,7 +58,7 @@ module Interpreter
             when "test"
                 Test.debug_all()
             else
-                prCyan "\n[COMMAND ERROR]: Option is ivalid, look for monkeys"
+                prCyan "\n[COMMAND ERROR]: #{props}::Option is ivalid"
         end
     end
 
