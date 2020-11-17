@@ -18,7 +18,7 @@ module Interpreter
                 system 'clear'
                 exit
             when 'clear'                    
-                system 'clear'
+                system('clear')
             when 'update'
                 Engine.sys('git pull')
             when 'train'
@@ -53,6 +53,8 @@ module Interpreter
                 Visual.linux_files()
             when "linuxfolders"
                 Visual.linux_folders()
+            when "windowsfolders"
+                Visual.windows_files()
             when "linuxutil"
                 Visual.linux_util()	
             when "test"

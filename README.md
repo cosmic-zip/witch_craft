@@ -1,6 +1,6 @@
 # linux-evil-toolkit
 
-![LINUX EVIL TOOLKIT](https://user-images.githubusercontent.com/36008397/92520390-83da0980-f1e9-11ea-821a-4f4fe3420e2e.png)
+![0018](https://user-images.githubusercontent.com/36008397/98290810-f4529c00-1f88-11eb-8559-3a6a93815332.png)
 
 
     Linux evil toolkit is a framework that aims to centralize, standardize 
@@ -14,6 +14,14 @@
     automated attack information automation script.
 
 
+
+# Warning
+
+    Warning: I am not responsible for the way that this software 	
+    will be used by third parties. The purpose of this software 
+    is only educational.
+
+
 ##  considerations
 
     
@@ -25,7 +33,9 @@
 
     § 2 About simple_scan
 
-        Automap was replaced by simple_scan, it is lighter and faster, in addition to being less detectable, now it has different modes of execution that make it possible from a quick and simple execution to more complex modes.
+        Automap was replaced by simple_scan, it is lighter and faster, in addition to being 
+	less detectable, now it has different modes of execution that make it possible from
+	a quick and simple execution to more complex modes.
 
     § 3 About Console
 
@@ -56,7 +66,8 @@
     |banner         |   Show Linux evil Toolkit banner in terminal      
     |webdns         |   Show Web Sites for dns scanner      
     |linuxfiles     |   Show important linux files      
-    |linuxfolders   |   Show important linux folders        
+    |linuxfolders   |   Show important linux folders    
+    |windowsfolders |   Show important windows folders  
     |linuxutil      |   Show useful commands in linux       
     |test           |   For development only        
 
@@ -94,6 +105,18 @@
         "-sF -sV" --> "FIN"
         "-sX -sV" --> "Xmas scans"
 
+
+## DeepLink
+
+    DeepLink is a deepweb (tor onion domain) database for your test and explore "deep web" for fun
+
+    usage: type deeplink and type option
+        --site                  | Cat best site for your learn about deepweb
+        --darklinks             | show dark-net links
+        --onionlinks            | show more 500 deep web links
+        --onionlinks-active     | show more links, but active links only
+        --searchlinks           | show tor search (google-like)
+        --toralt                | show tor alternatives (i2-, freenet, etc)
 
 ##  Backend Functions
 
