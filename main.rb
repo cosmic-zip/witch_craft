@@ -17,12 +17,15 @@ require_relative "./modules/engine.rb"
 require_relative "./modules/visual.rb"
 require_relative "./modules/colors.rb"
 require_relative "./modules/test.rb"
+require_relative "./modules/fakedump.rb"
+require_relative "./database/names.rb"
 
 include Interpreter
 include Engine
 include Colors
 include Visual
 include Test
+include FakeDump
 
 # ------------- start ----------------------------------------
 
