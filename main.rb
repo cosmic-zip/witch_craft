@@ -20,6 +20,9 @@ require_relative "./modules/test.rb"
 require_relative "./modules/fakedump.rb"
 require_relative "./database/names.rb"
 
+require ''
+require ''
+
 include Interpreter
 include Engine
 include Colors
