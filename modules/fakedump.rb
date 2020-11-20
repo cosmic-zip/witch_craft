@@ -9,23 +9,11 @@
 
 module FakeDump
 
-    def password()
-        letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        numbers = '0123456789'
-        symbols = '`~!@#$%^&*()_-+=[{]}|;:,.<>/?'
-        characters = letters + numbers + symbols
-        temp = nil
-        for x in 12
-            randomNumber = rand(0..9999)
-            randomFloatingIndex = randomNumber * characters.length
-            randomIndex = Math.floor(randomFloatingIndex)
-            randomCharacter = characters.charAt(randomIndex)
-            temp += randomCharacter
-        end 
-        return temp
+    def fakeEmail 
+        server = ['gmail', 'hotmail', 'outlook', 'protonmail', 'tutonata', 'yahoo', 'simpleMail']
     end
-  
-    def cpf()
+
+    def cpf 
         value = 0; total = 0; value_segundo = 0; total_segundo = 0
         digito_1 = [10,9,8,7,6,5,4,3,2]
         cpf = Array.new(9) {| i | i = rand(10)}
@@ -93,11 +81,30 @@ module FakeDump
         end
     end
 
-    def dump()
-
-        header = "| #{date} | #{user_name}| #{password} |#{name} | #{cpf()}"
-        footer
-
+    def idhash(string = 'monkey')
+        key = '23942849023423480392948394032984230489'
+        digest = OpenSSL::Digest.new('sha256')
+        return OpenSSL::HMAC.hexdigest(digest, key, string)
     end
+      
 
+    def dump_xml(size = 1)
+        #person
+        name = gem(1)
+        password = password()
+        cpf = cpf()
+        count = 1
+        while count < size
+            xml = Builder::XmlMarkup.new( :indent => 2 )
+            xml.instruct! :xml, :encoding => "UTF-8"
+            xml.database do |p|
+            p.id "#{idhash(gem(2))}"
+            p.insert_date "NULL"
+            p.update_date "NULL"
+            p.cpf cpf
+            p.name name
+            end
+        end
+    end      
+    
 end
