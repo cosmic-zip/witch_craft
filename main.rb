@@ -18,7 +18,9 @@ require_relative "./modules/visual.rb"
 require_relative "./modules/colors.rb"
 require_relative "./modules/test.rb"
 require_relative "./modules/fakedump.rb"
+require_relative "./modules/install.rb"
 require_relative "./database/names.rb"
+
 
 require 'openssl'
 require 'builder'
