@@ -98,13 +98,28 @@ module FakeDump
             xml = Builder::XmlMarkup.new( :indent => 2 )
             xml.instruct! :xml, :encoding => "UTF-8"
             xml.database do |p|
-            p.id "#{idhash(gem(2))}"
-            p.insert_date "NULL"
-            p.update_date "NULL"
-            p.cpf cpf
-            p.name name
+                p.id idhash(gem(1))
+                p.insert_date "NULL"
+                p.update_date "NULL"
+                p.cpf cpf()
+                p.name gem(1)
+                p.password idhash(rand(9999..999999))
             end
+            puts xml.database
         end
     end      
     
 end
+
+require 'builder'
+xml = Builder::XmlMarkup.new( :indent => 2 )
+xml.instruct! :xml, :encoding => "UTF-8"
+xml.database do |p|
+    p.id 'idhash(gem(1))'
+    p.insert_date "NULL"
+    p.update_date "NULL"
+    p.cpf 'cpf'
+    p.name 'gem(1)'
+    p.password 'idhash(rand(9999..999999))'
+end
+puts xml.database
