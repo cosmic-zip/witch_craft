@@ -44,7 +44,7 @@ module FakeDump
         return cpf
     end
 
-    def gem(number)
+    def gem(number = 1)
         count = 0 
         while count <= number 
             
@@ -88,20 +88,19 @@ module FakeDump
     end
       
     def simple_dump(size)
+        count = 0 
         while count < size
             id = "id:#{rand(123..999) + count}"
             data = "data:00/00/00"
-            time = "00:00"
-            return string = "#{id} | #{data} | #{time} | #{gem()} | #{cfp()}"
+            time = "time:00:00"
+            string = "#{id} | #{data} | #{time} | #{gem()} | #{cpf()}"
+            system "echo '#{string}' >> fakedump.txt"
         end
     end
 
     def dump_xml(size = 1)
         #person
-        name = gem(1)
-        password = password()
-        cpf = cpf()
-        count = 1
+        count = 0
         while count < size
             xml = Builder::XmlMarkup.new( :indent => 2 )
             xml.instruct! :xml, :encoding => "UTF-8"
@@ -113,8 +112,20 @@ module FakeDump
                 p.name gem(1)
                 p.password idhash(rand(9999..999999))
             end
-            return xml.database
+            system "echo '#{xml.database}' >> fakedump.xml"
         end
     end      
     
+    def simple_call() 
+        print "Set output mothod: [xml|txt]: "
+        met = gets.chomp.to_s
+        print "Set output size (lines in file): "
+        siz = gets.chomp.to_i
+        if met == 'xml'
+            dump_xml(siz)
+        else
+            simple_dump(siz)
+        end
+    end
+
 end
