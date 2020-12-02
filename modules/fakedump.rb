@@ -87,6 +87,14 @@ module FakeDump
         return OpenSSL::HMAC.hexdigest(digest, key, string)
     end
       
+    def simple_dump(size)
+        while count < size
+            id = "id:#{rand(123..999) + count}"
+            data = "data:00/00/00"
+            time = "00:00"
+            return string = "#{id} | #{data} | #{time} | #{gem()} | #{cfp()}"
+        end
+    end
 
     def dump_xml(size = 1)
         #person
@@ -105,21 +113,8 @@ module FakeDump
                 p.name gem(1)
                 p.password idhash(rand(9999..999999))
             end
-            puts xml.database
+            return xml.database
         end
     end      
     
 end
-
-require 'builder'
-xml = Builder::XmlMarkup.new( :indent => 2 )
-xml.instruct! :xml, :encoding => "UTF-8"
-xml.database do |p|
-    p.id 'idhash(gem(1))'
-    p.insert_date "NULL"
-    p.update_date "NULL"
-    p.cpf 'cpf'
-    p.name 'gem(1)'
-    p.password 'idhash(rand(9999..999999))'
-end
-puts xml.database
