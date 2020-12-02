@@ -34,8 +34,8 @@
     § 2 About simple_scan
 
         Automap was replaced by simple_scan, it is lighter and faster, in addition to being 
-	less detectable, now it has different modes of execution that make it possible from
-	a quick and simple execution to more complex modes.
+	    less detectable, now it has different modes of execution that make it possible from
+	    a quick and simple execution to more complex modes.
 
     § 3 About Console
 
@@ -51,6 +51,7 @@
 
 ### Basics
     
+    |fakedump       |   Generate fake database dump 
     |exit           |   Close this script                                           
     |clear          |   Clear terminal                                              
     |update         |   Update Linux evil toolkit                                   
@@ -144,11 +145,20 @@
 	Visual.linux_folders()      | Function for show text
 	Visual.linux_util()         | Function for show text
 
-###     From Interpreter Module
+###     From Interpreter module
 
     Interpreter.interpreter()   | Backend function
     Interpreter.main()          | Backend function
 
+##      From FakeDump module
+
+    FakeDump.fakeEmail          | Genate fake emails
+    FakeDump.cpf                | Genate fake cpf
+    FakeDump.gem                | Genate fake names (Brazilian, Latino and Portuquese only)
+    FakeDump.idhash             | Genate hash com string
+    FakeDump.simple_dump        | Genate return a simples string with data
+    FakeDump.dump_xml           | Genate return xml code with data
+    FakeDump.simple_call        | Genate Simple function for select xml or txt output file
 
 ## ERROR CODES & COLORS
 
