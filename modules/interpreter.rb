@@ -13,8 +13,10 @@ module Interpreter
 
     def interpreter(props)    
         case props
+            when 'fakedump'
+                FakeDump.simple_call 
             when 'exit'
-                Engine.R()
+                Engine.R
                 system 'clear'
                 exit
             when 'clear'                    
@@ -24,41 +26,41 @@ module Interpreter
             when 'train'
                 Engine.sys('sl')
             when "INIT"
-                Engine.INIT()
+                Engine.INIT
             when "reset"
-                Engine.R()
+                Engine.R
             when "cover"
-                Engine.cover()
+                Engine.cover
             when "extract"
-                Engine.extract()
+                Engine.extract
             when "compress"
-                Engine.compress()
+                Engine.compress
             when "simple_map"
-                Engine.simple_map()
+                Engine.simple_map
             when "search"
-                Engine.search()
+                Engine.search
             when "status"
-                Engine.status()
+                Engine.status
             when "dnsscanner"
-                Engine.dns_scanner()
+                Engine.dns_scanner
             when "dirscanner"
-                Engine.dir_scanner()
+                Engine.dir_scanner
             when "banner"
-                Visual.banner()
+                Visual.banner
             when "help"
-                Visual.help()
+                Visual.help
             when "webdns"
-                Visual.web_dns()
+                Visual.web_dns
             when "linuxfiles"
-                Visual.linux_files()
+                Visual.linux_files
             when "linuxfolders"
-                Visual.linux_folders()
+                Visual.linux_folders
             when "windowsfolders"
-                Visual.windows_files()
+                Visual.windows_files
             when "linuxutil"
-                Visual.linux_util()	
+                Visual.linux_util
             when "test"
-                Test.debug_all()
+                Test.debug_all
             else
                 prCyan "\n[COMMAND ERROR]: #{props}::Option is ivalid"
         end
