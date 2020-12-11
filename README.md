@@ -150,7 +150,7 @@
     Interpreter.interpreter()   | Backend function
     Interpreter.main()          | Backend function
 
-##      From FakeDump module
+###     From FakeDump module
 
     FakeDump.fakeEmail          | Genate fake emails
     FakeDump.cpf                | Genate fake cpf
@@ -160,7 +160,7 @@
     FakeDump.dump_xml           | Genate return xml code with data
     FakeDump.simple_call        | Genate Simple function for select xml or txt output file
 
-## ERROR CODES & COLORS
+###     ERROR CODES & COLORS
 
     prGreen()                   | Succesful
     prRed()                     | Error 
