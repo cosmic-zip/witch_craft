@@ -8,7 +8,7 @@ $proxy         = false
 # Set target. Ex: www.google.com
 $target        = 'www.google.com'
 # Set target ip. Ex: 192.0.0.1
-$ip            = 'localhost'
+$ip            = '1.1.1.1'
 # automatically generate new ip. [true| false]
 $silent_mode   = false
 # Change mac [true| false]

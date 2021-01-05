@@ -15,36 +15,29 @@ module Engine
 
     # INIT options and set target
     def INIT()
-        while $target == false || $ip == false
-            if $documentation == false
-                print "Enable documentation? [yes|no]: "
-                $documentation = gets.chomp.to_s
-                $documentation == 'yes' ? $documentation = true : nil
-            end
-            if $proxy == false
-                print "Enable proxy? [yes|no]: "
-                $proxy = gets.chomp.to_s
-                $proxy == 'yes' ? $proxy = true : $proxy = ''
-            end
-            prCyan "Set target dns name and/or ip address"
-            if $target == false
-                print "Set Target URL: "; $target = gets.chomp.to_s
-                $target != nil ? prYellow("Target set to #{$target}") : prRed("No target")
-            end
-            if $ip == false
-                print "Set Target IP: "; $ip = gets.chomp.to_s
-                $proxy != nil ? prYellow("Target set to #{$ip}") : prRed("No target ip")
-            end
-            if $change_mac == false
-                print "Set network interface name: [wlan0, wlp2s0]: "; $interface = gets.chomp.to_s
-                command = sys("ip link set #{$interface} down")
-                command = sys("macchanger -r #{$interface}")
-                command = sys("ip link set #{$interface} up")
-                $command == false ? prYellow("Change mac address") : prRed("[ERROR]: Interface not found")
-            else
-                prYellow "Set target, or die!"
-            end
-        end
+        
+        print "Enable documentation? [yes|no]: "
+        $documentation = gets.chomp.to_s
+        $documentation == 'yes' ? $documentation = true : nil
+
+        print "Enable proxy? [yes|no]: "
+        $proxy = gets.chomp.to_s
+        $proxy == 'yes' ? $proxy = true : $proxy = ''
+        
+        prCyan "Set target URL and IP address"
+        
+        print "Set Target URL: "; $target = gets.chomp.to_s
+        $target != nil ? prYellow("Target set to #{$target}") : prRed("No target")
+        
+        print "Set Target IP: "; $ip = gets.chomp.to_s
+        $proxy != nil ? prYellow("Target set to #{$ip}") : prRed("No target ip")
+        
+        print "Set network interface name: [wlan0, wlp2s0]: "; $interface = gets.chomp.to_s
+        command = sys("ip link set #{$interface} down")
+        command = sys("macchanger -r #{$interface}")
+        command = sys("ip link set #{$interface} up")
+        command == false ? prYellow("Change mac address: [done]") : prRed("[ERROR]: Interface not found")
+
     end
 
     # Reset to default values
@@ -61,6 +54,10 @@ module Engine
 
     # Alias for system(), why?
     def sys(props)
+        system(props)
+    end
+
+    def sys_b(props)
         if $silent == true
             cmd = system("proxychains #{props}  >> /dev/null")
             cmd ? nil : prRed("[SYS_COMMAND_ERROR]: #{cmd}")
@@ -146,8 +143,8 @@ module Engine
     # Web vul scanner
     def search()
         prRed($line)
-        prYellow "#{$line}[+] WHOIS"; sys("whois -a #{$target}")
         prYellow "#{$line}[+] Test connection"; sys("ping -c4 #{$ip}")
+        prYellow "#{$line}[+] WHOIS"; sys("whois -a #{$target}")
         prYellow "#{$line}[+] Email Enumeration"; sys("theharvester -d #{$target} -l 500 -b all")
         prYellow "#{$line}[+] HTTP Banner grep"; sys("ncat -v #{$ip} 80")
         prYellow "#{$line}[+] HTTPS Banner grep"; sys("openssl s_client -quiet -connect #{$target}:443")
