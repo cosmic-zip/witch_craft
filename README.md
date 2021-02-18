@@ -1,7 +1,8 @@
 # linux-evil-toolkit
 
-## A new project is being created, the Zynix project and an evolution of this framework. 
-## ZYNIX >> https://github.com/th3void/zynix
+# UPDATE
+
+# the zynix project and the linux evil toolkit will come together to form the zynix toolkit 
 
 ![back to hacking 2021](https://user-images.githubusercontent.com/36008397/103249890-1dbbf280-4950-11eb-9516-e9c4193124e8.png)
 
