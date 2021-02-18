@@ -1,40 +1,29 @@
-
-#! /bin/ruby
-#-------------------------------------------------------------
+#------------------------------------
 #
-#                     Linux Evil Toolkit
-# 
-#                          By v0id
 #
-#                        2019 - 2020
+# 			by th3void
+# 		   11 - 02 - 2020
 #
-#-------------------------------------------------------------
+#
+#------------------------------------
 
-# Simplicity as supreme sophistication ~Leonardo da Vinci
+#PATH
+$PATH = './modules'
+$PLUGINS = './plugins'
 
-require_relative "./modules/interpreter.rb"
-require_relative "./modules/engine.rb"
-require_relative "./modules/visual.rb"
-require_relative "./modules/colors.rb"
-require_relative "./modules/test.rb"
-require_relative "./modules/fakedump.rb"
-require_relative "./modules/install.rb"
-require_relative "./database/names.rb"
+# Modules 
+require_relative "#{$PATH}/kernel.rb"
+require_relative "#{$PATH}/config.rb"
+require_relative "#{$PATH}/fakedump.rb"
+require_relative "#{$PATH}/names.rb"
+require_relative "#{$PATH}/visual.rb"
+require_relative "#{$PATH}/shell.rb"
 
-
-require 'openssl'
-require 'builder'
-
-include Interpreter
-include Engine
-include Colors
-include Visual
-include Test
+# Include
 include FakeDump
+include Kernel
+include Visual 
+include Shell
 
-# ------------- start ----------------------------------------
-
-Interpreter.main()
-
-# -------------- end -----------------------------------------
-
+# Init
+Shell.main()

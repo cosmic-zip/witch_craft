@@ -1,30 +1,34 @@
-#-------------------------------------------------------------
-#
-#                     Linux Evil Toolkit
-# 
-#                          By v0id
-#
-#
-#-------------------------------------------------------------
+# Viual 
+
 
 module Visual
-     
-    def banner()
-        puts "\n"
-        prRed(' _      _                    ______     _ _   _______          _ _    _ _   ')
-        prRed('| |    (_)                  |  ____|   (_) | |__   __|        | | |  (_) |  ')
-        prRed('| |     _ _ __  _   ___  __ | |____   ___| |    | | ___   ___ | | | ___| |_ ')
-        prRed("| |    | | '_ \\| | | \\ \\/ / |  __\\ \\ / / | |    | |/ _ \\ / _ \\| | |/ / | __|")
-        prRed("| |____| | | | | |_| |>  <  | |___\  V /| | |    | | (_) | (_) | |   <| | |_ ")
-        prRed("|______|_|_| |_|\\__,_/_/\\_\\ |______\\_/ |_|_|    |_|\\___/ \\___/|_|_|\\_\\_|\\__|")
-        puts "\n\n"
-        prLightPurple("help for more commands"); puts "\n\n"
-  
-    end 
 
-    def web_dns()
+
+    def prRed(string);            puts "\033[91m #{string}\033[00m"; end
+    def prGreen(string);          puts "\033[92m #{string}\033[00m"; end
+    def prYellow(string);         puts "\033[93m #{string}\033[00m"; end
+    def prLightPurple(string);    puts "\033[94m #{string}\033[00m"; end
+    def prPurple(string);         puts "\033[95m #{string}\033[00m"; end
+    def prCyan(string);           puts "\033[96m #{string}\033[00m"; end
+    def prLightGray(string);      puts "\033[97m #{string}\033[00m"; end
+    def prBlack(string);          puts "\033[98m #{string}\033[00m"; end
+
+	def banner
+		prRed ' _______           _       _________   		'
+		prRed '/ ___   )|\     /|( (    /|\__   __/|\     /|'
+		prRed '\/   )  |( \   / )|  \  ( |   ) (   ( \   / )'
+		prRed '    /   ) \ (_) / |   \ | |   | |    \ (_) / '
+		prRed '   /   /   \   /  | (\ \) |   | |     ) _ (  '
+		prRed '  /   /     ) (   | | \   |   | |    / ( ) \ '
+		prRed ' /   (_/\   | |   | )  \  |___) (___( /   \ )'
+		prRed '(_______/   \_/   |/    )_)\_______/|/     \|'
+		prRed '                                             '
+		puts  "\n\n by th3void \n\n"
+	end
+
+	def web_dns
   
-        prRed("Netcraft      – endereços fora do Brasil      http://news.netcraft.com/")
+    	prRed("Netcraft      – endereços fora do Brasil      http://news.netcraft.com/")
         prRed("Domaintools   - whois, lookup, IP, etc.       http://www.domaintools.com/")
         prRed("Registro BR   – endereços no Brasil           https://registro.br/cgi-bin/whois/")
         prRed("Arin          – endereços fora do Brasil      https://www.arin.net/")
@@ -35,7 +39,7 @@ module Visual
       
     end
 
-    def linux_files()
+    def linux_files
 
         prRed($line)
         prCyan("Local users' hashes              /etc/shadow")
@@ -61,7 +65,7 @@ module Visual
 
     end
 
-    def linux_folders()
+    def linux_folders
 
         prRed($line)
         prGreen("User binaries                      /bin")
@@ -81,7 +85,7 @@ module Visual
 
     end
  
-    def windows_files()
+    def windows_files
 
         prRed($line)
         prPurple 'WINDOWS FILES'
@@ -100,7 +104,7 @@ module Visual
 
     end
 
-    def linux_util()
+    def linux_util
 
         prRed($line)
         prYellow("Grab url                      wget http:// url -0 url.txt -o /dev/null")
@@ -118,30 +122,23 @@ module Visual
 
     end
 
-    def help()
+    def tor_search 
 
-        puts $line
-        prRed('|exit           |   Close this script                                           ')
-        prRed('|clear          |   Clear terminal                                              ')
-        prRed('|update         |   Update Linux evil toolkit                                   ')
-        prRed('|train          |   Show train in terminal, tuutuu                              ')
-        prRed('|INIT           |   Setup global variables                                      ')
-        prRed('|reset          |   Clear terminal and reset global variables                   ')
-        prRed('|cover          |   Cover your tracks on your computer                          ')
-        prRed('|portscanner    |   This command is replaced by automap                         ')
-        prRed('|simple_map     |   This command execute automap (auto namap)                   ')
-        prRed('|search         |   Search email, whois and banner grep                         ')
-        prRed('|status         |   Show machine status                                         ')
-        prRed("|dnsscanner     |   Scan for 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA'     ")
-        prRed('|dirscanner     |   Scan files and folders                                      ')
-        prRed('|banner         |   Show Linux evil Toolkit banner in terminal                  ')
-        prRed('|webdns         |   Show Web Sites for dns scanner                              ')
-        prRed('|linuxfiles     |   Show important linux files                                  ')
-        prRed('|linuxfolders   |   Show important linux folders                                ')
-        prRed('|linuxutil      |   Show useful commands in linux                               ')
-        prRed('|test           |   For development only                                        ')
+        prRed 'AHMIA http://msydqstlz2kzerdg.onion '
+        prRed 'tor2web https://giyvshdnojeivkom.onion.ly/'
+        prRed 'Tor Search Engine https://www.torsearchengine.net/'
+        puts "\n\n"
+    
+    end
+
+    def tor_alt 
+
+        prYellow 'Tor Browser – The stated goals of the Tor Browser are to protect the privacy of the users and to defend the users against the network surveillance and traffic analysis, While another latest goals have been added to the previous one which is to bring the wider access to the anonymous web browsing through increasing user-friendliness. This is not something you see as a major goal for the darknet networks other than Tor Browser and OpenBazaar. Tor gets lots of media attention for terrorism, but this is not necessarily a valid perception whatsoever.'
+        prYellow 'Freenet – Freenet is a peer-to-peer platform (P2P) for censorship-resistant communication and publishing, and focuses heavily on the promotion of freedom of speech over censorship, copyright, and as well as takedowns. Freenet is driven by the ideology rather than financial motives, and it has a number of social platforms and chat systems. Its users tend to lean toward a small or non-intrusive government, and it is most popular with crypto activists. On this darknet, we have not found anything for sale as per the research, most likely because its users give away useful information. It is home to the hacked documents, including leaked and confidential TTIP negotiation documents; internal Diebold emails about how their voting machines are flawed; pre-written Spectre exploit code and guide as well; and data or document dumps that are public. Till date, it has resisted any external takedown attempts.'
+        prYellow 'I2P Project – It is a popular darknet framework for multiple self-proclaimed factions of Anonymous and other self-described hacktivists. In fact, its stated mission is that it is intended to protect communication from darknet surveillance and monitoring by third parties such as the ISPs and is generally used by many people who care about their privacy: activists, oppressed people, journalists, and whistleblowers, along with the average person. The content is primarily in Russian, Chinese, and English, and includes an archive of past classes for the hacktivists that cover hacking and various other techniques. Some of the talks still have the names of the presenters on them, which includes a course on advanced web application hacking given by a researcher from a top technology firm. This darknet framework also includes a chat portal, access to a DDoS tool, and a web application vulnerability scanner.'
+        prYellow 'OpenBazaar – OpenBazaar is one of the latest dark web frameworks, and its purpose is to offer a feeless, peer-to-peer (P2P) marketplace that leverages the Cryptocurrencies for transactions. There are some illicit offerings that include drugs, hacking tools, books and services, stolen media streaming accounts, and bulk social media accounts. Nevertheless, the majority is more mundane, like original artwork, jewelry, books, clothing, and health supplements. There is a wealth of interesting information based on geographies and language use that can help us contextualize these frameworks and their underpinnings and offerings.'
         puts "\n\n"
 
     end
-        
+
 end
