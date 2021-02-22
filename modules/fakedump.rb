@@ -99,37 +99,51 @@ module FakeDump
         return OpenSSL::HMAC.hexdigest(digest, key, string)
 
     end
+
+    # Simple call functions
+    def call_rg ; puts rg; end
+    def call_cpf; puts cpf; end
+    def call_gem; puts gem; end
       
-    def simple_dump(size = 1, id = 237128, output = './', name = 'fakedump.txt')
+    def simple_dump
 
-        count = 0 
-        while count < size
-            id = "id:#{id + count}"
-            data = "data:00/00/00"
-            time = "time:00:00"
-            password idhash("#{cpf()}::#{id}")
-            string = "#{id} | #{data} | #{time} | #{gem()} | #{cpf()} | #{rg} | #{password} |"
-            system "echo '#{string}' >> #{output}#{name}"
-        end
+        # yep
+        type = set('[+] Set type: [simple/xml]:')
+        size = set('[+] Set size: [1..n]:')
+        id = set('[+] Set id: [optional]:')
+        id == nil ? id = 163278 : nil
+        output = set('[+] Set output path: [default home]:')
+        name = set('[+] Set fiel name: [default dump.txt]:')
 
-    end
 
-    def dump_xml(size = 1, id = 237128, output = './', name = 'fakedump.txt')
-
-        #person
-        count = 0
-        while count < size
-            xml = Builder::XmlMarkup.new( :indent => 4)
-            xml.instruct! :xml, :encoding => "UTF-8"
-            xml.database do |p|
-                p.id idhash(id + count)
-                p.insert_date "NULL"
-                p.update_date "NULL"
-                p.cpf cpf()
-                p.name gem()
-                p.password idhash("#{cpf()}::#{id}")
+        if type == 'simple'
+            count = 0 
+            while count < size
+                id = "id:#{id + count}"
+                data = "data:00/00/00"
+                time = "time:00:00"
+                password idhash("#{cpf()}::#{id}")
+                string = "#{id} | #{data} | #{time} | #{gem()} | #{cpf()} | #{rg} | #{password} |"
+                system "echo '#{string}' >> #{output}#{name}"
             end
-            system "echo '#{xml.database}\n' >> fakedump.xml"
+        elsif type == 'xml'
+            #person
+            count = 0
+            while count < size
+                xml = Builder::XmlMarkup.new( :indent => 4)
+                xml.instruct! :xml, :encoding => "UTF-8"
+                xml.database do |p|
+                    p.id idhash(id + count)
+                    p.insert_date "NULL"
+                    p.update_date "NULL"
+                    p.cpf cpf()
+                    p.name gem()
+                    p.password idhash("#{cpf()}::#{id}")
+                end
+                system "echo '#{xml.database}\n' >> fakedump.xml"
+            end
+        else 
+            prRed '[+] Bad option'
         end
 
     end     
