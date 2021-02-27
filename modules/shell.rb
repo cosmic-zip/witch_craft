@@ -50,6 +50,8 @@ module Shell
             Visual.tor_alt
         when 'search'
             Kenrel.search
+        when 'install'
+            Kenrel.install
         when 'dns_scanner'
             Kenrel.dns_scanner
         when 'dir_scanner'
