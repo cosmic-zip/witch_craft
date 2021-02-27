@@ -77,6 +77,7 @@
 
 ## Kernel functions
 
+    Kernel.install              | Detecting your system and installs all dependencies
     Kernel.compress             | Compress files
     Kernel.extract              | Extract files
     Kernel.cover                | Covers your tracks and logs 
