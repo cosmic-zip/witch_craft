@@ -243,4 +243,29 @@ module Kernel
         end 
     end
 
+    def install 
+
+        pkg_list = 'vim npm composer nodejs php git ruby nmap ncat whois theharvester nikto dnsenum srm net-tools'
+
+        prCyan 'detecting your system...'
+        if sys('pacman >> /dev/null') == true 
+            res = set 'your system is Arch Linux/Manjaro? [y/n]:'
+            res == 'y' ? prCyan 'installing all dependencies...'; sys "sudo pacman -Syu #{pkg_list} -y" : break
+        elsif sys('pacman >> /dev/null') == true 
+            res = set 'your system is Debian/Ubuntu? [y/n]:'
+            res == 'y' ? prCyan 'installing all dependencies...'; sys "sudo apt-get install #{pkg_list} -y" : break
+        elsif  sys('pacman >> /dev/null') == true 
+            res = set 'your system is Fedora/CentOS? [y/n]:'
+            res == 'y' ? prCyan 'installing all dependencies...'; sys "sudo dnf install #{pkg_list} -y" : break
+            res = set 'Install Security Lab for more tools? [y/n]:'
+            res == 'y' ? sys 'sudo dnf group install "Security Lab"' : break
+        else 
+            prCyan "Your package manager is not supported, \n" \
+            "if you are using arch, debian, fedora or derivatives, open issues on github. \n" \
+            "https://github.com/th3void/zynix-fusion/issues"
+        end
+    
+    end
+
+
 end
