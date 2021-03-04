@@ -54,7 +54,7 @@
     the moment there is no script that does this, however it is possible to use it without problems in
     distributions with parrot security, kali linux, back box and fedora security, etc. Soon I will add a
     script to install the dependencies.
-    If you use fedora or systems with dnf you can try sudo dnf group install ‘Security Lab’
+    If you use fedora or systems with dnf you can try `sudo dnf group install "Security Lab"`
     open your terminal in linux and type:
     $ `git clone https://github.com/th3void/zynix-fusion.git && cd zynix-fusion && ruby main.rb`
     To update the program, enter the main folder and type:
