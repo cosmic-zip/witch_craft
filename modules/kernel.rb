@@ -18,7 +18,7 @@ module Kernel
     # init variable
     def init(props = [])
 
-        if $_state == nil
+        if $state == nil
             $ip = set('Set taget ip:')
             $target = set('Set taget dns [without http/s]:')
             doc = set('Enable shell documentation? [yes|no]:')
@@ -31,7 +31,7 @@ module Kernel
     def set(msg = nil)
 
         msg == nil ? nil : print(msg + ' ')  
-        var = get.chomp.to_s
+        var = gets.chomp.to_s
 
     end
 
@@ -246,11 +246,11 @@ module Kernel
     def maclookup
 
         vendor = set('Set vendor mac like [A8:74:84]:')
-        table = CSV.parse(File.read("macaddr.csv"), headers: true)
+        table = CSV.parse(File.read("database/macaddr.csv"), headers: true)
         i = 0
         for x in table 
             if table[i][0] = vendor
-                pyGreen table[i]
+                prGreen table[i]
                 break
             elsif
                 i = i+1 #yep

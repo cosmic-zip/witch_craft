@@ -49,23 +49,25 @@ module Shell
         when 'tor_alt'
             Visual.tor_alt
         when 'search'
-            Kenrel.search
+            Kernel.search
+        when 'init'
+            Kernel.init
         when 'install'
-            Kenrel.install
+            Kernel.install
         when 'dns_scanner'
-            Kenrel.dns_scanner
+            Kernel.dns_scanner
         when 'dir_scanner'
-            Kenrel.dir_scanner
+            Kernel.dir_scanner
         when 'cover'
-            Kenrel.cover
+            Kernel.cover
         when 'simple_map'
-            Kenrel.simple_map
+            Kernel.simple_map
         when 'maclookup'
-            Kenrel.mac_vendor
+            Kernel.maclookup
         when 'extract'
-            Kenrel.extract
+            Kernel.extract
         when 'compress'
-          Kenrel.compress
+            Kernel.compress
         else
             sys(opt)
         end

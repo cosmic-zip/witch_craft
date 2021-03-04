@@ -3,7 +3,7 @@
 $ps = "\033[93m [Zynix] :: [Shell] :: \033[00m"
 
 # Applications state
-$_state = nil
+$state = nil
 
 #line 
 $line = '------------------------------'
