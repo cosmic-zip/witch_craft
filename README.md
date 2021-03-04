@@ -7,15 +7,11 @@
     simple commands, one of which is the init function that allows you to define a target, and thus
     use all the tools without typing anything else.
 
-    Zynix is a ruby script made for the purpose of
-    being a shortcut, so instead of creating several
-    tools from scratch, it simply uses a range of
-    existing tools.
+    Zynix is a ruby script made for the purpose of being a shortcut, so instead of creating several
+    tools from scratch, it simply uses a range of existing tools.
 
-    Is zynix-Fusion better than setoolkit? Yes and no,
-    there are two that serve the same thing and in a
-    different way, the Zynix-Fusion and an automated
-    attack information automation script.
+    Is zynix-Fusion better than setoolkit? Yes and no, there are two that serve the same thing and in a
+    different way, the Zynix-Fusion and an automated attack information automation script.
 
 ## :: Considerations ::
 
@@ -54,11 +50,11 @@
     the moment there is no script that does this, however it is possible to use it without problems in
     distributions with parrot security, kali linux, back box and fedora security, etc. Soon I will add a
     script to install the dependencies.
-    If you use fedora or systems with dnf you can try `sudo dnf group install "Security Lab"`
+    If you use fedora or systems with dnf you can try sudo dnf group install "Security Lab"
     open your terminal in linux and type:
-    $ `git clone https://github.com/th3void/zynix-fusion.git && cd zynix-fusion && ruby main.rb`
+    $ git clone https://github.com/th3void/zynix-fusion.git && cd zynix-fusion && ruby main.rb
     To update the program, enter the main folder and type:
-    $ `git pull`
+    $ git pull
 
 ##  :: Shell commands ::
 
