@@ -63,8 +63,7 @@ module FakeDump
         return cpf
     end
 
-    def gem
-
+    def name_generator
         first_name,middle_name,last_name,final_name = nil
             
         sex = rand(0..1)
@@ -86,8 +85,8 @@ module FakeDump
         else
             final_name = nil
         end
-        count += 1
         return "#{first_name} #{middle_name} #{last_name} #{final_name}"
+
     end
 
 
@@ -103,7 +102,7 @@ module FakeDump
     # Simple call functions
     def call_rg ; puts rg; end
     def call_cpf; puts cpf; end
-    def call_gem; puts gem; end
+    def call_gem; puts name_generator; end
       
     def simple_dump
 
@@ -123,7 +122,7 @@ module FakeDump
                 data = "data:00/00/00"
                 time = "time:00:00"
                 password idhash("#{cpf()}::#{id}")
-                string = "#{id} | #{data} | #{time} | #{gem()} | #{cpf()} | #{rg} | #{password} |"
+                string = "#{id} | #{data} | #{time} | #{name_generator()} | #{cpf()} | #{rg} | #{password} |"
                 system "echo '#{string}' >> #{output}#{name}"
             end
         elsif type == 'xml'
@@ -137,7 +136,7 @@ module FakeDump
                     p.insert_date "NULL"
                     p.update_date "NULL"
                     p.cpf cpf()
-                    p.name gem()
+                    p.name name_generator()
                     p.password idhash("#{cpf()}::#{id}")
                 end
                 system "echo '#{xml.database}\n' >> fakedump.xml"
