@@ -60,6 +60,8 @@ module Shell
             Kenrel.cover
         when 'simple_map'
             Kenrel.simple_map
+        when 'maclookup'
+            Kenrel.mac_vendor
         when 'extract'
             Kenrel.extract
         when 'compress'
