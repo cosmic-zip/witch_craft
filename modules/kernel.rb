@@ -243,6 +243,21 @@ module Kernel
         end 
     end
 
+    def maclookup
+
+        vendor = set('Set vendor mac like [A8:74:84]:'
+        table = CSV.parse(File.read("macaddr.csv"), headers: true)
+        i = 0
+        for x in table 
+            if table[i][0] = vendor
+                pyGreen table[i]
+                break
+            elsif
+                i = i+1 #yep
+            end
+        end
+
+
     def install 
 
         pkg_list = 'vim npm composer nodejs php git ruby nmap ncat whois theharvester nikto dnsenum srm net-tools'
