@@ -25,5 +25,12 @@ include Kernel
 include Visual 
 include Shell
 
+# Require
+require "csv"
+require "builder"
+require "openssl"
+
+
+
 # Init
 Shell.main()
