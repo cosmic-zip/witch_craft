@@ -1,9 +1,12 @@
 module Shell
 
-    def main
-        quit = false
+    def cow
         sys('reset')
-        banner
+        banner() # Show banner
+    end
+
+    def main
+        cow()
         while true
             print $ps; cmd = gets.chomp.to_s
             cmd == 'exit' ? exit() : nil
@@ -14,64 +17,87 @@ module Shell
     def shell(opt)
 
         case opt
-        when 'call_rg'
+        # From shell
+        when 'rsh --cow' || '1'
+            cow()
+    
+        # From plugins
+        when 'plugin --fpage' || '2'
+            FakePages.gem_fake_page
+        when 'help'
+            NumberMenu.help || 0
+        when 'menu'
+            NumberMenu.menu
+
+        # From fake dump
+        when 'gem --g rg' || '3'
             FakeDump.call_rg
-        when 'call_cpf'
+        when 'gem --g cpf' || '4'
             FakeDump.call_cpf
-        when 'call_gem'
+        when 'gem --g name' || '5'
             FakeDump.call_gem
-        when 'simple_dump'
+        when 'gem --g fakedb' || '6'
             FakeDump.simple_dump
-        when 'll'
-            Kernel.sys('ls -lha')
-        when 'cls'
-            Kernel.sys('clear')
-        when 'sht '
-            Kernel.sys('shutdown -h now')
-        when 'rm '
-            Kernel.sys('rm -rf')
-        when 'cp'
-            Kernel.sys('cp -r')
-        when 'banner'
+
+        # From visual
+        when 'vs --v banner'  || '7'
             Visual.banner
-        when 'web_dns'
+        when 'vs --v dns'  || '8'
             Visual.web_dns
-        when 'linux_files'
+        when 'vs --v lfile'  || '9'
             Visual.linux_files
-        when 'linux_folders'
+        when 'vs --v lfolder'  || '10'
             Visual.linux_folders
-        when 'windows_files'
+        when 'vs --v wfile'  || '11'
             Visual.windows_files
-        when 'linux_util'
+        when 'vs --v luss'  || '12'
             Visual.linux_util
-        when 'tor_search'
+        when 'vs --v tsearch'  || '13'
             Visual.tor_search
-        when 'tor_alt'
+        when 'vs --v talt'  || '14'
             Visual.tor_alt
-        when 'search'
-            Kernel.search
-        when 'init'
+
+        # Alias
+        when 'ls' || '15'
+            Kernel.sys('ls -lha')
+        when 'cls' || '16'
+            Kernel.sys('clear')
+        when 'sdown' || '17'
+            Kernel.sys('shutdown -h now')
+        when 'rm' || '18'
+            Kernel.sys('rm -rf')
+        when 'cp' || '19'
+            Kernel.sys('cp -r')
+
+        # From kernel    
+        when 'kl --init' || '20'
             Kernel.init
-        when 'install'
-            Kernel.install
-        when 'dns_scanner'
-            Kernel.dns_scanner
-        when 'dir_scanner'
-            Kernel.dir_scanner
-        when 'cover'
+        when 'kl --cover' || '21'
             Kernel.cover
-        when 'simple_map'
-            Kernel.simple_map
-        when 'maclookup'
-            Kernel.maclookup
-        when 'extract'
-            Kernel.extract
-        when 'compress'
+        when 'kl --compress' || '22'
             Kernel.compress
-        else
-            sys(opt)
-        end
+        when 'kl --extract' || '23'
+            Kernel.extract
+        when 'kl ---ginfo' || '24'
+            Kernel.grep_domain_info
+        when 'kl --dns --brute' || '25'
+            Kernel.dns_brute
+        when 'kl --dns --scan' || '26'
+            Kernel.dns_scanner
+        when 'kl --dir --scan' || '27'
+            Kernel.dir_scanner
+        when 'kl --smap ' || '28'
+            Kernel.simple_map
+        when 'kl --maclookup' || '29'
+            Kernel.maclookup
+        when 'kl --myip' || '30'
+            Kernel.myip
 
-    end
+        # Else
+        else 
+            sys(opt)    
+        end # case end
+    
+    end # fn end
 
-end
+end #END

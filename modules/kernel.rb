@@ -1,7 +1,6 @@
 module Kernel
 
     # Get time
-    
     def get_time 
         Time.now.strftime("%d.%m.%Y_%H::%M")
     end
@@ -21,8 +20,8 @@ module Kernel
         if $state == nil
             $ip = set('Set taget ip:')
             $target = set('Set taget dns [without http/s]:')
-            doc = set('Enable shell documentation? [yes|no]:')
-            doc == 'yes' ? $doc = true : nil        
+            # $doc = set('Enable shell documentation? [yes|no]:')
+            # $doc == 'yes' ? $doc = true : nil        
         end
         
     end
@@ -115,7 +114,7 @@ module Kernel
     end 
     
     # Web vul scanner
-    def search
+    def grep_domain_info
 
         prRed($line)
         prYellow "[+] :: Get robots.txt"; sys("wget https://www.#{$target}/robots.txt")
@@ -127,11 +126,17 @@ module Kernel
 
     end
 
-    # Web dns scanner
-    def dns_scanner
+    # Dns brute force
+    def dnf_brute
 
         prYellow "[+] :: DNS Enumeration:"
         sys("dnsenum --enum #{$target} ./wordlist/dns.txt") 
+
+    end
+
+    # Dns scanner
+    def dns_scanner
+
         reg_dns = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA']
         for reg in reg_dns
             prYellow "[+] :: Search for #{reg} in #{$target}:"
@@ -141,10 +146,9 @@ module Kernel
     end
 
     # Web directory scanner
-    def dir_scanner()
+    def dir_scanner 
 
         prCyan $line
-        prCyan "======================== HOTKEYS ========================"
         prCyan " 'n' -> Go to next directory."
         prCyan " 'q' -> Stop scan. (Saving state for resume)"
         prCyan " 'r' -> Remaining scan stats.\n\n#{$line}\n"
@@ -190,7 +194,7 @@ module Kernel
     end
   
     # Automatic nmap scans
-    def simple_map()
+    def simple_map
 
         ipv6 = set('Use ipv6? [y/n]:')
         props = set('Set optional flag to nmap: [enter for null]:')
@@ -243,6 +247,8 @@ module Kernel
         end 
     end
 
+
+    # Macadddres lookup
     def maclookup
 
         vendor = set('Set vendor mac like [A8:74:84]:')
@@ -256,8 +262,10 @@ module Kernel
                 i = i+1 #yep
             end
         end
-    
     end
 
+    def myip
+        sys 'curl ifconfig.me'; puts "\n\n"
+    end
 
-end
+end #END
