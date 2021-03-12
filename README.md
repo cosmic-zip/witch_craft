@@ -2,16 +2,22 @@
 
 # :: Zynix Fusion :: 
 
-    Zynix fusion is a framework for performing pentest and hacking in web applications, having several renowned tools in its backend, it aims to make it simpler to quickly use several of these tools, also exposing native tools of the project.
+    Zynix fusion is a framework for performing pentest and hacking in web applications,
+    having several renowned tools in its backend, it aims to make it simpler to quickly
+     use several of these tools, also exposing native tools of the project.
 
 ## :: A brief history ::
 
-    Zynix Fusion is a project derived from other projects of my own "th3void", and has already had several names, shapes and functions, today it is as I wanted it to be, simple and straightforward.
-    In 2015 this was just a shell script for installing some tools on Arch Linux, and it was left aside for many years, but now it is close to what I wanted.
+    Zynix Fusion is a project derived from other projects of my own "th3void", and has
+     already had several names, shapes and functions, today it is as I wanted it to be,
+      simple and straightforward.
+    In 2015 this was just a shell script for installing some tools on Arch Linux, and it
+     was left aside for many years, but now it is close to what I wanted.
 
 ## :: Warnings ::
 
-    This software depends on other software and libraries to work properly, make sure your system has all of them.
+    This software depends on other software and libraries to work properly, make sure 
+    your system has all of them.
 
 ## :: Considerations ::
 
