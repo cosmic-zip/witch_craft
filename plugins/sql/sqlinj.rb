@@ -1,0 +1,3 @@
+module Sqlinj
+    
+end

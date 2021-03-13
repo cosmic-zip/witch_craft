@@ -1,4 +1,5 @@
-
+# Shell buffer
+$buffer = []
 # Shell name
 $ps = "\033[93m [Zynix] :: [Shell] :: \033[00m"
 
