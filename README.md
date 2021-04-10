@@ -1,5 +1,5 @@
 ![REWRITE](https://user-images.githubusercontent.com/36008397/114272789-ec8e9c00-99ed-11eb-8b0d-e2222a00930d.png)
-![zynim](https://user-images.githubusercontent.com/36008397/114272791-edbfc900-99ed-11eb-985c-4a4bb912ef32.png)
+![zynim(1)](https://user-images.githubusercontent.com/36008397/114272869-3c6d6300-99ee-11eb-9c23-91ddd4e041be.png)
 
 # Rewriting the whole framework in nim language
  
