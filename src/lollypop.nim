@@ -22,7 +22,7 @@ proc helper*(): void =
     let get_my_ip = "curl ifconfig.me \n"
     let linux_alive = "ls -lct /etc | tail -1 | awk '{print $6, $7, $8}'"
 
-proc server*(option: string = "start"; port: string = "127.0.0.1"; path: string = "./wordlist/dns.txt"): bool = 
+proc server*(option: string = "start"; host: string = "127.0.0.1"; port: string = "8000"; path: string = "./wordlist/dns.txt"): bool = 
     
     const PATH = "/opt/lampp/lampp"
     var value = false
@@ -35,6 +35,9 @@ proc server*(option: string = "start"; port: string = "127.0.0.1"; path: string 
 
     elif option == "restart" or option == "reboot":
         value = sys(fmt("{PATH} {option}"))
+
+    elif option == "php":
+        value = sys(fmt("php -S {host}:{port}"))
 
     else: 
         return false
