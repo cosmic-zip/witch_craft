@@ -59,7 +59,7 @@ const SYSTEMINFO: string = """
 
 # LINUX UTILITY COMMANDS
 const UTILITY: string = """
-    wget http:# url -0 url.txt -o /dev/null                                    Grab url
+    wget http:# url -0 url.txt -o /dev/null             Grab url
     rdesktop ip                                         Remote Desktop to ip
     scp /tmp/file user@x.x.x.x:/tmp/file                Put file
     scp user@ remoteip :/tmp/file /tmp/file             Get file
@@ -112,7 +112,7 @@ const LINUXCOMMAND: string = """
 const LINUXMISC: string = """
     unset HISTFILE                                      | Disable history logging
     ssh user@ ip arecord - | aplay -                    | Record remote mic
-    gee -o outfile myfile.c                             | Compile C,C++
+    gcc -o outfile myfile.c                             | Compile C,C++
     init 6                                              | Reboot (0 = shutdown)
     cat /etc/ 1 'syslog'.conf | grep -v "*#"            | List of log files
     grep 'href=' file 1 cut -d"/" -f3  grep url | sort -u            |Strip links in url.com
@@ -137,7 +137,7 @@ const WEBDNS: string = """
 const LINUXFILES: string = """
     Local users hashes               /etc/shadow
     Local users                      /etc/passwd
-    Local groups                     /etc/group"
+    Local groups                     /etc/group
     Startup services                 /etc/rc.d
     Service                          /etc/init.d
     Known hostnames and IPs          /etc/hosts
@@ -147,7 +147,7 @@ const LINUXFILES: string = """
     Ubuntu sources list              /etc/apt/sources.list
     Narneserver configuration        /etc/resolv.conf
     Bash history (also /root/)       /horne/ user /.bash historj
-    Vendor-t1AC lookup               /usr/share/wireshark/rnanuf
+    Vendor-mac  lookup               /usr/share/wireshark/rnanuf
     SSH keystore                     -/.ssh/
     System log files (most Linux)    /var/log
     System log files (Unix)          /var/adrn
