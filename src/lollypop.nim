@@ -148,3 +148,43 @@ proc post_explorer_linux*(write_output = false): bool =
 
     echo "[+] :: Static file system info        " 
     discard writeFile(sys("/etc/fstab"))
+
+proc cool_compressor*(option: string; file: string): bool = 
+    
+    case option:
+    of "Create_tar":
+        echo "Create .tar from files"
+        discard writeFile(sys(fmt"tar cf {file}.tar files"))                               
+    
+    of "Extract_tar":
+        echo "Extract .tar"
+        discard writeFile(sys(fmt"tar xf {file}.tar"))                                     
+    
+    of "Create_tar_gz":
+        echo "Create .tar.gz"
+        discard writeFile(sys(fmt"tar czf {file}.tar.gz files"))                           
+    
+    of "Extract_tar_gz":
+        echo "Extract .tar.gz"
+        discard writeFile(sys(fmt"tar xzf {file}.tar.gz"))                                 
+    
+    of "Create_tar_bz2":
+        echo "Create .tar.bz2"
+        discard writeFile(sys(fmt"tar cjf {file}.tar.bz2 files"))                          
+    
+    of "Extract_tar_bz2":
+        echo "Extract .tar.bz2"
+        discard writeFile(sys(fmt"tar xjf {file}.tar.bz2"))                                
+    
+    of "Compress/rename file":
+        echo "Compress/rename file"
+        discard writeFile(sys(fmt"gzip {file}"))                                           
+    
+    of "Decompress_file_gz":
+        echo "Decompress file.gz"
+        discard writeFile(sys(fmt"gzip -d {file}. gz"))                                    
+    
+    of "upx_packs_orig":
+        echo "UPX packs orig.exe"
+        discard writeFile(sys(fmt"upx -9 -o out.exe orig.exe"))                          
+                  
