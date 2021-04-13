@@ -17,9 +17,13 @@ proc get_status*(val: bool): void =
     else:
         echo "[:: ERROR :: ]"
 
-proc writeFile*(input: string): bool =
+proc writeFile*(input: string, name: string = "zn_conseole_output"; output: string = "~/hackerman_outputs"): bool =
 
-    const PATH = "~/hackerman_outputs"
+    try:
+        discard sys(fmt"echo '{input}' >> {output}/{name}.zynim")
+    except:
+        echo "[ERROR_WRITE_FILE_FUNCTION]"
+
 
 proc helper*(): void = 
 
@@ -92,99 +96,114 @@ proc dns*(host: string; ip: string; option: string): bool =
 
 proc post_explorer_linux*(write_output = false): bool = 
 
-    echo "[+] :: Local users hashes             " 
-    discard writeFile(sys("/etc/shadow"))
+    try: # Why?
+        echo "[+] :: Local users hashes             " 
+        discard writeFile(sys("/etc/shadow"))
 
-    echo "[+] :: Local users                    " 
-    discard writeFile(sys("/etc/passwd"))
+        echo "[+] :: Local users                    " 
+        discard writeFile(sys("/etc/passwd"))
 
-    echo "[+] :: Local groups                   " 
-    discard writeFile(sys("/etc/group"))
+        echo "[+] :: Local groups                   " 
+        discard writeFile(sys("/etc/group"))
 
-    echo "[+] :: Startup services               " 
-    discard writeFile(sys("/etc/rc.d"))
+        echo "[+] :: Startup services               " 
+        discard writeFile(sys("/etc/rc.d"))
 
-    echo "[+] :: Service                        " 
-    discard writeFile(sys("/etc/init.d"))
+        echo "[+] :: Service                        " 
+        discard writeFile(sys("/etc/init.d"))
 
-    echo "[+] :: Known hostnames and IPs        " 
-    discard writeFile(sys("/etc/hosts"))
+        echo "[+] :: Known hostnames and IPs        " 
+        discard writeFile(sys("/etc/hosts"))
 
-    echo "[+] :: Full hostnarne with domain     " 
-    discard writeFile(sys("/etc/HOSTNAl1E"))
+        echo "[+] :: Full hostnarne with domain     " 
+        discard writeFile(sys("/etc/HOSTNAl1E"))
 
-    echo "[+] :: Network configuration          " 
-    discard writeFile(sys("/etc/network/interfaces"))
+        echo "[+] :: Network configuration          " 
+        discard writeFile(sys("/etc/network/interfaces"))
 
-    echo "[+] :: System environment variables   " 
-    discard writeFile(sys("/etc/profile"))
+        echo "[+] :: System environment variables   " 
+        discard writeFile(sys("/etc/profile"))
 
-    echo "[+] :: Ubuntu sources list            " 
-    discard writeFile(sys("/etc/apt/sources.list"))
+        echo "[+] :: Ubuntu sources list            " 
+        discard writeFile(sys("/etc/apt/sources.list"))
 
-    echo "[+] :: Narneserver configuration      " 
-    discard writeFile(sys("/etc/resolv.conf"))
+        echo "[+] :: Narneserver configuration      " 
+        discard writeFile(sys("/etc/resolv.conf"))
 
-    echo "[+] :: Bash history (also /root/)     " 
-    discard writeFile(sys("/horne/ user /.bash historj"))
+        echo "[+] :: Bash history (also /root/)     " 
+        discard writeFile(sys("/horne/ user /.bash historj"))
 
-    echo "[+] :: Vendor-mac  lookup             " 
-    discard writeFile(sys("/usr/share/wireshark/rnanuf"))
+        echo "[+] :: Vendor-mac  lookup             " 
+        discard writeFile(sys("/usr/share/wireshark/rnanuf"))
 
-    echo "[+] :: SSH keystore                   " 
-    discard writeFile(sys("-/.ssh/"))
+        echo "[+] :: SSH keystore                   " 
+        discard writeFile(sys("-/.ssh/"))
 
-    echo "[+] :: System log files (most Linux)  " 
-    discard writeFile(sys("/var/log"))
+        echo "[+] :: System log files (most Linux)  " 
+        discard writeFile(sys("/var/log"))
 
-    echo "[+] :: System log files (Unix)        " 
-    discard writeFile(sys("/var/adrn"))
+        echo "[+] :: System log files (Unix)        " 
+        discard writeFile(sys("/var/adrn"))
 
-    echo "[+] :: List cron files                " 
-    discard writeFile(sys("/var/spool/cron"))
+        echo "[+] :: List cron files                " 
+        discard writeFile(sys("/var/spool/cron"))
 
-    echo "[+] :: Apache connection log          " 
-    discard writeFile(sys("/var/log/apache/access.log"))
+        echo "[+] :: Apache connection log          " 
+        discard writeFile(sys("/var/log/apache/access.log"))
 
-    echo "[+] :: Static file system info        " 
-    discard writeFile(sys("/etc/fstab"))
+        echo "[+] :: Static file system info        " 
+        discard writeFile(sys("/etc/fstab"))
+
+        return true
+
+    except:
+        return false
+
 
 proc cool_compressor*(option: string; file: string): bool = 
     
-    case option:
-    of "Create_tar":
-        echo "Create .tar from files"
-        discard writeFile(sys(fmt"tar cf {file}.tar files"))                               
-    
-    of "Extract_tar":
-        echo "Extract .tar"
-        discard writeFile(sys(fmt"tar xf {file}.tar"))                                     
-    
-    of "Create_tar_gz":
-        echo "Create .tar.gz"
-        discard writeFile(sys(fmt"tar czf {file}.tar.gz files"))                           
-    
-    of "Extract_tar_gz":
-        echo "Extract .tar.gz"
-        discard writeFile(sys(fmt"tar xzf {file}.tar.gz"))                                 
-    
-    of "Create_tar_bz2":
-        echo "Create .tar.bz2"
-        discard writeFile(sys(fmt"tar cjf {file}.tar.bz2 files"))                          
-    
-    of "Extract_tar_bz2":
-        echo "Extract .tar.bz2"
-        discard writeFile(sys(fmt"tar xjf {file}.tar.bz2"))                                
-    
-    of "Compress/rename file":
-        echo "Compress/rename file"
-        discard writeFile(sys(fmt"gzip {file}"))                                           
-    
-    of "Decompress_file_gz":
-        echo "Decompress file.gz"
-        discard writeFile(sys(fmt"gzip -d {file}. gz"))                                    
-    
-    of "upx_packs_orig":
-        echo "UPX packs orig.exe"
-        discard writeFile(sys(fmt"upx -9 -o out.exe orig.exe"))                          
+    try:
+        case option:
+        of "Create_tar":
+            echo "Create .tar from files"
+            discard writeFile(sys(fmt"tar cf {file}.tar files"))                               
+        
+        of "Extract_tar":
+            echo "Extract .tar"
+            discard writeFile(sys(fmt"tar xf {file}.tar"))                                     
+        
+        of "Create_tar_gz":
+            echo "Create .tar.gz"
+            discard writeFile(sys(fmt"tar czf {file}.tar.gz files"))                           
+        
+        of "Extract_tar_gz":
+            echo "Extract .tar.gz"
+            discard writeFile(sys(fmt"tar xzf {file}.tar.gz"))                                 
+        
+        of "Create_tar_bz2":
+            echo "Create .tar.bz2"
+            discard writeFile(sys(fmt"tar cjf {file}.tar.bz2 files"))                          
+        
+        of "Extract_tar_bz2":
+            echo "Extract .tar.bz2"
+            discard writeFile(sys(fmt"tar xjf {file}.tar.bz2"))                                
+        
+        of "Compress/rename file":
+            echo "Compress/rename file"
+            discard writeFile(sys(fmt"gzip {file}"))                                           
+        
+        of "Decompress_file_gz":
+            echo "Decompress file.gz"
+            discard writeFile(sys(fmt"gzip -d {file}. gz"))                                    
+        
+        of "upx_packs_orig":
+            echo "UPX packs orig.exe"
+            discard writeFile(sys(fmt"upx -9 -o out.exe orig.exe"))  
+        else: 
+            echo "[ERROR_INVALID_OPTION]"
+
+        return true
+
+    except:
+        return false                     
                   
