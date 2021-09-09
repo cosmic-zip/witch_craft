@@ -1,4 +1,4 @@
-![ZYNIX FUSION](https://user-images.githubusercontent.com/36008397/110006679-b4ae7d80-7cf8-11eb-99a4-bc3dcb813ae8.png)
+![ZYNIX FUSION](./docs/zynix-fusion.png)
 
 #   :: ZYNIX FUSION ::
 
