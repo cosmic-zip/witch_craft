@@ -20,15 +20,20 @@ require_relative "#{$PATH}/names.rb"
 require_relative "#{$PATH}/visual.rb"
 require_relative "#{$PATH}/shell.rb"
 
-# Include
+# Plugins
+require_relative "#{$PLUGINS}/manuals/manuals.rb"
+
+# Include Modules
 include FakeDump
 include Kernel
 include Visual 
 include Shell
 
+# Include Plugins
+include Manuals
+
 # Require
 require "csv"
-require "builder"
 require "openssl"
 
 # Init
