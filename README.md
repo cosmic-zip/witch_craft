@@ -63,27 +63,30 @@
 
 ##  :: Shell commands ::
 
-    compress                | Compress files
-    extract                 | Extract files
-    cover                   | Covers your tracks and logs
-    port_scanner            | Replaced by automap
-    note                    | Create simple notes
-    search                  | Search whois, emails, banner grep
-    dns_scanner             | Scan for 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA'
-    dir_scanner             | Brute force for search files and folders
-    simple_scan             | Runs an automatic scanner with nmap
-    fakeEmail               | Generate fake emails
-    call_cpf                | Generate fake cpf
-    call_rg                 | Generate fake rg
-    call_gem                | Generate fake name (Brazilian, Spanish and Portuquese only)
-    simple_dump             | Generate return a simples dum with data in txt or xml format
-    banner                  | Shows simple Zynix ascii banner
-    web_dns                 | Shows web dns seekers
-    linux_files             | Shows useful linux files
-    linux_folders           | Shows function of linux folders
-    linux_util              | Shows useful linux commands
-    tor_search              | Shows tor network searchers
-    tor_alt                 | Shows alternatives to tor
+    generate --rg                   |   Generate fake rg                                        
+    generate --cpf                  |   Generate fake cpf                               
+    generate --person               |   Generate parson fake data                                       
+    generate --fakedump             |   Generate fake database
+    visuall --banner                |   Show zynix banner
+    visuall --web-dns               |   Show web dns lookup
+    visuall --linux-files           |   Show useful linux files
+    visuall --linux-folders         |   Show useful linux folders
+    visuall --win-files             |   Show useful windows files
+    visuall --linux-utilites        |   Show linux command line utilites
+    visuall --tor-search-link       |   Show tor search engine links
+    visuall --tor-alt               |   Show tor alternatives
+    visuall --help                  |   Show genereal help 
+    km --init                       |   Initialize framework with data
+    km --install                    |   Install framework
+    km --dlookup                    |   Search whois, emails, phone numbers and banner grep
+    km --dns-scanner                |   Web dns scanner
+    km --dir-scanner                |   Web domain folder scanner
+    km --cover                      |   Clear logs and files localy
+    km --simple-map                 |   Automatic nmap
+    km --maclookup                  |   MAC address lookup
+    km --extract                    |   Extract files
+    km --compress                   |   Compress files
+    km --blue-attck                 |   Bluetooth attack module
 
     **alone**
 
