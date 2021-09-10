@@ -22,65 +22,6 @@ module Visual
 		puts  "\n\n by th3void \n\n"
 	end
 
-    def help 
-
-        prRed   '========================= HELP ========================='
-        puts "\n\n"
-        prGreen 'compress                | Compress files'
-        prGreen 'extract                 | Extract files'
-        prGreen 'cover                   | Covers your tracks and logs'
-        prGreen 'port_scanner            | Replaced by automap'
-        prGreen 'note                    | Create simple notes'
-        prGreen 'search                  | Search whois, emails, banner grep'
-        prGreen 'dns_scanner             | Scan for \'A\', \'AAAA\', \'CNAME\', \'MX\', \'NS\', \'PTR\', \'SOA\''
-        prGreen 'dir_scanner             | Brute force for search files and folders'
-        prGreen 'simple_scan             | Runs an automatic scanner with nmap'
-        prGreen 'fakeEmail               | Generate fake emails'
-        prGreen 'call_cpf                | Generate fake cpf'
-        prGreen 'call_rg                 | Generate fake rg'
-        prGreen 'call_gem                | Generate fake name (Brazilian, Spanish and Portuquese only)'
-        prGreen 'simple_dump             | Generate return a simples dum with data in txt or xml format'
-        prGreen 'banner                  | Shows simple Zynix ascii banner'
-        prGreen 'web_dns                 | Shows web dns seekers'
-        prGreen 'linux_files             | Shows useful linux files'
-        prGreen 'linux_folders           | Shows function of linux folders'
-        prGreen 'linux_util              | Shows useful linux commands'
-        prGreen 'tor_search              | Shows tor network searchers'
-        prGreen 'tor_alt                 | Shows alternatives to tor'
-        puts "\n"
-        prRed '**alone**'
-        puts "\n"
-        prGreen '    "-sL" --> "List Scan - simply list targets to scan"'
-        prGreen '    "-sP" --> "Ping Scan - go no further than determining if host is online"'
-        puts "\n"
-        prRed '**default**'
-        puts "\n"
-        prGreen '    "-sS -sV" --> "TCP SYN"'
-        prGreen '    "-sU -sV" --> "UDP Scan"'
-        puts "\n"
-        prRed '**icmp_echo**'
-        puts "\n"
-        prGreen '    "-sS -sV -PE" --> "TCP SYN + ICMP echo discovery probes"'
-        prGreen '    "-sU -sV -PE" --> "UDP Scan + ICMP echo discovery probes"'
-        prGreen '    "-sA -sV -PE" --> "ACK + ICMP echo discovery probes"'
-        puts "\n"
-        prRed '**port_list**'
-        puts "\n"
-        prGreen '    "-sS" --> "TCP SYN + [portlist]: TCP SYN discovery probes to given ports"'
-        prGreen '    "-sA" --> "ACK + [portlist]: TCP ACK discovery probes to given ports"'
-        prGreen '    "-sU" --> "UDP Scan + [portlist]: TCP UDP discovery probes to given ports"'
-        puts "\n"
-        prRed '**special**'
-        puts "\n"
-        prGreen '    "-sT -sV" --> "Connect()"'
-        prGreen '    "-sW -sV" --> "Window"'
-        prGreen '    "-sM -sV" --> "Maimon scans"'
-        prGreen '    "-sN -sV" --> "TCP Null"'
-        prGreen '    "-sF -sV" --> "FIN"'
-        prGreen '    "-sX -sV" --> "Xmas scans"'
-
-    end
-
 	def web_dns
   
     	prRed("Netcraft      – endereços fora do Brasil      http://news.netcraft.com/")
