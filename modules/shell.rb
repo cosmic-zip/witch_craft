@@ -14,65 +14,53 @@ module Shell
     def shell(opt)
 
         case opt
-        when 'call_rg'
+        when 'generate --rg'
             FakeDump.call_rg
-        when 'call_cpf'
+        when 'generate --cpf'
             FakeDump.call_cpf
-        when 'call_gem'
+        when 'generate --person'
             FakeDump.call_gem
-        when 'simple_dump'
+        when 'generate --fakedump'
             FakeDump.simple_dump
-        when 'll'
-            Kernel.sys('ls -lha')
-        when 'cls'
-            Kernel.sys('clear')
-        when 'sht '
-            Kernel.sys('shutdown -h now')
-        when 'rm '
-            Kernel.sys('rm -rf')
-        when 'cp'
-            Kernel.sys('cp -r')
-        when 'q'
-            exit()
-        when 'banner'
+        when 'visuall --banner'
             Visual.banner
-        when 'web_dns'
+        when 'visuall --web-dns'
             Visual.web_dns
-        when 'linux_files'
+        when 'visuall --linux-files'
             Visual.linux_files
-        when 'linux_folders'
+        when 'visuall --linux-folders'
             Visual.linux_folders
-        when 'windows_files'
+        when 'visuall --win-files'
             Visual.windows_files
-        when 'linux_util'
+        when 'visuall --linux-utilites'
             Visual.linux_util
-        when 'tor_search'
+        when 'visuall --tor-search-link'
             Visual.tor_search
-        when 'tor_alt'
+        when 'visuall --tor-alt'
             Visual.tor_alt
-        when 'help'
+        when 'visuall --help'
             Visual.help
-        when 'search'
+        when 'km --dlookup'
             Kernel.search
-        when 'init'
+        when 'km --init'
             Kernel.init
-        when 'install'
+        when 'km --install'
             Kernel.install
-        when 'dns_scanner'
+        when 'km --dns-scanner'
             Kernel.dns_scanner
-        when 'dir_scanner'
+        when 'km --dir-scanner'
             Kernel.dir_scanner
-        when 'cover'
+        when 'km --cover'
             Kernel.cover
-        when 'simple_map'
+        when 'km --simple-map'
             Kernel.simple_map
-        when 'maclookup'
+        when 'km --maclookup'
             Kernel.maclookup
-        when 'extract'
+        when 'km --extract'
             Kernel.extract
-        when 'compress'
+        when 'km --compress'
             Kernel.compress
-        when 'bluetooth'
+        when 'km --blue-attck'
             Kernel.bluetooth
         else
             sys(opt)
