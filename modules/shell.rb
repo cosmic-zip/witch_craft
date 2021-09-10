@@ -62,6 +62,10 @@ module Shell
             Kernel.compress
         when 'km --blue-attck'
             Kernel.bluetooth
+        when 'help'
+            Manuals.help_simple
+        when 'help --simple-map'
+            Manuals.help_simple_map
         else
             sys(opt)
         end
