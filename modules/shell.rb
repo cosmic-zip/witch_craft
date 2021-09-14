@@ -39,7 +39,7 @@ module Shell
         when 'visual --tor-alt'
             Visual.tor_alt
         when 'visual --help'
-            Visual.help
+            Manuals.help_simple
         when 'km --dlookup'
             Kernel.search
         when 'km --init'
