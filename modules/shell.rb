@@ -22,23 +22,23 @@ module Shell
             FakeDump.call_gem
         when 'generate --fakedump'
             FakeDump.simple_dump
-        when 'visuall --banner'
+        when 'visual --banner'
             Visual.banner
-        when 'visuall --web-dns'
+        when 'visual --web-dns'
             Visual.web_dns
-        when 'visuall --linux-files'
+        when 'visual --linux-files'
             Visual.linux_files
-        when 'visuall --linux-folders'
+        when 'visual --linux-folders'
             Visual.linux_folders
-        when 'visuall --win-files'
+        when 'visual --win-files'
             Visual.windows_files
-        when 'visuall --linux-utilites'
+        when 'visual --linux-utilites'
             Visual.linux_util
-        when 'visuall --tor-search-link'
+        when 'visual --tor-search-link'
             Visual.tor_search
-        when 'visuall --tor-alt'
+        when 'visual --tor-alt'
             Visual.tor_alt
-        when 'visuall --help'
+        when 'visual --help'
             Visual.help
         when 'km --dlookup'
             Kernel.search
