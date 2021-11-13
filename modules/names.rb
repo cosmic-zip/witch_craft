@@ -1,11 +1,27 @@
 #-------------------------------------------------------------
 #
+#
 #                     Linux Evil Toolkit
-# 
-#                          By v0id
+#                        By TH3V0ID
 #
 #
 #-------------------------------------------------------------
+# Copyright (c) 2020 - 2022 Th3Void <https://github.com/th3void>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public
+# License as published by the Free Software Foundation; either
+# version 3 of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the
+# Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+# Boston, MA 02110-1301 USA
 
 $wom = ['Alice', 'Júlia', 'Isabella', 'Manuela', 'Maria', 'Eduarda', 'Lara', 'Lorena', 'Yasmin', 'Nicole', 'Cecília', 'Emanuelly', 'Clara', 'Rebeca', 'Maria', 'Catarina', 'Valentina', 'Beatriz', 'Lara', 'Júlia', 'Heloísa', 'Lívia', 'Bianca', 'Ana', 'Lorena', 'Isadora', 'Yasmin', 'Bárbara', 'Abigail', 'Maria', 'Bruna', 'Nicole', 'Mariana', 'Sara', 'Olívia', 'Laila', 'Rebeca', 'Cloe', 'Ariela', 'Catarina', 'Micaela', 'Fernanda', 'Emanuela', 'Eva', 'Yara', 'Juliana', 'Ingrid', 'Angelina', 'Milene', 'Adriana', 'Sofia', 'Isabella', 'Camila', 'Valentina', 'Valeria', 'Mariana', 'Luciana', 'Daniela', 'Gabriela', 'Victoria', 'Martina', 'Lucia', 'Ximena/Jimena', 'Sara', 'Samantha', 'Maria José', 'Emma', 'Catalina', 'Julieta', 'Mía', 'Antonella', 'Renata', 'Emilia', 'Natalia', 'Zoe', 'Nicole', 'Paula', 'Amanda', 'María Fernanda', 'Emily', 'Antonia', 'Alejandra', 'Juana', 'Andrea', 'Manuela', 'Ana Sofia', 'Guadalupe', 'Agustina', 'Elena', 'María', 'Bianca', 'Ariana', 'Ivanna', 'Abril', 'Florencia', 'Carolina', 'Maite', 'Rafaela', 'Regina', 'Adriana', 'Michelle', 'Alma', 'Violeta', 'Salomé', 'Abigail', 'Juliana', 'Valery', 'Isabel', 'Montserrat', 'Allison', 'Jazmín', 'Julia', 'Lola', 'Luna', 'Ana', 'Delfina', 'Alessandra', 'Ashley', 'Olivia', 'Constanza', 'Paulina', 'Rebeca', 'Carla', 'María Paula', 'Micaela', 'Fabiana', 'Miranda', 'Josefina', 'Laura', 'Alexa', 'María Alejandra', 'Luana', 'Fátima', 'Sara Sofía', 'Isidora', 'Malena', 'Romina', 'Ana Paula', 'Mariangel', 'Amelia', 'Elizabeth', 'Aitana', 'Ariadna', 'María Camila', 'Irene', 'Silvana', 'Clara', 'Magdalena', 'Sophie', 'Josefa']
 
