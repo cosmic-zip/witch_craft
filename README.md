@@ -1,9 +1,6 @@
 ![ZYNIX FUSION](./docs/hackerahead.png)
 
-# BACK TO RUBY OP
-	
-	In this a new operation appears, with what was learned from past mistakes, 
-	a new version is coming 
+# After years of inactivity, I have no reason to keep this software anymore and it will soon be archived.
 
 #   :: ZYNIX FUSION ::
 
