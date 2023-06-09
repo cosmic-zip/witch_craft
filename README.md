@@ -2,7 +2,7 @@
 
 #   :: ZYNIX FUSION ::
 
-zynix-Fusion is a comprehensive framework designed to streamline, standardize, and simplify the utilization of various security tools for pentesting professionals. Formerly known as Linux Evil Toolkit, zynix-Fusion offers a set of user-friendly commands, including the "init" function, which allows users to define a target and seamlessly access all the tools without the need for additional typing.
+zynix-Fusion is a comprehensive framework designed to streamline, standardize, and simplify the utilization of various security tools for pentesting professionals. Formerly known as Zynix Fusion, zynix-Fusion offers a set of user-friendly commands, including the "init" function, which allows users to define a target and seamlessly access all the tools without the need for additional typing.
 
 Zynix is implemented as a Ruby script with the primary objective of serving as a shortcut. Rather than creating multiple tools from scratch, zynix leverages a range of existing tools to achieve its intended purpose.
 
@@ -48,7 +48,7 @@ sudo dnf group install "Security Lab"
 To get started with Zynix, open your Linux terminal and enter the following commands:
 
 ```bash
-git clone https://github.com/th3void/zynix-fusion.git
+git clone https://github.com/th3maid/zynix-fusion.git
 cd zynix-fusion
 ruby main.rb
 

@@ -2,12 +2,12 @@
 #-------------------------------------------------------------
 #
 #
-#                     Linux Evil Toolkit
+#                     Zynix Fusion
 #                        By TH3V0ID
 #
 #
 #-------------------------------------------------------------
-# Copyright (c) 2020 - 2022 Th3Void <https://github.com/th3void>
+# Copyright (c) 2020 - 2022 th3maid <https://github.com/th3maid>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public
@@ -42,7 +42,7 @@ module Visual
         prRed '██▀▀▀▄▄██▄▀▀▀▄██░█░█░██░████░██████░▄▄███░██░██▄▄▄▀▀██░███░███░██░█░█░█'
         prRed '██░▀▀▀░████░████░██▄░█▀░▀█▀▄█▄▀████░█████▄▀▀▄██░▀▀▀░█▀░▀██░▀▀▀░██░██▄░█'
         prRed '▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀'
-		puts  "\n\n by th3void \n\n"
+		puts  "\n\n by th3maid \n\n"
 	end
 
 	def web_dns
