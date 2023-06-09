@@ -1,62 +1,66 @@
-![ZYNIX FUSION](./docs/hackerahead.png)
-
-# After years of inactivity, I have no reason to keep this software anymore and it will soon be archived.
+![ZYNIX FUSION](./docs/zynix-fusion.png)
 
 #   :: ZYNIX FUSION ::
 
-    zynix-Fusion is a framework that aims to centralize, standardize and simplify the use of various
-    security tools for pentest professionals. zynix-Fusion (old name: Linux evil toolkit) has few
-    simple commands, one of which is the init function that allows you to define a target, and thus
-    use all the tools without typing anything else.
+zynix-Fusion is a comprehensive framework designed to streamline, standardize, and simplify the utilization of various security tools for pentesting professionals. Formerly known as Linux Evil Toolkit, zynix-Fusion offers a set of user-friendly commands, including the "init" function, which allows users to define a target and seamlessly access all the tools without the need for additional typing.
 
-    Zynix is a ruby script made for the purpose of being a shortcut, so instead of creating several
-    tools from scratch, it simply uses a range of existing tools.
+Zynix is implemented as a Ruby script with the primary objective of serving as a shortcut. Rather than creating multiple tools from scratch, zynix leverages a range of existing tools to achieve its intended purpose.
 
-    Is zynix-Fusion better than setoolkit? Yes and no, there are two that serve the same thing and in a
-    different way, the Zynix-Fusion and an automated attack information automation script.
+When comparing zynix-Fusion and setoolkit, it is important to note that they both serve similar purposes but employ different approaches. Zynix-Fusion is a framework that consolidates various tools, while setoolkit is an automated attack information automation script. Therefore, determining which one is better depends on individual preferences and specific requirements.
 
 ## :: Considerations ::
 
-    § 1 About use
-    This script was made to automate the steps of gathering information about web targets, the
-    misuse and responsibility of the user, to report bugs or make suggestions to open a report on
-    github.
-    
-    § 2 About simple_scan
-    Automap was replaced by simple_scan, it is lighter and faster, in addition to being less
-    detectable, now it has different modes of execution that make it possible from a quick and
-    simple execution to more complex modes.
-    
-    § 3 About Console
-    The output of the script can be extremely long, so see if your console, (gnome-terminal, cmd,
-    konsole) is configured to display 1000 lines (I particularly recommend 10,000 lines), for
-    professional purposes it allows the documentation, it records the commands, exits and formats
-    the text.
+Section 2: About Use
+This script is designed to automate the process of gathering information about web targets. It is important to note that the user bears the responsibility for any misuse. If you encounter any bugs or have suggestions, please report them by opening an issue on GitHub.
+
+Section 2: About simple_scan
+The "Automap" tool has been replaced by "simple_scan." Simple_scan is not only lighter and faster but also less detectable. It offers different execution modes, ranging from quick and simple to more complex modes.
+
+Section 3: About Console
+Please ensure that your console (such as gnome-terminal, cmd, konsole) is configured to display a sufficient number of lines, preferably 1000 lines (I personally recommend 10,000 lines). The script's output can be quite extensive. Additionally, for professional purposes, the console allows documentation, command recording, exiting, and text formatting.
     
 ##  :: How to work? ::
   
-    Zynix works with the idea of providing a personalized (and customizable) command line
-    interface, that is, you will have to type internal zynix commands and pass the parameters, but to
-    avoid having to pass the same parameter several times there is the function init, which will
-    globally store these parameters and use them later in various commands automatically.
+Zynix operates on the concept of offering a personalized and customizable command-line interface. This means that users will need to enter internal zynix commands and provide the corresponding parameters. However, to avoid repeatedly entering the same parameters, Zynix includes the "init" function. This function allows users to globally store these parameters and automatically use them in various commands at a later stage. By utilizing the "init" function, users can save time and streamline their command inputs.
     
 ##  :: How to use it? ::
 
-    There are two types of commands: the internal ones, which are restricted to the back-end
-    system and the usable front-end ones that are used to execute the functions.
-    red are the functions that do not work at this time or that have been removed.
+There are two types of commands in Zynix: internal commands and front-end commands.
+
+Internal commands are restricted to the back-end system and are not directly accessible to users. These commands handle the internal workings of Zynix and are responsible for managing its functionality.
+
+Front-end commands, on the other hand, are the commands that users can execute to access the desired functions of Zynix. These commands serve as the interface between the user and the framework, allowing users to interact with and utilize its features.
+
+Please note that any commands mentioned in red are either currently non-functional or have been removed from the system.
     
 ##  :: Installation and configuration ::
 
-    In order to use zynix it is necessary that you have dependencies installed on your computer, at
-    the moment there is no script that does this, however it is possible to use it without problems in
-    distributions with parrot security, kali linux, back box and fedora security, etc. Soon I will add a
-    script to install the dependencies.
-    If you use fedora or systems with dnf you can try sudo dnf group install "Security Lab"
-    open your terminal in linux and type:
-    $ git clone https://github.com/th3void/zynix-fusion.git && cd zynix-fusion && ruby main.rb
-    To update the program, enter the main folder and type:
-    $ git pull
+To use Zynix, it is necessary to have the required dependencies installed on your computer. Currently, there is no script available to automatically install these dependencies. However, you can still use Zynix without any issues on distributions such as Parrot Security, Kali Linux, Back Box, Fedora Security, and others.
+
+In the near future, I plan to add a script that will simplify the process of installing the necessary dependencies.
+
+If you are using Fedora or systems with DNF package manager, you can try the following command to install the required dependencies:
+
+```bash
+sudo dnf group install "Security Lab"
+```
+
+To get started with Zynix, open your Linux terminal and enter the following commands:
+
+```bash
+git clone https://github.com/th3void/zynix-fusion.git
+cd zynix-fusion
+ruby main.rb
+
+```
+
+To update the program, navigate to the main folder of Zynix and execute the following command:
+
+```bash
+git pull
+```
+
+
 
 ##  :: Shell commands ::
 
