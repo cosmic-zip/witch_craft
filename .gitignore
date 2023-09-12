@@ -1,0 +1,7 @@
+bin/
+bin/*
+.github/      
+.idea/      
+.vscode/
+.env
+zynim

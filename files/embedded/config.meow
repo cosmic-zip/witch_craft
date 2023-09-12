@@ -1,0 +1,26 @@
+# ------------------------------------------------ #
+#                                                  #
+#                                                  #
+#                   DOT MEOW (🐈‍)                  #
+#                                                  #
+#                  By Th3Maid 2023                 #
+#                                                  #
+#          MEOW VAR_NAME = "" declare variables    #
+#                                                  #
+# ------------------------------------------------ #
+
+MEOW GENRAL_BASE_PATH = "/var/maid/files/general"
+MEOW REPORT_BASE_PATH = "/var/maid/files/report/"
+
+MEOW DIRECTORES       = "directores.ascii" 
+MEOW LDNS             = "large_dns.ascii"  
+MEOW SDNS             = "small_dns.ascii"  
+MEOW MACADDR          = "macaddr_lockup.ascii"  
+MEOW TLDS             = "tlds.ascii"
+MEOW VULNERABILITIES  = "vulnerabilities.json"
+
+MEOW REPORT_LOG       = "report.json"
+MEOW REPORT_DOC       = ""
+
+MEOW SAFE_LOOK        = "session.meow"
+
