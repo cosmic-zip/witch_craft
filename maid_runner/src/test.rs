@@ -37,7 +37,7 @@ fn test_system_command_deep_exec() {
 fn test_lookup_mac_addr() {
     let lk_mac = LookupMacAddress {
         vendor_mac: "01:23",
-        list_path: "/home/anon/workspace/MaidRunner/files/general/macaddr_lockup.ascii",
+        list_path: "/home/anon/workspace/MaidRunner/maid_lists/general/macaddr_lockup.ascii",
     };
 
     let output = lookup_mac_address(lk_mac, true);
