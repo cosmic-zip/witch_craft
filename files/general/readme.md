@@ -1,5 +1,3 @@
-# Th3Maid
+# Maid Lists
 
-This files come from ZynixFusion (Old Linux Evil Toolkit) 
-made by Th3void (th3maid) between 2017 - 2021.
-this project was been archived in 2023.
+The project initially includes a set of default files. These files are created using the best possible data analysis techniques, and their final versions are merged into the main project.
