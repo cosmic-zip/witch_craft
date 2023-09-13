@@ -147,21 +147,3 @@ Date: sáb 09 set 2023 09:48:03 -03
 	→ Added a curl help page to the manual and readme.
 	→ Added curl test (not all implemented yet)
 	→ Fixed github workflow dependencies
-
-Version 0.7.1
-
-Date: qua 13 set 2023 17:07:56 -03
-
-	→ Updated main README.md
-	→ Updated general/readme.md
-	→ Rename files folder to maid_lists
-	→ Updated version
-	→ Fix config file paths
-	→ Merged maid_list project to MaisRunner
-		→ Added maid_lists xss-payload-list.txt 
-		→ Added maid_lists user_names.ascii 
-		→ Added maid_lists maid_list_universal.ascii 
-		→ Added maid_lists files_extensions.ascii 
-		→ Added maid_lists mallware_hash.ascii 
-		→ Added maid_lists repo_keyword_scan.ascii 
-		→ Added maid_lists dice_eff_words.ascii   
