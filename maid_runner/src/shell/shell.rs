@@ -1,27 +1,22 @@
 use crate::core::{core::*, manual::*, utils::*};
 
 use crate::modules::{
-    // scanner::scanner_structs::*,
     curl::curl::*,
     // attack::attack::*,
-    // attack::attack_structs::*,
+    maid_av::maid_av::*,
     // botnet::botnet::*,
-    // botnet::botnet_structs::*,
     lookup::lookup::*,
-    // lookup::lookup_structs::*,
     // post_attack::post_attack::*,
-    // post_attack::post_attack_structs::*,
     scanner::scanner::*,
 };
 
 // command structure
-
 // bin [option] [value] ... [option_N] [value_N]
 
 pub fn init() -> u8 {
     let system_input = system_exec_shell(false);
 
-    println!("{:?}", system_input);
+    // println!("{:?}", system_input);
     // system input are very time bigger than one and can't be iven
     if system_input.len() < 2 {
         system_exec_manual("default");
@@ -33,6 +28,10 @@ pub fn init() -> u8 {
     match module_name {
         "core" | "c" => {
             shell_core(system_input);
+        }
+
+        "maid_av" | "av" => {
+            shell_maid_av(system_input);
         }
 
         "lookup" | "l" => {
