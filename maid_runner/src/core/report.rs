@@ -45,7 +45,7 @@ pub fn write_report(
         .map(String::from)
         .collect();
 
-    let config = read_meow("/var/maid/maid_lists/embedded/config.meow", true);
+    let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
     let report = format!("{}{}", config["REPORT_BASE_PATH"], config["REPORT_LOG"]);
     let session = format!("{}{}", config["REPORT_BASE_PATH"], config["SAFE_LOOK"]);
 

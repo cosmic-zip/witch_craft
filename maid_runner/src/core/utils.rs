@@ -5,6 +5,11 @@ use colored::*;
 use std::env;
 use std::io::Error;
 use std::process::{Command, Output};
+use csv::ReaderBuilder;
+use std::fs::File;
+use std::error::Error as Err;
+use std::path::Path;
+use std::fmt::Display;
 
 pub fn system_command_call(cmd: CommandCall) -> Result<CommandResult, Error> {
     let output: Output = Command::new(cmd.command).args(cmd.args).output()?;
@@ -174,4 +179,26 @@ pub fn gsv_debug(debug: String) -> bool {
     } else {
         return false;
     }
+}
+
+pub fn search_csv(file_path: &str, search_term: &str) -> Result<Vec<String>, Box<dyn Err>> {
+    let file = File::open(file_path)?;
+    let mut reader = ReaderBuilder::new().has_headers(true).from_reader(file);
+
+    let mut matching_rows = Vec::new();
+
+    for result in reader.records() {
+        let record = result?;
+        for field in record.iter() {
+            if field.contains(search_term) {
+                matching_rows.push(record.as_slice().to_string());
+                println!("@{:?}", matching_rows[0]);
+                break;
+            }
+        }
+    }
+
+    
+
+    Ok(matching_rows)
 }
