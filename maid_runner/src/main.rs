@@ -1,3 +1,5 @@
+#![allow(unused_imports)]
+
 mod core;
 mod meow;
 mod modules;
