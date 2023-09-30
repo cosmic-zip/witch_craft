@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 chrono = "0.4.26"
 colored = "2.0.4"
+csv = "1.2.2"
