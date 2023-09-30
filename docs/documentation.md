@@ -383,3 +383,16 @@ $ maidrunner info www.example.com
         --debug [optional]      Turn debug on, was an optional flag isn't needed
             true
 		    none
+
+## semples
+
+    use crate::core::utils::*;
+
+    pub fn sample(generic_list: Vec<String>, debug: bool) -> bool {
+        let cmd: String = format!("{}", "variable");
+        if debug == true {
+            system_text(&cmd, "yellow");
+        }
+        system_text("[VOID] :: Menssage", "green");
+        system_command_exec(&cmd, debug)
+    }
