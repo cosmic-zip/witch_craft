@@ -9,7 +9,7 @@
 #                                                  #
 # ------------------------------------------------ #
 
-MEOW GENRAL_BASE_PATH = "/var/maid/maid_lists/general"
+MEOW GENRAL_BASE_PATH = "/var/maid/maid_lists/general/"
 MEOW REPORT_BASE_PATH = "/var/maid/maid_lists/report/"
 
 MEOW DIRECTORES             = "directores.ascii" 
@@ -21,7 +21,7 @@ MOEW XSS                    = "xss-payload-list.txt"
 MOEW USER_NAMES             = "user_names.ascii"
 MOEW MIAD_LISTS_UNIVERVAL   = "maid_list_universal.ascii"
 MOEW FILES_EXT              = "files_extensions.ascii"
-MOEW MALLWARE_HASH          = "mallware_hash.ascii"
+MOEW MALWARE_HASH           = "malware_hash.ascii"
 MOEW REPOSOTIRY_KEYWORDS    = "repo_keyword_scan.ascii"
 MOEW EFF_DICE               = "dice_eff_words.ascii"  
 MEOW VULNERABILITIES        = "vulnerabilities.json"
