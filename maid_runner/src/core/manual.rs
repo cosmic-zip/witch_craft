@@ -125,7 +125,7 @@ LOOKUP
 
     --mac_address key value     Lookup mac vendor based on first 3 pairs
     --mac                       MAC string like: 00:00 or 00:00:00
-    --path                      MAC lookup file maid_list/general/macaddr_lockup.ascii
+    --path                      MAC lookup file or use --path default
     --debug                     Optional value for debug can be true or false
 
     --lookup_reverse_engineering    Lookup basic reverse engineering
