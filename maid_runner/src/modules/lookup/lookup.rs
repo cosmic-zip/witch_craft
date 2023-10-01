@@ -1,8 +1,18 @@
 use crate::core::utils::*;
+use crate::meow::meow::read_meow;
 use crate::modules::lookup::lookup_structs::*;
 
 pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
-    let cmd: String = format!("grep {} {}", mac_address.vendor_mac, mac_address.list_path);
+    let mut file: String;
+
+    if mac_address.list_path == "default" {
+        let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
+        file = format!("{}{}", config["GENRAL_BASE_PATH"], config["MACADDR"]);
+    } else {
+        file = mac_address.list_path.to_string();
+    }
+
+    let cmd: String = format!("grep {} {}", mac_address.vendor_mac, file);
     if debug == true {
         system_text(&cmd, "yellow");
     }
