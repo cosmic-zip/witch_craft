@@ -11,6 +11,8 @@ use crate::modules::{
     curl::curl_structs::*,
     // attack::attack::*,
     // attack::attack_structs::*,
+    maid_av::maid_av::*,
+    maid_av::maid_av_structs::*,
     // botnet::botnet::*,
     // botnet::botnet_structs::*,
     lookup::lookup::*,
