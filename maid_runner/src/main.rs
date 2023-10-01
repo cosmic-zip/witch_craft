@@ -7,6 +7,7 @@ mod modules;
 mod shell;
 
 use crate::core::utils::*;
+use crate::meow::meow::*;
 use crate::modules::{
     curl::curl::*,
     curl::curl_structs::*,
