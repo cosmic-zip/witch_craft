@@ -113,8 +113,8 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
     under various laws and regulations.
 
 ### ENVIRONMENT
-    To ensure a smooth installation process, make sure your Linux system has all necessary 
-    dependencies, including packages and files.    
+    To ensure a smooth installation process, make sure your Linux system has all 
+    necessary dependencies, including packages and files.     
 
 ### FILES
     Attention! The 'maid_list' folder must be located within '/var/maid/' directory, 
