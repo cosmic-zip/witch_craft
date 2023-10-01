@@ -18,13 +18,13 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
                 println!("Matching Rows:");
                 for row in matches {
                     println!(
-                        "💀 [MALWARE_SCANNING] :: Warning malware was being found :: {}",
+                        "🚧 [MALWARE_SCANNING] :: Warning malware was being found :: {}",
                         row
                     );
                 }
                 return true;
             } else {
-                system_text("🔴 [ERROR] :: No matching rows found.", "red");
+                system_text("🔴 [WARNING] :: Pattern not found in any line.", "red");
                 return false;
             }
         }
@@ -38,17 +38,29 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
 pub fn search_malware_pattern(pattern: &str, debug: bool) -> bool {
     let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
     let malware_db = &format!("{}{}", config["GENRAL_BASE_PATH"], config["MALWARE_HASH"]);
-    let cmd: String = format!("grep {} {}", pattern, malware_db);
-
-    if debug == true {
-        system_text(&cmd, "yellow");
-    }
 
     system_text(
-        "🔶 [MALWARE_PATTERN] :: Searching for malware pattern",
+        "[MALWARE_PATTERN] :: Searching for malware pattern",
         "green",
     );
-    system_command_exec(&cmd, debug)
+
+    match find_all_matching_lines(malware_db, pattern) {
+        Ok(result) => {
+            if !result.is_empty() {
+                for line in result {
+                    println!("🚧 {}", line);
+                }
+                true
+            } else {
+                println!("🔴 [WARNING] :: Pattern not found in any line.");
+                false
+            }
+        }
+        Err(err) => {
+            eprintln!("🔴 [ERROR] :: {}", err);
+            false
+        }
+    }
 }
 
 pub fn shell_maid_av(system_input: Vec<String>) -> bool {

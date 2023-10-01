@@ -5,9 +5,11 @@ use colored::*;
 use csv::ReaderBuilder;
 use std::env;
 use std::error::Error as Err;
+use std::error::Error as StdError;
 use std::fmt::Display;
 use std::fs::File;
 use std::io::Error;
+use std::io::{self, BufRead};
 use std::path::Path;
 use std::process::{Command, Output};
 
@@ -199,4 +201,21 @@ pub fn search_csv(file_path: &str, search_term: &str) -> Result<Vec<String>, Box
     }
 
     Ok(matching_rows)
+}
+
+pub fn find_all_matching_lines(
+    file_path: &str,
+    pattern: &str,
+) -> Result<Vec<String>, Box<dyn StdError>> {
+    let file = File::open(file_path)?;
+    let mut matching_lines = Vec::new();
+
+    for (line_num, line) in io::BufReader::new(file).lines().enumerate() {
+        let line = line?;
+        if line.contains(pattern) {
+            matching_lines.push(format!("Line {}: {}", line_num + 1, line));
+        }
+    }
+
+    Ok(matching_lines)
 }
