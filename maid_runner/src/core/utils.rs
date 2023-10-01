@@ -217,5 +217,27 @@ pub fn find_all_matching_lines(
         }
     }
 
+    match write_report(
+        format!(
+            "find_all_matching_lines pattern: {}, file_path : {}",
+            pattern, file_path
+        ),
+        "1".to_string(),
+        format!("{:?}", matching_lines),
+        "None".to_string(),
+        false,
+    ) {
+        Ok(()) => {
+            // system_text("[REPORT] :: Report created", "green");
+        }
+
+        Err(e) => {
+            eprintln!(
+                "[REPORT_ERROR] :: While executing command at → system_command_call: {}",
+                e
+            );
+        }
+    }
+
     Ok(matching_lines)
 }
