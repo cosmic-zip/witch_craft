@@ -1,3 +1,4 @@
+use crate::core::messages::*;
 use crate::core::report::*;
 use crate::core::structs::{CommandCall, CommandResult};
 use chrono;
@@ -200,5 +201,3 @@ pub fn search_csv(file_path: &str, search_term: &str) -> Result<Vec<String>, Box
 
     Ok(matching_rows)
 }
-
-pub fn standart_errors(code: u32) {}
