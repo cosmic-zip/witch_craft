@@ -35,9 +35,13 @@ fn test_system_command_deep_exec() {
 
 #[test]
 fn test_lookup_mac_addr() {
+
+    let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
+    let file = &format!("{}{}", config["GENRAL_BASE_PATH"], config["MACADDR"]);
+
     let lk_mac = LookupMacAddress {
         vendor_mac: "01:23",
-        list_path: "/home/anon/workspace/MaidRunner/maid_lists/general/macaddr_lockup.ascii",
+        list_path: file,
     };
 
     let output = lookup_mac_address(lk_mac, true);
@@ -156,4 +160,14 @@ fn test_bind_curl() {
     let output = curl_request(instance, debug);
 
     assert_eq!(output, true);
+}
+
+#[test]
+fn test_maid_av_pass() {
+    let debug = true;
+    let instance = "2dd12ba5ec9cefe83d3d75f694fcb042e38bfa2497f7faab35925f502aa01200";
+
+    // search_malware_hash(instance, debug)
+    let exit = search_malware_pattern(instance, debug);
+    assert_eq!(exit, true);
 }

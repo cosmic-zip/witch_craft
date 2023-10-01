@@ -47,7 +47,7 @@ pub fn shell_core(system_input: Vec<String>) -> bool {
 
         _ => {
             system_text(
-                "[USER ERROR] :: Invalid user input at → shell_core",
+                "[USER_ERROR] :: Invalid user input at → shell_core",
                 "yellow",
             );
             return false;

@@ -1,13 +1,43 @@
 use crate::core::utils::*;
+use crate::meow::meow::read_meow;
 use crate::modules::lookup::lookup_structs::*;
 
 pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
-    let cmd: String = format!("grep {} {}", mac_address.vendor_mac, mac_address.list_path);
-    if debug == true {
-        system_text(&cmd, "yellow");
+    let mut file: String;
+
+    if mac_address.list_path == "default" {
+        let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
+        file = format!("{}{}", config["GENRAL_BASE_PATH"], config["MACADDR"]);
+    } else {
+        file = mac_address.list_path.to_string();
     }
+
+    if debug == true {
+        println!(
+            "[DEBUG] :: pattern: {} || path: {}",
+            mac_address.vendor_mac, file,
+        );
+    }
+
     system_text("[LOOKUP_MAC_ADDRESS] :: Lookup mac address", "green");
-    system_command_exec(&cmd, debug)
+
+    match find_all_matching_lines(&file, mac_address.vendor_mac) {
+        Ok(result) => {
+            if !result.is_empty() {
+                for line in result {
+                    println!("🚧 {}", line);
+                }
+                return true;
+            } else {
+                println!("🔴 [WARNING] :: Pattern not found in any line.");
+                return false;
+            }
+        }
+        Err(err) => {
+            eprintln!("🔴 [ERROR] :: {}", err);
+            return false;
+        }
+    }
 }
 
 pub fn lookup_reverse_engineering(sample: LookupGenericPathOpType, debug: bool) -> bool {

@@ -2,8 +2,15 @@ use crate::core::report::*;
 use crate::core::structs::{CommandCall, CommandResult};
 use chrono;
 use colored::*;
+use csv::ReaderBuilder;
 use std::env;
+use std::error::Error as Err;
+use std::error::Error as StdError;
+use std::fmt::Display;
+use std::fs::File;
 use std::io::Error;
+use std::io::{self, BufRead};
+use std::path::Path;
 use std::process::{Command, Output};
 
 pub fn system_command_call(cmd: CommandCall) -> Result<CommandResult, Error> {
@@ -174,4 +181,63 @@ pub fn gsv_debug(debug: String) -> bool {
     } else {
         return false;
     }
+}
+
+pub fn search_csv(file_path: &str, search_term: &str) -> Result<Vec<String>, Box<dyn Err>> {
+    let file = File::open(file_path)?;
+    let mut reader = ReaderBuilder::new().has_headers(true).from_reader(file);
+
+    let mut matching_rows = Vec::new();
+
+    for result in reader.records() {
+        let record = result?;
+        for field in record.iter() {
+            if field.contains(search_term) {
+                matching_rows.push(record.as_slice().to_string());
+                // println!("@{:?}", matching_rows[0]);
+                break;
+            }
+        }
+    }
+
+    Ok(matching_rows)
+}
+
+pub fn find_all_matching_lines(
+    file_path: &str,
+    pattern: &str,
+) -> Result<Vec<String>, Box<dyn StdError>> {
+    let file = File::open(file_path)?;
+    let mut matching_lines = Vec::new();
+
+    for (line_num, line) in io::BufReader::new(file).lines().enumerate() {
+        let line = line?;
+        if line.contains(pattern) {
+            matching_lines.push(format!("Line {}: {}", line_num + 1, line));
+        }
+    }
+
+    match write_report(
+        format!(
+            "find_all_matching_lines pattern: {}, file_path : {}",
+            pattern, file_path
+        ),
+        "1".to_string(),
+        format!("{:?}", matching_lines),
+        "None".to_string(),
+        false,
+    ) {
+        Ok(()) => {
+            // system_text("[REPORT] :: Report created", "green");
+        }
+
+        Err(e) => {
+            eprintln!(
+                "[REPORT_ERROR] :: While executing command at → system_command_call: {}",
+                e
+            );
+        }
+    }
+
+    Ok(matching_lines)
 }
