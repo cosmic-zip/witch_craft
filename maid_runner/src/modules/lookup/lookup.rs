@@ -12,12 +12,32 @@ pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
         file = mac_address.list_path.to_string();
     }
 
-    let cmd: String = format!("grep {} {}", mac_address.vendor_mac, file);
     if debug == true {
-        system_text(&cmd, "yellow");
+        println!(
+            "[DEBUG] :: pattern: {} || path: {}",
+            mac_address.vendor_mac, file,
+        );
     }
+
     system_text("[LOOKUP_MAC_ADDRESS] :: Lookup mac address", "green");
-    system_command_exec(&cmd, debug)
+
+    match find_all_matching_lines(&file, mac_address.vendor_mac) {
+        Ok(result) => {
+            if !result.is_empty() {
+                for line in result {
+                    println!("🚧 {}", line);
+                }
+                return true;
+            } else {
+                println!("🔴 [WARNING] :: Pattern not found in any line.");
+                return false;
+            }
+        }
+        Err(err) => {
+            eprintln!("🔴 [ERROR] :: {}", err);
+            return false;
+        }
+    }
 }
 
 pub fn lookup_reverse_engineering(sample: LookupGenericPathOpType, debug: bool) -> bool {
