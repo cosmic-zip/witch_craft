@@ -33,3 +33,28 @@
             }
         }
     }
+
+### Pattern maching 
+
+    pub fn find_all_matching_lines_usage() {
+        let file_path = "path_to_your_file.txt"; // Replace with the path to your file
+        let pattern = "your_pattern"; // Replace with the pattern you want to search
+
+        match find_all_matching_lines(malware_db, pattern) {
+            Ok(result) => {
+                if !result.is_empty() {
+                    for line in result {
+                        println!("🚧 {}", line);
+                    }
+                    true
+                } else {
+                    println!("🔴 [WARNING] :: Pattern not found in any line.");
+                    false
+                }
+            }
+            Err(err) => {
+                eprintln!("🔴 [ERROR] :: {}", err);
+                false
+            }
+        }
+    }
