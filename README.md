@@ -8,129 +8,122 @@ Maid Runner is a versatile task automation software designed to serve as the fou
 
 *September 12, 2023, The codebase has undergone substantial transformations over time, making it distinctly different from its earlier iterations. As a result, all previous versions have been decisively discarded, giving rise to this new and optimized rendition.*
 
-## HELP
+## MAIDRUNNER
 
-@general 
+### NAME
+MaidRunner - Maid Runner is a versatile task automation software designed to serve as the foundation for various cyber security modules.
 
-	help unix_network           Help page for unix network       
-	help unix_sys_info          Help page for unix system information   
-	help unix_utility           Help page for unix common commands      
-	help unix_command           Help page for unix useful unix commands      
-	help unix_misc              Help page for unix less common unix command         
-	help unix_files             Help page for unix important files and config files       
-	help unix_folders           Help page for unix file system structure      
-	help windows_files          Help page for windows important files and config files     
-	help windows_reg            Help page for windows common registry entry points       
-	help windows_cmd            Help page for windows CMD commands       
-	help windows_powershell     Help page for windows powershell commands
-	help maid                   A cute maid ASCII art (⸝⸝⸝╸w╺⸝⸝⸝)
+### SYNOPSIS
+	maidrunner module_name [--key value] [-k value] [--debug true|false] [--path file] 
 
-@core
-	
-	--remove_metadata           Remove metadata from a picture
-		
-		--debug [optional]
-			true
-			none
-		--path                  Image file path
-			./file/image
-	--web_downloader            Download an web page an all relatable files 
-		
-		--debug [optional]      Turn debug on, was an optional flag isn't needed
-			true
-			none
-		--url                   Target web page URL with www
-			www.example.com
-	
-@lookup
-	
+### DESCRIPTION
+    This  manual  page  describes the  MaidRunner,  a versatile task automation software 
+    designed to serve as the foundation for various cyber security modules. It provides 
+    capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), 
+    scanning, backup and copying, intrusion testing of applications and APIs, and more.
+
+### OPTIONS
+
+### CORE    
+    core    Core describes advanced base functions for one or more secondary function, 
+            the core module permit access and use of the this functions by the user
+
+    --remove_metadata           Remove metadata from a picture 
+    --path                      Image file path ./folder/image
+            
+    --web_downloader            Download an web page an all relatable files 
+    --url                       Target web page URL with www.example.com
+    --debug                     Optional value for debug can be true or false
+
+### LOOKUP
+    lookup  Lookup contains automations for the lookup proccess in cyber security
+
     --mac_address key value     Lookup mac vendor based on first 3 pairs
-		
-		--debug [optional]      Turn debug on, was an optional flag isn't needed
-			true
-			none
-		--mac                   MAC string with 00:00 or 00:00:00
-			00:00:00
-			01:23
-		--path                  MAC lookup file (see file/general/macaddr_lockup.ascii)
-			./file/mac_list
+    --mac                       MAC string like: 00:00 or 00:00:00
+    --path                      MAC lookup file maid_list/general/macaddr_lockup.ascii
+    --debug                     Optional value for debug can be true or false
 
-	--lookup_reverse_engineering	Lookup basic reverse engineering
-		--debug [optional]      Turn debug on, was an optional flag isn't needed
-			true
-			none
-		--sample                File to be analyzed
-			./file/sample
-		--type                  Type of analysis
-			s                   	search for string
-			h                   	search for hexadecimals
-			b                   	search for binary
-			r                   	todo
-			l                   	search for linked library
-	
-@scanner 
-	
-    --web_scanner key value     Scanning domain and ip's 
-		--target                Set target ip or dns
-			172.16.0.1
-			example.com
+    --lookup_reverse_engineering    Lookup basic reverse engineering
+    --sample                        File to be analyzed
+    --type                          Type of analysis:
+            ┌────────────────┬──────────────────────────────────────────┐
+            |     TYPE       |       DESCRIPTION                        |
+            ├────────────────┼──────────────────────────────────────────┤
+            |       s        | search for string                        |
+            |       h        | search for hexadecimals                  |
+            |       b        | search for binary                        |
+            |       r        | todo                                     |
+            |       l        | search for linked library                |
+            └────────────────┴──────────────────────────────────────────┘
+    --debug                     Optional value for debug can be true or false
 
-        --type                  Select and scanning type:
-            ip                      basic ping
-            whois                   basic whois
-            routes                  basic traceroute
-            dns                     basic dns enumeration
-            nmap_tcp                basic nmap TCP scanner
-            nmap_udp                basic nmap UDP scanner
-            sub_domains             DNS sub domains scanner
-            sub_directory           Web page sub directory scanner
-            build_with              Scan common frameworks on a page
-            c_api_url               Scan common api urls
-            c_web_url               Scan common web page urls
+### WEB SCANNER
 
-        --path [optional]       File path need by:
-                                    sub_domains
-                                    sub_directory
-                                    build_with
-                                    c_api_url
-                                    c_web_url
-            ./file/generic_list File path
+    scanner Scanner contains automations for the web scanning proccess thats include
+            namp, dirbuster, dnsenum, etc.
 
-        --debug [optional]      Turn debug on, was an optional flag isn't needed
-            true
-		    none
+    --web_scanner               Scanning domain and ip's 
+    --target                    Set target ip or dns can be 172.16.0.1 or example.com
+    --type                      Select and scanning type:
 
-@bcurl 
+            ┌────────────────────────┬──────────────────────────────────┐
+            |       TYPE             |       DESCRIPTION                |
+            ├────────────────────────┼──────────────────────────────────┤
+            │ ip                     │ Basic ping                       │
+            │ whois                  │ Basic whois                      │
+            │ routes                 │ Basic traceroute                 │
+            │ dns                    │ Basic dns enumeration            │
+            │ nmap_tcp               │ Basic nmap TCP scanner           │
+            │ nmap_udp               │ Basic nmap UDP scanner           │
+            │ sub_domains            │ DNS sub domains scanner          │
+            │ sub_directory          │ Web page sub directory scanner   │
+            │ build_with             │ Scan common frameworks on a page │
+            │ c_api_url              │ Scan common api urls             │
+            │ c_web_url              │ Scan common web page urls        │
+            └────────────────────────┴──────────────────────────────────┘
 
-	--curl_bind					Binds for curl command
-		--method				Set http method
-				get
-				post
-				put
-				patch
-				delete
-				head
-				options
-				connect
-				trace
-		--auth_type				Set the authentication type
-				basic
-				bearer
-				api_key
-				ntlm	
-		--auth_token			Set the authentication token or user:password
-		--url					Set target url
-		--ctn_type				Set content type
-				json
-				xml
-				form_data
-				text
-				multi_part_form_data
-		--data					Set data (if needed) json/formData/xml/text/multi_part_form_data
+    --path                      File path need by: sub_domains, sub_directory, build_with,
+                                c_api_url, c_web_url, must be: ./folder/list.ascii, check
+                                maid_lists.
+    --debug                     Optional value for debug can be true or false.
 
+### BCURL
 
-	--header					Show http header
-	--status_code				Show status code from a GET request  
+    bcurl                       Rust binding for the curl command.
+
+    --curl_bind                 Binds for curl command.
+    --method                    Allow http methods: get, post, put, patch, delete, head, 
+                                options, connect, trace.
+    --auth_type                 Setup the authentication type: basic, bearer, api_key, 
+                                ntlm.   
+    --auth_token                Setup the authentication token or user:password.
+    --url                       Setup target url, they must be: www.example.com.
+    --ctn_type                  Setup content type, they need to be one of this: 
+                                json, xml, form_data, text, multi_part_form_data.
+    --data                      Setup data, if needed, but ony in the fallow formats: 
+                                json/formData/xml/text/multi_part_form_data.
+    --header                    Show http response header.
+    --status_code               Show status code from a GET request (useful for is_alive 
+                                tests).
+
+### WARNINGS
+    WARNING: This Tool Is For Cybersecurity Use May Have Legal Implications
+    As you use this cybersecurity tool, it is important to be aware of the potential 
+    legal implications. Depending on how the tool is used, there may be consequences 
+    under various laws and regulations.
+
+### ENVIRONMENT
+    To ensure a smooth installation process, make sure your Linux system has all necessary 
+    dependencies, including packages and files.    
+
+### FILES
+    Attention! The 'maid_list' folder must be located within '/var/maid/' directory, 
+    and the current user must have read/write permissions to access it. Failure to 
+    meet these requirements may result in unexpected behavior or errors during the 
+    cleaning process. 
+
+### AUTHORS
+    Written by Cassandra Lovelace (th3maid)
 
 ### License
 
