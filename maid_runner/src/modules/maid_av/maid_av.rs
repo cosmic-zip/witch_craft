@@ -1,8 +1,7 @@
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
 
-pub fn search_malware_hash(search_term: &str, debug: bool) -> bool{
-
+pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
     let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
     let malware_db = &format!("{}{}", config["GENRAL_BASE_PATH"], config["MALWARE_HASH"]);
 
@@ -18,7 +17,10 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool{
             if !matches.is_empty() {
                 println!("Matching Rows:");
                 for row in matches {
-                    println!("💀 [MALWARE_SCANNING] :: Warning malware was being found :: {}", row);
+                    println!(
+                        "💀 [MALWARE_SCANNING] :: Warning malware was being found :: {}",
+                        row
+                    );
                 }
                 return true;
             } else {
@@ -31,28 +33,28 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool{
             return false;
         }
     }
-
 }
 
 pub fn search_malware_pattern(pattern: &str, debug: bool) -> bool {
     let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
     let malware_db = &format!("{}{}", config["GENRAL_BASE_PATH"], config["MALWARE_HASH"]);
     let cmd: String = format!("grep {} {}", pattern, malware_db);
-    
+
     if debug == true {
         system_text(&cmd, "yellow");
     }
-    
-    system_text("🔶 [MALWARE_PATTERN] :: Searching for malware pattern", "green");
+
+    system_text(
+        "🔶 [MALWARE_PATTERN] :: Searching for malware pattern",
+        "green",
+    );
     system_command_exec(&cmd, debug)
 }
-
 
 pub fn shell_maid_av(system_input: Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
-
         "--scanner" => {
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let instance = &gsv(system_input.clone(), "--hash");
@@ -66,7 +68,7 @@ pub fn shell_maid_av(system_input: Vec<String>) -> bool {
 
             search_malware_pattern(instance, debug)
         }
-        
+
         _ => {
             system_text(
                 "🔴 [USER ERROR] :: Invalid user input at → shell_maid_av",
@@ -74,7 +76,5 @@ pub fn shell_maid_av(system_input: Vec<String>) -> bool {
             );
             return false;
         }
-
     }
-
 }

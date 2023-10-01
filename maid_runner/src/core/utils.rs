@@ -2,14 +2,14 @@ use crate::core::report::*;
 use crate::core::structs::{CommandCall, CommandResult};
 use chrono;
 use colored::*;
-use std::env;
-use std::io::Error;
-use std::process::{Command, Output};
 use csv::ReaderBuilder;
-use std::fs::File;
+use std::env;
 use std::error::Error as Err;
-use std::path::Path;
 use std::fmt::Display;
+use std::fs::File;
+use std::io::Error;
+use std::path::Path;
+use std::process::{Command, Output};
 
 pub fn system_command_call(cmd: CommandCall) -> Result<CommandResult, Error> {
     let output: Output = Command::new(cmd.command).args(cmd.args).output()?;
@@ -199,5 +199,6 @@ pub fn search_csv(file_path: &str, search_term: &str) -> Result<Vec<String>, Box
     }
 
     Ok(matching_rows)
-    
 }
+
+pub fn standart_errors(code: u32) {}

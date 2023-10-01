@@ -158,15 +158,12 @@ fn test_bind_curl() {
     assert_eq!(output, true);
 }
 
-
 #[test]
 fn test_maid_av_pass() {
-
     let debug = true;
     let instance = "2dd12ba5ec9cefe83d3d75f694fcb042e38bfa2497f7faab35925f502aa01200";
 
     // search_malware_hash(instance, debug)
     let exit = search_malware_pattern(instance, debug);
     assert_eq!(exit, true);
-
 }

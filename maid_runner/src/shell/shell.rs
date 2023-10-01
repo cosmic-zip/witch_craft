@@ -2,10 +2,10 @@ use crate::core::{core::*, manual::*, utils::*};
 
 use crate::modules::{
     curl::curl::*,
-    // attack::attack::*,
-    maid_av::maid_av::*,
     // botnet::botnet::*,
     lookup::lookup::*,
+    // attack::attack::*,
+    maid_av::maid_av::*,
     // post_attack::post_attack::*,
     scanner::scanner::*,
 };
