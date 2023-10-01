@@ -192,13 +192,12 @@ pub fn search_csv(file_path: &str, search_term: &str) -> Result<Vec<String>, Box
         for field in record.iter() {
             if field.contains(search_term) {
                 matching_rows.push(record.as_slice().to_string());
-                println!("@{:?}", matching_rows[0]);
+                // println!("@{:?}", matching_rows[0]);
                 break;
             }
         }
     }
 
-    
-
     Ok(matching_rows)
+    
 }
