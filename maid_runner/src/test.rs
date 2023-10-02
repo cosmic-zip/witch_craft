@@ -181,5 +181,12 @@ fn test_calculate_sha256_hash() {
         Err(err) => eprintln!("{}", err),
     }
     
+}
+
+#[test]
+fn test_active_malware_scanner() {
+
+    let exit = active_malware_scanner("./", true);
+    assert_eq!(exit, true);
 
 }
