@@ -1,5 +1,8 @@
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
+use sha256::{digest, try_digest};
+use std::io;
+use std::path::Path;
 
 pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
     let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
@@ -63,11 +66,25 @@ pub fn search_malware_pattern(pattern: &str, debug: bool) -> bool {
     }
 }
 
+pub fn calculate_sha256_hash(file_path: &str, debug: bool) -> Result<String, io::Error> {
+
+    let input = Path::new(file_path);
+    let hash = try_digest(input).unwrap();
+
+    if debug == true {
+        println!("[DEBUG] :: sha256 :{}", hash);
+        println!("[DEBUG] :: file_path :{}", file_path);
+    }
+
+    Ok(hash)
+}
+
+
 pub fn shell_maid_av(system_input: Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
-        "--scanner" => {
+        "--hash" => {
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let instance = &gsv(system_input.clone(), "--hash");
 
