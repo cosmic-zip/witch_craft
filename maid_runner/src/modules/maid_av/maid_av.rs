@@ -55,7 +55,7 @@ pub fn search_malware_pattern(pattern: &str, debug: bool) -> bool {
                 }
                 true
             } else {
-                println!("🔴 [WARNING] :: Pattern not found in any line.");
+                println!("⚪ [WARNING] :: Pattern not found in any line.");
                 false
             }
         }
@@ -102,9 +102,16 @@ pub fn active_malware_scanner(derectory: &str, debug: bool) -> bool {
 
     match list_files_and_folders(derectory) {
         Ok(items) => {
-            println!("Files and folders in '{}':", derectory);
             for item in items {
-                println!("{}", item.display());
+                match calculate_sha256_hash("/bin/yes", true) {
+                    Ok(result) => {
+                        return search_malware_pattern(&result, debug);
+                    }
+                    Err(err) => {
+                        eprintln!("{}", err);
+                        return false;
+                    }
+                }
             }
             return true;
         }
