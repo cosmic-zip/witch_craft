@@ -171,3 +171,15 @@ fn test_maid_av_pass() {
     let exit = search_malware_pattern(instance, debug);
     assert_eq!(exit, true);
 }
+
+#[test]
+fn test_calculate_sha256_hash() {
+
+    let expected = "272eaffd682b22746d1eb86a1d86ab2e9fb7f49dd6985a652ac41932d45e10dc";
+    match calculate_sha256_hash("/bin/yes", true) {
+        Ok(result) => assert_eq!(result, expected),
+        Err(err) => eprintln!("{}", err),
+    }
+    
+
+}
