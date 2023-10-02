@@ -1,87 +1,80 @@
-# Welcome to the Maid Runner Project!
+# MaidRunner Open Source Project Contribution Guidelines
 
-    Thank you for considering contributing to the Maid Runner 
-    project! We appreciate your interest in improving our task 
-    automation software designed for cyber security modules. Your 
-    contributions can have a significant impact on enhancing the 
-    capabilities and reliability of our tool.
+Welcome to the MaidRunner open source project! We're excited to have you contribute to our versatile task automation software designed to serve as the foundation for various cybersecurity modules. MaidRunner provides capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion testing of applications and APIs, and more.
 
-    Whether you are a seasoned developer or new to open source, 
-    we value and welcome your contributions. This project 
-    provides a collaborative environment where you can 
-    contribute in various ways, such as adding new features, 
-    fixing bugs, improving documentation, and more.
+To ensure a smooth and collaborative development process, please follow the guidelines outlined below when contributing to MaidRunner.
 
-    To ensure a smooth and efficient collaboration, we have 
-    provided guidelines and instructions in this repository's 
-    contribute file. These guidelines will help you get started 
-    with the project and understand the contribution process. 
-    Please take the time to read through the guidelines carefully 
-    before making your first contribution.
+### Contribution Workflow
 
-    If you encounter any issues or have any questions while 
-    contributing, don't hesitate to reach out to the project 
-    maintainers or the community. We are here to support and 
-    assist you throughout the process.
+MaidRunner follows a Continuous Integration/Continuous Deployment (CI/CD) model, replacing the traditional Git Flow model. Our development process is centered around creating feature branches, automated testing, and merging changes into the master branch.
 
-    Once again, thank you for your interest in Maid Runner. 
-    We look forward to your valuable contributions and 
-    collaboration to make this project even better!
+### Branch Strategy
 
-    Happy coding!
+- Create a new branch for your feature or bug fix based on the master branch.
 
-    The Maid Runner Team
+  - Branch naming convention: feature/feature_name or bugfix/bug_description
 
-## To create a GitHub contribution file with Git-Flow and Rust standards, you can follow these steps:
+- Develop your feature or fix within your branch.
 
-Create a new Git repository on GitHub for your Rust project.
-Clone the repository to your local machine using Git.
+- Ensure that your code changes are accompanied by appropriate unit tests and documentation.
 
-```bash
-    git clone https://github.com/th3maid/MaidRunner
+- Commit your changes with clear, concise commit messages following our commit message conventions.
+
+- Push your feature branch to the remote repository.
+
+- Create a pull request (PR) targeting the master branch.
+        Ensure that the PR description includes details about the changes made and the problem they solve.
+
+- The CI/CD pipeline will automatically run tests and checks on your PR.
+
+- Address any feedback or issues raised in the PR review.
+
+- Once the PR passes all tests and reviews, it will be merged into the master branch by the project maintainers.
+
+### Commit Message Conventions
+
+*When making commits, please follow these guidelines for clear and informative commit messages:*
+
+- Use the present tense: "Add feature" not "Added feature" or "Adding feature."
+- Use imperative mood: "Fix bug" not "Fixes bug" or "Fixed bug."
+
+Example commit messages:
+
+- "Update documentation for new feature"
+- "Fix issue with file validation in backup module"
+- "Add unit tests for API scanning functionality"
+
+### Getting Started
+
+To get started with contributing to MaidRunner, follow these steps:
+
+1. Fork the MaidRunner repository on GitHub.
+2. Clone your forked repository to your local machine:
+
+``` bash
+git clone <https://github.com/th3maid/MaidRunner.git>
 ```
 
+Create a new branch for your contribution:
 
-## Initialize git-llow in your repository. Git-Flow is a branching model that provides a structure for managing Git branches.
-    
-```bash
-git flow init
+``` bash
+git checkout -b feature/your-feature
 ```
 
-## Create a new feature branch using Git-Flow for the code changes you want to make.
+Make your changes and commit them following the commit message conventions.
 
-```bash
-git flow feature start my-feature
+Push your branch to your GitHub fork:
+
+``` bash
+git push origin feature/your-feature
 ```
 
-Make the necessary code changes in Rust according to the Rust standards.
+Create a pull request to the master branch of the main MaidRunner repository.
 
-## Commit your changes and push the feature branch to the remote repository.
+### Code of Conduct
 
-```bash
-git commit -m "Add new feature"
-git push origin my-feature
-```
-Once your feature is complete, finish the feature branch and merge it into the 
-develop branch using Git-Flow.
+Please adhere to our Code of Conduct when participating in the MaidRunner community. We promote a welcoming and inclusive environment for all contributors.
 
-```bash
-    git flow feature finish my-feature
-```
+Thank you for contributing to MaidRunner.
 
-Push the changes to the remote repository.
-       
-```bash
-git push origin develop
-```
-
-## Finally, create a pull request on GitHub from the develop branch to the main branch.
-    
-
-1. Click on "New pull request" on your repository's GitHub page Choose
-2. "develop" as the "base" branch and "master" as the "compare" branch
-3. Give your pull request a title and description Click "Create pull request"
-
-
-
-
+Note: This Contribution Guidelines document is subject to change, so make sure to check it regularly for updates.
