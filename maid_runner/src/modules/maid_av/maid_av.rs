@@ -1,8 +1,8 @@
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
 use sha256::{digest, try_digest};
-use std::io;
-use std::path::Path;
+use std::path::{Path, PathBuf};
+use std::{fs, io};
 
 pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
     let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
@@ -67,7 +67,6 @@ pub fn search_malware_pattern(pattern: &str, debug: bool) -> bool {
 }
 
 pub fn calculate_sha256_hash(file_path: &str, debug: bool) -> Result<String, io::Error> {
-
     let input = Path::new(file_path);
     let hash = try_digest(input).unwrap();
 
@@ -79,6 +78,42 @@ pub fn calculate_sha256_hash(file_path: &str, debug: bool) -> Result<String, io:
     Ok(hash)
 }
 
+pub fn list_files_and_folders(dir_path: &str) -> Result<Vec<PathBuf>, std::io::Error> {
+    let mut items = Vec::new();
+
+    for entry in fs::read_dir(dir_path)? {
+        let entry = entry?;
+        let path = entry.path();
+        items.push(path.clone());
+
+        if path.is_dir() {
+            let sub_items = list_files_and_folders(path.to_str().unwrap())?;
+            items.extend(sub_items);
+        }
+    }
+
+    Ok(items)
+}
+
+pub fn active_malware_scanner(derectory: &str, debug: bool) -> bool {
+    if debug == true {
+        println!("{}", derectory);
+    }
+
+    match list_files_and_folders(derectory) {
+        Ok(items) => {
+            println!("Files and folders in '{}':", derectory);
+            for item in items {
+                println!("{}", item.display());
+            }
+            return true;
+        }
+        Err(e) => {
+            eprintln!("Error: {}", e);
+            return false;
+        }
+    }
+}
 
 pub fn shell_maid_av(system_input: Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
@@ -96,6 +131,13 @@ pub fn shell_maid_av(system_input: Vec<String>) -> bool {
             let instance = &gsv(system_input.clone(), "--pattern");
 
             search_malware_pattern(instance, debug)
+        }
+
+        "--scanner" => {
+            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let instance = &gsv(system_input.clone(), "--directory");
+
+            active_malware_scanner(instance, debug)
         }
 
         _ => {
