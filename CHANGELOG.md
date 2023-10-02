@@ -170,18 +170,18 @@ Version 0.8.0
 
 Date: dom 01 out 2023 16:46:59 -03
 
-  → Refactored code base with Rustfmt and LLama2
-  → Refactored imports for better organization and readability
-  → Added Maid antivirus support
-  → Added CSV support
-  → Added support for error codes
-  → Added support MAC lookup default file path
-  → Added new pattern matching backend
-  → Documentation updated with sample source code included
-  → Manual pages updated
-  → Unit tests updated
-  → Docs and images moved to subfolders for easier navigation
-  → Removed unused debugs
-  → Removed warnings about unused variables and imports
-  → Documentation split into separate files inside docs
-  → Fixed unit tests hard coded file path
+	→ Refactored code base with Rustfmt and LLama2
+	→ Refactored imports for better organization and readability
+	→ Added Maid antivirus support
+	→ Added CSV support
+	→ Added support for error codes
+	→ Added support MAC lookup default file path
+	→ Added new pattern matching backend
+	→ Documentation updated with sample source code included
+	→ Manual pages updated
+	→ Unit tests updated
+	→ Docs and images moved to subfolders for easier navigation
+	→ Removed unused debugs
+	→ Removed warnings about unused variables and imports
+	→ Documentation split into separate files inside docs
+	→ Fixed unit tests hard coded file path
