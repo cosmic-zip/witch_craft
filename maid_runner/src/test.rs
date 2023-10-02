@@ -35,7 +35,6 @@ fn test_system_command_deep_exec() {
 
 #[test]
 fn test_lookup_mac_addr() {
-
     let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
     let file = &format!("{}{}", config["GENRAL_BASE_PATH"], config["MACADDR"]);
 
@@ -174,19 +173,15 @@ fn test_maid_av_pass() {
 
 #[test]
 fn test_calculate_sha256_hash() {
-
     let expected = "272eaffd682b22746d1eb86a1d86ab2e9fb7f49dd6985a652ac41932d45e10dc";
     match calculate_sha256_hash("/bin/yes", true) {
         Ok(result) => assert_eq!(result, expected),
         Err(err) => eprintln!("{}", err),
     }
-    
 }
 
 #[test]
 fn test_active_malware_scanner() {
-
     let exit = active_malware_scanner("./", true);
     assert_eq!(exit, true);
-
 }
