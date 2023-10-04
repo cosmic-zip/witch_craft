@@ -1,4 +1,4 @@
-![banner](docs/images/banner.png)
+![banner](docs/images/banner.webp)
 
 # Maid Runner
 
