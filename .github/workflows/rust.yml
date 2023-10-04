@@ -2,9 +2,11 @@ name: Rust
 
 on:
   push:
-    branches: [ "develop", "build" ]
+    branches: [ "master", "develop", "build" ]
   pull_request:
     branches: [ "master", "develop", "build" ]
+  schedule:
+    - cron: '0 0 * * *'  # This schedule runs at midnight every day
 
 env:
   CARGO_TERM_COLOR: always
@@ -16,7 +18,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install Deps
+    - name: Install Depedencies
       run: |
           sudo mkdir /var/maid
           sudo cp maid_lists/ /var/maid -R
