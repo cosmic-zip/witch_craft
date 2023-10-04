@@ -1,5 +1,8 @@
 # MaidRunner Open Source Project Contribution Guidelines
 
+
+![banner](docs/images/trunk1b.png)
+
 Welcome to the MaidRunner open source project! We're excited to have you contribute to our versatile task automation software designed to serve as the foundation for various cybersecurity modules. MaidRunner provides capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion testing of applications and APIs, and more.
 
 To ensure a smooth and collaborative development process, please follow the guidelines outlined below when contributing to MaidRunner.
@@ -7,6 +10,29 @@ To ensure a smooth and collaborative development process, please follow the guid
 ### Contribution Workflow
 
 MaidRunner follows a Continuous Integration/Continuous Deployment (CI/CD) model, replacing the traditional Git Flow model. Our development process is centered around creating feature branches, automated testing, and merging changes into the master branch.
+
+### Trunk-Based Development
+
+This project utilizes a Trunk-Based Development (TBD) approach for its software development lifecycle. Trunk-Based Development is a software development methodology that emphasizes continuous integration and collaboration among developers. Here's a brief overview of how we implement TBD in this project:
+Branching Strategy
+
+  ***In Trunk-Based Development, we maintain a single long-lived branch called the "trunk" or "master" branch. All developers work directly on this branch for most of their coding tasks.***
+
+We greatly appreciate your dedication and contributions to our project. To ensure that we maintain the highest standards of development practices and align with our chosen methodology, Trunk-Based Development (TBD), we kindly request that you take a moment to review the content available on trunkbaseddevelopment.com before submitting any changes.
+
+Here's why this is important:
+
+- Alignment with Best Practices: Trunk-Based Development (TBD) is a cornerstone of our development process. The website provides comprehensive insights into TBD principles, benefits, and practical implementations that can greatly benefit your contributions.
+
+- Efficient Collaboration: Understanding TBD principles helps us work together more efficiently, reducing the likelihood of merge conflicts and ensuring a smoother development process.
+
+- Quality Assurance: By familiarizing yourself with TBD, you can ensure that your changes align with the methodology's principles, leading to higher code quality and better integration into the main branch.
+
+- Reduced Disruptions: Proper adherence to TBD minimizes disruptions to the main branch, allowing us to maintain a stable and deployable codebase at all times.
+
+We believe that taking the time to review the resources available on trunkbaseddevelopment.com will enhance the quality of your contributions and ultimately benefit the entire project.
+
+Thank you for your commitment to our project's success. If you have any questions or need further clarification on TBD or its implementation in our project, please feel free to reach out to us.
 
 ### Branch Strategy
 
