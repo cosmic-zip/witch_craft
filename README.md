@@ -108,6 +108,15 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
     --status_code               Show status code from a GET request (useful for is_alive 
                                 tests).
 
+### MAID ANTIVIRUS
+
+    maid_av                     Maid_av is a basic malware detection tool based on hashes. 
+
+    --hash                      Hash sha256, return the hash if an malware are dectec  
+    --pattern                   Search on a database for hash md5, sha256, name, extencion 
+    --scanner                   Automaticly scanner all files and folders inside an base path
+                                like: /path/ or ./path
+
 ### WARNINGS
     WARNING: This Tool Is For Cybersecurity Use May Have Legal Implications
     As you use this cybersecurity tool, it is important to be aware of the potential 

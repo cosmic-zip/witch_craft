@@ -1,22 +1,22 @@
 MAIDRUNNER
 
 NAME
-    MaidRunner - Maid Runner is a versatile task automation software designed to serve as 
+    MaidRunner - Maid Runner is a versatile task automation software designed to serve as
     the foundation for various cyber security modules.
 
 SYNOPSIS
-    maidrunner module_name [--key value] [-k value] [--debug true|false] [--path file] 
+    maidrunner module_name [--key value] [-k value] [--debug true|false] [--path file]
 
 DESCRIPTION
-    This  manual  page  describes the  MaidRunner,  a versatile task automation software 
-    designed to serve as the foundation for various cyber security modules. It provides 
-    capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), 
+    This  manual  page  describes the  MaidRunner,  a versatile task automation software
+    designed to serve as the foundation for various cyber security modules. It provides
+    capabilities for tasks such as forensic research, OSINT (Open Source Intelligence),
     scanning, backup and copying, intrusion testing of applications and APIs, and more.
 
 OPTIONS
 
-CORE    
-    core    Core describes advanced base functions for one or more secondary function, 
+CORE
+    core    Core describes advanced base functions for one or more secondary function,
             the core module permit access and use of the this functions by the user
 
     --remove_metadata           Remove metadata from a picture 
@@ -97,22 +97,30 @@ BCURL
     --status_code               Show status code from a GET request (useful for is_alive 
                                 tests).
 
+MAID_AV
+
+    maid_av                     Maid_av is a basic malware detection tool based on hashes. 
+
+    --hash                      Hash sha256, return the hash if an malware are dectec  
+    --pattern                   Search on a database for hash md5, sha256, name, extencion 
+    --scanner                   Automaticly scanner all files and folders inside an base path
+                                like: /path/ or ./path
+
 WARNINGS
     WARNING: This Tool Is For Cybersecurity Use May Have Legal Implications
-    As you use this cybersecurity tool, it is important to be aware of the potential 
-    legal implications. Depending on how the tool is used, there may be consequences 
+    As you use this cybersecurity tool, it is important to be aware of the potential
+    legal implications. Depending on how the tool is used, there may be consequences
     under various laws and regulations.
 
 ENVIRONMENT
-    To ensure a smooth installation process, make sure your Linux system has all 
-    necessary dependencies, including packages and files.     
+    To ensure a smooth installation process, make sure your Linux system has all
+    necessary dependencies, including packages and files.
 
 FILES
-    Attention! The 'maid_list' folder must be located within '/var/maid/' directory, 
-    and the current user must have read/write permissions to access it. Failure to 
-    meet these requirements may result in unexpected behavior or errors during the 
-    cleaning process. 
+    Attention! The 'maid_list' folder must be located within '/var/maid/' directory,
+    and the current user must have read/write permissions to access it. Failure to
+    meet these requirements may result in unexpected behavior or errors during the
+    cleaning process.
 
 AUTHORS
     Written by Cassandra Lovelace (th3maid)
-
