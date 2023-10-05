@@ -122,5 +122,3 @@ FILES
     meet these requirements may result in unexpected behavior or errors during the
     cleaning process.
 
-AUTHORS
-    Written by Cassandra Lovelace (th3maid)
