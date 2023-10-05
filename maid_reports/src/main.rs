@@ -1,45 +1,22 @@
 mod meow;
-use crate::meow::meow::*;
+mod api;
 
-use warp::{Filter, Rejection, Reply};
-use std::io::{BufRead, BufReader};
-use serde::Serialize;
-use serde_json::*;
-use std::fs::File;
-
-#[derive(Serialize)]
-struct JsonLine {
-    content: String,
-}
+use crate::api::api::*;
+use warp::Filter;
 
 #[tokio::main]
 async fn main() {
-
-    let report = warp::path("report")
+    // Define a filter that matches a GET request to the /jsonl endpoint.
+    let jsonl_route = warp::path!("jsonl")
         .and(warp::get())
         .map(|| {
-            // Path to report file
-            let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
-            let path = format!("{}{}", config["REPORT_BASE_PATH"], config["REPORT_LOG"]);
-
-            // Read lines from a file and convert them to JSON lines
-            let file = File::open(path).expect("Failed to open file");
-            let reader = BufReader::new(file);
-            let json_lines: Vec<JsonLine> = reader
-                .lines()
-                .filter_map(|line| line.ok())
-                .map(|line| JsonLine { content: line })
-                .collect();
-
-            // Serialize the JSON lines to a string
-            let json_response = serde_json::to_string(&json_lines).expect("Failed to serialize");
-
-            // Create a JSON response
-            warp::reply::json(&json_response)
+            // Read the JSONL file and return it as a response.
+            let file_content = read_jsonl_file();
+            warp::reply::with_header(file_content, warp::http::header::CONTENT_TYPE, "application/json")
         });
 
-
-    warp::serve(report)
+    // Start the Warp server.
+    warp::serve(jsonl_route)
         .run(([127, 0, 0, 1], 3030))
         .await;
 }
