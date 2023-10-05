@@ -133,9 +133,6 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
     meet these requirements may result in unexpected behavior or errors during the 
     cleaning process. 
 
-### AUTHORS
-    Written by Cassandra Lovelace (th3maid)
-
 ### License
 
 **This project is licensed under the GNU General Public License v3.0.**
