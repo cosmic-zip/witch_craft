@@ -17,3 +17,13 @@ pub struct CoreGenericPathOpType<'s, 'o> {
 pub struct CoreGenericUrl<'u> {
     pub url: &'u str,
 }
+
+pub struct ReportJson {
+    session: String,
+    command_base: String,
+    timestemp: String,
+    command_status: String,
+    command_string: String,
+    formated_stdout: Vec<String>,
+    formated_stderr: Vec<String>,
+}
