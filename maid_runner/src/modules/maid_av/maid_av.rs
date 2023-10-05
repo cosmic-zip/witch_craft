@@ -53,15 +53,15 @@ pub fn search_malware_pattern(pattern: &str, debug: bool) -> bool {
                 for line in result {
                     println!("🚧 {}", line);
                 }
-                return true
+                return true;
             } else {
                 println!("⚪ [WARNING] :: Pattern not found in any line.");
-                return true
+                return true;
             }
         }
         Err(err) => {
             eprintln!("🔴 [ERROR] :: {}", err);
-            return false
+            return false;
         }
     }
 }
