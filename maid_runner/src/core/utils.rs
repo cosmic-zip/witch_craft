@@ -241,3 +241,17 @@ pub fn find_all_matching_lines(
 
     Ok(matching_lines)
 }
+
+pub fn read_file_to_string(file_path: &str, debug: bool) -> String {
+
+    match File::open(file_path) {
+        Ok(file) => {
+            use std::io::Read;
+            let mut reader = std::io::BufReader::new(file);
+            let mut content = String::new();
+            reader.read_to_string(&mut content).expect("🔴 [ERROR] Unable to read the File");
+            content
+        }
+        Err(_) => String::from("🔴 [ERROR] Unable to read the File"),
+    }
+}
