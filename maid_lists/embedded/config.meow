@@ -11,6 +11,7 @@
 
 MEOW GENRAL_BASE_PATH = "/var/maid/maid_lists/general/"
 MEOW REPORT_BASE_PATH = "/var/maid/maid_lists/report/"
+MEOW INDEX            = "/var/maid/maid_lists/html/index.html"
 
 MEOW DIRECTORES             = "directores.ascii" 
 MEOW LDNS                   = "large_dns.ascii"  
