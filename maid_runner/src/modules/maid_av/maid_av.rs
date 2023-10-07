@@ -43,7 +43,7 @@ pub fn search_malware_pattern(pattern: &str, debug: bool) -> bool {
     let malware_db = &format!("{}{}", config["GENRAL_BASE_PATH"], config["MALWARE_HASH"]);
 
     system_text(
-        "[MALWARE_PATTERN] :: Searching for malware pattern",
+        "⚪ [MALWARE_PATTERN] :: Searching for malware pattern",
         "green",
     );
 
@@ -71,8 +71,8 @@ pub fn calculate_sha256_hash(file_path: &str, debug: bool) -> Result<String, io:
     let hash = try_digest(input).unwrap();
 
     if debug == true {
-        println!("[DEBUG] :: sha256 :{}", hash);
-        println!("[DEBUG] :: file_path :{}", file_path);
+        println!("🚧 [DEBUG] :: sha256 :{}", hash);
+        println!("🚧 [DEBUG] :: file_path :{}", file_path);
     }
 
     Ok(hash)
