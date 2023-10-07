@@ -1,4 +1,5 @@
 use crate::core::utils::*;
+use crate::modules::maid_av::entropy::advanced_entropy_scanner;
 use crate::meow::meow::read_meow;
 use sha256::{digest, try_digest};
 use std::path::{Path, PathBuf};
@@ -145,6 +146,12 @@ pub fn shell_maid_av(system_input: Vec<String>) -> bool {
             let instance = &gsv(system_input.clone(), "--directory");
 
             active_malware_scanner(instance, debug)
+        }
+
+        "--entropy" => {
+            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let instance = &gsv(system_input.clone(), "--path");
+            advanced_entropy_scanner(instance, debug)
         }
 
         _ => {
