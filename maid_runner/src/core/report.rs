@@ -53,7 +53,10 @@ pub fn write_report(
         .collect();
 
     let report_config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
-    let report = format!("{}{}", report_config["REPORT_BASE_PATH"], report_config["REPORT_LOG"]);
+    let report = format!(
+        "{}{}",
+        report_config["REPORT_BASE_PATH"], report_config["REPORT_LOG"]
+    );
 
     let session_config = read_meow("/var/maid/maid_lists/embedded/session.meow", false);
     let session = session_config["LATEST_SESSION"].to_string();

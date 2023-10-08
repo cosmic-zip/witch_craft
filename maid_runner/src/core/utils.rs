@@ -3,12 +3,14 @@ use crate::core::structs::{CommandCall, CommandResult};
 use chrono;
 use colored::*;
 use csv::ReaderBuilder;
+use hex;
 use std::env;
 use std::error::Error as Err;
 use std::error::Error as StdError;
 use std::fmt::Display;
 use std::fs::File;
 use std::io::Error;
+use std::io::Read;
 use std::io::{self, BufRead};
 use std::path::Path;
 use std::process::{Command, Output};
@@ -243,41 +245,47 @@ pub fn find_all_matching_lines(
 }
 
 pub fn read_file_to_string(file_path: &str, debug: bool) -> String {
-
     match File::open(file_path) {
         Ok(file) => {
             use std::io::Read;
             let mut reader = std::io::BufReader::new(file);
             let mut content = String::new();
-            reader.read_to_string(&mut content).expect("🔴 [ERROR] Unable to read the File");
+            reader
+                .read_to_string(&mut content)
+                .expect("🔴 [ERROR] Unable to read the File");
             content
         }
         Err(_) => String::from("🔴 [ERROR] Unable to read the File"),
     }
 }
 
-pub fn read_file_to_hex(file_path: String, debug: bool) -> bool {
+pub fn read_file_to_hex(file_path: &str, debug: bool) -> Vec<String> {
+    match File::open(file_path) {
+        Ok(mut file) => {
+            let mut buffer = Vec::new();
+            file.read_to_end(&mut buffer)
+                .expect("Failed to read the file");
+            let hex_encoded = hex::encode(&buffer);
+            let mut hex = Vec::new();
+            let mut count = "".to_string();
+            for hex_code in hex_encoded.chars() {
+                if count.len() == 4 {
+                    hex.push(count);
+                    count = "".to_string();
+                }
 
-    let mut file = File::open("/bin/ls").expect("Failed to open the file");
-    let mut buffer = Vec::new();
-    file.read_to_end(&mut buffer).expect("Failed to read the file");
-    let hex_encoded = hex::encode(&buffer);
-    let mut hex = Vec::new();
-    let mut count = "".to_string();
-    for hex_code in hex_encoded.chars() {
-        if count.len() == 4 {
-            hex.push(count);
-            count = "".to_string();
+                count = format!("{}{}", count, hex_code);
+            }
+
+            if debug == true {
+                println!("{:?}", hex);
+            }
+
+            return hex;
         }
-
-        count = format!("{}{}", count, hex_code);
+        Err(_) => {
+            println!("🔴 [ERROR] Unable to read the File");
+            return vec![];
+        }
     }
-
-    if debug == true {
-        println!("{:?}", hex);
-        return true;
-    }
-
-    return true;
-
 }
