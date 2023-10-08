@@ -255,3 +255,29 @@ pub fn read_file_to_string(file_path: &str, debug: bool) -> String {
         Err(_) => String::from("🔴 [ERROR] Unable to read the File"),
     }
 }
+
+pub fn read_file_to_hex(file_path: String, debug: bool) -> bool {
+
+    let mut file = File::open("/bin/ls").expect("Failed to open the file");
+    let mut buffer = Vec::new();
+    file.read_to_end(&mut buffer).expect("Failed to read the file");
+    let hex_encoded = hex::encode(&buffer);
+    let mut hex = Vec::new();
+    let mut count = "".to_string();
+    for hex_code in hex_encoded.chars() {
+        if count.len() == 4 {
+            hex.push(count);
+            count = "".to_string();
+        }
+
+        count = format!("{}{}", count, hex_code);
+    }
+
+    if debug == true {
+        println!("{:?}", hex);
+        return true;
+    }
+
+    return true;
+
+}
