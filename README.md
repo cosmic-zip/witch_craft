@@ -8,17 +8,20 @@ Maid Runner is a versatile task automation software designed to serve as the fou
 
 This project utilizes a Trunk-Based Development (TBD) approach for its software development lifecycle. Trunk-Based Development is a software development methodology that emphasizes continuous integration and collaboration among developers.
 
-![banner](docs/images/trunk1b.png)
+![banner](docs/images/tbd.png)
 
 ## MAIDRUNNER
 
 ### NAME
+
 MaidRunner - Maid Runner is a versatile task automation software designed to serve as the foundation for various cyber security modules.
 
 ### SYNOPSIS
-	maidrunner module_name [--key value] [-k value] [--debug true|false] [--path file] 
+
+ maidrunner module_name [--key value] [-k value] [--debug true|false] [--path file]
 
 ### DESCRIPTION
+
     This  manual  page  describes the  MaidRunner,  a versatile task automation software 
     designed to serve as the foundation for various cyber security modules. It provides 
     capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), 
@@ -26,7 +29,8 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
 
 ### OPTIONS
 
-### CORE    
+### CORE
+
     core    Core describes advanced base functions for one or more secondary function, 
             the core module permit access and use of the this functions by the user
 
@@ -38,6 +42,7 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
     --debug                     Optional value for debug can be true or false
 
 ### LOOKUP
+
     lookup  Lookup contains automations for the lookup proccess in cyber security
 
     --mac_address key value     Lookup mac vendor based on first 3 pairs
@@ -118,16 +123,19 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
                                 like: /path/ or ./path
 
 ### WARNINGS
+
     WARNING: This Tool Is For Cybersecurity Use May Have Legal Implications
     As you use this cybersecurity tool, it is important to be aware of the potential 
     legal implications. Depending on how the tool is used, there may be consequences 
     under various laws and regulations.
 
 ### ENVIRONMENT
+
     To ensure a smooth installation process, make sure your Linux system has all 
     necessary dependencies, including packages and files.     
 
 ### FILES
+
     Attention! The 'maid_list' folder must be located within '/var/maid/' directory, 
     and the current user must have read/write permissions to access it. Failure to 
     meet these requirements may result in unexpected behavior or errors during the 
