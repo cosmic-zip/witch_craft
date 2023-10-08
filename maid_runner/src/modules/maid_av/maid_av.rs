@@ -1,6 +1,6 @@
 use crate::core::utils::*;
-use crate::modules::maid_av::entropy::advanced_entropy_scanner;
 use crate::meow::meow::read_meow;
+use crate::modules::maid_av::entropy::advanced_entropy_scanner;
 use sha256::{digest, try_digest};
 use std::path::{Path, PathBuf};
 use std::{fs, io};
