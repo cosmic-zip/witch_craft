@@ -1,6 +1,7 @@
 use crate::core::core::*;
 use crate::core::utils::*;
 use crate::modules::scanner::scanner_structs::*;
+use crate::core::messages::standard_messages;
 
 pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
     match source.op_type {
@@ -211,11 +212,8 @@ pub fn shell_scanner(system_input: Vec<String>) -> bool {
         }
 
         _ => {
-            system_text(
-                "[USER ERROR] :: Invalid user input at → shell_scanner",
-                "yellow",
-            );
-            println!("{:?}", cmd_arg_name);
+            standard_messages("warning", "Invalid user input", "shell_scanner", "cute");
+            standard_messages("warning", "Trying exec command", cmd_arg_name, "cute");
             return false;
         }
     }

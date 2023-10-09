@@ -1,4 +1,5 @@
-use crate::core::{core::*, manual::*, utils::*};
+use crate::core::{core::*, manual::*, utils::*, messages::*};
+
 
 use crate::modules::{
     curl::curl::*,
@@ -55,10 +56,7 @@ pub fn init() -> u8 {
             for item in &system_input[1..] {
                 cmd = format!("{} {}", cmd, item);
             }
-
-            system_text(&format!("[RAW_COMMAND] :: Trying exec → {}", cmd), "green");
-
-            println!("{}", cmd);
+            standard_messages("warning", "Trying exec command", &cmd, "cute");
             system_command_exec(&cmd, true);
         }
     }

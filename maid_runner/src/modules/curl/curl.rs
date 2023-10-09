@@ -1,8 +1,9 @@
 use crate::core::utils::*;
 use crate::modules::curl::curl_structs::*;
+use crate::core::messages::standard_messages;
 
 pub fn curl_request(curl: CurlBind, debug: bool) -> bool {
-    system_text("[CURL_BIND] :: Curl binds", "green");
+    standard_messages("warning", "Curl binds", "", "cute");
 
     // binds
     let url = curl.url;
@@ -58,7 +59,7 @@ pub fn curl_request(curl: CurlBind, debug: bool) -> bool {
 
     let cmd = format!("curl {} {} {} {} {}", method, auth, url, ctn_type, data);
     if debug == true {
-        system_text(&cmd, "yellow");
+        standard_messages("warning", "Trying exec command", &cmd, "cute");
     }
     system_command_exec(&cmd, debug)
 }
@@ -81,33 +82,31 @@ pub fn shell_curl(system_input: Vec<String>) -> bool {
         }
 
         "--header" => {
-            system_text("[CURL_BIND] :: Curl header lookup", "green");
+            standard_messages("debug", "Curl header lookup", "", "cute");
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let curl = &gsv(system_input.clone(), "--url");
             let cmd = format!("curl -I {}", curl);
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", "Curl header lookup", &cmd, "cute");
             }
             system_command_exec(&cmd, debug)
         }
 
         "--status_code" => {
-            system_text("[CURL_BIND] :: Curl request status_code", "green");
+            standard_messages("debug", "Curl request status_code", "", "cute");
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let curl = &gsv(system_input.clone(), "--url");
             let cmd = format!("curl -o /dev/null -s -w \"%{{http_code}}\n\" {}", curl);
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", "Curl request status_code", &cmd, "cute");
+                
             }
             system_command_exec(&cmd, debug)
         }
 
         _ => {
-            system_text(
-                "[USER ERROR] :: Invalid user input at → shell_curl",
-                "yellow",
-            );
-            println!("{:?}", cmd_arg_name);
+            standard_messages("warning", "Invalid user input", "shell_curl", "cute");
+            standard_messages("warning", "Trying exec command", cmd_arg_name, "cute");
             return false;
         }
     }
