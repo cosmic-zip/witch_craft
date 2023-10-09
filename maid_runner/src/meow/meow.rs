@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+use crate::core::messages::standard_messages;
 use std::collections::HashMap;
 use std::fs;
 
@@ -51,6 +52,7 @@ pub fn read_meow(path: &str, debug: bool) -> HashMap<String, String> {
                 let sys_args: Vec<String> = line.split_whitespace().map(String::from).collect();
 
                 if debug == true {
+                    standard_messages("debug", "Read meow output", "read_meow", "cute");
                     println!("{:?}", sys_args);
                 }
 
