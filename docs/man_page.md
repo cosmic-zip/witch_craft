@@ -121,4 +121,3 @@ FILES
     and the current user must have read/write permissions to access it. Failure to
     meet these requirements may result in unexpected behavior or errors during the
     cleaning process.
-
