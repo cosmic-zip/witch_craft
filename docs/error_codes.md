@@ -61,3 +61,14 @@ Our error messages are organized into different categories based on their severi
 - Insufficient Privileges
 - File I/O Errors
 - Network Connectivity Issues
+
+
+Debug: Debug messages are used for troubleshooting and providing detailed information about the program's execution. They are typically used during development and debugging processes.
+
+    Info: Informational messages provide general information about the program's operation. They are used to convey important details about the program's state or progress.
+
+    Warning: Warning messages indicate potential issues or situations that might need attention but do not necessarily stop the program's execution. They serve as alerts for developers or users.
+
+    Error: Error messages signify critical issues that prevent the program from functioning correctly. These messages usually lead to the termination of the program's execution.
+
+    Fatal: Fatal messages represent severe errors that result in the program's immediate termination. They often indicate unrecoverable errors or critical system failures.
