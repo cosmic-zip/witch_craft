@@ -15,6 +15,7 @@ pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) {
     let mut color = "cyan";
     let mut icon = "*";
     let mut f_message = String::new();
+    let mut f_at = String::new();
 
     match level {
         "debug" => {
@@ -63,7 +64,13 @@ pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) {
         system_text(&f_message, "yellow");
     }
 
-    let f_at = format!(" :: at → {}", at);
+    
+    if at != "" || at != " " {
+        f_at = format!(" :: at → {}", at);
+    } else {
+        f_at = "".to_string();
+    }
+
     let f_message = format!(
         "{} [{}] :: {}{}",
         icon,
