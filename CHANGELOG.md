@@ -185,3 +185,22 @@ Date: dom 01 out 2023 16:46:59 -03
 	→ Removed warnings about unused variables and imports
 	→ Documentation split into separate files inside docs
 	→ Fixed unit tests hard coded file path
+
+Version 0.9.0
+
+Version seg 09 out 2023 21:18:50 -03
+
+	→ Added maid_av Active intivurus scanner
+	→ added a pattern-based AV scanner
+	→ Added hash-based AV scanner
+	→ Added ASCII-based entropy algorithm
+	→ Added messages module
+	→ Debug messages have been modified to utilize standard_messages 
+		rather than prints.
+	→ Added an HTML folder inside maid_lists
+	→ Fixed bugs while generating reports. json
+	→ Fixed a considerable number of small bugs
+	→ Refactored code base with rustfmt
+	→ Refactored almost all debug
+	→ Removed maid_reports API prototype
+	→ Updated gitignore content
