@@ -194,7 +194,7 @@ pub fn system_exec_shell(debug: bool) -> Vec<String> {
 
 pub fn gsv(data: Vec<String>, parameter_name: &str) -> String {
     if data.len() <= 2 {
-        return "[ERROR] :: Invalid vector size at → gsv".to_string();
+        return "🚧 [GSV] :: Invalid vector size at → gsv".to_string();
     }
 
     let mut count = 2;
@@ -206,7 +206,7 @@ pub fn gsv(data: Vec<String>, parameter_name: &str) -> String {
     }
 
     return format!(
-        "[NOT_FOUND] :: Parameter name not found at → P: {}, Vec: {:?}",
+        "🚧 [GSV] :: Parameter name not found at → P: {}, Vec: {:?}",
         parameter_name, data
     );
 }
@@ -289,10 +289,10 @@ pub fn read_file_to_string(file_path: &str, debug: bool) -> String {
             let mut content = String::new();
             reader
                 .read_to_string(&mut content)
-                .expect("🔴 [ERROR] Unable to read the File");
+                .expect("🚧 [ERROR] Unable to read the File");
             content
         }
-        Err(_) => String::from("🔴 [ERROR] Unable to read the File"),
+        Err(_) => String::from("🚧 [ERROR] Unable to read the File"),
     }
 }
 

@@ -6,69 +6,69 @@ use crate::modules::scanner::scanner_structs::*;
 pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
     match source.op_type {
         "ip" => {
-            system_text("[PING] :: Ping", "green");
+            standard_messages("flaged", "Ping", "", "cute");
             let cmd = format!("ping -c4 {}", source.target);
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", "Ping", &cmd, "cute");
             }
             system_command_exec(&cmd, debug)
         }
 
         "whois" => {
-            system_text("[WHOIS] :: Whois", "green");
+            standard_messages("flaged", "Whois", "", "cute");
             let cmd = format!("whois {}", source.target);
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", "Whois", &cmd, "cute");
             }
             system_command_exec(&cmd, debug)
         }
 
         "routes" => {
-            system_text("[ROUTES] :: Traceroute ICMP", "green");
+            standard_messages("flaged", "Traceroute ICMP", "", "cute");
             let cmd = format!("traceroute -I {}", source.target);
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", "Traceroute ICMP", &cmd, "cute");
             }
             system_command_exec(&cmd, debug);
 
-            system_text("[ROUTES] :: Traceroute TCP", "green");
+            standard_messages("flaged", "Traceroute TCP", "", "cute");
             let cmd = format!("traceroute -T {}", source.target);
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", "Traceroute TCP", &cmd, "cute");
             }
             system_command_exec(&cmd, debug);
 
-            system_text("[ROUTES] :: Traceroute UDP", "green");
+            standard_messages("flaged", "Traceroute UDP", "", "cute");
             let cmd = format!("traceroute -U {}", source.target);
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", "Traceroute UDP", &cmd, "cute");
             }
             system_command_exec(&cmd, debug)
         }
 
         "dns" => {
-            system_text("[DNS] :: DNS", "green");
+            standard_messages("flaged", "DNS", "", "cute");
             let cmd = format!("dig +nocmd {} ANY +multiline +noquestion", source.target);
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", "DNS", &cmd, "cute");
             }
             system_command_exec(&cmd, debug)
         }
 
         "nmap_tcp" => {
-            system_text("[ROUTES] :: Nmap TCP", "green");
+            standard_messages("flaged", "Nmap TCP", "", "cute");
             let cmd = format!("nmap -sS -A -T3 {}", source.target);
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", "Nmap TCP", &cmd, "cute");
             }
             system_command_exec(&cmd, debug)
         }
 
         "nmap_udp" => {
-            system_text("[ROUTES] :: Nmap UDP", "green");
+            standard_messages("flaged", "Nmap UDP", "", "cute");
             let cmd = format!("nmap -sU -T3 {}", source.target);
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", "Nmap UDP", &cmd, "cute");
             }
             system_command_exec(&cmd, debug)
         }
