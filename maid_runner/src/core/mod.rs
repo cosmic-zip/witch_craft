@@ -3,3 +3,4 @@ pub mod manual;
 pub mod report;
 pub mod structs;
 pub mod utils;
+pub mod messages;
