@@ -1,5 +1,6 @@
 use crate::core::structs::*;
-use crate::core::utils::{gsv, gsv_debug, system_command_exec, system_text};
+use crate::core::utils::*;
+use crate::core::messages::*;
 
 // @core
 
@@ -8,7 +9,7 @@ pub const NMAP_PORTS: &str = "1,3-4,6-7,9,13,17,19-26,30,32-33,37,42-43,49,53,70
 pub fn core_local_safe_remove_metadata(image: CoreGenericPathOpType, debug: bool) -> bool {
     let cmd = format!("exiftool -all= {}", image.sample_path);
     if debug == true {
-        system_text(&cmd, "yellow");
+        standard_messages("debug", "Removeing metadata from file", &cmd, "cute");
     }
     system_command_exec(&cmd, debug)
 }
@@ -17,7 +18,7 @@ pub fn core_local_downloader_web_page(url: CoreGenericUrl, debug: bool) -> bool 
     let cmd_strong = "wget --wait=0.1 --level=5 --limit-rate=500K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber -e robots=off --convert-links --adjust-extension";
     let cmd = format!("{} {}", cmd_strong, url.url);
     if debug == true {
-        system_text(&cmd, "yellow");
+        standard_messages("debug", "Downlading webpage", &cmd, "cute");
     }
     system_command_exec(&cmd, debug)
 }
@@ -46,10 +47,7 @@ pub fn shell_core(system_input: Vec<String>) -> bool {
         }
 
         _ => {
-            system_text(
-                "[USER_ERROR] :: Invalid user input at → shell_core",
-                "yellow",
-            );
+            standard_messages("error", "Invalid user input", "shell_core", "cute");
             return false;
         }
     }
