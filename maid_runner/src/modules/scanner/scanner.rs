@@ -1,7 +1,7 @@
 use crate::core::core::*;
+use crate::core::messages::standard_messages;
 use crate::core::utils::*;
 use crate::modules::scanner::scanner_structs::*;
-use crate::core::messages::standard_messages;
 
 pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
     match source.op_type {

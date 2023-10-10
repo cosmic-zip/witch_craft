@@ -1,7 +1,7 @@
-use crate::modules::maid_av::entropy::advanced_entropy_scanner;
 use crate::core::messages::standard_messages;
-use crate::meow::meow::read_meow;
 use crate::core::utils::*;
+use crate::meow::meow::read_meow;
+use crate::modules::maid_av::entropy::advanced_entropy_scanner;
 use sha256::{digest, try_digest};
 use std::path::{Path, PathBuf};
 use std::{fs, io};
@@ -13,7 +13,12 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
     let file_path = malware_db;
 
     if debug == true {
-        standard_messages("warning", "File path search_malware_hash", file_path, "cute");
+        standard_messages(
+            "warning",
+            "File path search_malware_hash",
+            file_path,
+            "cute",
+        );
     }
 
     match search_csv(file_path, search_term) {
@@ -31,7 +36,12 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
         }
         Err(err) => {
             let message = format!("{}", err);
-            standard_messages("error", "Error found while looking for malware hashs", &message, "cute");
+            standard_messages(
+                "error",
+                "Error found while looking for malware hashs",
+                &message,
+                "cute",
+            );
             return false;
         }
     }
@@ -57,7 +67,12 @@ pub fn search_malware_pattern(pattern: &str, debug: bool) -> bool {
         }
         Err(err) => {
             let message = format!("{}", err);
-            standard_messages("error", "Error found while looking for malware.", &message, "cute");
+            standard_messages(
+                "error",
+                "Error found while looking for malware.",
+                &message,
+                "cute",
+            );
             return false;
         }
     }
@@ -106,7 +121,12 @@ pub fn active_malware_scanner(derectory: &str, debug: bool) -> bool {
                     }
                     Err(err) => {
                         let message = format!("{}", err);
-                        standard_messages("error", "Error found while processing file sha256 signature.", &message, "cute");
+                        standard_messages(
+                            "error",
+                            "Error found while processing file sha256 signature.",
+                            &message,
+                            "cute",
+                        );
                         return false;
                     }
                 }
@@ -115,7 +135,12 @@ pub fn active_malware_scanner(derectory: &str, debug: bool) -> bool {
         }
         Err(err) => {
             let message = format!("{}", err);
-            standard_messages("error", "Error found while running active scanning for malware.", &message, "cute");
+            standard_messages(
+                "error",
+                "Error found while running active scanning for malware.",
+                &message,
+                "cute",
+            );
             return false;
         }
     }

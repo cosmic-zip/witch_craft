@@ -1,7 +1,7 @@
+use crate::core::messages::standard_messages;
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
 use crate::modules::lookup::lookup_structs::*;
-use crate::core::messages::standard_messages;
 
 pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
     let mut file: String;
@@ -19,7 +19,7 @@ pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
     }
 
     standard_messages("falged", "Lookup mac address", "", "cute");
-    
+
     match find_all_matching_lines(&file, mac_address.vendor_mac) {
         Ok(result) => {
             if !result.is_empty() {
@@ -34,7 +34,12 @@ pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
         }
         Err(err) => {
             let message = format!("{}", err);
-            standard_messages("error", "Error while lookup for mac address", &message, "cute");
+            standard_messages(
+                "error",
+                "Error while lookup for mac address",
+                &message,
+                "cute",
+            );
             return false;
         }
     }
@@ -88,10 +93,14 @@ pub fn lookup_reverse_engineering(sample: LookupGenericPathOpType, debug: bool) 
         }
         _ => {
             let at = format!("{}", sample.op_type);
-            standard_messages("warning", "Option not found on struct LookupGenericPathOpType", &at, "cute");
+            standard_messages(
+                "warning",
+                "Option not found on struct LookupGenericPathOpType",
+                &at,
+                "cute",
+            );
             return false;
         }
-        
     }
 }
 

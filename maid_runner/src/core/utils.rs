@@ -1,17 +1,17 @@
+use crate::core::messages::standard_messages;
 use crate::core::report::*;
 use crate::core::structs::{CommandCall, CommandResult};
-use crate::core::messages::standard_messages;
-use csv::ReaderBuilder;
 use colored::*;
+use csv::ReaderBuilder;
 
-use std::io::{self, BufRead, Error, Read};
-use std::process::{Command, Output};
+use std::env;
 use std::error::Error as StdError;
 use std::error::Error as Err;
 use std::fmt::Display;
-use std::path::Path;
 use std::fs::File;
-use std::env;
+use std::io::{self, BufRead, Error, Read};
+use std::path::Path;
+use std::process::{Command, Output};
 
 use chrono;
 use hex;
@@ -60,7 +60,12 @@ pub fn system_command_exec(command_str: &str, debug: bool) -> bool {
 
                             Err(err) => {
                                 let message = format!("{}", err);
-                                standard_messages("error", "While executing command write_report", &message, "cute");
+                                standard_messages(
+                                    "error",
+                                    "While executing command write_report",
+                                    &message,
+                                    "cute",
+                                );
                                 return false;
                             }
                         }
@@ -68,26 +73,33 @@ pub fn system_command_exec(command_str: &str, debug: bool) -> bool {
                         return true;
                     }
 
-                    // Print sub process output 
+                    // Print sub process output
                     println!("\n{}\n", res.stdout);
                     return true;
                 }
                 Err(err) => {
                     let message = format!("{}", err);
-                    standard_messages("error", "While executing command system_command_call", &message, "cute");
+                    standard_messages(
+                        "error",
+                        "While executing command system_command_call",
+                        &message,
+                        "cute",
+                    );
                     return false;
                 }
             }
         }
         Err(err) => {
             let message = format!("{}", err);
-            standard_messages("error", "While executing command system_string_to_vec_builder", &message, "cute");
+            standard_messages(
+                "error",
+                "While executing command system_string_to_vec_builder",
+                &message,
+                "cute",
+            );
             return false;
         }
-        
-        
     }
-
 }
 
 pub fn system_command_deep_exec(command_str: &str, _debug: bool) -> Result<CommandResult, Error> {
@@ -109,13 +121,23 @@ pub fn system_command_deep_exec(command_str: &str, _debug: bool) -> Result<Comma
                 Ok(res) => result = res,
                 Err(err) => {
                     let message = format!("{}", err);
-                    standard_messages("error", "While executing command system_string_to_vec_builder", &message, "cute");
+                    standard_messages(
+                        "error",
+                        "While executing command system_string_to_vec_builder",
+                        &message,
+                        "cute",
+                    );
                 }
             }
         }
         Err(err) => {
             let message = format!("{}", err);
-            standard_messages("error", "While executing command system_string_to_vec_builder", &message, "cute");
+            standard_messages(
+                "error",
+                "While executing command system_string_to_vec_builder",
+                &message,
+                "cute",
+            );
         }
     }
 
@@ -159,7 +181,12 @@ pub fn system_time() -> String {
 pub fn system_exec_shell(debug: bool) -> Vec<String> {
     let args: Vec<String> = env::args().collect();
     if debug == true {
-        standard_messages("error", "System execute sub process ", "system_exec_shell", "cute");
+        standard_messages(
+            "error",
+            "System execute sub process ",
+            "system_exec_shell",
+            "cute",
+        );
         println!("{:?}", args);
     }
     return args;
@@ -242,7 +269,12 @@ pub fn find_all_matching_lines(
 
         Err(err) => {
             let message = format!("{}", err);
-            standard_messages("error", "While executing command system_command_call", &message, "cute");
+            standard_messages(
+                "error",
+                "While executing command system_command_call",
+                &message,
+                "cute",
+            );
         }
     }
 
@@ -289,7 +321,12 @@ pub fn read_file_to_hex(file_path: &str, debug: bool) -> Vec<String> {
             return hex;
         }
         Err(_) => {
-            standard_messages("error", "Unable to read the file", "read_file_to_hex", "cute");
+            standard_messages(
+                "error",
+                "Unable to read the file",
+                "read_file_to_hex",
+                "cute",
+            );
             return vec![];
         }
     }

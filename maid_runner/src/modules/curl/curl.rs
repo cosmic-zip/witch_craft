@@ -1,6 +1,6 @@
+use crate::core::messages::standard_messages;
 use crate::core::utils::*;
 use crate::modules::curl::curl_structs::*;
-use crate::core::messages::standard_messages;
 
 pub fn curl_request(curl: CurlBind, debug: bool) -> bool {
     standard_messages("warning", "Curl binds", "", "cute");
@@ -99,7 +99,6 @@ pub fn shell_curl(system_input: Vec<String>) -> bool {
             let cmd = format!("curl -o /dev/null -s -w \"%{{http_code}}\n\" {}", curl);
             if debug == true {
                 standard_messages("debug", "Curl request status_code", &cmd, "cute");
-                
             }
             system_command_exec(&cmd, debug)
         }

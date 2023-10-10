@@ -1,6 +1,6 @@
+use crate::core::messages::*;
 use crate::core::structs::*;
 use crate::core::utils::*;
-use crate::core::messages::*;
 
 // @core
 

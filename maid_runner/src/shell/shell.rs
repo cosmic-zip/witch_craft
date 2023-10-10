@@ -1,5 +1,4 @@
-use crate::core::{core::*, manual::*, utils::*, messages::*};
-
+use crate::core::{core::*, manual::*, messages::*, utils::*};
 
 use crate::modules::{
     curl::curl::*,

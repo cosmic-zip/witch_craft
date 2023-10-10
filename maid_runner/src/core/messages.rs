@@ -12,21 +12,44 @@ fn capitalize_first_letter(s: &str) -> String {
 }
 
 pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) {
-
     let mut color = "cyan";
     let mut icon = "*";
     let mut f_message = String::new();
-    
+
     match level {
-        "debug"     => { icon = "🔍"; color = "white"; }
-        "flaged"    => { icon = "🔖"; color = "white"; }
-        "saved"     => { icon = "💾"; color = "white";}
-        "success"   => { icon = "✨"; color = "green"; }
-        "warning"   => { icon = "🚧"; color = "yellow"; }
-        "error"     => { icon = "🚨"; color = "red"; }
-        "fatal"     => { icon = "🔥"; color = "cyan"; }
-        _           => { icon = "🏮"; color = "white"; }
-    }    
+        "debug" => {
+            icon = "🔍";
+            color = "white";
+        }
+        "flaged" => {
+            icon = "🔖";
+            color = "white";
+        }
+        "saved" => {
+            icon = "💾";
+            color = "white";
+        }
+        "success" => {
+            icon = "✨";
+            color = "green";
+        }
+        "warning" => {
+            icon = "🚧";
+            color = "yellow";
+        }
+        "error" => {
+            icon = "🚨";
+            color = "red";
+        }
+        "fatal" => {
+            icon = "🔥";
+            color = "cyan";
+        }
+        _ => {
+            icon = "🏮";
+            color = "white";
+        }
+    }
 
     if cuteness != "cute" {
         icon = "❱";
@@ -41,13 +64,13 @@ pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) {
     }
 
     let f_at = format!(" :: at → {}", at);
-    let f_message = format!("{} [{}] :: {}{}", 
+    let f_message = format!(
+        "{} [{}] :: {}{}",
         icon,
-        level.to_uppercase(), 
+        level.to_uppercase(),
         capitalize_first_letter(&message),
         capitalize_first_letter(&f_at)
     );
-    
+
     system_text(&f_message, color);
-    
 }
