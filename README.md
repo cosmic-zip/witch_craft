@@ -1,4 +1,4 @@
-![banner](docs/images/MaidRunner_logo.png)
+![banner](docs/images/maid.png)
 
 # Maid Runner
 
