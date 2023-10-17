@@ -63,7 +63,7 @@ pub fn write_report(
     let session_description = session_config["DESCRIPTION"].to_string();
 
     let contents = format!(
-        "{{ \"session\": \"{}\", \"description\" {}, \"source\": \"{}\", \"source_detail\": \"{}\", \"timestemp\": \"{}\", \"command_status\": \"{}\",  \"formated_stdout\": {:?}, \"formated_stderr\": {:?} }}, \"debug\": {}\n",
+        "{{ \"session\": \"{}\", \"description\": \"{}\", \"source\": \"{}\", \"source_detail\": \"{}\", \"timestemp\": \"{}\", \"command_status\": \"{}\",  \"formated_stdout\": {:?}, \"formated_stderr\": {:?}, \"debug\": {}}}\n",
         session,
         session_description,
         cmd[0],
