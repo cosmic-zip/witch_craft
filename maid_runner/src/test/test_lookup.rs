@@ -33,7 +33,7 @@ fn test_lookup_reverse_engineering() {
 #[test]
 fn test_lookup_exif_metadata() {
     let photo = LookupGenericPathOpType {
-        sample_path: "../docs/banner.png",
+        sample_path: "../docs/images/maid.png",
         op_type: "none",
     };
     let output = lookup_exif_metadata(photo, true);
