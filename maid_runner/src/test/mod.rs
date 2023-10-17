@@ -5,6 +5,6 @@ pub mod test_core;
 pub mod test_lookup;
 pub mod test_maid_av;
 pub mod test_maid_ce;
-pub mod test_post_attack;
+pub mod test_rootkit;
 pub mod test_scanner;
 pub mod test_shell;
