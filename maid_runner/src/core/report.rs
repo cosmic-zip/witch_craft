@@ -42,7 +42,7 @@ pub fn write_report(
     status: String,
     stdout: String,
     stderr: String,
-    _debug: bool,
+    debug: bool,
 ) -> std::io::Result<()> {
     let mut formated_stdout: Vec<String> = format_std(stdout);
     let mut formated_stderr: Vec<String> = format_std(stderr);
@@ -60,16 +60,19 @@ pub fn write_report(
 
     let session_config = read_meow("/var/maid/maid_lists/embedded/session.meow", false);
     let session = session_config["LATEST_SESSION"].to_string();
+    let session_description = session_config["DESCRIPTION"].to_string();
 
     let contents = format!(
-        "{{ \"session\": \"{}\", \"command_base\": \"{}\", \"timestemp\": \"{}\", \"command_status\": \"{}\", \"command_string\": \"{}\", \"formated_stdout\": {:?}, \"formated_stderr\": {:?} }}\n",
+        "{{ \"session\": \"{}\", \"description\" {}, \"source\": \"{}\", \"source_detail\": \"{}\", \"timestemp\": \"{}\", \"command_status\": \"{}\",  \"formated_stdout\": {:?}, \"formated_stderr\": {:?} }}, \"debug\": {}\n",
         session,
+        session_description,
         cmd[0],
+        command_string,
         system_time(),
         status,
-        command_string,
         formated_stdout,
         formated_stderr,
+        debug
     );
 
     let file = File::options().append(true).open(&report);
