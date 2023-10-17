@@ -15,7 +15,7 @@ pub fn core_local_safe_remove_metadata(image: CoreGenericPathOpType, debug: bool
 }
 
 pub fn core_local_downloader_web_page(url: CoreGenericUrl, debug: bool) -> bool {
-    let cmd_strong = "wget --wait=0.1 --level=5 --limit-rate=500K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber -e robots=off --convert-links --adjust-extension";
+    let cmd_strong = "wget --wait=0.1 --level=5 --limit-rate=500K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension -e robots=off --convert-links --adjust-extension";
     let cmd = format!("{} {}", cmd_strong, url.url);
     if debug == true {
         standard_messages("debug", "Downlading webpage", &cmd, "cute");
