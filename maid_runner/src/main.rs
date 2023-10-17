@@ -19,8 +19,8 @@ use crate::modules::{
     // attack::attack_structs::*,
     maid_av::maid_av::*,
     maid_av::maid_av_structs::*,
-    // post_attack::post_attack::*,
-    // post_attack::post_attack_structs::*,
+    // rootkit::rootkit::*,
+    // rootkit::rootkit_structs::*,
     scanner::scanner::*,
     scanner::scanner_structs::*,
 };

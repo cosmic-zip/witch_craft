@@ -6,7 +6,7 @@ use crate::modules::{
     lookup::lookup::*,
     // attack::attack::*,
     maid_av::maid_av::*,
-    // post_attack::post_attack::*,
+    // rootkit::rootkit::*,
     scanner::scanner::*,
 };
 
