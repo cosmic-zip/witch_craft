@@ -51,7 +51,7 @@ pub fn system_command_exec(command_str: &str, debug: bool) -> bool {
                 Ok(res) => {
                     if debug == true {
                         let (x, y, z) = (res.status, res.stdout, res.stderr);
-                        println!("{}, {}, {}", x, y, z);
+                        println!("🔖 status: {} \n🚧 STDOUT: {}\n🚧 STDERR: {}\n\n", x, y, z);
 
                         match write_report(command_string.clone(), x, y, z, debug) {
                             Ok(()) => {
@@ -74,7 +74,10 @@ pub fn system_command_exec(command_str: &str, debug: bool) -> bool {
                     }
 
                     // Print sub process output
-                    println!("\n{}\n", res.stdout);
+                    println!("\n{}\n\n", res.stdout);
+                    if res.stderr != "" {
+                        println!("\n{}\n\n", res.stderr);
+                    }
                     return true;
                 }
                 Err(err) => {
