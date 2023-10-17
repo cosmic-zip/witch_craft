@@ -65,8 +65,14 @@ pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) {
     }
 
     
-    if at != "" || at != " " {
-        f_at = format!(" :: at → {}", at);
+    if at != "" {
+        f_at = format!(" :: at → {}", at); 
+    } else if at.len() > 0 {
+        
+        if at.chars().collect::<Vec<_>>()[0] != ' ' {
+            f_at = format!(" :: at → {}", at); 
+        }
+
     } else {
         f_at = "".to_string();
     }
