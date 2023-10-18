@@ -1,84 +1,94 @@
-use crate::read_meow;
 use crate::core::core::*;
-use crate::core::utils::*;
 use crate::core::messages::standard_messages;
+use crate::core::utils::*;
 use crate::modules::scanner::scanner_structs::*;
+use crate::read_meow;
 
 pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
     match source.op_type {
         "ip" => {
-            standard_messages("flaged", "Ping", "", "cute");
             let cmd = format!("ping -c4 {}", source.target);
+            let msg = "Scanning ping";
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
                 standard_messages("debug", "Ping", &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "whois" => {
-            standard_messages("flaged", "Whois", "", "cute");
             let cmd = format!("whois {}", source.target);
+            let msg = "Scanning whois";
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
                 standard_messages("debug", "Whois", &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "routes" => {
-            standard_messages("flaged", "Traceroute ICMP", "", "cute");
             let cmd = format!("traceroute -I {}", source.target);
+            let msg = "Scanning traceroute ICMP";
+            standard_messages("flaged", msg, "", "cute");
+
             if debug == true {
                 standard_messages("debug", "Traceroute ICMP", &cmd, "cute");
             }
-            system_command_exec(&cmd, debug);
+            system_command_exec(&cmd, msg, debug);
 
-            standard_messages("flaged", "Traceroute TCP", "", "cute");
             let cmd = format!("traceroute -T {}", source.target);
+            let msg = "Scanning traceroute TCP";
+            standard_messages("flaged", msg, "", "cute");
+
             if debug == true {
                 standard_messages("debug", "Traceroute TCP", &cmd, "cute");
             }
-            system_command_exec(&cmd, debug);
+            system_command_exec(&cmd, msg, debug);
 
-            standard_messages("flaged", "Traceroute UDP", "", "cute");
             let cmd = format!("traceroute -U {}", source.target);
+            let msg = "Scanning traceroute UDP";
+            standard_messages("flaged", msg, "", "cute");
+
             if debug == true {
                 standard_messages("debug", "Traceroute UDP", &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "dns" => {
-            standard_messages("flaged", "DNS", "", "cute");
             let cmd = format!("dig +nocmd {} ANY +multiline +noquestion", source.target);
+            let msg = "Searching for DNS records";
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                standard_messages("debug", "DNS", &cmd, "cute");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "nmap_tcp" => {
-            standard_messages("flaged", "Nmap TCP", "", "cute");
             let cmd = format!("nmap -sS -A -T3 {}", source.target);
+            let msg = "Executing nmap TCP automation";
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                standard_messages("debug", "Nmap TCP", &cmd, "cute");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "nmap_udp" => {
-            standard_messages("flaged", "Nmap UDP", "", "cute");
             let cmd = format!("nmap -sU -T3 {}", source.target);
+            let msg = "Executing nmap UDP automation";
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                standard_messages("debug", "Nmap UDP", &cmd, "cute");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "sub_domains" => {
             let path = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
             let final_path = &path["REPORT_BASE_PATH"];
 
-            system_text("[ROUTES] :: Sub domains", "green");
             let cmd = format!(
                 "dnsenum --enum {} -v -o {}mad_runner_sub_domains_{}.opsec -t 15 --threads 4 -f {}",
                 source.target,
@@ -86,14 +96,16 @@ pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
                 system_time(),
                 source.list_path,
             );
+            let msg = "Scanning sub domains";
+
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "sub_directories" => {
-
             let path = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
             let final_path = &path["REPORT_BASE_PATH"];
 
@@ -102,43 +114,54 @@ pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
                 "dirb {} {} -o {}maid_runner_sub_directories.opsec",
                 source.target, source.list_path, final_path,
             );
+            let msg = "Scanning sub domains";
+
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "build_with" => {
-            system_text("[ROUTES] :: Buildwith", "green");
             let cmd = format!("ping -c4 {}", source.target);
+            let msg = "Buildwith search for possible frameworks";
+
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "c_api_url" => {
-            system_text("[ROUTES] :: API url scanner", "green");
             let cmd = format!("ping -c4 {}", source.target);
+            let msg = "Curl scanning API endpoints";
+
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "c_web_url" => {
-            system_text("[ROUTES] :: WEB url scanner", "green");
             let cmd = format!("ping -c4 {}", source.target);
+            let msg = "Curl scanning web site url";
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                system_text(&cmd, "yellow");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         _ => {
-            system_text(
-                "struct ScannerWebGenericInput at op_type → Option not found",
-                "yellow",
+            let at = format!("{}", source.op_type);
+            standard_messages(
+                "warning",
+                "Option not found on struct ScannerWebGenericInput",
+                &at,
+                "cute",
             );
             false
         }
@@ -185,12 +208,13 @@ pub fn scanner_auto_nmap(source: ScannerWebAutoNmap, debug: bool) -> bool {
     } else if source.ports == "all" {
         sport = "-p-";
     } else {
-        sport = source.ports;
     }
+    sport = source.ports;
 
     let cmd = format!("nmap {} {} -A -p {} {}", stype, stime, sport, source.target);
-    system_text("[AUTO_MAP] :: EXEC nmap automation", "green");
-    system_command_exec(&cmd, debug)
+    let msg = "Executing nmap automation";
+    standard_messages("flaged", msg, "", "cute");
+    system_command_exec(&cmd, msg, debug)
 }
 
 pub fn shell_scanner(system_input: Vec<String>) -> bool {

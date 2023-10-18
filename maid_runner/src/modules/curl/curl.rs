@@ -3,7 +3,7 @@ use crate::core::utils::*;
 use crate::modules::curl::curl_structs::*;
 
 pub fn curl_request(curl: CurlBind, debug: bool) -> bool {
-    standard_messages("warning", "Curl binds", "", "cute");
+    
 
     // binds
     let url = curl.url;
@@ -57,11 +57,14 @@ pub fn curl_request(curl: CurlBind, debug: bool) -> bool {
         _ => ctn_type = "",
     }
 
+    let msg = "Executing bcurl";
     let cmd = format!("curl {} {} {} {} {}", method, auth, url, ctn_type, data);
+
+    standard_messages("flaged", msg, "", "cute");
     if debug == true {
-        standard_messages("warning", "Trying exec command", &cmd, "cute");
+        standard_messages("debug", msg, &cmd, "cute");
     }
-    system_command_exec(&cmd, debug)
+    system_command_exec(&cmd, msg, debug)
 }
 
 pub fn shell_curl(system_input: Vec<String>) -> bool {
@@ -78,29 +81,38 @@ pub fn shell_curl(system_input: Vec<String>) -> bool {
                 ctn_type: &gsv(system_input.clone(), "--ctn_type"),
                 data: &gsv(system_input.clone(), "--data"),
             };
+
+            standard_messages("debug", "BCurl bindings", "", "cute");
+
             curl_request(instance, debug)
         }
 
         "--header" => {
-            standard_messages("debug", "Curl header lookup", "", "cute");
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let curl = &gsv(system_input.clone(), "--url");
             let cmd = format!("curl -I {}", curl);
+            let msg = "Curl http header lookup";
+
+            standard_messages("flaged", msg, "", "cute");
+
             if debug == true {
-                standard_messages("debug", "Curl header lookup", &cmd, "cute");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "--status_code" => {
-            standard_messages("debug", "Curl request status_code", "", "cute");
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let curl = &gsv(system_input.clone(), "--url");
             let cmd = format!("curl -o /dev/null -s -w \"%{{http_code}}\n\" {}", curl);
+            let msg = "Curl get request status code";
+
+            standard_messages("flaged", msg, "", "cute");
+
             if debug == true {
-                standard_messages("debug", "Curl request status_code", &cmd, "cute");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         _ => {

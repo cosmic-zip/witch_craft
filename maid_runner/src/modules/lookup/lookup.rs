@@ -48,48 +48,56 @@ pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
 pub fn lookup_reverse_engineering(sample: LookupGenericPathOpType, debug: bool) -> bool {
     match sample.op_type {
         "s" => {
-            standard_messages("flaged", "Lookup strings", "", "cute");
             let cmd = format!("strings {}", sample.sample_path);
+            let msg = "Lookup strings";
+
+            standard_messages("flaged", msg, "", "cute");
+
             if debug == true {
-                standard_messages("debug", "Lookup strings", &cmd, "cute");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+
+            system_command_exec(&cmd, msg, debug)
         }
 
         "h" => {
-            standard_messages("flaged", "Lookup hexadecimal", "", "cute");
             let cmd = format!("xxd {}", sample.sample_path);
+            let msg = "Lookup hexadecimal";
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                standard_messages("debug", "ookup hexadecimal", &cmd, "cute");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "b" => {
-            standard_messages("flaged", "Lookup binary", "", "cute");
             let cmd = format!("xxd -b {}", sample.sample_path);
+            let msg = "Lookup binary";
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                standard_messages("debug", "Lookup binary", &cmd, "cute");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "r" => {
-            standard_messages("flaged", "Lookup *todo*", "", "cute");
             let cmd = format!("xxd -r {}", sample.sample_path);
+            let msg = "Lookup haxadecimal properts";
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                standard_messages("debug", "Lookup ", &cmd, "cute");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
 
         "l" => {
-            standard_messages("flaged", "Lookup linked library", "", "cute");
             let cmd = format!("ldd -v {}", sample.sample_path);
+            let msg = "Lookup linked library";
+            standard_messages("flaged", msg, "", "cute");
             if debug == true {
-                standard_messages("debug", "Lookup ", &cmd, "cute");
+                standard_messages("debug", msg, &cmd, "cute");
             }
-            system_command_exec(&cmd, debug)
+            system_command_exec(&cmd, msg, debug)
         }
         _ => {
             let at = format!("{}", sample.op_type);
@@ -106,10 +114,11 @@ pub fn lookup_reverse_engineering(sample: LookupGenericPathOpType, debug: bool) 
 
 pub fn lookup_exif_metadata(image: LookupGenericPathOpType, debug: bool) -> bool {
     let cmd = format!("exiftool {}", image.sample_path);
+    let msg = "Lookup exiftool";
     if debug == true {
-        standard_messages("warning", "Exiftool", &cmd, "cute");
+        standard_messages("warning", msg, &cmd, "cute");
     }
-    system_command_exec(&cmd, debug)
+    system_command_exec(&cmd, msg, debug)
 }
 
 pub fn shell_lookup(system_input: Vec<String>) -> bool {
