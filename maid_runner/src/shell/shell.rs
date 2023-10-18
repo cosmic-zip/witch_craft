@@ -50,11 +50,12 @@ pub fn init() -> u8 {
 
         _ => {
             let mut cmd = "".to_string();
+            let msg = "Trying execute the given external command";
             for item in &system_input[1..] {
                 cmd = format!("{} {}", cmd, item);
             }
-            standard_messages("warning", "Trying exec command", &cmd, "cute");
-            system_command_exec(&cmd, false);
+            standard_messages("warning", msg, &cmd, "cute");
+            system_command_exec(&cmd, msg, false);
         }
     }
 

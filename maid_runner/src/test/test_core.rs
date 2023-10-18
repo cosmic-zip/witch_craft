@@ -13,8 +13,8 @@ fn test_maid_runner_command_chain() {
 
     let _current_shell_env = system_exec_shell(true);
     let current_cmd = "ldd /bin/cat";
-
-    let res = system_command_exec(current_cmd, true);
+    let msg = "test_maid_runner_command_chain unit testing";
+    let res = system_command_exec(current_cmd, msg, true);
 
     assert_eq!(res, true);
 }

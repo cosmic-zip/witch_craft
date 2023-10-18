@@ -11,7 +11,7 @@ fn capitalize_first_letter(s: &str) -> String {
     }
 }
 
-pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) {
+pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) -> String {
     let mut color = "cyan";
     let mut icon = "*";
     let mut f_message = String::new();
@@ -59,20 +59,19 @@ pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) {
     if message == "" {
         f_message = format!("🚧 [WARNING] :: None information givem :: at → standard_messages");
         system_text(&f_message, "yellow");
+        return f_message;
     } else if level == "" {
         f_message = format!("🚧 [WARNING] :: Message level not givem :: at → standard_messages");
         system_text(&f_message, "yellow");
+        return f_message;
     }
 
-    
     if at != "" {
-        f_at = format!(" :: at → {}", at); 
+        f_at = format!(" :: at → {}", at);
     } else if at.len() > 0 {
-        
         if at.chars().collect::<Vec<_>>()[0] != ' ' {
-            f_at = format!(" :: at → {}", at); 
+            f_at = format!(" :: at → {}", at);
         }
-
     } else {
         f_at = "".to_string();
     }
@@ -86,4 +85,5 @@ pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) {
     );
 
     system_text(&f_message, color);
+    return f_message;
 }
