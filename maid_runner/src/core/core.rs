@@ -47,7 +47,8 @@ pub fn shell_core(system_input: Vec<String>) -> bool {
         }
 
         _ => {
-            standard_messages("error", "Invalid user input", "shell_core", "cute");
+            standard_messages("warning", "Invalid user input", "shell_core", "cute");
+            standard_messages("warning", "Trying exec command", cmd_arg_name, "cute");
             return false;
         }
     }

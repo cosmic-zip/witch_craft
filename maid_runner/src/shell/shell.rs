@@ -16,9 +16,7 @@ use crate::modules::{
 pub fn init() -> u8 {
     let system_input = system_exec_shell(false);
 
-    // println!("{:?}", system_input);
-    // system input are very time bigger than one and can't be iven
-    if system_input.len() < 2 {
+    if system_input.len() < 3 {
         system_exec_manual("default");
         return 1;
     }
@@ -56,7 +54,7 @@ pub fn init() -> u8 {
                 cmd = format!("{} {}", cmd, item);
             }
             standard_messages("warning", "Trying exec command", &cmd, "cute");
-            system_command_exec(&cmd, true);
+            system_command_exec(&cmd, false);
         }
     }
 
