@@ -3,12 +3,13 @@
     use crate::core::utils::*;
 
     pub fn sample(generic_list: Vec<String>, debug: bool) -> bool {
+        let msg: &str = "simple message about this thing here";
         let cmd: String = format!("{}", "variable");
         if debug == true {
             system_text(&cmd, "yellow");
         }
         system_text("[VOID] :: Menssage", "green");
-        system_command_exec(&cmd, debug)
+        system_command_exec(&cmd, &msg, debug)
     }
 
 ### Shell integracion
