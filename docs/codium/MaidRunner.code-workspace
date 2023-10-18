@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "../../.."
+			"path": "../.."
 		},
 		{
-			"path": "../../../../../../../var/maid/maid_lists/report"
+			"path": "../../../../../../var/maid/maid_lists"
 		}
 	],
 	"settings": {}
