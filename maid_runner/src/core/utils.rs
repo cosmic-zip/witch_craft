@@ -215,10 +215,10 @@ pub fn gsv(data: Vec<String>, parameter_name: &str) -> String {
 }
 
 pub fn gsv_debug(debug: String) -> bool {
-    if debug == "true" {
-        return true;
-    } else {
+    if debug == "false" {
         return false;
+    } else {
+        return true;
     }
 }
 
