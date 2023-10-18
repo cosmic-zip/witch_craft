@@ -188,7 +188,7 @@ Date: dom 01 out 2023 16:46:59 -03
 
 Version 0.9.0
 
-Version seg 09 out 2023 21:18:50 -03
+Date: seg 09 out 2023 21:18:50 -03
 
 	→ Added maid_av Active intivurus scanner
 	→ added a pattern-based AV scanner
@@ -204,3 +204,23 @@ Version seg 09 out 2023 21:18:50 -03
 	→ Refactored almost all debug
 	→ Removed maid_reports API prototype
 	→ Updated gitignore content
+
+Version: 0.9.7
+
+Date: qua 18 out 2023 05:33:38 -03
+
+→ Added codium code-workspace
+→ Added codium code-workspace
+→ Added new attack sub modules
+→ Added new documentation
+→ Added session description
+→ Removed old documentations and useless files
+→ Updated post_attack to rootkit
+→ Improve web scanner unit tests
+→ Improve report fields, add debug and session description and and 
+  change command prefix to source
+→ Build and install inside /bin
+→ Fixed empty message them using core --web_downloader
+→ Fixed report.jsonl bug at session description
+→ Fixed bug that caused panic if fewer than 3 arguments are given.
+→ Fixed sub domains and dir scanner output file path
