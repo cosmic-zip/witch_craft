@@ -1,6 +1,7 @@
+use crate::read_meow;
 use crate::core::core::*;
-use crate::core::messages::standard_messages;
 use crate::core::utils::*;
+use crate::core::messages::standard_messages;
 use crate::modules::scanner::scanner_structs::*;
 
 pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
@@ -74,10 +75,14 @@ pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
         }
 
         "sub_domains" => {
+            let path = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
+            let final_path = &path["REPORT_BASE_PATH"];
+
             system_text("[ROUTES] :: Sub domains", "green");
             let cmd = format!(
-                "dnsenum --enum {} -v -o mad_runner_sub_domains_{}.opsec -t 15 --threads 4 -f {}",
+                "dnsenum --enum {} -v -o {}mad_runner_sub_domains_{}.opsec -t 15 --threads 4 -f {}",
                 source.target,
+                final_path,
                 system_time(),
                 source.list_path,
             );
@@ -87,11 +92,15 @@ pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
             system_command_exec(&cmd, debug)
         }
 
-        "sub_directory" => {
+        "sub_directories" => {
+
+            let path = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
+            let final_path = &path["REPORT_BASE_PATH"];
+
             system_text("[ROUTES] :: Sub directory", "green");
             let cmd = format!(
-                "dirb {} {} -o maid_runner_sub_directory.opsec",
-                source.target, source.list_path
+                "dirb {} {} -o {}maid_runner_sub_directories.opsec",
+                source.target, source.list_path, final_path,
             );
             if debug == true {
                 system_text(&cmd, "yellow");
