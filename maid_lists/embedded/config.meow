@@ -13,7 +13,7 @@ MEOW GENRAL_BASE_PATH = "/var/maid/maid_lists/general/"
 MEOW REPORT_BASE_PATH = "/var/maid/maid_lists/report/"
 MEOW INDEX            = "/var/maid/maid_lists/html/index.html"
 
-MEOW DIRECTORES             = "directores.ascii" 
+MEOW DIRECTORIES            = "directories.ascii" 
 MEOW LDNS                   = "large_dns.ascii"  
 MEOW SDNS                   = "small_dns.ascii"  
 MEOW MACADDR                = "macaddr_lockup.ascii"  
@@ -27,8 +27,16 @@ MOEW REPOSOTIRY_KEYWORDS    = "repo_keyword_scan.ascii"
 MOEW EFF_DICE               = "dice_eff_words.ascii"  
 MEOW VULNERABILITIES        = "vulnerabilities.json"
 
-MEOW REPORT_LOG       = "report.json"
-MEOW REPORT_DOC       = ""
+# REPORTS AND SESSIONS
 
+MEOW REPORT_DOC       = "report.html"
+MEOW REPORT_LOG       = "report.json"
 MEOW SAFE_LOOK        = "session.meow"
+
+# AUTOMATED TESTS
+
+MEOW TEST_BASE_PATH   = "/var/maid/maid_lists/tests/"
+
+MEOW TEST_DIRECTORIES       = "test_directories.ascii"
+MEOW TEST_SDNS              = "test_small_dns.ascii"
 
