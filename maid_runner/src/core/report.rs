@@ -38,7 +38,8 @@ pub fn format_std(data: String) -> Vec<String> {
 }
 
 pub fn write_report(
-    command_string: String,
+    source: String,
+    source_description: String,
     status: String,
     stdout: String,
     stderr: String,
@@ -47,10 +48,7 @@ pub fn write_report(
     let mut formated_stdout: Vec<String> = format_std(stdout);
     let mut formated_stderr: Vec<String> = format_std(stderr);
 
-    let cmd: Vec<String> = command_string
-        .split_whitespace()
-        .map(String::from)
-        .collect();
+    let cmd: Vec<String> = source.split_whitespace().map(String::from).collect();
 
     let report_config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
     let report = format!(
@@ -63,11 +61,12 @@ pub fn write_report(
     let session_description = session_config["DESCRIPTION"].to_string();
 
     let contents = format!(
-        "{{ \"session\": \"{}\", \"description\": \"{}\", \"source\": \"{}\", \"source_detail\": \"{}\", \"timestemp\": \"{}\", \"command_status\": \"{}\",  \"formated_stdout\": {:?}, \"formated_stderr\": {:?}, \"debug\": {}}}\n",
+        "{{ \"session\": \"{}\", \"description\": \"{}\", \"source\": \"{}\", \"source_detail\": \"{}\", \"source_description\": \"{}\", \"timestemp\": \"{}\", \"command_status\": \"{}\",  \"formated_stdout\": {:?}, \"formated_stderr\": {:?}, \"debug\": {}}}\n",
         session,
         session_description,
         cmd[0],
-        command_string,
+        source,
+        source_description,
         system_time(),
         status,
         formated_stdout,
