@@ -37,10 +37,10 @@ pub fn system_string_to_vec_builder(build_string: String) -> Result<Vec<String>,
     Ok(sys_args)
 }
 
-pub fn system_command_exec(command_str: &str, debug: bool) -> bool {
-    let command_string = command_str.to_string();
+pub fn system_command_exec(source: &str, source_description: &str, debug: bool) -> bool {
+    let sourceing = source.to_string();
 
-    match system_string_to_vec_builder(command_string.clone()) {
+    match system_string_to_vec_builder(sourceing.clone()) {
         Ok(res_command_call) => {
             let command_call: CommandCall = CommandCall {
                 command: res_command_call[0].as_str(),
@@ -53,7 +53,7 @@ pub fn system_command_exec(command_str: &str, debug: bool) -> bool {
                         let (x, y, z) = (res.status, res.stdout, res.stderr);
                         println!("🔖 status: {} \n🚧 STDOUT: {}\n🚧 STDERR: {}\n\n", x, y, z);
 
-                        match write_report(command_string.clone(), x, y, z, debug) {
+                        match write_report(sourceing.clone(), source_description.to_string(), x, y, z, debug) {
                             Ok(()) => {
                                 standard_messages("saved", "Report created", "", "cute");
                             }
@@ -105,15 +105,15 @@ pub fn system_command_exec(command_str: &str, debug: bool) -> bool {
     }
 }
 
-pub fn system_command_deep_exec(command_str: &str, _debug: bool) -> Result<CommandResult, Error> {
-    let command_string = command_str.to_string();
+pub fn system_command_deep_exec(source: &str, _debug: bool) -> Result<CommandResult, Error> {
+    let sourceing = source.to_string();
     let mut result = CommandResult {
         status: "none".to_string(),
         stdout: "none".to_string(),
         stderr: "none".to_string(),
     };
 
-    match system_string_to_vec_builder(command_string) {
+    match system_string_to_vec_builder(sourceing) {
         Ok(res_command_call) => {
             let command_call: CommandCall = CommandCall {
                 command: res_command_call[0].as_str(),
@@ -261,7 +261,8 @@ pub fn find_all_matching_lines(
             "find_all_matching_lines pattern: {}, file_path : {}",
             pattern, file_path
         ),
-        "1".to_string(),
+        "Find matching lines inside an file".to_string(),
+        "0".to_string(),
         format!("{:?}", matching_lines),
         "None".to_string(),
         false,
