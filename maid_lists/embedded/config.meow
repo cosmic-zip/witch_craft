@@ -5,7 +5,7 @@
 #                                                  #
 #                  By Th3Maid 2023                 #
 #                                                  #
-#          MEOW VAR_NAME = "" declare variables    #
+#   Use: MEOW VAR_NAME = "", to declare variables  #
 #                                                  #
 # ------------------------------------------------ #
 
@@ -30,7 +30,7 @@ MEOW VULNERABILITIES        = "vulnerabilities.json"
 # REPORTS AND SESSIONS
 
 MEOW REPORT_DOC       = "report.html"
-MEOW REPORT_LOG       = "report.json"
+MEOW REPORT_LOG       = "report.jsonl"
 MEOW SAFE_LOOK        = "session.meow"
 
 # AUTOMATED TESTS
