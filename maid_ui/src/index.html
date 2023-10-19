@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/card.css">
+    <link rel="stylesheet" href="assets/css/brands.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/solid.min.css">
+    <link rel="stylesheet" href="assets/css/v4-shims.min.css">
+    <link rel="stylesheet" href="assets/css/v5-font-face.min.css">
+    <link rel="shortcut icon" href="assets/img/logos/logo_trans.png" type="image/x-icon">
     <script src="assets/js/main.js"></script>
     <title>MaidRunnerUI</title>
 </head>
@@ -20,6 +25,7 @@
 
             <div class="sidebar-title">
 
+                <img src="assets/img/logos/logo_trans.png" alt="" class="sidebar-title-logo">
                 <span>collections</span>
 
             </div>
@@ -27,67 +33,68 @@
             <div class="sidebar-content">
 
                 <div class="sidebar-block sidebar-btn">
-                    <span class="sidebar-block-text">Home</span>
+                    <span class="sidebar-block-text"><i class="fa-solid fa-house color-orange"></i> Home</span>
                 </div>
 
                 <div class="sidebar-item sidebar-btn" onclick="toggle('logs')">
-                    <span class="sidebar-item-text">🔍 Logs</span>
+                    <span class="sidebar-item-text"><i class="fa-solid fa-file-waveform"></i> Logs</span>
                 </div>
 
                 <div class="sidebar-item sidebar-btn" onclick="toggle('analysis')">
-                    <span class="sidebar-item-text">🚨 Analysis</span>
+                    <span class="sidebar-item-text"><i class="fa-solid fa-chart-pie"></i> Analysis</span>
                 </div>
 
                 <div class="sidebar-item sidebar-btn" onclick="toggle('reports')">
-                    <span class="sidebar-item-text">📒 Reports</span>
+                    <span class="sidebar-item-text"><i class="fa-solid fa-flag"></i> Reports</span>
                 </div>
 
                 <div class="sidebar-block sidebar-btn">
-                    <span class="sidebar-block-text">Modules</span>
+                    <span class="sidebar-block-text"><i class="fa-solid fa-gear color-orange"></i> Modules</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
-                    <span class="sidebar-item-text">👺 attack</span>
+                <div class="sidebar-item sidebar-btn" onclick="toggle('attack')">
+                    <span class="sidebar-item-text"><i class="fa-solid fa-dragon"></i> attack</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
-                    <span class="sidebar-item-text">🤖 botnet</span>
+                <div class="sidebar-item sidebar-btn" onclick="toggle('botnet')">
+                    <span class="sidebar-item-text"><i class="fa-solid fa-robot"></i> botnet</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
-                    <span class="sidebar-item-text">👷 curl binds</span>
+                <div class="sidebar-item sidebar-btn" onclick="toggle('curl')">
+                    <span class="sidebar-item-text"><i class="fa-solid fa-cloud-arrow-up"></i> curl binds</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
-                    <span class="sidebar-item-text">🔮 lookup</span>
+                <div class="sidebar-item sidebar-btn" onclick="toggle('lookup')">
+                    <span class="sidebar-item-text"><i class="fa-solid fa-eye"></i> lookup</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
-                    <span class="sidebar-item-text">🔬 maid AV</span>
+                <div class="sidebar-item sidebar-btn" onclick="toggle('maid_av')">
+                    <span class="sidebar-item-text"><i class="fa-solid fa-mosquito-net"></i> maid AV</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
-                    <span class="sidebar-item-text">🚚 maid container</span>
+                <div class="sidebar-item sidebar-btn" onclick="toggle('maid_ce')">
+                    <span class="sidebar-item-text"><i class="fa-solid fa-box-open"></i> maid container</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
-                    <span class="sidebar-item-text">🐀 rootkit</span>
+                <div class="sidebar-item sidebar-btn" onclick="toggle('rootkit')">
+                    <span class="sidebar-item-text"><i class="fa-solid fa-biohazard"></i> rootkit</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
-                    <span class="sidebar-item-text">📡 scanner</span>
+                <div class="sidebar-item sidebar-btn" onclick="toggle('scanner')">
+                    <span class="sidebar-item-text"><i class="fa-solid fa-satellite-dish"></i> scanner</span>
                 </div>
 
                 <div class="sidebar-block sidebar-btn">
-                    <span class="sidebar-block-text">More</span>
+                    <span class="sidebar-block-text"><i class="fa-solid fa-truck-medical color-orange"></i>
+                        More</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
-                    <span class="sidebar-item-text">About</span>
+                <div class="sidebar-item sidebar-btn" onclick="toggle('about')">
+                    <span class="sidebar-item-text"><i class="fa-solid fa-circle-info"></i> About</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
-                    <span class="sidebar-item-text">Suport</span>
+                <div class="sidebar-item sidebar-btn" onclick="toggle('help')">
+                    <span class="sidebar-item-text"><i class="fa-solid fa-suitcase-medical"></i> Help</span>
                 </div>
 
 
@@ -108,17 +115,11 @@
                     <div class="card">
 
                         <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
-                            <span>S1</span>
+                            <h3 class="card-title">welcome to the logs page</h3>
+                            <span>🔶</span>
                         </header>
                         <div class="card-body">
-                            <p>
-                                Maid Runner is a versatile task automation software designed to serve as the foundation
-                                for various cyber security modules. It provides capabilities for tasks such as forensic
-                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                testing of applications and APIs, and more.
-                            </p>
-                            <br>
+
                         </div>
 
                     </div>
@@ -126,8 +127,8 @@
                     <div class="card">
 
                         <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
-                            <span>S1</span>
+                            <h3 class="card-title">last entries</h3>
+                            <span>🔶</span>
                         </header>
                         <div class="card-body">
                             <div class="tables">
@@ -154,66 +155,6 @@
                                         <td>true</td>
                                         <th><button class="table-btn">View</button></th>
                                     </tr>
-                                    <tr>
-                                        <td>default</td>
-                                        <td>traceroute</td>
-                                        <td>Scanning traceroute UDP</td>
-                                        <td>2023-10-18T14:09:54.429173877-03:00</td>
-                                        <td>0</td>
-                                        <td><button class="green table-btn">Success</button></td>
-                                        <td><button class="red table-btn">Error</button></td>
-                                        <td>true</td>
-                                        <th><button class="table-btn">View</button></th>
-                                    </tr>
-                                    <tr>
-                                        <td>default</td>
-                                        <td>traceroute</td>
-                                        <td>Scanning traceroute UDP</td>
-                                        <td>2023-10-18T14:09:54.429173877-03:00</td>
-                                        <td>0</td>
-                                        <td><button class="green table-btn">Success</button></td>
-                                        <td><button class="red table-btn">Error</button></td>
-                                        <td>true</td>
-                                        <th><button class="table-btn">View</button></th>
-                                    </tr>
-
-                                    <span>
-                                        <tr>
-                                            <td>default</td>
-                                            <td>traceroute</td>
-                                            <td>Scanning traceroute UDP</td>
-                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
-                                            <td>0</td>
-                                            <td><button class="green table-btn">Success</button></td>
-                                            <td><button class="red table-btn">Error</button></td>
-                                            <td>true</td>
-                                            <th><button class="table-btn">View</button></th>
-                                        </tr>
-                                        <tr>
-                                            <td>default</td>
-                                            <td>traceroute</td>
-                                            <td>Scanning traceroute UDP</td>
-                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
-                                            <td>0</td>
-                                            <td><button class="green table-btn">Success</button></td>
-                                            <td><button class="red table-btn">Error</button></td>
-                                            <td>true</td>
-                                            <th><button class="table-btn">View</button></th>
-                                        </tr>
-                                        <tr>
-                                            <td>default</td>
-                                            <td>traceroute</td>
-                                            <td>Scanning traceroute UDP</td>
-                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
-                                            <td>0</td>
-                                            <td><button class="green table-btn">Success</button></td>
-                                            <td><button class="red table-btn">Error</button></td>
-                                            <td>true</td>
-                                            <th><button class="table-btn">View</button></th>
-                                        </tr>
-                                    </span>
-
-
                                 </table>
                             </div>
                         </div>
@@ -234,11 +175,229 @@
                     sed quam et rerum?
                 </section>
 
+                <section class="attack toggle" id="attack">
+                    <div class="card">
+
+                        <header class="card-header space-bt">
+                            <h3 class="card-title">title</h3>
+                            <span>🔶</span>
+                        </header>
+                        <div class="card-body">
+                            <p>
+                                Maid Runner is a versatile task automation software designed to serve as the foundation
+                                for various cyber security modules. It provides capabilities for tasks such as forensic
+                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                testing of applications and APIs, and more.
+                            </p>
+                            <br>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="botnet toggle" id="botnet">
+                    <div class="card">
+
+                        <header class="card-header space-bt">
+                            <h3 class="card-title">title</h3>
+                            <span>🔶</span>
+                        </header>
+                        <div class="card-body">
+                            <p>
+                                Maid Runner is a versatile task automation software designed to serve as the foundation
+                                for various cyber security modules. It provides capabilities for tasks such as forensic
+                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                testing of applications and APIs, and more.
+                            </p>
+                            <br>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="curl toggle" id="curl">
+                    <div class="card">
+
+                        <header class="card-header space-bt">
+                            <h3 class="card-title">title</h3>
+                            <span>🔶</span>
+                        </header>
+                        <div class="card-body">
+                            <p>
+                                Maid Runner is a versatile task automation software designed to serve as the foundation
+                                for various cyber security modules. It provides capabilities for tasks such as forensic
+                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                testing of applications and APIs, and more.
+                            </p>
+                            <br>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="lookup toggle" id="lookup">
+                    <div class="card">
+
+                        <header class="card-header space-bt">
+                            <h3 class="card-title">title</h3>
+                            <span>🔶</span>
+                        </header>
+                        <div class="card-body">
+                            <p>
+                                Maid Runner is a versatile task automation software designed to serve as the foundation
+                                for various cyber security modules. It provides capabilities for tasks such as forensic
+                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                testing of applications and APIs, and more.
+                            </p>
+                            <br>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="maid_av toggle" id="maid_av">
+                    <div class="card">
+
+                        <header class="card-header space-bt">
+                            <h3 class="card-title">title</h3>
+                            <span>🔶</span>
+                        </header>
+                        <div class="card-body">
+                            <p>
+                                Maid Runner is a versatile task automation software designed to serve as the foundation
+                                for various cyber security modules. It provides capabilities for tasks such as forensic
+                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                testing of applications and APIs, and more.
+                            </p>
+                            <br>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="maid_ce toggle" id="maid_ce">
+                    <div class="card">
+
+                        <header class="card-header space-bt">
+                            <h3 class="card-title">title</h3>
+                            <span>🔶</span>
+                        </header>
+                        <div class="card-body">
+                            <p>
+                                Maid Runner is a versatile task automation software designed to serve as the foundation
+                                for various cyber security modules. It provides capabilities for tasks such as forensic
+                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                testing of applications and APIs, and more.
+                            </p>
+                            <br>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="rootkit toggle" id="rootkit">
+                    <div class="card">
+
+                        <header class="card-header space-bt">
+                            <h3 class="card-title">title</h3>
+                            <span>🔶</span>
+                        </header>
+                        <div class="card-body">
+                            <p>
+                                Maid Runner is a versatile task automation software designed to serve as the foundation
+                                for various cyber security modules. It provides capabilities for tasks such as forensic
+                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                testing of applications and APIs, and more.
+                            </p>
+                            <br>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="scanner toggle" id="scanner">
+                    <div class="card">
+
+                        <header class="card-header space-bt">
+                            <h3 class="card-title">title</h3>
+                            <span>🔶</span>
+                        </header>
+                        <div class="card-body">
+                            <p>
+                                Maid Runner is a versatile task automation software designed to serve as the foundation
+                                for various cyber security modules. It provides capabilities for tasks such as forensic
+                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                testing of applications and APIs, and more.
+                            </p>
+                            <br>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="about toggle" id="about">
+                    <div class="card">
+
+                        <header class="card-header space-bt">
+                            <h3 class="card-title">title</h3>
+                            <span>🔶</span>
+                        </header>
+                        <div class="card-body">
+                            <p>
+                                Maid Runner is a versatile task automation software designed to serve as the foundation
+                                for various cyber security modules. It provides capabilities for tasks such as forensic
+                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                testing of applications and APIs, and more.
+                            </p>
+                            <br>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="help toggle" id="help">
+                    <center>
+                        <div class="card card-max">
+
+                            <header class="card-header space-bt">
+                                <h3 class="card-title">About MaidRunner</h3>
+                                <span>🔶</span>
+                            </header>
+                            <div class="card-body">
+                                <p>
+                                    Maid Runner is a versatile task automation software designed to serve as the
+                                    foundation
+                                    for various cyber security modules. It provides capabilities for tasks such as
+                                    forensic
+                                    research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                    testing of applications and APIs, and more.
+                                </p>
+                                <br>
+                                <p>
+                                    <b>Trunk-Based Development</b>
+                                </p>
+                                <br>
+                                <p>
+                                    This project utilizes a Trunk-Based Development (TBD) approach for its software
+                                    development lifecycle. Trunk-Based Development is a software development methodology
+                                    that emphasizes continuous integration and collaboration among developers.
+                                </p>
+                            </div>
+
+                        </div>
+                    </center>
+                </section>
+
+
             </main>
 
         </section>
 
     </main>
+
+    <span class="error">
+        <span>Screen resolution is to small</span>
+    </span>
 
 
 </body>

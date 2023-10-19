@@ -18,6 +18,10 @@
   background-color: var(--safety-orange);
 }
 
+.color-orange {
+  color: var(--safety-orange);
+}
+
 .lavender-floral {
   background-color: var(--lavender-floral);
 }
@@ -108,6 +112,13 @@ body {
   font-weight: lighter;
   font-size: 26px;
   text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-title-logo {
+  width: 70px;
 }
 
 .sidebar-content {}
@@ -125,7 +136,7 @@ body {
 
 .sidebar-block {
   background-color: var(--raisin-black);
-
+  cursor: default;
 }
 
 .sidebar-block-text {}
@@ -134,10 +145,12 @@ body {
   display: flex;
   align-items: center;
   text-transform: capitalize;
+  cursor: pointer;
 }
 
 .sidebar-item:hover {
   background-color: var(--gray-hover);
+
 }
 
 .sidebar-item-img {
@@ -158,6 +171,8 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   width: 100%;
+  /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .content-header {}
@@ -175,6 +190,11 @@ body {
 
 .card {
   margin: 10px;
+  text-align: left;
+}
+
+.card-max {
+  max-width: 1080px;
 }
 
 .card-header {
@@ -185,7 +205,9 @@ body {
   justify-content: space-between;
 }
 
-.card-title {}
+.card-title {
+  text-transform: capitalize;
+}
 
 .card-sub-title {}
 
@@ -201,12 +223,13 @@ body {
   text-align: left;
   line-break: auto;
   vertical-align: middle;
-  width: 80%;
+  width: 100%;
   overflow-x: auto;
 }
 
 .tables td {
   padding: 10px;
+  vertical-align: middle;
 }
 
 .tables th {
@@ -214,6 +237,7 @@ body {
   padding: 10px;
   font-weight: bold;
   vertical-align: middle;
+  cursor: default;
 }
 
 .tables tr:hover {
@@ -230,13 +254,26 @@ body {
 
 /* toggle */
 
-
 #logs,
 #reports,
-#analysis {
+#analysis,
+#attack,
+#botnet,
+#curl,
+#lookup,
+#rootkit,
+#scanner,
+#maid_av,
+#maid_ce,
+#about,
+#help {
   display: none;
 }
 
 #logs {
   display: block;
+}
+
+.error {
+  display: none;
 }
