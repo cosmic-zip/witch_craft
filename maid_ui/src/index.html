@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/card.css">
+    <script src="assets/js/main.js"></script>
     <title>MaidRunnerUI</title>
 </head>
 
@@ -29,15 +30,15 @@
                     <span class="sidebar-block-text">Home</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="toggle('logs')">
                     <span class="sidebar-item-text">🔍 Logs</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="toggle('analysis')">
                     <span class="sidebar-item-text">🚨 Analysis</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="toggle('reports')">
                     <span class="sidebar-item-text">📒 Reports</span>
                 </div>
 
@@ -45,36 +46,48 @@
                     <span class="sidebar-block-text">Modules</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
                     <span class="sidebar-item-text">👺 attack</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
                     <span class="sidebar-item-text">🤖 botnet</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
                     <span class="sidebar-item-text">👷 curl binds</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
                     <span class="sidebar-item-text">🔮 lookup</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
                     <span class="sidebar-item-text">🔬 maid AV</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
                     <span class="sidebar-item-text">🚚 maid container</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
                     <span class="sidebar-item-text">🐀 rootkit</span>
                 </div>
 
-                <div class="sidebar-item sidebar-btn">
+                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
                     <span class="sidebar-item-text">📡 scanner</span>
+                </div>
+
+                <div class="sidebar-block sidebar-btn">
+                    <span class="sidebar-block-text">More</span>
+                </div>
+
+                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
+                    <span class="sidebar-item-text">About</span>
+                </div>
+
+                <div class="sidebar-item sidebar-btn" onclick="alert('ClickMe')">
+                    <span class="sidebar-item-text">Suport</span>
                 </div>
 
 
@@ -90,7 +103,7 @@
 
             <main class="content-main">
 
-                <div class="ctn">
+                <section class="logs toggle" id="logs">
 
                     <div class="card">
 
@@ -207,15 +220,23 @@
 
                     </div>
 
+                </section>
 
+                <section class="reports toggle" id="reports">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse amet nobis iure quisquam optio natus
+                    eius sunt tempore minima excepturi quod quo dicta eum temporibus veritatis eveniet maxime, fuga
+                    nihil.
+                </section>
 
-
-                </div>
+                <section class="analysis toggle" id="analysis">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus sed nulla non numquam, quas
+                    quaerat doloremque nesciunt sit eos, molestiae dignissimos totam libero itaque. Explicabo voluptas
+                    sed quam et rerum?
+                </section>
 
             </main>
 
         </section>
-
 
     </main>
 

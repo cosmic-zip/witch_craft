@@ -116,6 +116,11 @@ body {
   padding: 10px;
   margin: 10px 0px 10px;
   border-radius: 5px;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 14px;
 }
 
 .sidebar-block {
@@ -148,7 +153,7 @@ body {
 /* content */
 
 .content {
-  border-radius: 1%;
+  border-radius: 10px;
   background-color: var(--raisin-black);
   overflow-y: scroll;
   overflow-x: hidden;
@@ -221,4 +226,17 @@ body {
   border-radius: 5px;
   width: 60px;
   height: 24px;
+}
+
+/* toggle */
+
+
+#logs,
+#reports,
+#analysis {
+  display: none;
+}
+
+#logs {
+  display: block;
 }
