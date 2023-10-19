@@ -64,6 +64,11 @@
   src: url("../fonts/fa-regular-400.ttf");
 }
 
+section {
+  scrollbar-color: var(--verdigris) var(--raisin-body);
+  scrollbar-width: bold;
+}
+
 .gradient-base {
   background: rgb(255, 0, 172);
   background: linear-gradient(166deg, rgba(255, 0, 172, 1) 0%, rgba(179, 92, 250, 1) 34%, rgba(171, 0, 255, 1) 53%, rgba(193, 111, 204, 1) 67%, rgba(255, 192, 0, 1) 100%);
@@ -79,9 +84,9 @@ body {
   height: 100vh;
   color: var(--white);
   font-family: sans-serif;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+  display: flex;
   overflow: clip;
+  justify-content: space-between;
 }
 
 .section-adjust {
@@ -147,6 +152,7 @@ body {
   background-color: var(--raisin-black);
   overflow-y: scroll;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .content-header {}
@@ -200,6 +206,7 @@ body {
 
 .tables th {
   height: 40px;
+  padding: 10px;
   font-weight: bold;
   vertical-align: middle;
 }
