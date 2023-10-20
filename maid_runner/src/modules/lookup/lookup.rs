@@ -1,4 +1,5 @@
 use crate::core::messages::standard_messages;
+use crate::core::structs::ProcessInit;
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
 use crate::modules::lookup::lookup_structs::*;
@@ -48,63 +49,59 @@ pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
 pub fn lookup_reverse_engineering(sample: LookupGenericPathOpType, debug: bool) -> bool {
     match sample.op_type {
         "s" => {
-            let cmd = format!("strings {}", sample.sample_path);
-            let msg = "Lookup strings";
-
-            standard_messages("flaged", msg, "", "cute");
-
-            if debug == true {
-                standard_messages("debug", msg, &cmd, "cute");
-            }
-
-            system_command_exec(&cmd, msg, debug)
+            let instance = ProcessInit {
+                source: &format!("strings {}", sample.sample_path),
+                source_from: "lookup",
+                source_description: "Lookup strings",
+                debug: debug,
+            };
+            system_command_exec(instance)
         }
 
         "h" => {
-            let cmd = format!("xxd {}", sample.sample_path);
-            let msg = "Lookup hexadecimal";
-            standard_messages("flaged", msg, "", "cute");
-            if debug == true {
-                standard_messages("debug", msg, &cmd, "cute");
-            }
-            system_command_exec(&cmd, msg, debug)
+            let instance = ProcessInit {
+                source: &format!("xxd {}", sample.sample_path),
+                source_from: "lookup",
+                source_description: "Lookup hexadecimal",
+                debug: debug,
+            };
+            system_command_exec(instance)
         }
 
         "b" => {
-            let cmd = format!("xxd -b {}", sample.sample_path);
-            let msg = "Lookup binary";
-            standard_messages("flaged", msg, "", "cute");
-            if debug == true {
-                standard_messages("debug", msg, &cmd, "cute");
-            }
-            system_command_exec(&cmd, msg, debug)
+            let instance = ProcessInit {
+                source: &format!("xxd -b {}", sample.sample_path),
+                source_from: "lookup",
+                source_description: "Lookup binary",
+                debug: debug,
+            };
+            system_command_exec(instance)
         }
 
         "r" => {
-            let cmd = format!("xxd -r {}", sample.sample_path);
-            let msg = "Lookup haxadecimal properts";
-            standard_messages("flaged", msg, "", "cute");
-            if debug == true {
-                standard_messages("debug", msg, &cmd, "cute");
-            }
-            system_command_exec(&cmd, msg, debug)
+            let instance = ProcessInit {
+                source: &format!("xxd -r {}", sample.sample_path),
+                source_from: "lookup",
+                source_description: "Lookup hexadecimal properts",
+                debug: debug,
+            };
+            system_command_exec(instance)
         }
 
         "l" => {
-            let cmd = format!("ldd -v {}", sample.sample_path);
-            let msg = "Lookup linked library";
-            standard_messages("flaged", msg, "", "cute");
-            if debug == true {
-                standard_messages("debug", msg, &cmd, "cute");
-            }
-            system_command_exec(&cmd, msg, debug)
+            let instance = ProcessInit {
+                source: &format!("ldd -v {}", sample.sample_path),
+                source_from: "lookup",
+                source_description: "Lookup linked library",
+                debug: debug,
+            };
+            system_command_exec(instance)
         }
         _ => {
-            let at = format!("{}", sample.op_type);
             standard_messages(
                 "warning",
                 "Option not found on struct LookupGenericPathOpType",
-                &at,
+                &format!("{}", sample.op_type),
                 "cute",
             );
             return false;
@@ -113,12 +110,13 @@ pub fn lookup_reverse_engineering(sample: LookupGenericPathOpType, debug: bool) 
 }
 
 pub fn lookup_exif_metadata(image: LookupGenericPathOpType, debug: bool) -> bool {
-    let cmd = format!("exiftool {}", image.sample_path);
-    let msg = "Lookup exiftool";
-    if debug == true {
-        standard_messages("warning", msg, &cmd, "cute");
-    }
-    system_command_exec(&cmd, msg, debug)
+    let instance = ProcessInit {
+        source: &format!("exiftool {}", image.sample_path),
+        source_from: "lookup",
+        source_description: "Lookup exiftool",
+        debug: debug,
+    };
+    system_command_exec(instance)
 }
 
 pub fn shell_lookup(system_input: Vec<String>) -> bool {

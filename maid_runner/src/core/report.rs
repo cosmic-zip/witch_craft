@@ -1,5 +1,7 @@
+use crate::core::structs::{Logger, ProcessResult};
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
+use std::error::Error;
 use std::fs::File;
 use std::io::prelude::*;
 
@@ -37,18 +39,12 @@ pub fn format_std(data: String) -> Vec<String> {
     return formated;
 }
 
-pub fn write_report(
-    source: String,
-    source_description: String,
-    status: String,
-    stdout: String,
-    stderr: String,
-    debug: bool,
-) -> std::io::Result<()> {
-    let mut formated_stdout: Vec<String> = format_std(stdout);
-    let mut formated_stderr: Vec<String> = format_std(stderr);
+pub fn logger(data: Logger) -> std::io::Result<()> {
 
-    let cmd: Vec<String> = source.split_whitespace().map(String::from).collect();
+    let mut formated_stdout: Vec<String> = format_std(data.stdout);
+    let mut formated_stderr: Vec<String> = format_std(data.stderr);
+
+    let cmd: Vec<String> = data.source.split_whitespace().map(String::from).collect();
 
     let report_config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
     let report = format!(
@@ -60,21 +56,21 @@ pub fn write_report(
     let session = session_config["LATEST_SESSION"].to_string();
     let session_description = session_config["DESCRIPTION"].to_string();
 
-    let contents = format!(
-        "{{ \"session\": \"{}\", \"description\": \"{}\", \"source\": \"{}\", \"source_detail\": \"{}\", \"source_description\": \"{}\", \"timestemp\": \"{}\", \"command_status\": \"{}\",  \"formated_stdout\": {:?}, \"formated_stderr\": {:?}, \"debug\": {}}}\n",
-        session,
-        session_description,
-        cmd[0],
-        source,
-        source_description,
-        system_time(),
-        status,
-        formated_stdout,
-        formated_stderr,
-        debug
-    );
+    let proccess_result = ProcessResult {
+        session: session.as_str(),
+        session_description: session_description.as_str(),
+        source_from: data.source_from.as_str(),
+        source_command: cmd[0].as_str(),
+        source_detail: data.source.as_str(),
+        source_description: data.source_description.as_str(),
+        timestemp: system_time().as_str(),
+        returned_status: data.status.as_str(),
+        formated_stdout: formated_stdout,
+        formated_stderr: formated_stderr,
+        debug: data.debug,
+    };
 
-    let file = File::options().append(true).open(&report);
-    let _ = file.expect("FILE").write_all(&contents.as_bytes());
+    // let file = File::options().append(true).open(&report);
+    // let _ = file.expect("FILE").write_all(&proccess_result.as_bytes());
     Ok(())
 }

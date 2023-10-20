@@ -1,6 +1,6 @@
 use crate::core::messages::standard_messages;
 use crate::core::report::*;
-use crate::core::structs::{CommandCall, CommandResult};
+use crate::core::structs::{CommandCall, CommandResult, Logger, ProcessInit};
 use colored::*;
 use csv::ReaderBuilder;
 
@@ -32,119 +32,56 @@ pub fn system_command_call(cmd: CommandCall) -> Result<CommandResult, Error> {
     Ok(result)
 }
 
-pub fn system_string_to_vec_builder(build_string: String) -> Result<Vec<String>, Error> {
-    let sys_args: Vec<String> = build_string.split_whitespace().map(String::from).collect();
-    Ok(sys_args)
+pub fn system_string_to_vec_builder(build_string: &str) -> Vec<String> {
+    build_string
+        .to_string()
+        .split_whitespace()
+        .map(String::from)
+        .collect()
 }
 
-pub fn system_command_exec(source: &str, source_description: &str, debug: bool) -> bool {
-    let sourceing = source.to_string();
+pub fn system_command_exec(command: ProcessInit) -> bool {
+    let string_args = system_string_to_vec_builder(command.source);
+    let command_call: CommandCall = CommandCall {
+        command: string_args[0].as_str(),
+        args: &string_args[1..],
+    };
 
-    match system_string_to_vec_builder(sourceing.clone()) {
-        Ok(res_command_call) => {
-            let command_call: CommandCall = CommandCall {
-                command: res_command_call[0].as_str(),
-                args: &res_command_call[1..],
+    // Dummy mockup
+    if command.source == "DUMP_TBV" {
+        return true;
+    }
+
+    match system_command_call(command_call) {
+        Ok(res) => {
+            let (status, stdout, stderr) = (res.status, res.stdout, res.stderr);
+
+            let data = Logger {
+                source: command.source.to_string(),
+                source_from: command.source_from.to_string(),
+                source_description: command.source_description.to_string(),
+                status: status.to_string(),
+                stdout: stdout.to_string(),
+                stderr: stderr.to_string(),
+                debug: command.debug,
             };
 
-            match system_command_call(command_call) {
-                Ok(res) => {
-                    if debug == true {
-                        let (x, y, z) = (res.status, res.stdout, res.stderr);
-                        println!("🔖 status: {} \n🚧 STDOUT: {}\n🚧 STDERR: {}\n\n", x, y, z);
-
-                        match write_report(sourceing.clone(), source_description.to_string(), x, y, z, debug) {
-                            Ok(()) => {
-                                standard_messages("saved", "Report created", "", "cute");
-                            }
-
-                            Err(err) => {
-                                let message = format!("{}", err);
-                                standard_messages(
-                                    "error",
-                                    "While executing command write_report",
-                                    &message,
-                                    "cute",
-                                );
-                                return false;
-                            }
-                        }
-
-                        return true;
-                    }
-
-                    // Print sub process output
-                    println!("\n{}\n\n", res.stdout);
-                    if res.stderr != "" {
-                        println!("\n{}\n\n", res.stderr);
-                    }
-                    return true;
-                }
-                Err(err) => {
-                    let message = format!("{}", err);
-                    standard_messages(
-                        "error",
-                        "While executing command system_command_call",
-                        &message,
-                        "cute",
-                    );
-                    return false;
-                }
-            }
+            println!(
+                "🔖 status: {} \n🚧 STDOUT: {}\n🚧 STDERR: {}\n",
+                status, stdout, stderr,
+            );
+            return true;
         }
         Err(err) => {
-            let message = format!("{}", err);
             standard_messages(
                 "error",
-                "While executing command system_string_to_vec_builder",
-                &message,
+                "While executing command system_command_call",
+                &format!("{}", err),
                 "cute",
             );
             return false;
         }
     }
-}
-
-pub fn system_command_deep_exec(source: &str, _debug: bool) -> Result<CommandResult, Error> {
-    let sourceing = source.to_string();
-    let mut result = CommandResult {
-        status: "none".to_string(),
-        stdout: "none".to_string(),
-        stderr: "none".to_string(),
-    };
-
-    match system_string_to_vec_builder(sourceing) {
-        Ok(res_command_call) => {
-            let command_call: CommandCall = CommandCall {
-                command: res_command_call[0].as_str(),
-                args: &res_command_call[1..],
-            };
-
-            match system_command_call(command_call) {
-                Ok(res) => result = res,
-                Err(err) => {
-                    let message = format!("{}", err);
-                    standard_messages(
-                        "error",
-                        "While executing command system_string_to_vec_builder",
-                        &message,
-                        "cute",
-                    );
-                }
-            }
-        }
-        Err(err) => {
-            let message = format!("{}", err);
-            standard_messages(
-                "error",
-                "While executing command system_string_to_vec_builder",
-                &message,
-                "cute",
-            );
-        }
-    }
-
-    Ok(result)
 }
 
 pub fn system_text(text: &str, color: &str) -> bool {
@@ -233,7 +170,6 @@ pub fn search_csv(file_path: &str, search_term: &str) -> Result<Vec<String>, Box
         for field in record.iter() {
             if field.contains(search_term) {
                 matching_rows.push(record.as_slice().to_string());
-                // println!("@{:?}", matching_rows[0]);
                 break;
             }
         }
@@ -242,10 +178,7 @@ pub fn search_csv(file_path: &str, search_term: &str) -> Result<Vec<String>, Box
     Ok(matching_rows)
 }
 
-pub fn find_all_matching_lines(
-    file_path: &str,
-    pattern: &str,
-) -> Result<Vec<String>, Box<dyn StdError>> {
+pub fn find_all_matching_lines(file_path: &str, pattern: &str) -> Result<Vec<String>, Error> {
     let file = File::open(file_path)?;
     let mut matching_lines = Vec::new();
 
@@ -256,30 +189,24 @@ pub fn find_all_matching_lines(
         }
     }
 
-    match write_report(
-        format!(
-            "find_all_matching_lines pattern: {}, file_path : {}",
-            pattern, file_path
-        ),
-        "Find matching lines inside an file".to_string(),
-        "0".to_string(),
-        format!("{:?}", matching_lines),
-        "None".to_string(),
-        false,
-    ) {
-        Ok(()) => {
-            // system_text("[REPORT] :: Report created", "green");
-        }
+    let command = format!(
+        "find_all_matching_lines pattern: {}, file_path : {}",
+        pattern, file_path
+    );
 
-        Err(err) => {
-            let message = format!("{}", err);
-            standard_messages(
-                "error",
-                "While executing command system_command_call",
-                &message,
-                "cute",
-            );
-        }
+    let data = Logger {
+        source: command,
+        source_from: "utils".to_string(),
+        source_description: "Finding all matching line on a file".to_string(),
+        status: 0.to_string(),
+        stdout: format!("{:?}", matching_lines),
+        stderr: "none".to_string(),
+        debug: true,
+    };
+
+    match logger(data) {
+        Ok(result) => println!("Fine"),
+        Err(err) => println!("Fine"),
     }
 
     Ok(matching_lines)

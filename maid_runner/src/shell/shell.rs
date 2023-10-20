@@ -1,4 +1,4 @@
-use crate::core::{core::*, manual::*, messages::*, utils::*};
+use crate::core::{core::*, manual::*, messages::*, structs::*, utils::*};
 
 use crate::modules::{
     curl::curl::*,
@@ -50,12 +50,17 @@ pub fn init() -> u8 {
 
         _ => {
             let mut cmd = "".to_string();
-            let msg = "Trying execute the given external command";
             for item in &system_input[1..] {
                 cmd = format!("{} {}", cmd, item);
             }
-            standard_messages("warning", msg, &cmd, "cute");
-            system_command_exec(&cmd, msg, false);
+
+            let instance = ProcessInit {
+                source: &cmd,
+                source_from: "shell",
+                source_description: "Trying execute the given external command",
+                debug: true,
+            };
+            system_command_exec(instance);
         }
     }
 
