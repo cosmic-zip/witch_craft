@@ -84,7 +84,7 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
             └────────────────────────┴──────────────────────────────────┘
 
     --path                      File path need by: sub_domains, sub_directory, build_with,
-                                c_api_url, c_web_url, must be: ./folder/list.ascii, check
+                                c_api_url, c_web_url, must be: ./folder/list.bin, check
                                 maid_lists.
     --debug                     Optional value for debug can be true or false.
 
@@ -136,6 +136,8 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
     cleaning process. 
 
 ### Instalation
+
+The project initially includes a set of default files. These files are created using the best possible data analysis techniques, and their final versions are merged into the main project.
 
 TBA
 
