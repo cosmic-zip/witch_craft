@@ -1,33 +1,29 @@
-![banner](docs/images/maid.png)
+![banner](maid_docs/images/maid.png)
 
 # Maid Runner
 
 Maid Runner is a versatile task automation software designed to serve as the foundation for various cyber security modules. It provides capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion testing of applications and APIs, and more.
 
-**Trunk-Based Development**
+## CLI
 
-This project utilizes a Trunk-Based Development (TBD) approach for its software development lifecycle. Trunk-Based Development is a software development methodology that emphasizes continuous integration and collaboration among developers.
-
-## MAIDRUNNER
-
-### NAME
+**NAME**
 
 MaidRunner - Maid Runner is a versatile task automation software designed to serve as the foundation for various cyber security modules.
 
-### SYNOPSIS
+**SYNOPSIS**
 
  maidrunner module_name [--key value] [-k value] [--debug true|false] [--path file]
 
-### DESCRIPTION
+**DESCRIPTION**
 
     This  manual  page  describes the  MaidRunner,  a versatile task automation software 
     designed to serve as the foundation for various cyber security modules. It provides 
     capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), 
     scanning, backup and copying, intrusion testing of applications and APIs, and more.
 
-### OPTIONS
+**OPTIONS**
 
-### CORE
+**CORE**
 
     core    Core describes advanced base functions for one or more secondary function, 
             the core module permit access and use of the this functions by the user
@@ -39,7 +35,7 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
     --url                       Target web page URL with www.example.com
     --debug                     Optional value for debug can be true or false
 
-### LOOKUP
+**LOOKUP**
 
     lookup  Lookup contains automations for the lookup proccess in cyber security
 
@@ -62,7 +58,7 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
             └────────────────┴──────────────────────────────────────────┘
     --debug                     Optional value for debug can be true or false
 
-### WEB SCANNER
+**WEB SCANNER**
 
     scanner Scanner contains automations for the web scanning proccess thats include
             namp, dirbuster, dnsenum, etc.
@@ -92,7 +88,7 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
                                 maid_lists.
     --debug                     Optional value for debug can be true or false.
 
-### BCURL
+**BCURL**
 
     bcurl                       Rust binding for the curl command.
 
@@ -111,7 +107,7 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
     --status_code               Show status code from a GET request (useful for is_alive 
                                 tests).
 
-### MAID ANTIVIRUS
+**MAID ANTIVIRUS**
 
     maid_av                     Maid_av is a basic malware detection tool based on hashes. 
 
@@ -120,36 +116,30 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
     --scanner                   Automaticly scanner all files and folders inside an base path
                                 like: /path/ or ./path
 
-### WARNINGS
+**WARNINGS**
 
     WARNING: This Tool Is For Cybersecurity Use May Have Legal Implications
     As you use this cybersecurity tool, it is important to be aware of the potential 
     legal implications. Depending on how the tool is used, there may be consequences 
     under various laws and regulations.
 
-### ENVIRONMENT
+**ENVIRONMENT**
 
     To ensure a smooth installation process, make sure your Linux system has all 
     necessary dependencies, including packages and files.     
 
-### FILES
+**FILES**
 
     Attention! The 'maid_list' folder must be located within '/var/maid/' directory, 
     and the current user must have read/write permissions to access it. Failure to 
     meet these requirements may result in unexpected behavior or errors during the 
     cleaning process. 
 
-### INSTALATION
+### Instalation
 
-**Don't run build.sh with sudo**
-
-``` bash
-git clone https://github.com/th3Maid/MaidRunner.git 
-cd MaidRunner
-chmod +x build.sh
-./build.sh
-```
+TBA
 
 ### License
 
-**This project is licensed under the GNU General Public License v3.0.**
+<center>
+**This project is licensed under the GNU General Public License v3.0.**</center>
