@@ -25,7 +25,8 @@ use std::collections::HashMap;
 use std::fs;
 
 pub fn filter(line: &str) -> String {
-    let mut formated = "".to_string();
+    let mut formated = String::new();
+
     for symbol in line.chars() {
         if symbol == '"' {
             formated = format!("{}{}", formated, "");
@@ -38,7 +39,8 @@ pub fn filter(line: &str) -> String {
         }
     }
 
-    return formated;
+    return formated.trim_start().to_string();
+    
 }
 
 pub fn read_meow(path: &str, debug: bool) -> HashMap<String, String> {
@@ -56,11 +58,11 @@ pub fn read_meow(path: &str, debug: bool) -> HashMap<String, String> {
                     println!("{:?}", sys_args);
                 }
 
-                if sys_args.len() == 4 {
+                if sys_args.len() >= 4 {
                     let key = filter(&sys_args[1]);
-                    let mut value = "".to_string();
+                    let mut value = String::new();
                     for item in &sys_args[3..] {
-                        value = format!("{}{}", value, item);
+                        value = format!("{} {}", value, item);
                     }
                     let val = filter(&value);
                     result.insert(key, val);
@@ -70,5 +72,6 @@ pub fn read_meow(path: &str, debug: bool) -> HashMap<String, String> {
         }
     }
 
+    println!("{:?}", result);
     return result;
 }
