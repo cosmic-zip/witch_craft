@@ -168,7 +168,7 @@ WEB SCANNER
             └────────────────────────┴──────────────────────────────────┘
 
     --path                      File path need by: sub_domains, sub_directory, build_with,
-                                c_api_url, c_web_url, must be: ./folder/list.ascii, check
+                                c_api_url, c_web_url, must be: ./folder/list.bin, check
                                 maid_lists.
     --debug                     Optional value for debug can be true or false.
 
