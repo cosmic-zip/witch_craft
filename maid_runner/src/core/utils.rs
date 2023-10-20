@@ -66,6 +66,8 @@ pub fn system_command_exec(command: ProcessInit) -> bool {
                 debug: command.debug,
             };
 
+            logger(data);
+
             println!(
                 "🔖 status: {} \n🚧 STDOUT: {}\n🚧 STDERR: {}\n",
                 status, stdout, stderr,
