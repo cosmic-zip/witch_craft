@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="assets/css/v4-shims.min.css">
     <link rel="stylesheet" href="assets/css/v5-font-face.min.css">
     <link rel="shortcut icon" href="assets/img/logos/logo_trans.png" type="image/x-icon">
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/charts.js"></script>
     <script src="assets/js/main.js"></script>
     <title>MaidRunnerUI</title>
 </head>
@@ -150,15 +152,122 @@
                                         <td>Scanning traceroute UDP</td>
                                         <td>2023-10-18T14:09:54.429173877-03:00</td>
                                         <td>0</td>
-                                        <td><button class="green table-btn">Success</button></td>
-                                        <td><button class="red table-btn">Error</button></td>
+                                        <td><button class="green table-btn">Yes</button></td>
+                                        <td><button class="red table-btn">Yes</button></td>
                                         <td>true</td>
                                         <th><button class="table-btn">View</button></th>
                                     </tr>
                                 </table>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="charts grid-4x">
+
+                        <div class="card">
+
+                            <header class="card-header space-bt">
+                                <h3 class="card-title">last entries</h3>
+                                <span>🔶</span>
+                            </header>
+                            <div class="card-body">
+                                <script>
+
+                                </script>
+                                <div style="width: 800px;"><canvas id="acquisitions"></canvas></div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+
+                            <header class="card-header space-bt">
+                                <h3 class="card-title">last entries</h3>
+                                <span>🔶</span>
+                            </header>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+
+                        <div class="card">
+
+                            <header class="card-header space-bt">
+                                <h3 class="card-title">last entries</h3>
+                                <span>🔶</span>
+                            </header>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+
+                        <div class="card">
+
+                            <header class="card-header space-bt">
+                                <h3 class="card-title">last entries</h3>
+                                <span>🔶</span>
+                            </header>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="grid-6-1">
+                        <div class="loading-card">
+                            <img src="assets/img/pacman.gif" alt="" class="pacman-img">
+                            <br>
+                            <span class="loading-text">Loading message</span>
+                        </div>
+                        <div class="end">
+                            <div class="loading-card loading-card-compact">
+                                <img src="assets/img/pacman.gif" alt="" class="pacman-img">
+                                <br>
+                                <span class="loading-text">Loading message</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="center">
+                        <div class="card card-max">
+
+                            <header class="card-header space-bt">
+                                <h3 class="card-title">About MaidRunner</h3>
+                                <span>🔶</span>
+                            </header>
+                            <div class="card-body">
+
+                                <div class="about-img">
+                                    <img src="assets/img/logos/logo_trans.png" alt="">
+                                </div>
+
+                                <div class="about-text">
+                                    <p>
+                                        Maid Runner is a versatile task automation software designed to serve as the
+                                        foundation
+                                        for various cyber security modules. It provides capabilities for tasks such
+                                        as
+                                        forensic
+                                        research, OSINT (Open Source Intelligence), scanning, backup and copying,
+                                        intrusion
+                                        testing of applications and APIs, and more.
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <b>Trunk-Based Development</b>
+                                    </p>
+                                    <br>
+                                    <p>
+                                        This project utilizes a Trunk-Based Development (TBD) approach for its
+                                        software
+                                        development lifecycle. Trunk-Based Development is a software development
+                                        methodology
+                                        that emphasizes continuous integration and collaboration among developers.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                 </section>
@@ -179,17 +288,11 @@
                     <div class="card">
 
                         <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-dragon"></i> attack</h3>
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-                            <p>
-                                Maid Runner is a versatile task automation software designed to serve as the foundation
-                                for various cyber security modules. It provides capabilities for tasks such as forensic
-                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                testing of applications and APIs, and more.
-                            </p>
-                            <br>
+
                         </div>
 
                     </div>
@@ -199,17 +302,11 @@
                     <div class="card">
 
                         <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-robot"></i> botnet</h3>
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-                            <p>
-                                Maid Runner is a versatile task automation software designed to serve as the foundation
-                                for various cyber security modules. It provides capabilities for tasks such as forensic
-                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                testing of applications and APIs, and more.
-                            </p>
-                            <br>
+
                         </div>
 
                     </div>
@@ -219,17 +316,11 @@
                     <div class="card">
 
                         <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-cloud-arrow-up"></i> curl binds</h3>
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-                            <p>
-                                Maid Runner is a versatile task automation software designed to serve as the foundation
-                                for various cyber security modules. It provides capabilities for tasks such as forensic
-                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                testing of applications and APIs, and more.
-                            </p>
-                            <br>
+
                         </div>
 
                     </div>
@@ -239,17 +330,11 @@
                     <div class="card">
 
                         <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-eye"></i> lookup</h3>
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-                            <p>
-                                Maid Runner is a versatile task automation software designed to serve as the foundation
-                                for various cyber security modules. It provides capabilities for tasks such as forensic
-                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                testing of applications and APIs, and more.
-                            </p>
-                            <br>
+
                         </div>
 
                     </div>
@@ -259,17 +344,11 @@
                     <div class="card">
 
                         <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-mosquito-net"></i> maid AV</h3>
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-                            <p>
-                                Maid Runner is a versatile task automation software designed to serve as the foundation
-                                for various cyber security modules. It provides capabilities for tasks such as forensic
-                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                testing of applications and APIs, and more.
-                            </p>
-                            <br>
+
                         </div>
 
                     </div>
@@ -279,17 +358,11 @@
                     <div class="card">
 
                         <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-box-open"></i> maid container engine</h3>
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-                            <p>
-                                Maid Runner is a versatile task automation software designed to serve as the foundation
-                                for various cyber security modules. It provides capabilities for tasks such as forensic
-                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                testing of applications and APIs, and more.
-                            </p>
-                            <br>
+
                         </div>
 
                     </div>
@@ -299,17 +372,11 @@
                     <div class="card">
 
                         <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-biohazard"></i> rootkit</h3>
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-                            <p>
-                                Maid Runner is a versatile task automation software designed to serve as the foundation
-                                for various cyber security modules. It provides capabilities for tasks such as forensic
-                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                testing of applications and APIs, and more.
-                            </p>
-                            <br>
+
                         </div>
 
                     </div>
@@ -319,43 +386,17 @@
                     <div class="card">
 
                         <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-satellite-dish"></i> scanner</h3>
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-                            <p>
-                                Maid Runner is a versatile task automation software designed to serve as the foundation
-                                for various cyber security modules. It provides capabilities for tasks such as forensic
-                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                testing of applications and APIs, and more.
-                            </p>
-                            <br>
+
                         </div>
 
                     </div>
                 </section>
 
                 <section class="about toggle" id="about">
-                    <div class="card">
-
-                        <header class="card-header space-bt">
-                            <h3 class="card-title">title</h3>
-                            <span>🔶</span>
-                        </header>
-                        <div class="card-body">
-                            <p>
-                                Maid Runner is a versatile task automation software designed to serve as the foundation
-                                for various cyber security modules. It provides capabilities for tasks such as forensic
-                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                testing of applications and APIs, and more.
-                            </p>
-                            <br>
-                        </div>
-
-                    </div>
-                </section>
-
-                <section class="help toggle" id="help">
                     <center>
                         <div class="card card-max">
 
@@ -364,28 +405,57 @@
                                 <span>🔶</span>
                             </header>
                             <div class="card-body">
-                                <p>
-                                    Maid Runner is a versatile task automation software designed to serve as the
-                                    foundation
-                                    for various cyber security modules. It provides capabilities for tasks such as
-                                    forensic
-                                    research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
-                                    testing of applications and APIs, and more.
-                                </p>
-                                <br>
-                                <p>
-                                    <b>Trunk-Based Development</b>
-                                </p>
-                                <br>
-                                <p>
-                                    This project utilizes a Trunk-Based Development (TBD) approach for its software
-                                    development lifecycle. Trunk-Based Development is a software development methodology
-                                    that emphasizes continuous integration and collaboration among developers.
-                                </p>
+
+                                <div class="about-img">
+                                    <img src="assets/img/logos/logo_trans.png" alt="">
+                                </div>
+
+                                <div class="about-text">
+                                    <p>
+                                        Maid Runner is a versatile task automation software designed to serve as the
+                                        foundation
+                                        for various cyber security modules. It provides capabilities for tasks such as
+                                        forensic
+                                        research, OSINT (Open Source Intelligence), scanning, backup and copying,
+                                        intrusion
+                                        testing of applications and APIs, and more.
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <b>Trunk-Based Development</b>
+                                    </p>
+                                    <br>
+                                    <p>
+                                        This project utilizes a Trunk-Based Development (TBD) approach for its software
+                                        development lifecycle. Trunk-Based Development is a software development
+                                        methodology
+                                        that emphasizes continuous integration and collaboration among developers.
+                                    </p>
+                                </div>
                             </div>
 
                         </div>
                     </center>
+                </section>
+
+                <section class="help toggle" id="help">
+                    <div class="card">
+
+                        <header class="card-header space-bt">
+                            <h3 class="card-title"><i class="fa-solid fa-suitcase-medical"></i> Help</h3>
+                            <span>🔶</span>
+                        </header>
+                        <div class="card-body">
+                            <p>
+                                Maid Runner is a versatile task automation software designed to serve as the foundation
+                                for various cyber security modules. It provides capabilities for tasks such as forensic
+                                research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion
+                                testing of applications and APIs, and more.
+                            </p>
+                            <br>
+                        </div>
+
+                    </div>
                 </section>
 
 
