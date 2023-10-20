@@ -103,13 +103,13 @@ body {
   height: 100vh;
   color: var(--white);
   font-family: sans-serif;
-  display: flex;
+  display: none;
   overflow: clip;
   justify-content: space-between;
 }
 
 .section-adjust {
-  margin: 10px;
+  margin: 20px;
   padding: 20px;
 }
 
@@ -136,8 +136,6 @@ body {
   width: 70px;
 }
 
-.sidebar-content {}
-
 .sidebar-btn {
   padding: 10px;
   margin: 10px 0px 10px;
@@ -153,8 +151,6 @@ body {
   background-color: var(--raisin-black);
   cursor: default;
 }
-
-.sidebar-block-text {}
 
 .sidebar-item {
   display: flex;
@@ -176,8 +172,6 @@ body {
   margin-right: 10px;
 }
 
-.sidebar-item-text {}
-
 /* content */
 
 .content {
@@ -189,12 +183,6 @@ body {
   /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-
-.content-header {}
-
-.content-main {}
-
-.ctn {}
 
 .tables {
   overflow: scroll;
@@ -223,8 +211,6 @@ body {
 .card-title {
   text-transform: capitalize;
 }
-
-.card-sub-title {}
 
 .card-body {
   border-radius: 0px 0px 10px 10px;
@@ -300,21 +286,37 @@ body {
   width: 250px;
 }
 
-.pacman-img {}
-
-.loading-text {}
-
 /* grid */
 
 .grid-6-1 {
-  display: grid;
-  grid-template-columns: 6fr 1fr;
+  display: block;
 }
 
-.grid-4x {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+.charts {
+  display: block;
 }
+
+.error {
+  display: flex;
+  color: var(--white);
+  margin-top: 200px;
+  font-weight: bolder;
+}
+
+.oh-snap-ico {
+  font-size: 100px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.oh-snap {
+  font-size: 32px;
+  text-align: center;
+}
+
+/* report */
+
+
 
 /* toggle */
 
@@ -338,6 +340,45 @@ body {
   display: block;
 }
 
-.error {
-  display: none;
+
+/* media query */
+@media (min-width: 780px) {
+  .error {
+    display: none;
+  }
+
+  .main {
+    display: flex;
+  }
+}
+
+@media (min-width: 800px) {}
+
+@media (min-width: 1024px) {
+
+  .charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid-6-1 {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+  }
+
+  .container {
+    max-width: 976px;
+  }
+}
+
+@media (min-width: 1440px) {
+
+  .charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .container {
+    max-width: 1440px;
+  }
 }
