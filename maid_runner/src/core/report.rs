@@ -5,6 +5,54 @@ use std::error::Error;
 use std::fs::File;
 use std::io::prelude::*;
 
+extern crate rusqlite;
+
+use rusqlite::{params, Connection, Result};
+
+pub fn write_process_result_to_db<'a>(
+    conn: &Connection,
+    result: ProcessResult<'a, 'a, 'a, 'a, 'a, 'a, 'a, 'a>,
+) -> Result<()> {
+
+    conn.execute(
+        "CREATE TABLE IF NOT EXISTS process_results (
+            id INTEGER PRIMARY KEY,
+            session TEXT,
+            session_description TEXT,
+            source_from TEXT,
+            source_command TEXT,
+            source_detail TEXT,
+            source_description TEXT,
+            timestemp TEXT,
+            returned_status TEXT,
+            formated_stdout TEXT,
+            formated_stderr TEXT,
+            debug INTEGER
+        )",
+        [],
+    );
+
+    conn.execute(
+        "INSERT INTO process_results (session, session_description, source_from, source_command, source_detail, source_description, timestemp, returned_status, formated_stdout, formated_stderr, debug)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        params![
+            result.session,
+            result.session_description,
+            result.source_from,
+            result.source_command,
+            result.source_detail,
+            result.source_description,
+            result.timestemp,
+            result.returned_status,
+            result.formated_stdout.join("\n"),
+            result.formated_stderr.join("\n"),
+            result.debug,
+        ],
+    )?;
+    Ok(())
+}
+
+
 pub fn json_filter(line: &str) -> String {
     let mut filtered_line = "".to_string();
     for symbol in line.chars() {
@@ -40,7 +88,6 @@ pub fn format_std(data: String) -> Vec<String> {
 }
 
 pub fn logger(data: Logger) -> std::io::Result<()> {
-
     let mut formated_stdout: Vec<String> = format_std(data.stdout);
     let mut formated_stderr: Vec<String> = format_std(data.stderr);
 
@@ -56,6 +103,8 @@ pub fn logger(data: Logger) -> std::io::Result<()> {
     let session = session_config["LATEST_SESSION"].to_string();
     let session_description = session_config["DESCRIPTION"].to_string();
 
+    let binding = system_time();
+
     let proccess_result = ProcessResult {
         session: session.as_str(),
         session_description: session_description.as_str(),
@@ -63,14 +112,20 @@ pub fn logger(data: Logger) -> std::io::Result<()> {
         source_command: cmd[0].as_str(),
         source_detail: data.source.as_str(),
         source_description: data.source_description.as_str(),
-        timestemp: system_time().as_str(),
+        timestemp: binding.as_str(),
         returned_status: data.status.as_str(),
         formated_stdout: formated_stdout,
         formated_stderr: formated_stderr,
         debug: data.debug,
     };
 
-    // let file = File::options().append(true).open(&report);
-    // let _ = file.expect("FILE").write_all(&proccess_result.as_bytes());
+    let connection = Connection::open("/var/maid/maid_lists/report/archive.db");
+    match connection {
+        Ok(conn) => {
+            write_process_result_to_db(&conn, proccess_result);
+        }
+        Err(err) => {}
+    } 
+
     Ok(())
 }
