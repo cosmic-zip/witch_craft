@@ -11,10 +11,17 @@
     <link rel="stylesheet" href="assets/css/solid.min.css">
     <link rel="stylesheet" href="assets/css/v4-shims.min.css">
     <link rel="stylesheet" href="assets/css/v5-font-face.min.css">
+    <link rel="stylesheet" href="assets/datatables/datatables.min.css">
     <link rel="shortcut icon" href="assets/img/logos/logo_trans.png" type="image/x-icon">
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/charts.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/datatables/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+    <script src="assets/datatables/datatables.min.js"></script>
+    <script src="assets/datatables/pdfmake-0.2.7/pdfmake.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#logsTable').DataTable();
+        });
+    </script>
     <title>MaidRunnerUI</title>
 </head>
 
@@ -134,29 +141,257 @@
                         </header>
                         <div class="card-body">
                             <div class="tables">
-                                <table>
+                                <!-- sssssssssssssssssss -->
+                                <table id="logsTable" class="display">
                                     <thead class="">
-                                        <th>session</th>
-                                        <th>source</th>
-                                        <th>description</th>
-                                        <th>timestemp</th>
-                                        <th>status</th>
-                                        <th>std_output</th>
-                                        <th>std_error</th>
-                                        <th>debug</th>
-                                        <th>More</th>
+                                        <tr>
+                                            <th>session</th>
+                                            <th>source</th>
+                                            <th>description</th>
+                                            <th>timestemp</th>
+                                            <th>status</th>
+                                            <th>std_output</th>
+                                            <th>std_error</th>
+                                            <th>debug</th>
+                                            <th>More</th>
+                                        </tr>
                                     </thead>
-                                    <tr>
-                                        <td>default</td>
-                                        <td>traceroute</td>
-                                        <td>Scanning traceroute UDP</td>
-                                        <td>2023-10-18T14:09:54.429173877-03:00</td>
-                                        <td>0</td>
-                                        <td><button class="green table-btn">Yes</button></td>
-                                        <td><button class="red table-btn">Yes</button></td>
-                                        <td>true</td>
-                                        <th><button class="table-btn">View</button></th>
-                                    </tr>
+                                    <tbody>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                        <tr>
+                                            <td>default</td>
+                                            <td>traceroute</td>
+                                            <td>Scanning traceroute UDP</td>
+                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
+                                            <td>0</td>
+                                            <td><button class="green table-btn">Yes</button></td>
+                                            <td><button class="red table-btn">Yes</button></td>
+                                            <td>true</td>
+                                            <th><button class="table-btn">View</button></th>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
