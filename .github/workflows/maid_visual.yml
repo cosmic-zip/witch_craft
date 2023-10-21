@@ -25,6 +25,6 @@ jobs:
       - name: Test Depedencies
         run: curl --version
       - name: Build
-        run: cargo build --verbose --manifest-path maid_visual/Cargo.toml
+        run: cargo build --verbose --manifest-path maid_visual/src-tauri/Cargo.toml
       - name: Run tests
-        run: cargo test --verbose --manifest-path maid_visual/Cargo.toml
+        run: cargo test --verbose --manifest-path maid_visual/src-tauri/Cargo.toml
