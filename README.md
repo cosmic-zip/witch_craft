@@ -2,13 +2,29 @@
 
 # Maid Runner
 
-Maid Runner is a versatile task automation software designed to serve as the foundation for various cyber security modules. It provides capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion testing of applications and APIs, and more.
+Maid Runner is a versatile task automation software designed to serve as the 
+foundation for various cyber security modules. It provides capabilities for 
+tasks such as forensic research, OSINT (Open Source Intelligence), scanning, 
+backup and copying, intrusion testing of applications and APIs, and more.
 
-## CLI
+
+## MaidVisual
+
+![maid_visual](maid_docs/images/maid_ui.png)
+
+Since October 13, 2023, the MaidRunner project has extended its support to 
+native Linux applications for statistical analysis, log management, and data 
+visualization. This user interface (UI) is NOT designed to replace the 
+command-line interface (CLI). It currently relies on certain components 
+of the CLI, including elements of the Maid_Build build system and Maid_Lists, 
+which depends on the **/var/maid_lists/report/archive.db** for its operation.
+
+## MaidRunnerCLI
 
 **NAME**
 
-MaidRunner - Maid Runner is a versatile task automation software designed to serve as the foundation for various cyber security modules.
+MaidRunner - Maid Runner is a versatile task automation software designed to 
+serve as the foundation for various cyber security modules.
 
 **SYNOPSIS**
 
@@ -137,7 +153,9 @@ MaidRunner - Maid Runner is a versatile task automation software designed to ser
 
 ### Instalation
 
-The project initially includes a set of default files. These files are created using the best possible data analysis techniques, and their final versions are merged into the main project.
+The project initially includes a set of default files. These files are created 
+using the best possible data analysis techniques, and their final versions are 
+merged into the main project.
 
 TBA
 
