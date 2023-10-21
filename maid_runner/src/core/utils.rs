@@ -199,7 +199,7 @@ pub fn find_all_matching_lines(file_path: &str, pattern: &str) -> Result<Vec<Str
     let data = Logger {
         source: command,
         source_from: "utils".to_string(),
-        source_description: "Finding all matching line on a file".to_string(),
+        source_description: "Finding all matching lines on a file".to_string(),
         status: 0.to_string(),
         stdout: format!("{:?}", matching_lines),
         stderr: "none".to_string(),
@@ -207,8 +207,10 @@ pub fn find_all_matching_lines(file_path: &str, pattern: &str) -> Result<Vec<Str
     };
 
     match logger(data) {
-        Ok(result) => println!("Fine"),
-        Err(err) => println!("Fine"),
+        Ok(result) => {
+            standard_messages( "saved", "Log saved","", "cute");
+        }
+        Err(err) => println!("Error"),
     }
 
     Ok(matching_lines)
