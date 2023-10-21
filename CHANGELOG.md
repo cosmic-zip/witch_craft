@@ -110,7 +110,7 @@ Version 0.6.1
 
 Date: Qua 23 ago 2023 16:24:22 -03
 
-  → Merge new shell commands
+	→ Merge new shell commands
 	→ Merge new commond execute methods
 	→ Merge new features
 		→ New shell
@@ -209,18 +209,18 @@ Version: 0.9.7
 
 Date: qua 18 out 2023 05:33:38 -03
 
-→ Added codium code-workspace
-→ Added codium code-workspace
-→ Added new attack sub modules
-→ Added new documentation
-→ Added session description
-→ Removed old documentations and useless files
-→ Updated post_attack to rootkit
-→ Improve web scanner unit tests
-→ Improve report fields, add debug and session description and and 
-  change command prefix to source
-→ Build and install inside /bin
-→ Fixed empty message them using core --web_downloader
-→ Fixed report.jsonl bug at session description
-→ Fixed bug that caused panic if fewer than 3 arguments are given.
-→ Fixed sub domains and dir scanner output file path
+	→ Added codium code-workspace
+	→ Added codium code-workspace
+	→ Added new attack sub modules
+	→ Added new documentation
+	→ Added session description
+	→ Removed old documentations and useless files
+	→ Updated post_attack to rootkit
+	→ Improve web scanner unit tests
+	→ Improve report fields, add debug and session description and and 
+		change command prefix to source
+	→ Build and install inside /bin
+	→ Fixed empty message them using core --web_downloader
+	→ Fixed report.jsonl bug at session description
+	→ Fixed bug that caused panic if fewer than 3 arguments are given.
+	→ Fixed sub domains and dir scanner output file path
