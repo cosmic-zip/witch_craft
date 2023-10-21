@@ -1,0 +1,34 @@
+name: maid_lists
+
+on:
+  push:
+    branches: ["master", "trunk", "build"]
+  pull_request:
+    branches: ["master", "trunk", "build"]
+  schedule:
+    - cron: "0 0 * * *" # This schedule runs at midnight every day
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Depedencies
+        run: |
+          sudo mkdir /var/maid
+          sudo cp maid_lists/ /var/maid -R
+          sudo chown $(whoami):$(whoami) /var/maid -R
+          sudo apt-get update
+          sudo apt-get install -y nmap curl xxd libc6 exiftool traceroute wget iproute2 whois dnsutils dirb dnsenum
+      - name: Test Depedencies
+        run: nmap --version && curl --version
+      - name: Build
+        run: cargo build --verbose --manifest-path maid_runner/Cargo.toml
+      - name: Run tests
+        run: cargo test --verbose --manifest-path maid_runner/Cargo.toml
+      - name: Runner
+        run: cargo run

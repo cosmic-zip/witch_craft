@@ -1,0 +1,32 @@
+name: maid_visual
+
+on:
+  push:
+    branches: ["master", "trunk", "build"]
+  pull_request:
+    branches: ["master", "trunk", "build"]
+  schedule:
+    - cron: "0 0 * * *" # This schedule runs at midnight every day
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Depedencies
+        run: |
+          sudo apt install aptitude
+          sudo apt update
+          sudo aptitude install libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
+      - name: Test Depedencies
+        run: curl --version
+      - name: Build
+        run: cargo build --verbose --manifest-path maid_visual/Cargo.toml
+      - name: Run tests
+        run: cargo test --verbose --manifest-path maid_visual/Cargo.toml
+      - name: Runner
+        run: cargo run
