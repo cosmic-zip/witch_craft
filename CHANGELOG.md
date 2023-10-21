@@ -224,3 +224,25 @@ Date: qua 18 out 2023 05:33:38 -03
 	→ Fixed report.jsonl bug at session description
 	→ Fixed bug that caused panic if fewer than 3 arguments are given.
 	→ Fixed sub domains and dir scanner output file path
+
+Version 0.12.0
+
+Date: sáb 21 out 2023 01:09:01 -03
+
+	→ Transition to MONOREPO repository architecture
+	→ Added maid_build a custom build system for MaidRunner project
+	→ Added maid_ui single page application template for maid_visual
+	→ Added maid_visual desktop UI with TAURI and maid_ui
+	→ Added CODE_OF_CONDUCT.md with FreeBSD CoC
+	→ Added SECURITY.md with security policy from aircrack.ng
+	→ Improved logging system, reports are written in sqlite
+	→ Removed report.json and report.html
+	→ Refactored maid_reports to maid_api, now it's an web API only
+	→ Refactored docs to maid_docs to keep file consistency on project root
+	→ Refactored codebase, all edges were bean reviewed
+	→ Refactored system_command_exec function to use an struct instead 
+		parameters. ProcessInit instead of parameters
+	→ Removed write_report are replaced by logger function who uses Logger 
+		struct instead parameters and write ProcessResult inside 
+		maid_lists/report/archive.db
+	→ Fixed MEOW file parser that caused panic if an variable have and string with spaces
