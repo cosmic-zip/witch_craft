@@ -72,6 +72,5 @@ pub fn read_meow(path: &str, debug: bool) -> HashMap<String, String> {
         }
     }
 
-    println!("{:?}", result);
     return result;
 }
