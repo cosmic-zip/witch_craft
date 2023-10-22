@@ -1,4 +1,4 @@
-name: maid_lists
+name: maid_runner
 
 on:
   push:
