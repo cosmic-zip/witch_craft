@@ -2,9 +2,17 @@ name: maid_lists
 
 on:
   push:
-    branches: ["master", "trunk", "build"]
+    branches:
+      - "*/*"
+      - "trunk"
+      - "build"
+      - "stable"
   pull_request:
-    branches: ["master", "trunk", "build"]
+    branches:
+      - "*/*"
+      - "trunk"
+      - "build"
+      - "stable"
   schedule:
     - cron: "0 0 * * *" # This schedule runs at midnight every day
 
@@ -30,4 +38,3 @@ jobs:
         run: cargo build --verbose --manifest-path maid_runner/Cargo.toml
       - name: Run tests
         run: cargo test --verbose --manifest-path maid_runner/Cargo.toml
-
