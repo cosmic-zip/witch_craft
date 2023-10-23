@@ -9,7 +9,7 @@ pub fn select_report_from_db(conn: &Connection, from: String) -> Result<Vec<Vec<
     let mut result;
 
     if from == "all" {
-        result = conn.prepare(&"SELECT * FROM process_results;").expect("Query Failed");
+        result = conn.prepare(&"SELECT * FROM process_results ORDER BY id DESC").expect("Query Failed");
     } else {
         result = conn.prepare(
             &format!("SELECT * FROM process_results WHERE source_from=\"{}\"; ", from)
