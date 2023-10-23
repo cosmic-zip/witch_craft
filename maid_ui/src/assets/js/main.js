@@ -20,6 +20,25 @@ const invoke = window.__TAURI__.invoke
 function insertDataIntoTable(data, tableId, selectedIndices) {
     const table = document.getElementById(tableId);
 
+    table.innerHTML = `
+        <thead class="">
+            <tr>
+                <th>id</th>
+                <th>session</th>
+                <th>source from</th>
+                <th>source_command</th>
+                <th>timestemp</th>
+                <th>status</th>
+                
+                <th>std_output</th>
+                <th>std_error</th>
+                <th>debug</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    `;
+
     if (!table) {
         console.error(`Table with ID "${tableId}" not found.`);
         return;
@@ -45,8 +64,16 @@ function insertDataIntoTable(data, tableId, selectedIndices) {
 function exec_write_table(data, tag_id) {
     console.log(data, tag_id);
     const selectedIndices = [0, 1, 3, 4, 7, 8, 10, 11];
+    // const selectedIndices = [0, 1, 3, 4, 7, 8];
     insertDataIntoTable(data, tag_id, selectedIndices);
 }
 
-invoke('select_report', { from: 'all' }).then((data) => exec_write_table(data, "logsTable"));
+invoke('select_report', { from: 'utils', size: 100 }).then((data) => exec_write_table(data, "logsTable"));
+invoke('select_report', { from: 'bootnet', size: 100 }).then((data) => exec_write_table(data, "logsBotnet"));
+invoke('select_report', { from: 'bcurl', size: 100 }).then((data) => exec_write_table(data, "logsBcurl"));
+invoke('select_report', { from: 'lookup', size: 100 }).then((data) => exec_write_table(data, "logsLookup"));
+invoke('select_report', { from: 'utils', size: 100 }).then((data) => exec_write_table(data, "logsAv"));
+invoke('select_report', { from: 'maid_ce', size: 100 }).then((data) => exec_write_table(data, "logsCe"));
+invoke('select_report', { from: 'rootkit', size: 100 }).then((data) => exec_write_table(data, "logsRookit"));
+invoke('select_report', { from: 'scanner', size: 100 }).then((data) => exec_write_table(data, "logsScanner"));
 

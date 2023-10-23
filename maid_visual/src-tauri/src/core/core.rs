@@ -5,15 +5,17 @@ use serde_json::json;
 
 
 
-pub fn select_report_from_db(conn: &Connection, from: String) -> Result<Vec<Vec<String>>, Error> {
+pub fn  select_report_from_db(conn: &Connection, from: String, size: i32) -> Result<Vec<Vec<String>>, Error> {
     let mut result;
 
     if from == "all" {
-        result = conn.prepare(&"SELECT * FROM process_results ORDER BY id DESC").expect("Query Failed");
+        result = conn.prepare(&format!(
+            "SELECT * FROM process_results ORDER BY id DESC LIMIT {}", size,
+        )).expect("Query Failed");
     } else {
         result = conn.prepare(
-            &format!("SELECT * FROM process_results WHERE source_from=\"{}\"; ", from)
-        ).expect("Query Failed");
+            &format!("SELECT * FROM process_results WHERE source_from=\"{}\" ORDER BY id DESC LIMIT {}; ", from, size
+        )).expect("Query Failed");
     }
 
     let mut formated_rows: Vec<Vec<String>> = Vec::new();
@@ -42,7 +44,7 @@ pub fn select_report_from_db(conn: &Connection, from: String) -> Result<Vec<Vec<
     for row in rows {
         match row {
             Ok(data) => formated_rows.push(data),
-            Err(_) => panic!("AAAAAAAAAAAA"),
+            Err(_) => panic!("[PANIC] :: Unknow error"),
         }
         
     }
@@ -51,10 +53,10 @@ pub fn select_report_from_db(conn: &Connection, from: String) -> Result<Vec<Vec<
 }
 
 #[tauri::command]
-pub fn select_report(from: String) -> Vec<Vec<String>> {
+pub fn select_report(from: String, size: i32) -> Vec<Vec<String>> {
     let connection = Connection::open("/var/maid/maid_lists/report/archive.db").expect("fail");
 
-    match select_report_from_db(&connection, from) {
+    match select_report_from_db(&connection, from, size) {
         Ok(process_results) => process_results,
         Err(_) => vec![],
     } 

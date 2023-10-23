@@ -137,36 +137,7 @@
                         </header>
                         <div class="card-body">
                             <div class="tables">
-                                <table id="logsTable" class="display">
-                                    <thead class="">
-                                        <tr>
-                                            <th>id</th>
-                                            <th>session</th>
-                                            <th>source from</th>
-                                            <th>source_command</th>
-                                            <th>timestemp</th>
-                                            <th>status</th>
-                                            <th>std_output</th>
-                                            <th>std_error</th>
-                                            <th>debug</th>
-                                            <th>More</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>default</td>
-                                            <td>traceroute</td>
-                                            <td>Scanning traceroute UDP</td>
-                                            <td>2023-10-18T14:09:54.429173877-03:00</td>
-                                            <td>0</td>
-                                            <td><button class="green table-btn">Yes</button></td>
-                                            <td><button class="red table-btn">Yes</button></td>
-                                            <td>true</td>
-                                            <th><button class="table-btn">View</button></th>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
+                                <table id="logsTable" class="display"></table>
                             </div>
                         </div>
                     </div>
@@ -335,7 +306,7 @@
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-
+                            <table id="logsAttak" class="display"></table>
                         </div>
 
                     </div>
@@ -349,7 +320,9 @@
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-
+                            <div class="tables">
+                                <table id="logsBotnet" class="display"></table>
+                            </div>
                         </div>
 
                     </div>
@@ -363,7 +336,9 @@
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-
+                            <div class="tables">
+                                <table id="logsBcurl" class="display"></table>
+                            </div>
                         </div>
 
                     </div>
@@ -377,7 +352,9 @@
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-
+                            <div class="tables">
+                                <table id="logsLookup" class="display"></table>
+                            </div>
                         </div>
 
                     </div>
@@ -391,7 +368,9 @@
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-
+                            <div class="tables">
+                                <table id="logsAv" class="display"></table>
+                            </div>
                         </div>
 
                     </div>
@@ -405,7 +384,9 @@
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-
+                            <div class="tables">
+                                <table id="logsCe" class="display"></table>
+                            </div>
                         </div>
 
                     </div>
@@ -419,7 +400,9 @@
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-
+                            <div class="tables">
+                                <table id="logsRookit" class="display"></table>
+                            </div>
                         </div>
 
                     </div>
@@ -433,7 +416,9 @@
                             <span>🔶</span>
                         </header>
                         <div class="card-body">
-
+                            <div class="tables">
+                                <table id="logsScanner" class="display"></table>
+                            </div>
                         </div>
 
                     </div>
@@ -521,7 +506,23 @@
 
 </html>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#logsTable').DataTable();
-    });
+    // $(document).ready(function () {
+    //     $('#logsTable').DataTable();
+    //     $('#logsTable').DataTable();
+    //     $('#logsBotnet').DataTable();
+    //     $('#logsBcurl').DataTable();
+    //     $('#logsLookup').DataTable();
+    //     $('#logsAv').DataTable();
+    //     $('#logsCe').DataTable();
+    //     $('#logsRookit').DataTable();
+    //     $('#logsScanner').DataTable();
+    // });
+    // $(document).ready(function () { });
+    // $(document).ready(function () { });
+    // $(document).ready(function () { });
+    // $(document).ready(function () { });
+    // $(document).ready(function () { });
+    // $(document).ready(function () { });
+    // $(document).ready(function () { });
+    // $(document).ready(function () { });
 </script>
