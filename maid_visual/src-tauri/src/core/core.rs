@@ -1,23 +1,28 @@
 extern crate rusqlite;
 use rusqlite::Error;
 use rusqlite::Connection;
+use serde_json::json;
 
 
 
-pub fn select_report_from_db(conn: &Connection, from: String) -> Result<Vec<String>, Error> {
-    let mut result = conn.prepare(
-        &format!("SELECT * FROM process_results WHERE source_from=\"{}\"; ", from)
-    ).expect("Query Failed");
+pub fn select_report_from_db(conn: &Connection, from: String) -> Result<Vec<Vec<String>>, Error> {
+    let mut result;
 
-    let mut formated_rows: Vec<String> = Vec::new();
+    if from == "all" {
+        result = conn.prepare(&"SELECT * FROM process_results;").expect("Query Failed");
+    } else {
+        result = conn.prepare(
+            &format!("SELECT * FROM process_results WHERE source_from=\"{}\"; ", from)
+        ).expect("Query Failed");
+    }
+
+    let mut formated_rows: Vec<Vec<String>> = Vec::new();
 
     let rows = result.query_map([], |row| {
         // Create a ProcessResult struct and populate its fields
         Ok(
-            format!(
-                "{{ 'id' : {}, 'session' : {}, 'session_description' : {}, 'source_from' : {}, 'source_command' : {}, 'source_detail' : {}, 'source_description' : {}, 'timestemp' : {}, 'returned_status' : {}, 'formated_stdout' : {}, 'formated_stderr' : {}, 'debug' : {} }}
-                ",
-                row.get::<usize, i32>(0).expect("fodase"),
+            vec![
+                format!("{}", row.get::<usize, i32>(0).expect("fodase")),
                 row.get::<usize, String>(1).expect("fodase"),
                 row.get::<usize, String>(2).expect("fodase"),
                 row.get::<usize, String>(3).expect("fodase"),
@@ -28,21 +33,25 @@ pub fn select_report_from_db(conn: &Connection, from: String) -> Result<Vec<Stri
                 row.get::<usize, String>(8).expect("fodase"),
                 row.get::<usize, String>(9).expect("fodase"),
                 row.get::<usize, String>(10).expect("fodase"),
-                row.get::<usize, i32>(11).expect("fodase"),
-            )
+                format!("{}", row.get::<usize, i32>(11).expect("fodase")),
+            ]
         )
     })?;
 
 
     for row in rows {
-        formated_rows.push(row?);
+        match row {
+            Ok(data) => formated_rows.push(data),
+            Err(_) => panic!("AAAAAAAAAAAA"),
+        }
+        
     }
 
     Ok(formated_rows)
 }
 
 #[tauri::command]
-pub fn select_report(from: String) -> Vec<String> {
+pub fn select_report(from: String) -> Vec<Vec<String>> {
     let connection = Connection::open("/var/maid/maid_lists/report/archive.db").expect("fail");
 
     match select_report_from_db(&connection, from) {
