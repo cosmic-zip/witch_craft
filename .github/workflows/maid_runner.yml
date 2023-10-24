@@ -30,8 +30,9 @@ jobs:
           sudo mkdir /var/maid
           sudo cp maid_lists/ /var/maid -R
           sudo chown $(whoami):$(whoami) /var/maid -R
-          sudo apt-get update
-          sudo apt-get install -y nmap curl xxd libc6 exiftool traceroute wget iproute2 whois dnsutils dirb dnsenum
+          sudo apt update
+          sudo apt install aptitude
+          sudo aptitude install -y nmap curl xxd libc6 exiftool traceroute wget iproute2 whois dnsutils dirb dnsenum
       - name: Test Depedencies
         run: nmap --version && curl --version
       - name: Build

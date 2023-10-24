@@ -28,11 +28,9 @@ jobs:
       - name: Install Depedencies
         run: |
           sudo apt update
-          sudo apt install aptitude
-          sudo aptitude install libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev -y
       - name: Test Depedencies
         run: curl --version
       - name: Build
-        run: cargo build --verbose --manifest-path maid_visual/src-tauri/Cargo.toml
+        run: cargo build --verbose --manifest-path maid_api/Cargo.toml
       - name: Run tests
-        run: cargo test --verbose --manifest-path maid_visual/src-tauri/Cargo.toml
+        run: cargo test --verbose --manifest-path maid_api/Cargo.toml
