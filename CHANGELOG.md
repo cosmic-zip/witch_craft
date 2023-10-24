@@ -245,4 +245,19 @@ Date: sáb 21 out 2023 01:09:01 -03
 	→ Removed write_report are replaced by logger function who uses Logger 
 		struct instead parameters and write ProcessResult inside 
 		maid_lists/report/archive.db
-	→ Fixed MEOW file parser that caused panic if an variable have and string with spaces
+	→ Fixed MEOW file parser that caused panic if an variable have and 
+		string with spaces
+
+Version 0.12.1
+
+Date: ter 24 out 2023 02:26:27 -03
+
+	→ Added maid_visual logger visualization for all categories
+	→ Added development build script inside maid_build/local
+	→ Added maid_api github workflow file
+	→ Fixed logs visualization issues.
+	→ Fixed database error on maid_visual.
+	→ Fixed minor visual bug on maid_ui.
+	→ Implemented features branches.
+	→ Implemented sequential version system.
+	→ Updated ZeroVer version system maximum number to 0.99.99
