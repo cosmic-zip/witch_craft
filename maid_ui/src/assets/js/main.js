@@ -54,16 +54,15 @@ function insertDataIntoTable(data, tableId, selectedIndices) {
         const row = table.insertRow();
         for (const index of selectedIndices) {
             const cell = row.insertCell();
-            ctn = rowData[index] || '';
+            ctn = rowData[index] || '' || [];
             cell.textContent = ctn;
-
         }
     }
 }
 
 function exec_write_table(data, tag_id) {
     console.log(data, tag_id);
-    const selectedIndices = [0, 1, 3, 4, 7, 8, 10, 11];
+    const selectedIndices = [0, 1, 3, 4, 7, 8, 9, 10, 11];
     // const selectedIndices = [0, 1, 3, 4, 7, 8];
     insertDataIntoTable(data, tag_id, selectedIndices);
 }
