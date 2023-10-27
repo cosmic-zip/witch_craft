@@ -172,6 +172,38 @@ WEB SCANNER
                                 maid_lists.
     --debug                     Optional value for debug can be true or false.
 
+    --scanner_auto_nmap         Advanced NMAP automation and custom binds
+    --target                    Setup target ip or dns can be 172.16.0.1 or example.com
+    --delay                     Setup an delay interval to avoid detection by IDS
+    --ports                     Setup ports to be scanned 
+
+            ┌────────────────┬──────────────────────────────────────────┐
+            |     PORT       |       DESCRIPTION                        |
+            ├────────────────┼──────────────────────────────────────────┤
+            |     all        | Search for possible open ports           |
+            |     auto       | Use an list of the most common           |
+            |   -p 80,443    | Search for 80 and 443                    |
+            |   -p 80-1337   | Search from 80 to 1337                   |
+            └────────────────┴──────────────────────────────────────────┘ 
+
+    --type                      Setup the nmap scanner technic 
+
+            ┌────────────────┬──────────────────────────────────────────┐
+            |     TECHNIC    |       DESCRIPTION                        |
+            ├────────────────┼──────────────────────────────────────────┤
+            |    tcp_syn     | TCP SYN                                  |
+            |    tcp_ack     | TCP ACK                                  |
+            |    tcp_null    | TCP packets with no flags                |
+            |    udp         | UDP Scan                                 |
+            |    connect     | TCP connect                              |
+            |    window      | Window scan                              |
+            |    maimon      | Maimon scan CVE-2012-0507                |
+            |    fin         | TCP with the FIN (Finish) flag           |
+            |    xmas        | TCP with the FIN, URG, and PSH flags     |
+            └────────────────┴──────────────────────────────────────────┘
+            
+    --debug                     Optional value for debug can be true or false.
+
 BCURL
 
     bcurl                       Rust binding for the curl command.
