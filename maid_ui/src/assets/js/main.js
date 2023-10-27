@@ -14,7 +14,6 @@ function toggle(id) {
     }
 }
 
-
 const invoke = window.__TAURI__.invoke
 
 function insertDataIntoTable(data, tableId, selectedIndices) {
@@ -67,7 +66,7 @@ function exec_write_table(data, tag_id) {
     insertDataIntoTable(data, tag_id, selectedIndices);
 }
 
-invoke('select_report', { from: 'utils', size: 100 }).then((data) => exec_write_table(data, "logsTable"));
+invoke('select_report', { from: 'all', size: 100 }).then((data) => exec_write_table(data, "logsTable"));
 invoke('select_report', { from: 'bootnet', size: 100 }).then((data) => exec_write_table(data, "logsBotnet"));
 invoke('select_report', { from: 'bcurl', size: 100 }).then((data) => exec_write_table(data, "logsBcurl"));
 invoke('select_report', { from: 'lookup', size: 100 }).then((data) => exec_write_table(data, "logsLookup"));

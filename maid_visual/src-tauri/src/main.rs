@@ -6,7 +6,7 @@ use crate::core::core::*;
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![select_report])
+        .invoke_handler(tauri::generate_handler![dummy])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -77,3 +77,8 @@ pub fn select_report(from: String, size: i32) -> Vec<Vec<String>> {
     } 
     
 }
+
+#[tauri::command]
+pub fn dummy() -> String {
+    format!("Hello")
+}
