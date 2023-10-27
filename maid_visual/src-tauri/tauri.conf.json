@@ -21,7 +21,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "cassandra_lovelace@th3maid.com",
+      "identifier": "cosmiclace",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
