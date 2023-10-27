@@ -189,7 +189,7 @@ pub fn scanner_auto_nmap(source: ScannerWebAutoNmap, debug: bool) -> bool {
         stype = "-sU";
     } else if source.scan_type == "connect" {
         stype = "-sT";
-    } else if source.scan_type == "widnows" {
+    } else if source.scan_type == "window" {
         stype = "-sW";
     } else if source.scan_type == "maimon" {
         stype = "-sM";
