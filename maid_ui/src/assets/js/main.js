@@ -20,17 +20,16 @@ function insertDataIntoTable(data, tableId, selectedIndices) {
     const table = document.getElementById(tableId);
 
     table.innerHTML = `
-        <thead class="">
+        <thead>
             <tr>
                 <th>id</th>
                 <th>session</th>
-                <th>source from</th>
-                <th>source_command</th>
+                <th>source</th>
+                <th>command</th>
                 <th>timestemp</th>
                 <th>status</th>
-                
-                <th>std_output</th>
-                <th>std_error</th>
+                <th>output</th>
+                <th>error</th>
                 <th>debug</th>
             </tr>
         </thead>
@@ -67,6 +66,7 @@ function exec_write_table(data, tag_id) {
 }
 
 invoke('select_report', { from: 'all', size: 100 }).then((data) => exec_write_table(data, "logsTable"));
+invoke('select_report', { from: 'attack', size: 100 }).then((data) => exec_write_table(data, "logsAttack"));
 invoke('select_report', { from: 'bootnet', size: 100 }).then((data) => exec_write_table(data, "logsBotnet"));
 invoke('select_report', { from: 'bcurl', size: 100 }).then((data) => exec_write_table(data, "logsBcurl"));
 invoke('select_report', { from: 'lookup', size: 100 }).then((data) => exec_write_table(data, "logsLookup"));

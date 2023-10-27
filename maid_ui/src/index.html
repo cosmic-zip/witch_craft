@@ -87,44 +87,50 @@
                     <span>🔶</span>
                 </header>
                 <div class="card-body navbar">
-                    <header class="content-header between logs-navbar" id="logs-navbar">
-                        <div class="sidebar-item navbar-btn" onclick="toggle('logs')">
-                            <span class="sidebar-item-text"><i class="fa-solid fa-file-waveform"></i> Logs</span>
+                    <header class="content-header navbar-icons logs-navbar" id="logs-navbar">
+                        <div class="navbar-btn" onclick="toggle('logs')">
+                            <i class="fa-solid fa-file-waveform"></i>
+                            <!-- <span class="sidebar-item-text">Logs</span> -->
                         </div>
 
-                        <div class="sidebar-item navbar-btn" onclick="toggle('attack')">
-                            <span class="sidebar-item-text"><i class="fa-solid fa-dragon"></i> attack</span>
+                        <div class="navbar-btn" onclick="toggle('attack')">
+                            <i class="fa-solid fa-dragon"></i>
+                            <!-- <span class="sidebar-item-text">attack</span> -->
                         </div>
 
-                        <div class="sidebar-item navbar-btn" onclick="toggle('botnet')">
-                            <span class="sidebar-item-text"><i class="fa-solid fa-robot"></i> botnet</span>
+                        <div class="navbar-btn" onclick="toggle('botnet')">
+                            <i class="fa-solid fa-robot"></i>
+                            <!-- <span class="sidebar-item-text">botnet</span> -->
                         </div>
 
-                        <div class="sidebar-item navbar-btn" onclick="toggle('curl')">
-                            <span class="sidebar-item-text"><i class="fa-solid fa-cloud-arrow-up"></i> curl
-                                binds</span>
+                        <div class=" navbar-btn" onclick="toggle('curl')">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <!-- <span class="sidebar-item-text">curl binds</span> -->
                         </div>
 
-                        <div class="sidebar-item navbar-btn" onclick="toggle('lookup')">
-                            <span class="sidebar-item-text"><i class="fa-solid fa-eye"></i> lookup</span>
+                        <div class=" navbar-btn" onclick="toggle('lookup')">
+                            <i class="fa-solid fa-eye"></i>
+                            <!-- <span class="sidebar-item-text">lookup</span> -->
                         </div>
 
-                        <div class="sidebar-item navbar-btn" onclick="toggle('maid_av')">
-                            <span class="sidebar-item-text"><i class="fa-solid fa-mosquito-net"></i> maid AV</span>
+                        <div class=" navbar-btn" onclick="toggle('maid_av')">
+                            <i class="fa-solid fa-mosquito-net"></i>
+                            <!-- <span class="sidebar-item-text">maid AV</span> -->
                         </div>
 
-                        <div class="sidebar-item navbar-btn" onclick="toggle('maid_ce')">
-                            <span class="sidebar-item-text"><i class="fa-solid fa-box-open"></i> maid
-                                container</span>
+                        <div class=" navbar-btn" onclick="toggle('maid_ce')">
+                            <i class="fa-solid fa-box-open"></i>
+                            <!-- <span class="sidebar-item-text">maid CE</span> -->
                         </div>
 
-                        <div class="sidebar-item navbar-btn" onclick="toggle('rootkit')">
-                            <span class="sidebar-item-text"><i class="fa-solid fa-biohazard"></i> rootkit</span>
+                        <div class=" navbar-btn" onclick="toggle('rootkit')">
+                            <i class="fa-solid fa-biohazard"></i>
+                            <!-- <span class="sidebar-item-text">rootkit</span> -->
                         </div>
 
-                        <div class="sidebar-item navbar-btn" onclick="toggle('scanner')">
-                            <span class="sidebar-item-text"><i class="fa-solid fa-satellite-dish"></i>
-                                scanner</span>
+                        <div class=" navbar-btn" onclick="toggle('scanner')">
+                            <i class="fa-solid fa-satellite-dish"></i>
+                            <!-- <span class="sidebar-item-text"> scanner</span> -->
                         </div>
                     </header>
                 </div>
@@ -139,11 +145,14 @@
                         <div class="card">
 
                             <header class="card-header space-bt">
-                                <h3 class="card-title"><i class="fa-solid fa-file-waveform"></i> last entries</h3>
+                                <h3 class="card-title"><i class="fa-solid fa-file-waveform"></i> <span
+                                        class="navbar-ico-text">last entries</span></h3>
                                 <span>🔶</span>
                             </header>
                             <div class="card-body">
-
+                                <div class="tables">
+                                    <table id="logsTable" class="display"></table>
+                                </div>
                             </div>
                         </div>
 
@@ -152,11 +161,15 @@
                         <div class="card">
 
                             <header class="card-header space-bt">
-                                <h3 class="card-title"><i class="fa-solid fa-dragon"></i> attack</h3>
+                                <h3 class="card-title"><i class="fa-solid fa-dragon"></i>
+                                    <span class="navbar-ico-text">attack</span>
+                                </h3>
                                 <span>🔶</span>
                             </header>
                             <div class="card-body">
-                                <table id="logsAttak" class="display"></table>
+                                <div class="tables">
+                                    <table id="logsAttack" class="display"></table>
+                                </div>
                             </div>
 
                         </div>
