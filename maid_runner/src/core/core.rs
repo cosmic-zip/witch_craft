@@ -26,6 +26,16 @@ pub fn core_local_downloader_web_page(url: CoreGenericUrl, debug: bool) -> bool 
     system_command_exec(instance)
 }
 
+pub fn core_binary_backup(backup: Backup, debug: bool) -> bool {
+    let instance = ProcessInit {
+        source: &format!("dd if={} of={} > /dev/null", backup.from, backup.to, backup.technic),
+        source_from: "core",
+        source_description: "Creating bit-bit backup",
+        debug: debug,
+    };
+    system_command_exec(instance)
+}
+
 pub fn shell_core(system_input: Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
@@ -35,7 +45,7 @@ pub fn shell_core(system_input: Vec<String>) -> bool {
             let instance = CoreGenericPathOpType {
                 sample_path: &gsv(system_input.clone(), "--path"),
                 op_type: "none",
-            };
+            };            
 
             core_local_safe_remove_metadata(instance, debug)
         }
@@ -47,6 +57,17 @@ pub fn shell_core(system_input: Vec<String>) -> bool {
             };
 
             core_local_downloader_web_page(instance, debug)
+        }
+
+        "--backup" => {
+            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));            
+            let instance = Backup {
+                from: &gsv(system_input.clone(), "--from"),
+                to: &gsv(system_input.clone(), "--to"),
+                technic: &gsv(system_input.clone(), "--technic"),
+            };
+
+            core_binary_backup(instance, debug)
         }
 
         _ => {

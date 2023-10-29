@@ -57,3 +57,9 @@ pub struct ProcessResult<
     pub formated_stderr: Vec<String>,
     pub debug: bool,
 }
+
+pub struct Backup<'from, 'to, 'technic> {
+    pub from: &'from str,
+    pub to: &'to str,
+    pub technic: &'technic str,
+}
