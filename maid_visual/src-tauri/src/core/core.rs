@@ -59,7 +59,7 @@ pub fn select_report_from_db(conn: &Connection, from: String, size: i32) -> Resu
     for row in rows {
         match row {
             Ok(data) => formated_rows.push(data),
-            Err(_) => panic!("[PANIC] :: Unknow error"),
+            Err(_) => todo!(),
         }
         
     }
