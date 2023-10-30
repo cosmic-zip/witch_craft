@@ -24,13 +24,23 @@ pub fn select_report_from_db(conn: &Connection, from: String, size: i32) -> Resu
     let mut result;
 
     if from == "all" {
-        result = conn.prepare(&format!(
+        result = match conn.prepare(&format!(
             "SELECT * FROM process_results ORDER BY id DESC LIMIT {}", size,
-        )).expect("Query Failed");
+        )) {
+            Ok(value) => value,
+            Err(_) => {
+                return Ok(vec![])
+            }
+        }
     } else {
-        result = conn.prepare(
-            &format!("SELECT * FROM process_results WHERE source_from=\"{}\" ORDER BY id DESC LIMIT {}; ", from, size
-        )).expect("Query Failed");
+        result = match conn.prepare(
+            &format!("SELECT * FROM process_results WHERE source_from=\"{}\" ORDER BY id DESC LIMIT {}; ", from, size)
+        ) {
+            Ok(value) => value,
+            Err(_) => {
+                return Ok(vec![])
+            }
+        }
     }
 
     let mut formated_rows: Vec<Vec<String>> = Vec::new();
