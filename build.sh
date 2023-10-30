@@ -25,7 +25,7 @@ cargo build --release --manifest-path maid_api/Cargo.toml
 
 echo && echo "Move applications to app/"
 mkdir /home/$(whoami)/app
-cp ./maid_visual/src-tauri/target/release/maid_visual  /home/$(whoami)/app
-cp ./maid_runner/target/release/maid_runner /home/$(whoami)/app
-cp ./maid_api/target/release/maid_api /home/$(whoami)/app
+yes | cp -r ./maid_visual/src-tauri/target/release/maid_visual  /home/$(whoami)/app
+yes | cp -r ./maid_runner/target/release/maid_runner /home/$(whoami)/app
+yes | cp -r ./maid_api/target/release/maid_api /home/$(whoami)/app
 
