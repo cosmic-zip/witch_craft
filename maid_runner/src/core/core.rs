@@ -28,7 +28,7 @@ pub fn core_local_downloader_web_page(url: CoreGenericUrl, debug: bool) -> bool 
 
 pub fn core_binary_backup(backup: Backup, debug: bool) -> bool {
     let instance = ProcessInit {
-        source: &format!("dd if={} of={} > /dev/null", backup.from, backup.to, backup.technic),
+        source: &format!("dd if={} of={} > /dev/null", backup.from, backup.to),
         source_from: "core",
         source_description: "Creating bit-bit backup",
         debug: debug,
