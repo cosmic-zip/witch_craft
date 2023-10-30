@@ -1,4 +1,5 @@
 use crate::core::structs::{Logger, ProcessResult};
+use crate::core::messages::standard_messages;
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
 use std::error::Error;
@@ -124,7 +125,9 @@ pub fn logger(data: Logger) -> std::io::Result<()> {
         Ok(conn) => {
             write_process_result_to_db(&conn, proccess_result);
         }
-        Err(err) => {}
+        Err(err) => {
+            standard_messages("error", "Database connection failed", "report.logger", "cute");
+        }
     } 
 
     Ok(())
