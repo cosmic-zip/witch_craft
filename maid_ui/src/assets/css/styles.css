@@ -436,3 +436,34 @@ i {
     display: flex;
   }
 }
+
+.form-section {
+  margin-bottom: 20px;
+}
+
+.form-section label {
+  font-weight: bold;
+}
+
+.form-section textarea {
+  width: 99%;
+  height: 100px;
+  border: 1px solid var(--funny-yellow);
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--raisin-black);
+  color: var(--white);
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.form-btn {
+  width: 200px;
+  height: 40px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(166deg, rgb(187, 189, 206) 0%, rgb(248, 207, 255) 44%, rgb(0, 238, 231) 100%);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
+}
