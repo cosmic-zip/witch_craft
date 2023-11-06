@@ -3,13 +3,18 @@ echo "MR Build System"
 echo && echo "Install dependencies"
 sudo apt install aptitude
 sudo aptitude update -y
-sudo aptitude install -y nmap curl xxd libc6 exiftool traceroute wget iproute2 whois dnsutils dirb dnsenum tree htop iftop clang 
+sudo aptitude install -y p7zip-full nmap curl xxd libc6 exiftool traceroute wget iproute2 whois dnsutils dirb dnsenum tree htop iftop clang 
 sudo aptitude install -y libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
 
 echo && echo "Move config folders to /var"
 sudo mkdir /var/maid
 sudo cp maid_lists/ /var/maid -R
 sudo chown $(whoami):$(whoami) /var/maid -R
+
+echo && echo  "Uncompress files"
+7z x /var/maid/maid_lists/malware/full.csv.7z.001
+mv /var/maid/maid_lists/malware/full.csv /var/maid/maid_lists/malware/malware_hash.bin
+mv /var/maid/maid_lists/malware/malware_hash.bin /var/maid/maid_lists/general/
 
 echo && echo "SNAP Setup"
 sudo aptitude install snapd -y
@@ -29,3 +34,4 @@ yes | cp -r ./maid_visual/src-tauri/target/release/maid_visual  /home/$(whoami)/
 yes | cp -r ./maid_runner/target/release/maid_runner /home/$(whoami)/app
 yes | cp -r ./maid_api/target/release/maid_api /home/$(whoami)/app
 
+echo && echo "DONE"
