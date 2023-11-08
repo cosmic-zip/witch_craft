@@ -12,9 +12,31 @@ grade: devel
 confinement: devmode
 
 parts:
+
+  maid-lists:
+    plugin: dump
+    source: maid_lists/
+    organize:
+      "*": /var/maid/
+  maid-visual:
+    plugin: rust
+    source: maid_visual/
+    build-packages:
+      - libwebkit2gtk-4.0-dev 
+      - build-essential 
+      - libssl-dev 
+      - libgtk-3-dev 
+      - libayatana-appindicator3-dev 
+      - librsvg2-dev
+      - rustc
+      - cargo
+    stage-packages:
+      - curl 
+      - wget 
+      - file
   maid-runner:
     plugin: rust
-    source: ../maid-runner/
+    source: maid_runner/
     build-packages:
       - build-essential
       - rustc
@@ -33,50 +55,26 @@ parts:
       - dnsutils 
       - dirb 
       - dnsenum
-  maid-visual:
-    plugin: rust
-    source: ../maid-visual/
-    build-packages:
-      - libwebkit2gtk-4.0-dev 
-      - build-essential 
-      - curl 
-      - wget 
-      - file 
-      - libssl-dev 
-      - libgtk-3-dev 
-      - libayatana-appindicator3-dev 
-      - librsvg2-dev
-      - rustc
-      - cargo
   maid-api:
       plugin: rust
-      source: ../maid-api
+      source: maid_api/
       build-packages:
         - build-essential
         - rustc
         - cargo
-  maid-lists:
-    plugin: dump
-    source: ../maid-lists
-    organize:
-      "*": /var/maid/
 
 apps:
   maid-runner:
     command: bin/maid_runner
-    plugs: 
-     - network 
-     - network-bind 
-     - removable-media
-    after: [maid-lists]
   
   maid-visual:
     command: bin/maid_visual
-    plugs: 
-     - network 
-     - network-bind 
-     - removable-media
-    after: [maid-lists]
+    plugs:
+      - x11
+      - wayland
+
+  maid-api:
+    command: bin/maid_api
 
   extract-and-move:
     command: ./local/comp.sh
