@@ -5,9 +5,79 @@ summary: Maid Runner is a companion for cyber security tasks.
 description: |
  Maid Runner is a versatile task automation software designed to serve as the foundation for various cyber security modules. It provides capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion testing of applications and APIs, and more.
 
+architectures:
+- build-on: amd64
+
 grade: devel
 confinement: devmode
 
 parts:
-  my-part:
-    plugin: nil
+  maid-runner:
+    plugin: rust
+    source: ../maid-runner/
+    build-packages:
+      - build-essential
+      - rustc
+      - cargo
+    stage-packages:
+      - p7zip-full 
+      - nmap 
+      - curl 
+      - xxd 
+      - libc6 
+      - exiftool 
+      - traceroute 
+      - wget 
+      - iproute2 
+      - whois 
+      - dnsutils 
+      - dirb 
+      - dnsenum
+  maid-visual:
+    plugin: rust
+    source: ../maid-visual/
+    build-packages:
+      - libwebkit2gtk-4.0-dev 
+      - build-essential 
+      - curl 
+      - wget 
+      - file 
+      - libssl-dev 
+      - libgtk-3-dev 
+      - libayatana-appindicator3-dev 
+      - librsvg2-dev
+      - rustc
+      - cargo
+  maid-api:
+      plugin: rust
+      source: ../maid-api
+      build-packages:
+        - build-essential
+        - rustc
+        - cargo
+  maid-lists:
+    plugin: dump
+    source: ../maid-lists
+    organize:
+      "*": /var/maid/
+
+apps:
+  maid-runner:
+    command: bin/maid_runner
+    plugs: 
+     - network 
+     - network-bind 
+     - removable-media
+    after: [maid-lists]
+  
+  maid-visual:
+    command: bin/maid_visual
+    plugs: 
+     - network 
+     - network-bind 
+     - removable-media
+    after: [maid-lists]
+
+  extract-and-move:
+    command: ./local/comp.sh
+    plugs: [home, removable-media]
