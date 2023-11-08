@@ -266,7 +266,7 @@ pub const UNIX_NETWORK: &str = r###"
     ifconfig eth# mtu [size]                            Change t~TO size
     export l1AC=xx: XX: XX: XX: XX: XX                  Change t~AC
     ifconfig int hw ether t~AC                          Change t~AC
-    macchanger -m l1AC i                                Backtrack t~AC changer
+    macchanger -m MAC                                   Backtrack t~AC changer
     iwlist int scan                                     Built-in wifi scanner
     dig -x ip                                           Domain lookup for IP
     host ip                                             Domain lookup for IP
@@ -275,7 +275,7 @@ pub const UNIX_NETWORK: &str = r###"
     host -1 domain namesvr                              DNS Zone Xfer
     ip xfrm state list                                  Print existing VPN kejs
     ip addr add ip /cidr aev ethO                       Adds 'hidden' interface
-    /var/log/messages I grep DHCP                       List DHCP assignments
+    cat /var/log/messages | grep DHCP                       List DHCP assignments
     tcpkill host ip and port port                       Block ip:port
     echo "1" /proc/sys/net/ipv4/ip forward              Turn on IP Forwarding
     echo ''nameserver x.x.x.x'' /etc7resolv.conf        Add DNS Server
@@ -327,9 +327,9 @@ pub const UNIX_COMMAND: &str = r###"
     diff filel file2                                    Compare files
     rm -rf dir                                          Force delete of dir
     shred -f -u file                                    Overwrite/delete file
-    touch -r ref_file file                              t1atches ref_ file timestamp
-    touch -t YYYY11t1DDHHSS file                        Set file timestamp
-    sudo fdisk -1                                       List connected drives
+    touch -r ref_file file                              slaches ref_ file timestamp
+    touch -t YYYYDDHHSS file                            Set file timestamp
+    sudo fdisk -l                                       List connected drives
     mount /dev/sda# /mnt/usbkey                         t1ount USB key
     md5sum -t file                                      Compute md5 hash
     echo -n "str" | md5sum                              Generate md5 hash
