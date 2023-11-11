@@ -49,6 +49,7 @@ ehthumbs.db
 
 # Output
 /output/*
+/release/*
 
 # Mocks
 mock.report.json
