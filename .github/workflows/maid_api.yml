@@ -1,4 +1,4 @@
-name: maid_visual
+name: maid_api
 
 on:
   push:
