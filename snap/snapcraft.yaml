@@ -4,15 +4,14 @@ version: '0.12.1'
 summary: Maid Runner is a companion for cyber security tasks.
 description: |
  Maid Runner is a versatile task automation software designed to serve as the foundation for various cyber security modules. It provides capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion testing of applications and APIs, and more.
-
+license: GPL-3.0+
 architectures:
 - build-on: amd64
-
 grade: devel
 confinement: devmode
+compression: lzo
 
 parts:
-
   maid-lists:
     plugin: dump
     source: maid_lists/
@@ -20,7 +19,8 @@ parts:
       "*": /var/maid/
   maid-visual:
     plugin: rust
-    source: maid_visual/
+    rust-channel: "1.70"
+    source: maid_visual/src-tauri/
     build-packages:
       - libwebkit2gtk-4.0-dev 
       - build-essential 
@@ -28,12 +28,14 @@ parts:
       - libgtk-3-dev 
       - libayatana-appindicator3-dev 
       - librsvg2-dev
-      - rustc
       - cargo
+      - rustc
     stage-packages:
       - curl 
       - wget 
       - file
+    override-build: |
+      cargo build --release
   maid-runner:
     plugin: rust
     source: maid_runner/

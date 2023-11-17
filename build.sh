@@ -15,6 +15,7 @@ echo && echo  "Uncompress files"
 7z x /var/maid/maid_lists/malware/full.csv.7z.001
 mv /var/maid/maid_lists/malware/full.csv /var/maid/maid_lists/malware/malware_hash.bin
 mv /var/maid/maid_lists/malware/malware_hash.bin /var/maid/maid_lists/general/
+rm full.csv
 
 echo && echo "SNAP Setup"
 sudo aptitude install snapd -y
@@ -30,8 +31,8 @@ cargo build --release --manifest-path maid_api/Cargo.toml
 
 echo && echo "Move applications to release"
 mkdir ./release
-yes | cp -r ./maid_visual/src-tauri/target/release/maid_visual  /release/
-yes | cp -r ./maid_runner/target/release/maid_runner /release/
-yes | cp -r ./maid_api/target/release/maid_api /release/
+yes | cp -r ./maid_visual/src-tauri/target/release/maid_visual  ./release/
+yes | cp -r ./maid_runner/target/release/maid_runner ./release/
+yes | cp -r ./maid_api/target/release/maid_api ./release/
 
 echo && echo "DONE"
