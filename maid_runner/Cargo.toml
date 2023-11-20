@@ -5,7 +5,7 @@ license = "GPL-v3"
 description = "Maid Runner is a versatile task automation software designed to serve as the foundation for various cyber security modules."
 readme = "../README.md"
 homepage = "https://github.com/th3Maid/MaidRunner"
-version = "0.12.1"
+version = "0.12.2"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
