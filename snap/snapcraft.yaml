@@ -9,7 +9,7 @@ architectures:
 - build-on: amd64
 grade: devel
 confinement: devmode
-# compression: lzo
+compression: lzo
 
 
 layout:
