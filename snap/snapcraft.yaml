@@ -9,7 +9,12 @@ architectures:
 - build-on: amd64
 grade: devel
 confinement: devmode
-compression: lzo
+# compression: lzo
+
+
+layout:
+  /etc/maid:
+    bind: $SNAP/etc/maid
 
 parts:
   maid-lists:
@@ -68,6 +73,9 @@ parts:
 apps:
   maid-runner:
     command: bin/maid_runner
+    plugs:
+        - home
+        - network
   
   maid-visual:
     command: bin/maid_visual
