@@ -1,16 +1,18 @@
-use crate::modules::sample::sample_structs::*;
+use crate::modules::iso::iso_builder::*;
+use crate::modules::iso::iso_structs::*;
 use crate::core::structs::ProcessInit;
 use crate::core::messages::standard_messages;
 use crate::core::utils::*;
 
-pub fn sample(data: SampleData, debug: bool) -> bool {
-    let instance = ProcessInit {
-        source: &format!("foo {}", data.data),
-        source_from: "sample",
-        source_description: "Sample tool",
-        debug: debug,
-    };
-    system_command_exec(instance)
+pub fn iso27x_build(data: CybersecurityFramework, debug: bool) -> bool {
+    
+    if debug == true {
+        println("{:?}", data);
+        return true;
+    }
+
+    return true;
+
 }
 
 pub fn shell_lookup(system_input: Vec<String>) -> bool {
@@ -18,13 +20,13 @@ pub fn shell_lookup(system_input: Vec<String>) -> bool {
 
     match cmd_arg_name {
 
-        "--sample" => {
+        "--iso" => {
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let instance = SampleData {
+            let instance = CybersecurityFramework {
                 data: &gsv(system_input.clone(), "--sample"),
             };
 
-            sample(instance, debug)
+            iso27x_build(instance, debug)
         }
 
         _ => {
