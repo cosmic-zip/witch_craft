@@ -5,6 +5,7 @@ use crate::modules::{
     // botnet::botnet::*,
     lookup::lookup::*,
     // attack::attack::*,
+    // iso::iso::*,
     maid_av::maid_av::*,
     // rootkit::rootkit::*,
     scanner::scanner::*,
