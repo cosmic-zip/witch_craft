@@ -8,3 +8,4 @@ pub mod test_maid_ce;
 pub mod test_rootkit;
 pub mod test_scanner;
 pub mod test_shell;
+pub mod test_iso27x;
