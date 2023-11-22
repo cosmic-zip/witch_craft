@@ -7,7 +7,7 @@ use crate::core::utils::*;
 pub fn iso27x_build(data: CybersecurityFramework, debug: bool) -> bool {
     
     if debug == true {
-        println("{:?}", data);
+        println!("{:?}", data);
         return true;
     }
 
@@ -21,12 +21,7 @@ pub fn shell_lookup(system_input: Vec<String>) -> bool {
     match cmd_arg_name {
 
         "--iso" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let instance = CybersecurityFramework {
-                data: &gsv(system_input.clone(), "--sample"),
-            };
-
-            iso27x_build(instance, debug)
+          true
         }
 
         _ => {
