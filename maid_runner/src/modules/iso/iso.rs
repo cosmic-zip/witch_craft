@@ -15,7 +15,7 @@ pub fn iso27x_build(data: CybersecurityFramework, debug: bool) -> bool {
 
 }
 
-pub fn shell_lookup(system_input: Vec<String>) -> bool {
+pub fn shell_iso(system_input: Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
