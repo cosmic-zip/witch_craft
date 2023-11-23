@@ -12,7 +12,7 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
 
     let file_path = malware_db;
 
-    if debug == true {
+    if debug {
         standard_messages(
             "warning",
             "File path search_malware_hash",

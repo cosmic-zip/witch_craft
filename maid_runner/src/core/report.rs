@@ -15,7 +15,7 @@ pub fn write_process_result_to_db<'a>(
     result: ProcessResult<'a, 'a, 'a, 'a, 'a, 'a, 'a, 'a>,
 ) -> Result<()> {
 
-    conn.execute(
+    let _ = conn.execute(
         "CREATE TABLE IF NOT EXISTS process_results (
             id INTEGER PRIMARY KEY,
             session TEXT,
@@ -123,7 +123,7 @@ pub fn logger(data: Logger) -> std::io::Result<()> {
     let connection = Connection::open("/var/maid/maid_lists/report/archive.db");
     match connection {
         Ok(conn) => {
-            write_process_result_to_db(&conn, proccess_result);
+            let _ = write_process_result_to_db(&conn, proccess_result);
         }
         Err(err) => {
             standard_messages("error", "Database connection failed", "report.logger", "cute");

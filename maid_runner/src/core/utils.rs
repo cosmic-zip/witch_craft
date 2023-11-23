@@ -66,7 +66,18 @@ pub fn system_command_exec(command: ProcessInit) -> bool {
                 debug: command.debug,
             };
 
-            logger(data);
+            match logger(data) {
+                Ok(()) => {}
+                Err(err) => {
+                    standard_messages(
+                        "error",
+                        "While executing command logger",
+                        &format!("{}", err),
+                        "cute",
+                    );
+                    return false;
+                }
+            }
 
             println!(
                 "🔖 status: {} \n🚧 STDOUT: {}\n🚧 STDERR: {}\n",
@@ -156,9 +167,10 @@ pub fn gsv(data: Vec<String>, parameter_name: &str) -> String {
 pub fn gsv_debug(debug: String) -> bool {
     if debug == "false" {
         return false;
-    } else {
-        return true;
     }
+
+    return true;
+        
 }
 
 pub fn search_csv(file_path: &str, search_term: &str) -> Result<Vec<String>, Box<dyn Err>> {

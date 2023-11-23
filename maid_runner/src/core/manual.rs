@@ -1,6 +1,6 @@
 use crate::core::utils::system_text;
 
-pub const MAID_RUNNER_HEADER: &str = r###"
+pub const MAID_RUNNER_HEADER: &str = r#"
 
       ███╗   ███╗ █████╗ ██╗██████╗         ██████╗ ██╗   ██╗███╗   ██╗███╗   ██╗███████╗██████╗ 
       ████╗ ████║██╔══██╗██║██╔══██╗        ██╔══██╗██║   ██║████╗  ██║████╗  ██║██╔════╝██╔══██╗
@@ -9,9 +9,9 @@ pub const MAID_RUNNER_HEADER: &str = r###"
       ██║ ╚═╝ ██║██║  ██║██║██████╔╝███████╗██║  ██║╚██████╔╝██║ ╚████║██║ ╚████║███████╗██║  ██║
       ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝
                                                                       
-"###;
+"#;
 
-pub const MAID_RUNNER_BANNER: &str = r###"
+pub const MAID_RUNNER_BANNER: &str = r#"
 
                                                                                                                                                       
                                                                                                                                                       
@@ -88,9 +88,9 @@ pub const MAID_RUNNER_BANNER: &str = r###"
                         ▓▓▓▓▓▓████████████                                                                      ████████████████                      
 
 
-"###;
+"#;
 
-pub const MAID_RUNNER_MAIN_HELP: &str = r###"                                                                                          
+pub const MAID_RUNNER_MAIN_HELP: &str = r#"                                                                                          
 
 MAIDRUNNER
 
@@ -249,10 +249,10 @@ FILES
     cleaning process. 
 
 
-"###;
+"#;
 
 // Network
-pub const UNIX_NETWORK: &str = r###"
+pub const UNIX_NETWORK: &str = r#"
     watch ss -tp                                        Network connections
     netstat -ant                                        Tcp connections -anu=udp
     netstat -tulpn                                      Connections with PIDs
@@ -279,10 +279,10 @@ pub const UNIX_NETWORK: &str = r###"
     tcpkill host ip and port port                       Block ip:port
     echo "1" /proc/sys/net/ipv4/ip forward              Turn on IP Forwarding
     echo ''nameserver x.x.x.x'' /etc7resolv.conf        Add DNS Server
-"###;
+"#;
 
 // System info
-pub const UNIX_SYSTEMINFO: &str = r###"
+pub const UNIX_SYSTEMINFO: &str = r#"
     netstat -A ip                                       Get hostname for ip             
     id                                                  Current username                
     w                                                   Logged on users                 
@@ -305,10 +305,10 @@ pub const UNIX_SYSTEMINFO: &str = r###"
     pkginfo                                             Installed pkgs (Solaris)        
     which tscsh/csh/ksh/bash                            Show location of executable     
     chmod -so tcsh/csh/ksh                              Disable shell , force bash      
-"###;
+"#;
 
 // UNIX UTILITY COMMANDS
-pub const UNIX_UTILITY: &str = r###"
+pub const UNIX_UTILITY: &str = r#"
     wget http:// url -0 url.txt -o /dev/null                                    Grab url
     rdesktop ip                                         Remote Desktop to ip
     scp /tmp/file user@x.x.x.x:/tmp/file                Put file
@@ -320,10 +320,10 @@ pub const UNIX_UTILITY: &str = r###"
     apropos subject                                     Find related command
     history                                             View users command history
     ! num                                               Executes line # in history
-"###;
+"#;
 
 // UNIX FILE COMMANDS
-pub const UNIX_COMMAND: &str = r###"
+pub const UNIX_COMMAND: &str = r#"
     diff filel file2                                    Compare files
     rm -rf dir                                          Force delete of dir
     shred -f -u file                                    Overwrite/delete file
@@ -354,10 +354,10 @@ pub const UNIX_COMMAND: &str = r###"
     dos2unix file                                       Convert to ~nix format
     file file.txt                                       Determine file type/info
     chattr (+/-)i file                                  Set/Unset immutable bit
-"###;
+"#;
 
 // UNIX misc
-pub const UNIX_MISC: &str = r###"
+pub const UNIX_MISC: &str = r#"
     unset HISTFILE                                      | Disable history logging
     ssh user@ ip arecord - | aplay -                    | Record remote mic
     gee -o outfile myfile.c                             | Compile C,C++
@@ -366,10 +366,10 @@ pub const UNIX_MISC: &str = r###"
     grep 'href=' file 1 cut -d"/" -f3  grep url | sort -u            |Strip links in url.com
     dd if=/dev/urandom of= file bs=3145728              | Make random 311B file
     count=lOO                                           
-"###;
+"#;
 
 // UNIX files
-pub const UNIX_FILES: &str = r###"
+pub const UNIX_FILES: &str = r#"
     Local users hashes               /etc/shadow
     Local users                      /etc/passwd
     Local groups                     /etc/group"
@@ -384,15 +384,15 @@ pub const UNIX_FILES: &str = r###"
     Bash history (also /root/)       /horne/ user /.bash historj
     Vendor-t1AC lookup               /usr/share/wireshark/rnanuf
     SSH keystore                     -/.ssh/
-    System log files (most UNIX)    /var/log
+    System log files (most UNIX)     /var/log
     System log files (Unix)          /var/adrn
     List cron files                  /var/spool/cron
     Apache connection log            /var/log/apache/access.log
     Static file system info          /etc/fstab
-"###;
+"#;
 
 // UNIX folders
-pub const UNIX_FOLDERS: &str = r###"
+pub const UNIX_FOLDERS: &str = r#"
     User binaries                      /bin
     Boot-up related files              /boot
     Interface for system devices       /dev
@@ -406,10 +406,10 @@ pub const UNIX_FOLDERS: &str = r###"
     Temporary files                    /trnp
     Less critical files                /usr
     Variable Sjstern files             /var
-"###;
+"#;
 
 // Windows files
-pub const WINDOWS_FILES: &str = r###"
+pub const WINDOWS_FILES: &str = r#"
     Typically C:\Windows        %SYSTEMROOT%
     DNS entries                 %SYSTEMROOT%\\System32\\drivers\\etc\\hosts
     Network settings            %SYSTEMROOT%\\System32\\drivers\\etc\\networks
@@ -421,10 +421,10 @@ pub const WINDOWS_FILES: &str = r###"
     Startup Location            %ALLUSERSPROFILE%\Start Menu\Programs\Startup\\
     Startup Location            %USERPROFILE%\\Start Menu\\Programs\\Startup\\
     Prefetch dir (EXE logs)     %SYSTEMROOT%\\Prefetch
-"###;
+"#;
 
 // Commonly Used Windows Registry Locations
-pub const WINDOWS_COMMON_REGISTER_LOCATIONS: &str = r###"
+pub const WINDOWS_COMMON_REGISTER_LOCATIONS: &str = r#"
     HKLM\Software\Microsoft\Windows NT\CurrentVersion         OS Information             
     HKLM\Software\Microsoft\Windows NT\CurrentVersion /v      Product name               
     HKLM\Software\Microsoft\Windows NT\CurrentVersion /v      Date of Install            
@@ -442,10 +442,10 @@ pub const WINDOWS_COMMON_REGISTER_LOCATIONS: &str = r###"
     HKCU\Software\Microsoft\Internet Explorer\TypedURLs       Typed URLs                 
     HKCU\Software\Microsoft\Windows\CurrentVersion\Explo      MRU List                   
     HKCU\Software\Microsoft\Windows\CurrentVersion\Apple      Last Registry Key Accessed 
-"###;
+"#;
 
 // windows cmd basic commands
-pub const WINDOWS_CMD_BASICS: &str = r###"
+pub const WINDOWS_CMD_BASICS: &str = r#"
     dir                             List files and folders
     cd <dir>                        Change directory to <dir>
     mkdir <dir>                     Create Directory <dir>
@@ -474,10 +474,10 @@ pub const WINDOWS_CMD_BASICS: &str = r###"
     driverquery /FO list /v         List of drivers and status
     osk                             Onscreen keyboard
     shutdown -s -t 3600             Schedule shutdown for 3600 sec or 1 hr
-"###;
+"#;
 
 // windows powershell basic commands
-pub const WINDOWS_POWERSHELL_BASICS: &str = r###"
+pub const WINDOWS_POWERSHELL_BASICS: &str = r#"
     Get-Content                         cat     Get contents of a file
     Get-Service                         gsv     Get Services
     Get-Process                         gps     Show Services and processes
@@ -496,7 +496,7 @@ pub const WINDOWS_POWERSHELL_BASICS: &str = r###"
                                                 a collection of input objects.
     Where-Object                        ?       Selects objects from a collection based 
                                                 on their property values.
-"###;
+"#;
 
 pub fn system_exec_manual(page: &str) -> bool {
     match page {
