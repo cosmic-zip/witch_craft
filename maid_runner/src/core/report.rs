@@ -120,7 +120,7 @@ pub fn logger(data: Logger) -> std::io::Result<()> {
         debug: data.debug,
     };
 
-    let connection = Connection::open("/var/maid/maid_lists/report/archive.db");
+    let connection = Connection::open(report);
     match connection {
         Ok(conn) => {
             let _ = write_process_result_to_db(&conn, proccess_result);
