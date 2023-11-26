@@ -6,3 +6,4 @@ pub mod maid_av;
 pub mod rootkit;
 pub mod scanner;
 pub mod iso;
+pub mod firewall;
