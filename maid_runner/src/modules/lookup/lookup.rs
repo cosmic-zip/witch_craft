@@ -5,7 +5,7 @@ use crate::meow::meow::read_meow;
 use crate::modules::lookup::lookup_structs::*;
 
 pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
-    let mut file: String;
+    let file: String;
 
     if mac_address.list_path == "default" {
         let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);

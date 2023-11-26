@@ -47,7 +47,7 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
     }
 }
 
-pub fn search_malware_pattern(pattern: &str, debug: bool) -> bool {
+pub fn search_malware_pattern(pattern: &str, _debug: bool) -> bool {
     let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
     let malware_db = &format!("{}{}", config["GENRAL_BASE_PATH"], config["MALWARE_HASH"]);
 
@@ -114,7 +114,7 @@ pub fn active_malware_scanner(derectory: &str, debug: bool) -> bool {
 
     match list_files_and_folders(derectory) {
         Ok(items) => {
-            for item in items {
+            for _item in items {
                 match calculate_sha256_hash("/bin/yes", true) {
                     Ok(result) => {
                         return search_malware_pattern(&result, debug);

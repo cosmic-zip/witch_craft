@@ -89,8 +89,8 @@ pub fn format_std(data: String) -> Vec<String> {
 }
 
 pub fn logger(data: Logger) -> std::io::Result<()> {
-    let mut formated_stdout: Vec<String> = format_std(data.stdout);
-    let mut formated_stderr: Vec<String> = format_std(data.stderr);
+    let formated_stdout: Vec<String> = format_std(data.stdout);
+    let formated_stderr: Vec<String> = format_std(data.stderr);
 
     let cmd: Vec<String> = data.source.split_whitespace().map(String::from).collect();
 
@@ -125,7 +125,7 @@ pub fn logger(data: Logger) -> std::io::Result<()> {
         Ok(conn) => {
             let _ = write_process_result_to_db(&conn, proccess_result);
         }
-        Err(err) => {
+        Err(_err) => {
             standard_messages("error", "Database connection failed", "report.logger", "cute");
         }
     } 

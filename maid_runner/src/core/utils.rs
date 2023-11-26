@@ -228,7 +228,7 @@ pub fn find_all_matching_lines(file_path: &str, pattern: &str) -> Result<Vec<Str
     Ok(matching_lines)
 }
 
-pub fn read_file_to_string(file_path: &str, debug: bool) -> String {
+pub fn read_file_to_string(file_path: &str, _debug: bool) -> String {
     match File::open(file_path) {
         Ok(file) => {
             use std::io::Read;

@@ -142,7 +142,7 @@ pub fn entropy_filter(line: String) -> HashMap<&'static str, f64> {
     return entropy_result;
 }
 
-pub fn entropy_analysis(content: String, debug: bool) -> bool {
+pub fn entropy_analysis(content: String, _debug: bool) -> bool {
     let mut final_entropy_general_possitive: f64 = 0.0;
     let mut final_entropy_letters_possitive: f64 = 0.0;
     let mut final_entropy_numbers_possitive: f64 = 0.0;
