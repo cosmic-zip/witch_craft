@@ -219,10 +219,10 @@ pub fn find_all_matching_lines(file_path: &str, pattern: &str) -> Result<Vec<Str
     };
 
     match logger(data) {
-        Ok(result) => {
+        Ok(_result) => {
             standard_messages( "saved", "Log saved","", "cute");
         }
-        Err(err) => println!("Error"),
+        Err(_err) => println!("Error"),
     }
 
     Ok(matching_lines)
