@@ -65,7 +65,7 @@ pub fn curl_request(curl: CurlBind, debug: bool) -> bool {
     system_command_exec(instance)
 }
 
-pub fn shell_curl(system_input:  &mut Vec<String>) -> bool {
+pub fn shell_curl(system_input: &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {

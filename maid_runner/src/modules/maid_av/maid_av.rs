@@ -146,7 +146,7 @@ pub fn active_malware_scanner(derectory: &str, debug: bool) -> bool {
     }
 }
 
-pub fn shell_maid_av(system_input:  &mut Vec<String>) -> bool {
+pub fn shell_maid_av(system_input: &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {

@@ -117,7 +117,7 @@ pub fn firewall(ruleset: SimpleRule, debug: bool) -> bool {
     system_command_exec(instance)
 }
 
-pub fn shell_firewall(system_input:  &mut Vec<String>) -> bool {
+pub fn shell_firewall(system_input: &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {

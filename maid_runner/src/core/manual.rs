@@ -549,7 +549,7 @@ pub fn system_exec_manual(page: &str) -> bool {
     }
 }
 
-pub fn shell_manual(system_input:  &mut Vec<String>) -> bool {
+pub fn shell_manual(system_input: &mut Vec<String>) -> bool {
     if system_input.len() < 3 {
         return system_exec_manual("none");
     }

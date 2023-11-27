@@ -3,13 +3,13 @@ use crate::core::report::*;
 use crate::core::structs::{CommandCall, CommandResult, Logger, ProcessInit};
 use colored::*;
 use csv::ReaderBuilder;
-use std::mem;
 use std::env;
 use std::error::Error as StdError;
 use std::error::Error as Err;
 use std::fmt::Display;
 use std::fs::File;
 use std::io::{self, BufRead, Error, Read};
+use std::mem;
 use std::path::Path;
 use std::process::{Command, Output};
 
@@ -163,12 +163,7 @@ pub fn take_system_args(mut data: &mut Vec<String>, parameter_name: &str) -> Str
         parameter_name, data
     );
 
-    return standard_messages(
-        "error",
-        &message,
-        "utils::take_system_args",
-        "cute",
-    );
+    return standard_messages("error", &message, "utils::take_system_args", "cute");
 }
 
 pub fn take_system_args_debug(debug: String) -> bool {
