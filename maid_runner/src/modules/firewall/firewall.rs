@@ -117,31 +117,31 @@ pub fn firewall(ruleset: SimpleRule, debug: bool) -> bool {
     system_command_exec(instance)
 }
 
-pub fn shell_firewall(system_input: Vec<String>) -> bool {
+pub fn shell_firewall(system_input:  &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
         "--preset" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
-            let option = &take_system_args(system_input.clone(), "--option");
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
+            let option = &take_system_args(system_input, "--option");
             firewall_preset(option, debug)
         }
 
         "--backup" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
-            let option = &take_system_args(system_input.clone(), "--option");
-            let path = &take_system_args(system_input.clone(), "--path");
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
+            let option = &take_system_args(system_input, "--option");
+            let path = &take_system_args(system_input, "--path");
 
             firewall_backup(path, option, debug)
         }
 
         "--rule" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let command = SimpleRule {
-                table: &take_system_args(system_input.clone(), "--table"),
-                chain: &take_system_args(system_input.clone(), "--chain"),
-                protocol: &take_system_args(system_input.clone(), "--protocol"),
-                destination_port: &take_system_args(system_input.clone(), "--port"),
+                table: &take_system_args(system_input, "--table"),
+                chain: &take_system_args(system_input, "--chain"),
+                protocol: &take_system_args(system_input, "--protocol"),
+                destination_port: &take_system_args(system_input, "--port"),
             };
 
             firewall(command, debug)

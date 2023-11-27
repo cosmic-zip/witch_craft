@@ -65,19 +65,19 @@ pub fn curl_request(curl: CurlBind, debug: bool) -> bool {
     system_command_exec(instance)
 }
 
-pub fn shell_curl(system_input: Vec<String>) -> bool {
+pub fn shell_curl(system_input:  &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
         "--curl_bind" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = CurlBind {
-                method: &take_system_args(system_input.clone(), "--method"),
-                auth_type: &take_system_args(system_input.clone(), "--auth_type"),
-                auth_token: &take_system_args(system_input.clone(), "--auth_token"),
-                url: &take_system_args(system_input.clone(), "--url"),
-                ctn_type: &take_system_args(system_input.clone(), "--ctn_type"),
-                data: &take_system_args(system_input.clone(), "--data"),
+                method: &take_system_args(system_input, "--method"),
+                auth_type: &take_system_args(system_input, "--auth_type"),
+                auth_token: &take_system_args(system_input, "--auth_token"),
+                url: &take_system_args(system_input, "--url"),
+                ctn_type: &take_system_args(system_input, "--ctn_type"),
+                data: &take_system_args(system_input, "--data"),
             };
 
             standard_messages("debug", "BCurl bindings", "", "cute");
@@ -86,8 +86,8 @@ pub fn shell_curl(system_input: Vec<String>) -> bool {
         }
 
         "--header" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
-            let curl = &take_system_args(system_input.clone(), "--url");
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
+            let curl = &take_system_args(system_input, "--url");
 
             let instance = ProcessInit {
                 source: &format!("curl -I {}", curl),
@@ -99,8 +99,8 @@ pub fn shell_curl(system_input: Vec<String>) -> bool {
         }
 
         "--status_code" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
-            let curl = &take_system_args(system_input.clone(), "--url");
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
+            let curl = &take_system_args(system_input, "--url");
 
             let instance = ProcessInit {
                 source: &format!("curl -o /dev/null -s -w \"%{{http_code}}\n\" {}", curl),

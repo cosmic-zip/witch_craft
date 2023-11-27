@@ -226,28 +226,28 @@ pub fn scanner_auto_nmap(source: ScannerWebAutoNmap, debug: bool) -> bool {
     system_command_exec(instance)
 }
 
-pub fn shell_scanner(system_input: Vec<String>) -> bool {
+pub fn shell_scanner(system_input:  &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
         "--scanner_web" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = ScannerWebGenericInput {
-                target: &take_system_args(system_input.clone(), "--target"),
-                op_type: &take_system_args(system_input.clone(), "--type"),
-                list_path: &take_system_args(system_input.clone(), "--path"),
+                target: &take_system_args(system_input, "--target"),
+                op_type: &take_system_args(system_input, "--type"),
+                list_path: &take_system_args(system_input, "--path"),
             };
 
             scanner_web(instance, debug)
         }
 
         "--scanner_auto_nmap" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = ScannerWebAutoNmap {
-                target: &take_system_args(system_input.clone(), "--target"),
-                delay: &take_system_args(system_input.clone(), "--delay"),
-                ports: &take_system_args(system_input.clone(), "--ports"),
-                scan_type: &take_system_args(system_input.clone(), "--type"),
+                target: &take_system_args(system_input, "--target"),
+                delay: &take_system_args(system_input, "--delay"),
+                ports: &take_system_args(system_input, "--ports"),
+                scan_type: &take_system_args(system_input, "--type"),
             };
 
             scanner_auto_nmap(instance, debug)

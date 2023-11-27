@@ -36,14 +36,14 @@ pub fn core_binary_backup(backup: Backup, debug: bool) -> bool {
     system_command_exec(instance)
 }
 
-pub fn shell_core(system_input: Vec<String>) -> bool {
+pub fn shell_core(system_input:  &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
         "--remove_metadata" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = CoreGenericPathOpType {
-                sample_path: &take_system_args(system_input.clone(), "--path"),
+                sample_path: &take_system_args(system_input, "--path"),
                 op_type: "none",
             };
 
@@ -51,20 +51,20 @@ pub fn shell_core(system_input: Vec<String>) -> bool {
         }
 
         "--web_downloader" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = CoreGenericUrl {
-                url: &take_system_args(system_input.clone(), "--url"),
+                url: &take_system_args(system_input, "--url"),
             };
 
             core_local_downloader_web_page(instance, debug)
         }
 
         "--backup" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = Backup {
-                from: &take_system_args(system_input.clone(), "--from"),
-                to: &take_system_args(system_input.clone(), "--to"),
-                technic: &take_system_args(system_input.clone(), "--technic"),
+                from: &take_system_args(system_input, "--from"),
+                to: &take_system_args(system_input, "--to"),
+                technic: &take_system_args(system_input, "--technic"),
             };
 
             core_binary_backup(instance, debug)

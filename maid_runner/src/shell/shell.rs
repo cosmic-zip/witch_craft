@@ -16,7 +16,7 @@ use crate::modules::{
 // bin [option] [value] ... [option_N] [value_N]
 
 pub fn init() -> u8 {
-    let system_input = system_exec_shell(false);
+    let mut system_input: &mut Vec<String> = &mut system_exec_shell(false);
 
     if system_input.len() < 3 {
         system_exec_manual("default");

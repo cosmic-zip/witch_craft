@@ -145,7 +145,7 @@ pub fn system_exec_shell(debug: bool) -> Vec<String> {
     return args;
 }
 
-pub fn take_system_args(mut data: Vec<String>, parameter_name: &str) -> String {
+pub fn take_system_args(mut data: &mut Vec<String>, parameter_name: &str) -> String {
     if data.len() <= 2 {
         return "🚧 [GSV] :: Invalid vector size at → gsv".to_string();
     }

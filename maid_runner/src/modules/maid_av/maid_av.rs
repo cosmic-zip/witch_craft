@@ -146,34 +146,34 @@ pub fn active_malware_scanner(derectory: &str, debug: bool) -> bool {
     }
 }
 
-pub fn shell_maid_av(system_input: Vec<String>) -> bool {
+pub fn shell_maid_av(system_input:  &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
         "--hash" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
-            let instance = &take_system_args(system_input.clone(), "--hash");
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
+            let instance = &take_system_args(system_input, "--hash");
 
             search_malware_hash(instance, debug)
         }
 
         "--pattern" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
-            let instance = &take_system_args(system_input.clone(), "--pattern");
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
+            let instance = &take_system_args(system_input, "--pattern");
 
             search_malware_pattern(instance, debug)
         }
 
         "--scanner" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
-            let instance = &take_system_args(system_input.clone(), "--directory");
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
+            let instance = &take_system_args(system_input, "--directory");
 
             active_malware_scanner(instance, debug)
         }
 
         "--entropy" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
-            let instance = &take_system_args(system_input.clone(), "--path");
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
+            let instance = &take_system_args(system_input, "--path");
             advanced_entropy_scanner(instance, debug)
         }
 

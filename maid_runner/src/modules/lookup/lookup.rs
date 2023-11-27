@@ -119,24 +119,24 @@ pub fn lookup_exif_metadata(image: LookupGenericPathOpType, debug: bool) -> bool
     system_command_exec(instance)
 }
 
-pub fn shell_lookup(system_input: Vec<String>) -> bool {
+pub fn shell_lookup(system_input:  &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
         "--mac_address" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = LookupMacAddress {
-                vendor_mac: &take_system_args(system_input.clone(), "--mac"),
-                list_path: &take_system_args(system_input.clone(), "--path"),
+                vendor_mac: &take_system_args(system_input, "--mac"),
+                list_path: &take_system_args(system_input, "--path"),
             };
 
             lookup_mac_address(instance, debug)
         }
 
         "--lookup_metadata" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = LookupGenericPathOpType {
-                sample_path: &take_system_args(system_input.clone(), "--sample"),
+                sample_path: &take_system_args(system_input, "--sample"),
                 op_type: "none",
             };
 
@@ -144,10 +144,10 @@ pub fn shell_lookup(system_input: Vec<String>) -> bool {
         }
 
         "--lookup_reverse_engineering" => {
-            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = LookupGenericPathOpType {
-                sample_path: &take_system_args(system_input.clone(), "--sample"),
-                op_type: &take_system_args(system_input.clone(), "--type"),
+                sample_path: &take_system_args(system_input, "--sample"),
+                op_type: &take_system_args(system_input, "--type"),
             };
 
             lookup_reverse_engineering(instance, debug)
