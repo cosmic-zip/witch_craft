@@ -99,7 +99,7 @@ NAME
     the foundation for various cyber security modules.
 
 SYNOPSIS
-    maidrunner module_name [--key value] [-k value] [--debug true|false] [--path file] 
+    maidrunner module_name [--key value] [-k value] [--debug true│false] [--path file] 
 
 DESCRIPTION
     This  manual  page  describes the  MaidRunner,  a versatile task automation software 
@@ -132,13 +132,13 @@ LOOKUP
     --sample                        File to be analyzed
     --type                          Type of analysis:
             ┌────────────────┬──────────────────────────────────────────┐
-            |     TYPE       |       DESCRIPTION                        |
+            │     TYPE       │       DESCRIPTION                        │
             ├────────────────┼──────────────────────────────────────────┤
-            |       s        | search for string                        |
-            |       h        | search for hexadecimals                  |
-            |       b        | search for binary                        |
-            |       r        | todo                                     |
-            |       l        | search for linked library                |
+            │   s            │ search for string                        │
+            │   h            │ search for hexadecimals                  │
+            │   b            │ search for binary                        │
+            │   r            │ todo                                     │
+            │   l            │ search for linked library                │
             └────────────────┴──────────────────────────────────────────┘
     --debug                     Optional value for debug can be true or false
 
@@ -152,19 +152,19 @@ WEB SCANNER
     --type                      Select and scanning type:
 
             ┌────────────────────────┬──────────────────────────────────┐
-            |       TYPE             |       DESCRIPTION                |
+            │       TYPE             │       DESCRIPTION                │
             ├────────────────────────┼──────────────────────────────────┤
-            │ ip                     │ Basic ping                       │
-            │ whois                  │ Basic whois                      │
-            │ routes                 │ Basic traceroute                 │
-            │ dns                    │ Basic dns enumeration            │
-            │ nmap_tcp               │ Basic nmap TCP scanner           │
-            │ nmap_udp               │ Basic nmap UDP scanner           │
-            │ sub_domains            │ DNS sub domains scanner          │
-            │ sub_directory          │ Web page sub directory scanner   │
-            │ build_with             │ Scan common frameworks on a page │
-            │ c_api_url              │ Scan common api urls             │
-            │ c_web_url              │ Scan common web page urls        │
+            │   ip                   │ Basic ping                       │
+            │   whois                │ Basic whois                      │
+            │   routes               │ Basic traceroute                 │
+            │   dns                  │ Basic dns enumeration            │
+            │   nmap_tcp             │ Basic nmap TCP scanner           │
+            │   nmap_udp             │ Basic nmap UDP scanner           │
+            │   sub_domains          │ DNS sub domains scanner          │
+            │   sub_directory        │ Web page sub directory scanner   │
+            │   build_with           │ Scan common frameworks on a page │
+            │   c_api_url            │ Scan common api urls             │
+            │   c_web_url            │ Scan common web page urls        │
             └────────────────────────┴──────────────────────────────────┘
 
     --path                      File path need by: sub_domains, sub_directory, build_with,
@@ -178,28 +178,28 @@ WEB SCANNER
     --ports                     Setup ports to be scanned 
 
             ┌────────────────┬──────────────────────────────────────────┐
-            |     PORT       |       DESCRIPTION                        |
+            │     PORT       │       DESCRIPTION                        │
             ├────────────────┼──────────────────────────────────────────┤
-            |     all        | Search for possible open ports           |
-            |     auto       | Use an list of the most common           |
-            |   -p 80,443    | Search for 80 and 443                    |
-            |   -p 80-1337   | Search from 80 to 1337                   |
+            │   all          │ Search for possible open ports           │
+            │   auto         │ Use an list of the most common           │
+            │   -p 80,443    │ Search for 80 and 443                    │
+            │   -p 80-1337   │ Search from 80 to 1337                   │
             └────────────────┴──────────────────────────────────────────┘ 
 
     --type                      Setup the nmap scanner technic 
 
             ┌────────────────┬──────────────────────────────────────────┐
-            |     TECHNIC    |       DESCRIPTION                        |
+            │     TECHNIC    │       DESCRIPTION                        │
             ├────────────────┼──────────────────────────────────────────┤
-            |    tcp_syn     | TCP SYN                                  |
-            |    tcp_ack     | TCP ACK                                  |
-            |    tcp_null    | TCP packets with no flags                |
-            |    udp         | UDP Scan                                 |
-            |    connect     | TCP connect                              |
-            |    window      | Window scan                              |
-            |    maimon      | Maimon scan CVE-2012-0507                |
-            |    fin         | TCP with the FIN (Finish) flag           |
-            |    xmas        | TCP with the FIN, URG, and PSH flags     |
+            │   tcp_syn      │ TCP SYN                                  │
+            │   tcp_ack      │ TCP ACK                                  │
+            │   tcp_null     │ TCP packets with no flags                │
+            │   udp          │ UDP Scan                                 │
+            │   connect      │ TCP connect                              │
+            │   window       │ Window scan                              │
+            │   maimon       │ Maimon scan CVE-2012-0507                │
+            │   fin          │ TCP with the FIN (Finish) flag           │
+            │   xmas         │ TCP with the FIN, URG, and PSH flags     │
             └────────────────┴──────────────────────────────────────────┘
             
     --debug                     Optional value for debug can be true or false.
@@ -231,6 +231,35 @@ MAID_AV
     --pattern                   Search on a database for hash md5, sha256, name, extencion 
     --scanner                   Automaticly scanner all files and folders inside an base path
                                 like: /path/ or ./path
+
+FIREWALL
+
+    firewall
+
+    --preset                    Use iptables to setup pre-build rule sets 
+                                                                        
+            ┌────────────────┬──────────────────────────────────────────┐
+            │    OPTION      │       DESCRIPTION                        │
+            ├────────────────┼──────────────────────────────────────────┤
+            │   reset        │ Remove all firewall rules                │
+            │   kill         │ Drop all in/out connection and allow     │
+            │                │ ports for outgoing: 80,443,24.           │
+            │   hardned      │ Same kill rules, but allow more outging  │
+            │                │ ports: 80, 8080, 443, 20, 21, 22, 25,    │
+            │                │ 110, 143, 53, 123.                       │
+            └────────────────┴──────────────────────────────────────────┘ 
+    
+    --backup                    Backup and restore firewall rules
+    --option                    backup to Backup and restore to restore
+    --path                      Backup destination folder or file to restore
+    
+    --rule                      Setup an custom firewall rule
+    --table                     ACCEPT, DROP, REJECT and LOG
+    --chain                     INPUT, OUTPUT and FORWARD
+    --protocol                  tcp and udp
+    --port                      any
+
+
 
 WARNINGS
     WARNING: This Tool Is For Cybersecurity Use May Have Legal Implications
@@ -358,13 +387,12 @@ pub const UNIX_COMMAND: &str = r#"
 
 // UNIX misc
 pub const UNIX_MISC: &str = r#"
-    unset HISTFILE                                      | Disable history logging
-    ssh user@ ip arecord - | aplay -                    | Record remote mic
-    gee -o outfile myfile.c                             | Compile C,C++
-    init 6                                              | Reboot (0 = shutdown)
-    cat /etc/ 1 'syslog'.conf | grep -v "*#"            | List of log files
-    grep 'href=' file 1 cut -d"/" -f3  grep url | sort -u            |Strip links in url.com
-    dd if=/dev/urandom of= file bs=3145728              | Make random 311B file
+    unset HISTFILE                                      Disable history logging
+    ssh user@ ip arecord - │ aplay -                    Record remote mic
+    gee -o outfile myfile.c                             Compile C,C++
+    init 6                                              Reboot (0 = shutdown)
+    cat /etc/ 1 'syslog'.conf │ grep -v "*#"            List of log files
+    dd if=/dev/urandom of= file bs=3145728              Make random 311B file
     count=lOO                                           
 "#;
 
@@ -521,7 +549,7 @@ pub fn system_exec_manual(page: &str) -> bool {
     }
 }
 
-pub fn shell_manual(system_input: Vec<String>) -> bool {
+pub fn shell_manual(system_input:  &mut Vec<String>) -> bool {
     if system_input.len() < 3 {
         return system_exec_manual("none");
     }

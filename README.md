@@ -76,11 +76,11 @@ for its operation.
         ┌────────────────┬──────────────────────────────────────────┐
         |     TYPE       |       DESCRIPTION                        |
         ├────────────────┼──────────────────────────────────────────┤
-        |       s        | Search for string                        |
-        |       h        | Search for hexadecimals                  |
-        |       b        | Search for binary                        |
-        |       r        | Todo                                     |
-        |       l        | Search for linked library                |
+        |   s            | search for string                        |
+        |   h            | search for hexadecimals                  |
+        |   b            | search for binary                        |
+        |   r            | todo                                     |
+        |   l            | search for linked library                |
         └────────────────┴──────────────────────────────────────────┘
 
     --debug                     Optional value for debug can be true
@@ -99,17 +99,17 @@ for its operation.
         ┌──────────────────┬────────────────────────────────────────┐
         |       TYPE       |       DESCRIPTION                      |
         ├──────────────────┼────────────────────────────────────────┤
-        │ ip               │ Basic ping                             |
-        │ whois            │ Basic whois                            |
-        │ routes           │ Basic traceroute                       |
-        │ dns              │ Basic dns enumeration                  |
-        │ nmap_tcp         │ Basic nmap TCP scanner                 |
-        │ nmap_udp         │ Basic nmap UDP scanner                 |
-        │ sub_domains      │ DNS sub domains scanner                |
-        │ sub_directory    │ Web page sub directory scanner         |
-        │ build_with       │ Scan common frameworks on a page       |
-        │ c_api_url        │ Scan common api urls                   |
-        │ c_web_url        │ Scan common web page urls              |
+        │   ip             │ Basic ping                             |
+        │   whois          │ Basic whois                            |
+        │   routes         │ Basic traceroute                       |
+        │   dns            │ Basic dns enumeration                  |
+        │   nmap_tcp       │ Basic nmap TCP scanner                 |
+        │   nmap_udp       │ Basic nmap UDP scanner                 |
+        │   sub_domains    │ DNS sub domains scanner                |
+        │   sub_directory  │ Web page sub directory scanner         |
+        │   build_with     │ Scan common frameworks on a page       |
+        │   c_api_url      │ Scan common api urls                   |
+        │   c_web_url      │ Scan common web page urls              |
         └──────────────────┴────────────────────────────────────────┘
 
     --path                      File path need by: sub_domains,
@@ -131,8 +131,8 @@ for its operation.
         ┌────────────────┬──────────────────────────────────────────┐
         |     PORT       |       DESCRIPTION                        |
         ├────────────────┼──────────────────────────────────────────┤
-        |     all        | Search for possible open ports           |
-        |     auto       | Use an list of the most common           |
+        |   all          | Search for possible open ports           |
+        |   auto         | Use an list of the most common           |
         |   -p 80,443    | Search for 80 and 443                    |
         |   -p 80-1337   | Search from 80 to 1337                   |
         └────────────────┴──────────────────────────────────────────┘
@@ -142,15 +142,15 @@ for its operation.
         ┌────────────────┬──────────────────────────────────────────┐
         |     TECHNIC    |       DESCRIPTION                        |
         ├────────────────┼──────────────────────────────────────────┤
-        |    tcp_syn     | TCP SYN                                  |
-        |    tcp_ack     | TCP ACK                                  |
-        |    tcp_null    | TCP packets with no flags                |
-        |    udp         | UDP Scan                                 |
-        |    connect     | TCP connect                              |
-        |    window      | Window scan                              |
-        |    maimon      | Maimon scan CVE-2012-0507                |
-        |    fin         | TCP with the FIN (Finish)                |
-        |    xmas        | TCP with the FIN, URG, and PSH           |
+        |   tcp_syn      | TCP SYN                                  |
+        |   tcp_ack      | TCP ACK                                  |
+        |   tcp_null     | TCP packets with no flags                |
+        |   udp          | UDP Scan                                 |
+        |   connect      | TCP connect                              |
+        |   window       | Window scan                              |
+        |   maimon       | Maimon scan CVE-2012-0507                |
+        |   fin          | TCP with the FIN (Finish)                |
+        |   xmas         | TCP with the FIN, URG, and PSH           |
         └────────────────┴──────────────────────────────────────────┘
 
     --debug                     Optional value for debug can be true
@@ -194,6 +194,36 @@ for its operation.
     --scanner                   Automaticly scanner all files and folders
                                 inside an base path  like: /path/
                                 or ./path
+
+**FIREWALL**
+
+    firewall
+
+    --preset                    Use iptables to setup pre-build rule sets 
+
+        ┌────────────────┬──────────────────────────────────────────┐
+        |    OPTION      |       DESCRIPTION                        |
+        ├────────────────┼──────────────────────────────────────────┤
+        |   reset        | Remove all firewall rules                |
+        |   kill         | Drop all in/out connection and allow     |
+        |                | ports for outgoing: 80,443,24.           |
+        |   hardned      | Same kill rules, but allow more outging  |
+        |                | ports: 80, 8080, 443, 20, 21, 22, 25,    |
+        |                | 110, 143, 53, 123.                       |
+        └────────────────┴──────────────────────────────────────────┘ 
+    
+    --backup                    Backup and restore firewall rules
+    --option                    backup to Backup and restore to restore
+    --path                      Backup destination folder or file to restore
+    
+    --rule                      Setup an custom firewall rule
+    --table                     ACCEPT, DROP, REJECT and LOG
+    --chain                     INPUT, OUTPUT and FORWARD
+    --protocol                  tcp and udp
+    --port                      any
+
+
+
 
 **WARNINGS**
 
