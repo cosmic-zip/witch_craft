@@ -176,7 +176,12 @@ pub fn scanner_auto_nmap(source: ScannerWebAutoNmap, debug: bool) -> bool {
     } else if "paranoid" == source.delay {
         stime = "T0";
     } else {
-        standard_messages("warning", "Invalid user input", "Options are: fast, slow and paranoid", "cute");
+        standard_messages(
+            "warning",
+            "Invalid user input",
+            "Options are: fast, slow and paranoid",
+            "cute",
+        );
         return false;
     }
 
@@ -211,7 +216,6 @@ pub fn scanner_auto_nmap(source: ScannerWebAutoNmap, debug: bool) -> bool {
     if debug == true {
         println!("{}", source.target);
     }
-
 
     let instance = ProcessInit {
         source: &format!("nmap {} {} -A -p {} {}", stype, stime, sport, source.target),

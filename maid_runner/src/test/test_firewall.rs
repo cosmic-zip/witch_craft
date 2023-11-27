@@ -1,15 +1,14 @@
 use super::*;
-use crate::*;
 use crate::modules::firewall::firewall_structs::*;
+use crate::*;
 
 #[test]
 fn test_firewall_preset() {
     let debug = true;
     let option = "hardned";
-    let output = firewall_preset(option, debug); 
+    let output = firewall_preset(option, debug);
     assert_eq!(output, true);
 }
-
 
 #[test]
 fn test_firewall_rules_ssh() {
@@ -21,7 +20,7 @@ fn test_firewall_rules_ssh() {
         destination_port: "22",
     };
 
-   let  output = firewall(command, debug);
+    let output = firewall(command, debug);
 
     assert_eq!(output, true);
 }

@@ -1,5 +1,5 @@
-use crate::core::structs::{Logger, ProcessResult};
 use crate::core::messages::standard_messages;
+use crate::core::structs::{Logger, ProcessResult};
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
 use std::error::Error;
@@ -14,7 +14,6 @@ pub fn write_process_result_to_db<'a>(
     conn: &Connection,
     result: ProcessResult<'a, 'a, 'a, 'a, 'a, 'a, 'a, 'a>,
 ) -> Result<()> {
-
     let _ = conn.execute(
         "CREATE TABLE IF NOT EXISTS process_results (
             id INTEGER PRIMARY KEY,
@@ -52,7 +51,6 @@ pub fn write_process_result_to_db<'a>(
     )?;
     Ok(())
 }
-
 
 pub fn json_filter(line: &str) -> String {
     let mut filtered_line = "".to_string();
@@ -126,9 +124,14 @@ pub fn logger(data: Logger) -> std::io::Result<()> {
             let _ = write_process_result_to_db(&conn, proccess_result);
         }
         Err(_err) => {
-            standard_messages("error", "Database connection failed", "report.logger", "cute");
+            standard_messages(
+                "error",
+                "Database connection failed",
+                "report.logger",
+                "cute",
+            );
         }
-    } 
+    }
 
     Ok(())
 }

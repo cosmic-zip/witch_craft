@@ -2,6 +2,7 @@ use crate::core::{core::*, manual::*, messages::*, structs::*, utils::*};
 
 use crate::modules::{
     curl::curl::*,
+    firewall::firewall::*,
     // botnet::botnet::*,
     lookup::lookup::*,
     // attack::attack::*,
@@ -9,7 +10,6 @@ use crate::modules::{
     maid_av::maid_av::*,
     // rootkit::rootkit::*,
     scanner::scanner::*,
-    firewall::firewall::*
 };
 
 // command structure

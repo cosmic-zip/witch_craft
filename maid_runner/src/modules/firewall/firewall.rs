@@ -4,17 +4,12 @@ use crate::core::utils::*;
 use crate::modules::firewall::firewall_structs::SimpleRule;
 
 pub fn firewall_preset(option: &str, debug: bool) -> bool {
-
-
     let mut rules = Vec::new();
-    let mut result:bool = false;
+    let mut result: bool = false;
 
     match option {
-
         "reset" => {
-            rules = vec![
-                "iptables -F",
-            ];
+            rules = vec!["iptables -F"];
         }
 
         "kill" => {
@@ -27,7 +22,6 @@ pub fn firewall_preset(option: &str, debug: bool) -> bool {
         }
 
         "hardned" => {
-
             rules = vec![
                 "iptables -F",
                 "iptables -P INPUT DROP",
@@ -44,9 +38,7 @@ pub fn firewall_preset(option: &str, debug: bool) -> bool {
                 "iptables -A OUTPUT -p tcp --dport 143 -j ACCEPT",
                 "iptables -A OUTPUT -p udp --dport 53 -j ACCEPT",
                 "iptables -A OUTPUT -p udp --dport 123 -j ACCEPT",
-
             ];
-
         }
 
         _ => {
@@ -58,11 +50,9 @@ pub fn firewall_preset(option: &str, debug: bool) -> bool {
             );
             return false;
         }
-
     }
 
     for rule in rules {
-
         let instance = ProcessInit {
             source: rule,
             source_from: "firewall_kill",
@@ -72,16 +62,13 @@ pub fn firewall_preset(option: &str, debug: bool) -> bool {
         result = system_command_exec(instance);
     }
 
-    return result;    
-
+    return result;
 }
 
 pub fn firewall_backup(path: &str, option: &str, debug: bool) -> bool {
-
     let mut command = "";
 
     match option {
-
         "backup" => {
             command = "iptables-save";
         }
@@ -98,9 +85,7 @@ pub fn firewall_backup(path: &str, option: &str, debug: bool) -> bool {
                 "cute",
             );
             return false;
-
         }
-
     }
 
     let command_string = format!("{} {}/iptables_backup.ipbk", command, path);
@@ -111,20 +96,14 @@ pub fn firewall_backup(path: &str, option: &str, debug: bool) -> bool {
         source_description: "Set Backup and Restore ip tables rules",
         debug: debug,
     };
-    
+
     system_command_exec(instance)
-
-
 }
 
 pub fn firewall(ruleset: SimpleRule, debug: bool) -> bool {
-
     let rule = format!(
         "iptable -A {} -p {} --dport {} -j {}",
-        ruleset.chain,
-        ruleset.protocol,
-        ruleset.destination_port,
-        ruleset.table
+        ruleset.chain, ruleset.protocol, ruleset.destination_port, ruleset.table
     );
 
     let instance = ProcessInit {
@@ -133,12 +112,9 @@ pub fn firewall(ruleset: SimpleRule, debug: bool) -> bool {
         source_description: "Set firewall rules",
         debug: debug,
     };
-    
+
     system_command_exec(instance)
-
 }
-
-
 
 pub fn shell_firewall(system_input: Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
@@ -147,20 +123,18 @@ pub fn shell_firewall(system_input: Vec<String>) -> bool {
         "--preset" => {
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let option = &gsv(system_input.clone(), "--option");
-            firewall_preset(option, debug)         
+            firewall_preset(option, debug)
         }
-
 
         "--backup" => {
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let option =  &gsv(system_input.clone(), "--option");
-            let path =  &gsv(system_input.clone(), "--path");
+            let option = &gsv(system_input.clone(), "--option");
+            let path = &gsv(system_input.clone(), "--path");
 
             firewall_backup(path, option, debug)
         }
 
         "--rule" => {
-
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let command = SimpleRule {
                 table: &gsv(system_input.clone(), "--table"),
@@ -170,7 +144,6 @@ pub fn shell_firewall(system_input: Vec<String>) -> bool {
             };
 
             firewall(command, debug)
-
         }
 
         _ => {

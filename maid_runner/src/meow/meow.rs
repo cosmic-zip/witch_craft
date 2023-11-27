@@ -40,7 +40,6 @@ pub fn filter(line: &str) -> String {
     }
 
     return formated.trim_start().to_string();
-    
 }
 
 pub fn read_meow(path: &str, debug: bool) -> HashMap<String, String> {

@@ -11,6 +11,8 @@ use crate::meow::meow::*;
 use crate::modules::{
     curl::curl::*,
     curl::curl_structs::*,
+    firewall::firewall::*,
+    firewall::firewall_structs::*,
     // botnet::botnet::*,
     // botnet::botnet_structs::*,
     lookup::lookup::*,
@@ -23,8 +25,6 @@ use crate::modules::{
     // rootkit::rootkit_structs::*,
     scanner::scanner::*,
     scanner::scanner_structs::*,
-    firewall::firewall::*,
-    firewall::firewall_structs::*,
 };
 
 use crate::shell::shell::init;

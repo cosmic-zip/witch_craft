@@ -45,7 +45,7 @@ pub fn shell_core(system_input: Vec<String>) -> bool {
             let instance = CoreGenericPathOpType {
                 sample_path: &gsv(system_input.clone(), "--path"),
                 op_type: "none",
-            };            
+            };
 
             core_local_safe_remove_metadata(instance, debug)
         }
@@ -60,7 +60,7 @@ pub fn shell_core(system_input: Vec<String>) -> bool {
         }
 
         "--backup" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));            
+            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let instance = Backup {
                 from: &gsv(system_input.clone(), "--from"),
                 to: &gsv(system_input.clone(), "--to"),

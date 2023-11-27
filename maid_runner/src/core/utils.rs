@@ -170,7 +170,6 @@ pub fn gsv_debug(debug: String) -> bool {
     }
 
     return true;
-        
 }
 
 pub fn search_csv(file_path: &str, search_term: &str) -> Result<Vec<String>, Box<dyn Err>> {
@@ -220,7 +219,7 @@ pub fn find_all_matching_lines(file_path: &str, pattern: &str) -> Result<Vec<Str
 
     match logger(data) {
         Ok(_result) => {
-            standard_messages( "saved", "Log saved","", "cute");
+            standard_messages("saved", "Log saved", "", "cute");
         }
         Err(_err) => println!("Error"),
     }
