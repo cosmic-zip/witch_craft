@@ -28,8 +28,17 @@ pub fn firewall_preset(option: &str, debug: bool) -> bool {
                 "iptables -P FORWARD DROP",
                 "iptables -P OUTPUT DROP",
                 "iptables -A OUTPUT -p tcp --dport 80 -j ACCEPT",
+                "iptables -A OUTPUT -p tcp --dport 8080 -j ACCEPT",
                 "iptables -A OUTPUT -p tcp --dport 443 -j ACCEPT",
+                "iptables -A OUTPUT -p tcp --dport 20 -j ACCEPT",
+                "iptables -A OUTPUT -p tcp --dport 21 -j ACCEPT",
                 "iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT",
+                "iptables -A OUTPUT -p tcp --dport 25 -j ACCEPT",
+                "iptables -A OUTPUT -p tcp --dport 110 -j ACCEPT",
+                "iptables -A OUTPUT -p tcp --dport 143 -j ACCEPT",
+                "iptables -A OUTPUT -p udp --dport 53 -j ACCEPT",
+                "iptables -A OUTPUT -p udp --dport 123 -j ACCEPT",
+
             ];
 
         }
