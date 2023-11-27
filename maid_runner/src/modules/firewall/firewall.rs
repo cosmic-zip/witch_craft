@@ -61,6 +61,47 @@ pub fn firewall_preset(option: &str, debug: bool) -> bool {
 
 }
 
+pub fn firewall_backup(path: &str, option: &str, debug: bool) -> bool {
+
+    let mut command = "";
+
+    match option {
+
+        "backup" => {
+            command = "iptables-save";
+        }
+
+        "restore" => {
+            command = "iptables-restore";
+        }
+
+        _ => {
+            standard_messages(
+                "warning",
+                &format!("Option {} not found", option),
+                "firewall_block",
+                "cute",
+            );
+            return false;
+
+        }
+
+    }
+
+    let command_string = format!("{} {}/iptables_backup.ipbk", command, path);
+
+    let instance = ProcessInit {
+        source: command_string.as_str(),
+        source_from: "firewall_backup",
+        source_description: "Set Backup and Restore ip tables rules",
+        debug: debug,
+    };
+    
+    system_command_exec(instance)
+
+
+}
+
 pub fn firewall(ruleset: SimpleRule, debug: bool) -> bool {
 
     let rule = format!(
@@ -88,13 +129,22 @@ pub fn shell_firewall(system_input: Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
-        "--firewall-preset" => {
+        "--preset" => {
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let option = &gsv(system_input.clone(), "--option");
             firewall_preset(option, debug)         
         }
 
-        "--firewall" => {
+
+        "--backup" => {
+            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let option =  &gsv(system_input.clone(), "--option");
+            let path =  &gsv(system_input.clone(), "--path");
+
+            firewall_backup(path, option, debug)
+        }
+
+        "--rule" => {
 
             let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
             let command = SimpleRule {
