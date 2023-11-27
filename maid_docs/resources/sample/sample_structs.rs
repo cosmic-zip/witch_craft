@@ -1,3 +1,3 @@
-pub struct SampleData<'data>  {
+pub struct SampleData<'data> {
     pub data: &'data str,
 }
