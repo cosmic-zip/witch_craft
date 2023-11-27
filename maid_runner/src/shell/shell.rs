@@ -9,6 +9,7 @@ use crate::modules::{
     maid_av::maid_av::*,
     // rootkit::rootkit::*,
     scanner::scanner::*,
+    firewall::firewall::*
 };
 
 // command structure
@@ -47,6 +48,10 @@ pub fn init() -> u8 {
 
         "help" | "h" => {
             shell_manual(system_input);
+        }
+
+        "firewall" | "f" => {
+            shell_firewall(system_input);
         }
 
         _ => {

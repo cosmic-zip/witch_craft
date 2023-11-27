@@ -23,7 +23,10 @@ use crate::modules::{
     // rootkit::rootkit_structs::*,
     scanner::scanner::*,
     scanner::scanner_structs::*,
+    firewall::firewall::*,
+    firewall::firewall_structs::*,
 };
+
 use crate::shell::shell::init;
 
 fn main() {

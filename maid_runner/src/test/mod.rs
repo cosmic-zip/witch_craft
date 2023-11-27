@@ -9,3 +9,4 @@ pub mod test_rootkit;
 pub mod test_scanner;
 pub mod test_shell;
 pub mod test_iso27x;
+pub mod test_firewall;
