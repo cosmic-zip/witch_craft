@@ -11,6 +11,12 @@ pub fn firewall_preset(option: &str, debug: bool) -> bool {
 
     match option {
 
+        "reset" => {
+            rules = vec![
+                "iptables -F",
+            ];
+        }
+
         "kill" => {
             rules = vec![
                 "iptables -F",
