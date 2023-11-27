@@ -3,7 +3,7 @@ use crate::core::report::*;
 use crate::core::structs::{CommandCall, CommandResult, Logger, ProcessInit};
 use colored::*;
 use csv::ReaderBuilder;
-
+use std::mem;
 use std::env;
 use std::error::Error as StdError;
 use std::error::Error as Err;
@@ -145,7 +145,7 @@ pub fn system_exec_shell(debug: bool) -> Vec<String> {
     return args;
 }
 
-pub fn gsv(data: Vec<String>, parameter_name: &str) -> String {
+pub fn take_system_args(mut data: Vec<String>, parameter_name: &str) -> String {
     if data.len() <= 2 {
         return "🚧 [GSV] :: Invalid vector size at → gsv".to_string();
     }
@@ -153,18 +153,25 @@ pub fn gsv(data: Vec<String>, parameter_name: &str) -> String {
     let mut count = 2;
     while count < data.len() {
         if data[count] == parameter_name {
-            return data[count + 1].to_string();
+            return mem::take(&mut data[count + 1]);
         }
         count += 1;
     }
 
-    return format!(
+    let message = format!(
         "🚧 [GSV] :: Parameter name not found at → P: {}, Vec: {:?}",
         parameter_name, data
     );
+
+    return standard_messages(
+        "error",
+        &message,
+        "utils::take_system_args",
+        "cute",
+    );
 }
 
-pub fn gsv_debug(debug: String) -> bool {
+pub fn take_system_args_debug(debug: String) -> bool {
     if debug == "false" {
         return false;
     }

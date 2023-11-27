@@ -231,23 +231,23 @@ pub fn shell_scanner(system_input: Vec<String>) -> bool {
 
     match cmd_arg_name {
         "--scanner_web" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
             let instance = ScannerWebGenericInput {
-                target: &gsv(system_input.clone(), "--target"),
-                op_type: &gsv(system_input.clone(), "--type"),
-                list_path: &gsv(system_input.clone(), "--path"),
+                target: &take_system_args(system_input.clone(), "--target"),
+                op_type: &take_system_args(system_input.clone(), "--type"),
+                list_path: &take_system_args(system_input.clone(), "--path"),
             };
 
             scanner_web(instance, debug)
         }
 
         "--scanner_auto_nmap" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
             let instance = ScannerWebAutoNmap {
-                target: &gsv(system_input.clone(), "--target"),
-                delay: &gsv(system_input.clone(), "--delay"),
-                ports: &gsv(system_input.clone(), "--ports"),
-                scan_type: &gsv(system_input.clone(), "--type"),
+                target: &take_system_args(system_input.clone(), "--target"),
+                delay: &take_system_args(system_input.clone(), "--delay"),
+                ports: &take_system_args(system_input.clone(), "--ports"),
+                scan_type: &take_system_args(system_input.clone(), "--type"),
             };
 
             scanner_auto_nmap(instance, debug)

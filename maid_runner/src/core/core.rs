@@ -41,9 +41,9 @@ pub fn shell_core(system_input: Vec<String>) -> bool {
 
     match cmd_arg_name {
         "--remove_metadata" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
             let instance = CoreGenericPathOpType {
-                sample_path: &gsv(system_input.clone(), "--path"),
+                sample_path: &take_system_args(system_input.clone(), "--path"),
                 op_type: "none",
             };
 
@@ -51,20 +51,20 @@ pub fn shell_core(system_input: Vec<String>) -> bool {
         }
 
         "--web_downloader" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
             let instance = CoreGenericUrl {
-                url: &gsv(system_input.clone(), "--url"),
+                url: &take_system_args(system_input.clone(), "--url"),
             };
 
             core_local_downloader_web_page(instance, debug)
         }
 
         "--backup" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
             let instance = Backup {
-                from: &gsv(system_input.clone(), "--from"),
-                to: &gsv(system_input.clone(), "--to"),
-                technic: &gsv(system_input.clone(), "--technic"),
+                from: &take_system_args(system_input.clone(), "--from"),
+                to: &take_system_args(system_input.clone(), "--to"),
+                technic: &take_system_args(system_input.clone(), "--technic"),
             };
 
             core_binary_backup(instance, debug)

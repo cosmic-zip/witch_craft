@@ -124,19 +124,19 @@ pub fn shell_lookup(system_input: Vec<String>) -> bool {
 
     match cmd_arg_name {
         "--mac_address" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
             let instance = LookupMacAddress {
-                vendor_mac: &gsv(system_input.clone(), "--mac"),
-                list_path: &gsv(system_input.clone(), "--path"),
+                vendor_mac: &take_system_args(system_input.clone(), "--mac"),
+                list_path: &take_system_args(system_input.clone(), "--path"),
             };
 
             lookup_mac_address(instance, debug)
         }
 
         "--lookup_metadata" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
             let instance = LookupGenericPathOpType {
-                sample_path: &gsv(system_input.clone(), "--sample"),
+                sample_path: &take_system_args(system_input.clone(), "--sample"),
                 op_type: "none",
             };
 
@@ -144,10 +144,10 @@ pub fn shell_lookup(system_input: Vec<String>) -> bool {
         }
 
         "--lookup_reverse_engineering" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
             let instance = LookupGenericPathOpType {
-                sample_path: &gsv(system_input.clone(), "--sample"),
-                op_type: &gsv(system_input.clone(), "--type"),
+                sample_path: &take_system_args(system_input.clone(), "--sample"),
+                op_type: &take_system_args(system_input.clone(), "--type"),
             };
 
             lookup_reverse_engineering(instance, debug)

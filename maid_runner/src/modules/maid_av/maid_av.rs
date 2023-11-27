@@ -151,29 +151,29 @@ pub fn shell_maid_av(system_input: Vec<String>) -> bool {
 
     match cmd_arg_name {
         "--hash" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let instance = &gsv(system_input.clone(), "--hash");
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let instance = &take_system_args(system_input.clone(), "--hash");
 
             search_malware_hash(instance, debug)
         }
 
         "--pattern" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let instance = &gsv(system_input.clone(), "--pattern");
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let instance = &take_system_args(system_input.clone(), "--pattern");
 
             search_malware_pattern(instance, debug)
         }
 
         "--scanner" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let instance = &gsv(system_input.clone(), "--directory");
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let instance = &take_system_args(system_input.clone(), "--directory");
 
             active_malware_scanner(instance, debug)
         }
 
         "--entropy" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let instance = &gsv(system_input.clone(), "--path");
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let instance = &take_system_args(system_input.clone(), "--path");
             advanced_entropy_scanner(instance, debug)
         }
 

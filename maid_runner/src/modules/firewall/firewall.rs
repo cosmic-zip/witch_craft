@@ -2,6 +2,7 @@ use crate::core::messages::standard_messages;
 use crate::core::structs::ProcessInit;
 use crate::core::utils::*;
 use crate::modules::firewall::firewall_structs::SimpleRule;
+use std::mem;
 
 pub fn firewall_preset(option: &str, debug: bool) -> bool {
     let mut rules = Vec::new();
@@ -121,26 +122,26 @@ pub fn shell_firewall(system_input: Vec<String>) -> bool {
 
     match cmd_arg_name {
         "--preset" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let option = &gsv(system_input.clone(), "--option");
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let option = &take_system_args(system_input.clone(), "--option");
             firewall_preset(option, debug)
         }
 
         "--backup" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let option = &gsv(system_input.clone(), "--option");
-            let path = &gsv(system_input.clone(), "--path");
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let option = &take_system_args(system_input.clone(), "--option");
+            let path = &take_system_args(system_input.clone(), "--path");
 
             firewall_backup(path, option, debug)
         }
 
         "--rule" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
             let command = SimpleRule {
-                table: &gsv(system_input.clone(), "--table"),
-                chain: &gsv(system_input.clone(), "--chain"),
-                protocol: &gsv(system_input.clone(), "--protocol"),
-                destination_port: &gsv(system_input.clone(), "--port"),
+                table: &take_system_args(system_input.clone(), "--table"),
+                chain: &take_system_args(system_input.clone(), "--chain"),
+                protocol: &take_system_args(system_input.clone(), "--protocol"),
+                destination_port: &take_system_args(system_input.clone(), "--port"),
             };
 
             firewall(command, debug)

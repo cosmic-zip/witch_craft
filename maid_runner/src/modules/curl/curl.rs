@@ -70,14 +70,14 @@ pub fn shell_curl(system_input: Vec<String>) -> bool {
 
     match cmd_arg_name {
         "--curl_bind" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
             let instance = CurlBind {
-                method: &gsv(system_input.clone(), "--method"),
-                auth_type: &gsv(system_input.clone(), "--auth_type"),
-                auth_token: &gsv(system_input.clone(), "--auth_token"),
-                url: &gsv(system_input.clone(), "--url"),
-                ctn_type: &gsv(system_input.clone(), "--ctn_type"),
-                data: &gsv(system_input.clone(), "--data"),
+                method: &take_system_args(system_input.clone(), "--method"),
+                auth_type: &take_system_args(system_input.clone(), "--auth_type"),
+                auth_token: &take_system_args(system_input.clone(), "--auth_token"),
+                url: &take_system_args(system_input.clone(), "--url"),
+                ctn_type: &take_system_args(system_input.clone(), "--ctn_type"),
+                data: &take_system_args(system_input.clone(), "--data"),
             };
 
             standard_messages("debug", "BCurl bindings", "", "cute");
@@ -86,8 +86,8 @@ pub fn shell_curl(system_input: Vec<String>) -> bool {
         }
 
         "--header" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let curl = &gsv(system_input.clone(), "--url");
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let curl = &take_system_args(system_input.clone(), "--url");
 
             let instance = ProcessInit {
                 source: &format!("curl -I {}", curl),
@@ -99,8 +99,8 @@ pub fn shell_curl(system_input: Vec<String>) -> bool {
         }
 
         "--status_code" => {
-            let debug = gsv_debug(gsv(system_input.clone(), "--debug"));
-            let curl = &gsv(system_input.clone(), "--url");
+            let debug = take_system_args_debug(take_system_args(system_input.clone(), "--debug"));
+            let curl = &take_system_args(system_input.clone(), "--url");
 
             let instance = ProcessInit {
                 source: &format!("curl -o /dev/null -s -w \"%{{http_code}}\n\" {}", curl),
