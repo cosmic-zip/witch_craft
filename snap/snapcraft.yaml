@@ -12,8 +12,8 @@ confinement: devmode
 compression: lzo
 
 layout:
-  /etc/maid:
-    bind: $SNAP/etc/maid
+  /var/maid:
+    bind: $SNAP/var/maid
 
 parts:
   maid-lists:
