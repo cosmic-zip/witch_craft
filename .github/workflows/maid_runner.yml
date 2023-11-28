@@ -42,7 +42,8 @@ jobs:
       - name: Uncompress needed files
         run: |
           7z x /var/maid/maid_lists/malware/full.csv.7z.001
-          mv full.csv /var/maid/maid_lists/general/malware_hash.bin
+          mv ./full.csv /var/maid/maid_lists/general/malware_hash.bin
+          rm full.csv
       - name: Test Depedencies
         run: nmap --version && curl --version
       - name: Build
