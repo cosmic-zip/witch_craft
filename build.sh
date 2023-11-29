@@ -12,9 +12,8 @@ sudo cp maid_lists/ /var/maid -R
 sudo chown $(whoami):$(whoami) /var/maid -R
 
 echo && echo  "Uncompress files"
-7z x /var/maid/maid_lists/malware/full.csv.7z.001
+7z x /var/maid/maid_lists/malware/malware.csv.7z.001
 mv ./full.csv /var/maid/maid_lists/general/malware_hash.bin
-rm full.csv
 
 echo && echo "SNAP Setup"
 sudo aptitude install snapd -y
