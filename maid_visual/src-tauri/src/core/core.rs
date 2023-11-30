@@ -1,6 +1,7 @@
 extern crate rusqlite;
 use rusqlite::Error;
 use rusqlite::Connection;
+use crate::meow::meow::read_meow;
 
 
 pub fn is_string_mem_empty(mem_loc: String) -> String {
@@ -79,7 +80,15 @@ pub fn select_report_from_db(conn: &Connection, from: String, size: i32) -> Resu
 
 #[tauri::command]
 pub fn select_report(from: String, size: i32) -> Vec<Vec<String>> {
-    let connection = Connection::open("/var/maid/maid_lists/report/archive.db").expect("fail");
+
+    let report_config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
+    let report = format!(
+        "{}{}",
+        report_config["REPORT_BASE_PATH"], report_config["REPORT_LOG"]
+    );
+
+
+    let connection = Connection::open(report).expect("fail");
 
     match select_report_from_db(&connection, from, size) {
         Ok(process_results) => process_results,

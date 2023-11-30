@@ -2,7 +2,9 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 pub mod core;
+pub mod meow;
 use crate::core::core::*;
+use crate::meow::meow::*;
 
 fn main() {
     tauri::Builder::default()
