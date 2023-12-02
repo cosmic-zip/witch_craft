@@ -97,12 +97,18 @@ section {
 
 
 body {
-  /* background: linear-gradient(166deg, rgb(255, 0, 172) 0%, rgb(12, 178, 196) 100%); */
-  background: rgb(30, 35, 92);
-  background: -moz-linear-gradient(166deg, rgba(30, 35, 92, 1) 0%, rgba(81, 17, 92, 1) 44%, rgba(0, 96, 93, 1) 100%);
-  background: -webkit-linear-gradient(166deg, rgba(30, 35, 92, 1) 0%, rgba(81, 17, 92, 1) 44%, rgba(0, 96, 93, 1) 100%);
-  background: linear-gradient(166deg, rgba(30, 35, 92, 1) 0%, rgba(81, 17, 92, 1) 44%, rgba(0, 96, 93, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1e235c", endColorstr="#00605d", GradientType=1);
+  background-image: url('../img/images/bg.jpg');
+  height: 100vh; /* Adjust as needed */
+  background-size: cover;
+}
+
+.card-form {
+  display: flex;
+  justify-content: center;
+}
+
+.form-form {
+  max-width: 1024px;
 }
 
 .main {
