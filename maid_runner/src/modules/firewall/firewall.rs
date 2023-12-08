@@ -1,7 +1,7 @@
 use crate::core::messages::standard_messages;
 use crate::core::structs::ProcessInit;
 use crate::core::utils::*;
-use crate::modules::firewall::firewall_structs::SimpleRule;
+use crate::modules::firewall::firewall_structs::NfTableRule;
 use std::mem;
 
 pub fn firewall_preset(option: &str, debug: bool) -> bool {
@@ -10,35 +10,40 @@ pub fn firewall_preset(option: &str, debug: bool) -> bool {
 
     match option {
         "reset" => {
-            rules = vec!["iptables -F"];
+            rules = vec!["nft flush ruleset"];
         }
 
         "kill" => {
             rules = vec![
-                "iptables -F",
-                "iptables -P INPUT DROP",
-                "iptables -P FORWARD DROP",
-                "iptables -P OUTPUT DROP",
+                "nft flush ruleset",
+                "nft add table inet filter",
+                r"nft add chain inet filter input { type filter hook input priority 0 \; }",
+                r"nft add chain inet filter output { type filter hook output priority 0 \; }",
+                r"nft add chain inet filter forward { type filter hook forward priority 0 \; }",
             ];
         }
 
         "hardned" => {
             rules = vec![
-                "iptables -F",
-                "iptables -P INPUT DROP",
-                "iptables -P FORWARD DROP",
-                "iptables -P OUTPUT DROP",
-                "iptables -A OUTPUT -p tcp --dport 80 -j ACCEPT",
-                "iptables -A OUTPUT -p tcp --dport 8080 -j ACCEPT",
-                "iptables -A OUTPUT -p tcp --dport 443 -j ACCEPT",
-                "iptables -A OUTPUT -p tcp --dport 20 -j ACCEPT",
-                "iptables -A OUTPUT -p tcp --dport 21 -j ACCEPT",
-                "iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT",
-                "iptables -A OUTPUT -p tcp --dport 25 -j ACCEPT",
-                "iptables -A OUTPUT -p tcp --dport 110 -j ACCEPT",
-                "iptables -A OUTPUT -p tcp --dport 143 -j ACCEPT",
-                "iptables -A OUTPUT -p udp --dport 53 -j ACCEPT",
-                "iptables -A OUTPUT -p udp --dport 123 -j ACCEPT",
+                "nft flush ruleset",
+                "nft add table inet filter",
+                r"nft add chain inet filter input { type filter hook input priority 0 \; }",
+                r"nft add chain inet filter output { type filter hook output priority 0 \; }",
+                r"nft add chain inet filter forward { type filter hook forward priority 0 \; }",
+                "nft add rule inet filter output tcp dport 80 accept",
+                "nft add rule inet filter output tcp dport 8080 accept",
+                "nft add rule inet filter output tcp dport 443 accept",
+                "nft add rule inet filter output tcp dport 20 accept",
+                "nft add rule inet filter output tcp dport 21 accept",
+                "nft add rule inet filter output tcp dport 22 accept",
+                "nft add rule inet filter output tcp dport 25 accept",
+                "nft add rule inet filter output tcp dport 110 accept",
+                "nft add rule inet filter output tcp dport 143 accept",
+                "nft add rule inet filter output udp dport 53 accept",
+                "nft add rule inet filter output udp dport 123 accept",
+                "nft add rule inet filter input drop",
+                "nft add rule inet filter forward drop",
+                "nft add rule inet filter output drop",
             ];
         }
 
@@ -101,10 +106,10 @@ pub fn firewall_backup(path: &str, option: &str, debug: bool) -> bool {
     system_command_exec(instance)
 }
 
-pub fn firewall(ruleset: SimpleRule, debug: bool) -> bool {
+pub fn firewall(ruleset: NfTableRule, debug: bool) -> bool {
     let rule = format!(
-        "iptable -A {} -p {} --dport {} -j {}",
-        ruleset.chain, ruleset.protocol, ruleset.destination_port, ruleset.table
+        "nft add rule inet filter output {} dport {} {}",
+        ruleset.protocol, ruleset.port, ruleset.action
     );
 
     let instance = ProcessInit {
@@ -137,11 +142,10 @@ pub fn shell_firewall(system_input: &mut Vec<String>) -> bool {
 
         "--rule" => {
             let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
-            let command = SimpleRule {
-                table: &take_system_args(system_input, "--table"),
-                chain: &take_system_args(system_input, "--chain"),
+            let command = NfTableRule {
                 protocol: &take_system_args(system_input, "--protocol"),
-                destination_port: &take_system_args(system_input, "--port"),
+                port: &take_system_args(system_input, "--port"),
+                action: &take_system_args(system_input, "--action"),
             };
 
             firewall(command, debug)
