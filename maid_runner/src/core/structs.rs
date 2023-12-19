@@ -35,6 +35,7 @@ pub struct ProcessInit<'source, 'source_from, 'source_description> {
     pub debug: bool,
 }
 
+#[derive(Debug)]
 pub struct ProcessResult<
     'session,
     'session_description,
@@ -57,6 +58,7 @@ pub struct ProcessResult<
     pub formated_stderr: Vec<String>,
     pub debug: bool,
 }
+
 
 pub struct Backup<'from, 'to, 'technic> {
     pub from: &'from str,
