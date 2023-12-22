@@ -28,7 +28,7 @@ MOEW TABLES                 = "tables.config"
 MEOW TLDS                   = "tlds.config"
 MOEW USER_NAMES             = "user_names.config"
 MOEW XSS_PAYLOAD_LIST       = "xss-payload-list.config"
-
+MEOW MALWARE_HASH           = "malware_hash.config"
 
 # REPORTS AND SESSIONS
 
