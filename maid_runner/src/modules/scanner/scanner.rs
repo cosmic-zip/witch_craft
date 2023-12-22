@@ -170,11 +170,11 @@ pub fn scanner_auto_nmap(source: ScannerWebAutoNmap, debug: bool) -> bool {
     let mut sport: &str = "";
 
     if "fast" == source.delay {
-        stime = "T4";
+        stime = "-T4";
     } else if "slow" == source.delay {
-        stime = "T2";
+        stime = "-T2";
     } else if "paranoid" == source.delay {
-        stime = "T0";
+        stime = "-T0";
     } else {
         standard_messages(
             "warning",
@@ -208,7 +208,7 @@ pub fn scanner_auto_nmap(source: ScannerWebAutoNmap, debug: bool) -> bool {
     if source.ports == "auto" {
         sport = NMAP_PORTS;
     } else if source.ports == "all" {
-        sport = "-p-";
+        sport = "p1-65535";
     } else {
     }
     sport = source.ports;

@@ -79,10 +79,15 @@ pub fn system_command_exec(command: ProcessInit) -> bool {
                 }
             }
 
-            println!(
-                "🔖 status: {} \n🚧 STDOUT: {}\n🚧 STDERR: {}\n",
-                status, stdout, stderr,
-            );
+            if command.debug == true {
+                println!(
+                    "🔖 status: {}\n🚧 stdout:\n{}\n🚧 stderr:\n{}\n",
+                    status, stdout, stderr,
+                );
+            } else {
+                println!("{}", stdout);
+            }
+
             return true;
         }
         Err(err) => {
@@ -226,7 +231,7 @@ pub fn find_all_matching_lines(file_path: &str, pattern: &str) -> Result<Vec<Str
 
     match logger(data) {
         Ok(_result) => {
-            standard_messages("saved", "Log saved", "", "cute");
+            // standard_messages("saved", "Log saved", "", "cute");
         }
         Err(_err) => println!("Error"),
     }

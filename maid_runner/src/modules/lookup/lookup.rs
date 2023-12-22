@@ -19,7 +19,7 @@ pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
         standard_messages("debug", "Lookup mac address", &message, "cute");
     }
 
-    standard_messages("falged", "Lookup mac address", "", "cute");
+    // standard_messages("falged", "Lookup mac address", "", "cute");
 
     match find_all_matching_lines(&file, mac_address.vendor_mac) {
         Ok(result) => {
@@ -143,7 +143,7 @@ pub fn shell_lookup(system_input: &mut Vec<String>) -> bool {
             lookup_exif_metadata(instance, debug)
         }
 
-        "--lookup_reverse_engineering" => {
+        "--lookup_re" | "" => {
             let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = LookupGenericPathOpType {
                 sample_path: &take_system_args(system_input, "--sample"),

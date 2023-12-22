@@ -14,7 +14,7 @@ sudo chown -R $(whoami):$(whoami) /var/maid
 
 echo && echo "Uncompress files"
 7z x /var/maid/maid_lists/malware/malware.csv.7z.001 -o/var/maid/maid_lists/general/
-mv /var/maid/maid_lists/general/full.csv /var/maid/maid_lists/general/malware_hash.bin
+mv /var/maid/maid_lists/general/full.csv /var/maid/maid_lists/general/malware_hash.config
 
 echo && echo "SNAP Setup"
 sudo apt install snapd -y

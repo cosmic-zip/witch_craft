@@ -297,3 +297,16 @@ Date: seg 27 nov 2023 17:08:28 -03
     → Fixed logger result return for improved reliability.
     → Removed old cybersecurity policy.
     → Removed old documentation.
+
+Version 0.13.9
+
+Date: sex 22 dez 2023 20:14:37 -03
+
+    → Reimplemented Debug Flag Feature
+    → Fix malware hash extension
+    → Remove unnecessary verbosity from mac lookup
+    → Fix scanner_automap invalid ports and delays.
+    → Fixed small bugs in the debugger:|, Fixed manual page.
+    → Update warning section
+    → Partial update
+    → Update firewall unit tests.
