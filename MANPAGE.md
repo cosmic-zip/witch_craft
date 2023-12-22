@@ -1,5 +1,7 @@
 ## MaidRunnerCLI
 
+# Deprecated
+
 **NAME**
 
     MaidRunner - Maid Runner is a versatile task automation software
@@ -46,7 +48,7 @@
     --debug                     Optional value for debug can be true
     or false
 
-    --lookup_reverse_engineering    Lookup basic reverse engineering
+    --lookup_re                 Lookup basic reverse engineering
     --sample                        File to be analyzed
     --type                          Type of analysis:
 
