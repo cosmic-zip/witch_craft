@@ -79,10 +79,15 @@ pub fn system_command_exec(command: ProcessInit) -> bool {
                 }
             }
 
-            println!(
-                "🔖 status: {} \n🚧 STDOUT: {}\n🚧 STDERR: {}\n",
-                status, stdout, stderr,
-            );
+            if command.debug == true {
+                println!(
+                    "🔖 status: {}\n🚧 stdout:\n{}\n🚧 stderr:\n{}\n",
+                    status, stdout, stderr,
+                );
+            } else {
+                println!("{}", stdout);
+            }
+
             return true;
         }
         Err(err) => {
