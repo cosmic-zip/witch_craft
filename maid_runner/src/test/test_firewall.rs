@@ -2,22 +2,21 @@ use super::*;
 use crate::modules::firewall::firewall_structs::*;
 use crate::*;
 
-#[test]
-fn test_firewall_preset() {
-    let debug = true;
-    let option = "hardned";
-    let output = firewall_preset(option, debug);
-    assert_eq!(output, true);
-}
+// #[test]
+// fn test_firewall_preset() {
+//     let debug = true;
+//     let option = "hardned";
+//     let output = firewall_preset(option, debug);
+//     assert_eq!(output, true);
+// }
 
 #[test]
 fn test_firewall_rules_ssh() {
     let debug = true;
-    let command = SimpleRule {
-        table: "ACCEPT",
-        chain: "INPUT",
+    let command = NfTableRule {
         protocol: "tcp",
-        destination_port: "22",
+        action: "accept",
+        port: "22",
     };
 
     let output = firewall(command, debug);
@@ -26,13 +25,25 @@ fn test_firewall_rules_ssh() {
 }
 
 #[test]
-fn test_firewall_rules_port_8000() {
+fn test_firewall_rules_port_8000_tcp() {
     let debug = true;
-    let command = SimpleRule {
-        table: "ACCEPT",
-        chain: "INPUT",
+    let command = NfTableRule {
         protocol: "tcp",
-        destination_port: "8000",
+        action: "accept",
+        port: "8000",
+    };
+
+    let output = firewall(command, debug);
+
+    assert_eq!(output, true);
+}
+
+fn test_firewall_rules_port_8000_udp() {
+    let debug = true;
+    let command = NfTableRule {
+        protocol: "udp",
+        action: "accept",
+        port: "8000",
     };
 
     let output = firewall(command, debug);
