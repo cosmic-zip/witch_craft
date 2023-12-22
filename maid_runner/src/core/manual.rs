@@ -128,7 +128,7 @@ LOOKUP
     --path                      MAC lookup file or use --path default
     --debug                     Optional value for debug can be true or false
 
-    --lookup_reverse_engineering    Lookup basic reverse engineering
+    --lookup_re                 Lookup basic reverse engineering
     --sample                        File to be analyzed
     --type                          Type of analysis:
             ┌────────────────┬──────────────────────────────────────────┐
@@ -174,7 +174,8 @@ WEB SCANNER
 
     --scanner_auto_nmap         Advanced NMAP automation and custom binds
     --target                    Setup target ip or dns can be 172.16.0.1 or example.com
-    --delay                     Setup an delay interval to avoid detection by IDS
+    --delay                     Setup an delay interval to avoid detection by IDS, 
+                                Options are: fast, slow and paranoid
     --ports                     Setup ports to be scanned 
 
             ┌────────────────┬──────────────────────────────────────────┐
@@ -182,8 +183,8 @@ WEB SCANNER
             ├────────────────┼──────────────────────────────────────────┤
             │   all          │ Search for possible open ports           │
             │   auto         │ Use an list of the most common           │
-            │   -p 80,443    │ Search for 80 and 443                    │
-            │   -p 80-1337   │ Search from 80 to 1337                   │
+            │   80,443       │ Search for 80 and 443                    │
+            │   80-1337      │ Search from 80 to 1337                   │
             └────────────────┴──────────────────────────────────────────┘ 
 
     --type                      Setup the nmap scanner technic 
