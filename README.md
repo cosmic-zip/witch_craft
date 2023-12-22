@@ -27,8 +27,7 @@ for its operation.
 
 <center>
     <b>
-        🚨 Important Notice: The usage instructions for Maid Runner have 
-        been relocated!
+        🚨 Important Notice: Use maid_runner our maid_runner --help instead MANPAGE
     </b>
 </center>
 
