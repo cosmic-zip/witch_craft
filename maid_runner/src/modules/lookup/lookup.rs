@@ -78,11 +78,11 @@ pub fn lookup_reverse_engineering(sample: LookupGenericPathOpType, debug: bool) 
             system_command_exec(instance)
         }
 
-        "r" => {
+        "d" => {
             let instance = ProcessInit {
-                source: &format!("xxd -r {}", sample.sample_path),
+                source: &format!("stat {}", sample.sample_path),
                 source_from: "lookup",
-                source_description: "Lookup hexadecimal properts",
+                source_description: "Lookup details properts",
                 debug: debug,
             };
             system_command_exec(instance)

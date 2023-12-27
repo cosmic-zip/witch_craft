@@ -85,6 +85,3 @@ apps:
   maid-api:
     command: bin/maid_api
 
-  extract-and-move:
-    command: ./local/comp.sh
-    plugs: [home, removable-media]
