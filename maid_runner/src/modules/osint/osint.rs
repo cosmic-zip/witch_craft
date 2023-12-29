@@ -24,9 +24,18 @@ pub fn open_streat_map_gen(term: OsintLocationOSM, debug: bool) -> bool {
         term.lati,
     );
 
-    println!("\n💻 Link: {}\n", link);
-    
-    return true;
+    println!("\n💻 Link: {}\n", &link);
+
+    let firefox_link = format!("firefox {}", link);
+
+    let instance = ProcessInit {
+        source: firefox_link.as_str(),
+        source_from: "open_streat_map_gen",
+        source_description: "Create custom links to OpenStreatMap",
+        debug: debug,
+    };
+
+    system_command_exec(instance)
 
 }
 
