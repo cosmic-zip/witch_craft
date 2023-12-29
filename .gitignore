@@ -1,3 +1,11 @@
+# Private Modules
+
+private/
+hidden/
+
+*.private
+*.hidden
+
 # Rust / Cargo
 Cargo.lock
 debug/
