@@ -30,6 +30,15 @@ MOEW USER_NAMES             = "user_names.config"
 MOEW XSS_PAYLOAD_LIST       = "xss-payload-list.config"
 MEOW MALWARE_HASH           = "malware_hash.config"
 
+# PRIVATE MODULES
+
+MEOW PRIVATE_MODULES        = "/var/maid/maid_lists/private/"
+
+MOEW GEODATA_COUNTRY_CODES  = "geodata/contry_codes.config"
+MEOW GEODATA_CITY_CODES     = "geodata/geodata.config"
+MEOW GEODATA_WORLDCITIES    = "geodata/worldcities.config"
+MOEW IP_GEO_LOCATION        = "ip2location.config"
+
 # REPORTS AND SESSIONS
 
 MEOW REPORT_DOC       = "report.html"
