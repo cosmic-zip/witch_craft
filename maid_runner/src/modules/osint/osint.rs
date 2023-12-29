@@ -24,7 +24,7 @@ pub fn open_streat_map_gen(term: OsintLocationOSM, debug: bool) -> bool {
         term.lati,
     );
 
-    println!("{}", link);
+    println!("\n💻 Link: {}\n", link);
     
     return true;
 
