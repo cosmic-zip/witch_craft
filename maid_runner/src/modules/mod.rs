@@ -7,3 +7,4 @@ pub mod lookup;
 pub mod maid_av;
 pub mod rootkit;
 pub mod scanner;
+pub mod osint;

@@ -6,10 +6,11 @@ use crate::modules::{
     // botnet::botnet::*,
     lookup::lookup::*,
     // attack::attack::*,
-    // iso::iso::*,
+    iso::iso::*,
     maid_av::maid_av::*,
     // rootkit::rootkit::*,
     scanner::scanner::*,
+    osint::osint::*,
 };
 
 // command structure
@@ -52,6 +53,10 @@ pub fn init() -> u8 {
 
         "firewall" | "f" => {
             shell_firewall(system_input);
+        }
+
+        "osint" => {
+            shell_osint(system_input);
         }
 
         _ => {
