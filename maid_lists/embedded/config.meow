@@ -15,9 +15,9 @@ MEOW REPORT_BASE_PATH       = "/var/maid/maid_lists/report/"
 MEOW INDEX                  = "/var/maid/maid_lists/html/index.html"
 
 MEOW DIRECTORIES            = "directories.config" 
-MEOW DISPOSABLE_EMAIL_BLK   = "disposable_email_blocklist.conf"
+MEOW DISPOSABLE_EMAIL_BLK   = "disposable_email_blocklist.config"
 MOEW EFF_DICE               = "dice_eff_words.config"  
-MEOW EMAIL_TRUSTED_DOMAIN   = "email_trusted_list.conf"
+MEOW EMAIL_TRUSTED_DOMAIN   = "email_trusted_list.config"
 MOEW FILES_EXT              = "files_extensions.config"
 MEOW LDNS                   = "large_dns.config"  
 MEOW MACADDR                = "macaddr_lockup.config"  
@@ -30,19 +30,10 @@ MOEW USER_NAMES             = "user_names.config"
 MOEW XSS_PAYLOAD_LIST       = "xss-payload-list.config"
 MEOW MALWARE_HASH           = "malware_hash.config"
 
-# PRIVATE MODULES
-
-MEOW PRIVATE_MODULES        = "/var/maid/maid_lists/private/"
-
-MOEW GEODATA_COUNTRY_CODES  = "geodata/country_codes.config"
-MEOW GEODATA_CITY_CODES     = "geodata/geodata.config"
-MEOW GEODATA_WORLDCITIES    = "geodata/worldcities.config"
-MOEW IP_GEO_LOCATION        = "ip2location.config"
-
 # REPORTS AND SESSIONS
 
 MEOW REPORT_DOC       = "report.html"
-MEOW REPORT_LOG       = "report.jsonl"
+MEOW REPORT_LOG       = "archive.db"
 MEOW SAFE_LOOK        = "session.meow"
 
 # AUTOMATED TESTS
@@ -52,3 +43,11 @@ MEOW TEST_BASE_PATH   = "/var/maid/maid_lists/tests/"
 MEOW TEST_DIRECTORIES       = "test_directories.config"
 MEOW TEST_SDNS              = "test_small_dns.config"
 
+# PRIVATE MODULES
+
+MEOW PRIVATE_MODULES        = "/var/maid/maid_lists/private/"
+
+MOEW GEODATA_COUNTRY_CODES  = "geodata/country_codes.config"
+MEOW GEODATA_CITY_CODES     = "geodata/geodata.config"
+MEOW GEODATA_WORLDCITIES    = "geodata/worldcities.config"
+MOEW IP_GEO_LOCATION        = "ip2location.config"
