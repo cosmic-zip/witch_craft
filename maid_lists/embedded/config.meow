@@ -34,7 +34,7 @@ MEOW MALWARE_HASH           = "malware_hash.config"
 
 MEOW PRIVATE_MODULES        = "/var/maid/maid_lists/private/"
 
-MOEW GEODATA_COUNTRY_CODES  = "geodata/contry_codes.config"
+MOEW GEODATA_COUNTRY_CODES  = "geodata/country_codes.config"
 MEOW GEODATA_CITY_CODES     = "geodata/geodata.config"
 MEOW GEODATA_WORLDCITIES    = "geodata/worldcities.config"
 MOEW IP_GEO_LOCATION        = "ip2location.config"
