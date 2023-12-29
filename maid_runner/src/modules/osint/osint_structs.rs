@@ -14,7 +14,6 @@ pub struct IpGeoLocation<'ip_string> {
     pub ip_string: &'ip_string str,
 }
 
-pub struct CityGeoLocation<'city, 'path> {
+pub struct CityGeoLocation<'city> {
     pub city: &'city str,
-    pub path: &'path str,
 }

@@ -43,18 +43,42 @@ pub fn open_streat_map_gen(term: OsintLocationOSM, debug: bool) -> bool {
 pub fn city_geo_location(query: CityGeoLocation, debug: bool) -> bool {
 
     let path_location = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
-    let geolocation_city_codes = format!(
-        "{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_CITY_CODES"]
-    );
-    let geolocation_country_codes = format!(
-        "{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_COUNTRY_CODES"]
-    );
-    let geolocation_wordcities = format!(
-        "{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_WORLDCITIES"]
-    );
+    let paths: Vec<String> = vec![
+        format!("{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_CITY_CODES"]),
+        format!("{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_COUNTRY_CODES"]),
+        format!("{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_WORLDCITIES"]),
+    ];
 
-    return true;
+    for file in paths {
 
+        match find_all_matching_lines(&file, query.city) {
+            Ok(result) => {
+                if !result.is_empty() {
+                    for line in result {
+                        standard_messages("falged", "Found", &line, "cute");
+                    }
+                    return true;
+                } else {
+                    standard_messages("warning", "Pattern not found in any line.", "", "cute");
+                    return false;
+                }
+            }
+            Err(err) => {
+                let message = format!("{}", err);
+                standard_messages(
+                    "error",
+                    "Error while looking for city information",
+                    &message,
+                    "cute",
+                );
+                return false;
+            }
+        }
+
+    } 
+
+
+    return false;
 
 
 }
@@ -92,6 +116,16 @@ pub fn shell_osint(system_input: &mut Vec<String>) -> bool {
                 lati: &take_system_args(system_input, "--lati"),
             };
             open_streat_map_gen(instance, debug)
+        }
+
+        "--city_geo" => {
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
+            let instance = CityGeoLocation {
+                city: &take_system_args(system_input, "--city"),
+            };
+
+            city_geo_location(instance, debug)
+
         }
 
         _ => {
