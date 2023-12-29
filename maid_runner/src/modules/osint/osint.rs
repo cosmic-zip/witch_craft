@@ -1,6 +1,7 @@
 use crate::core::messages::standard_messages;
 use crate::core::structs::ProcessInit;
 use crate::core::utils::*;
+use crate::read_meow;
 use crate::modules::osint::osint_structs::*;
 
 pub fn sample(data: SampleData, debug: bool) -> bool {
@@ -36,6 +37,44 @@ pub fn open_streat_map_gen(term: OsintLocationOSM, debug: bool) -> bool {
     };
 
     system_command_exec(instance)
+
+}
+
+pub fn city_geo_location(query: CityGeoLocation, debug: bool) -> bool {
+
+    let path_location = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
+    let geolocation_city_codes = format!(
+        "{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_CITY_CODES"]
+    );
+    let geolocation_country_codes = format!(
+        "{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_COUNTRY_CODES"]
+    );
+    let geolocation_wordcities = format!(
+        "{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_WORLDCITIES"]
+    );
+
+    return true;
+
+
+
+}
+
+pub fn ip_geo_location(ip: IpGeoLocation, debug: bool ) ->  bool {
+
+    // ip filter
+    let mut ip_formated = String::new();
+    for symbol in ip.ip_string.chars() {
+        if symbol == '.' {
+            ip_formated = format!("{}{}", ip_formated, "");
+        } else if symbol == ':' {
+            ip_formated = format!("{}{}", ip_formated, "");
+        } else {
+            ip_formated = format!("{}{}", ip_formated, symbol);
+        }
+    }
+
+    //convert ip to integer
+    return true;
 
 }
 
