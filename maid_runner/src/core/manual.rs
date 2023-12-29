@@ -91,17 +91,19 @@ pub const MAID_RUNNER_BANNER: &str = r#"
 "#;
 
 pub const MAID_RUNNER_MAIN_HELP: &str = r#"                                                                                          
-
 MAIDRUNNER
 
 NAME
+
     MaidRunner - Maid Runner is a versatile task automation software designed to serve as 
     the foundation for various cyber security modules.
 
 SYNOPSIS
-    maidrunner module_name [--key value] [-k value] [--debug true│false] [--path file] 
+
+    maid_runner module_name [--key value] [-k value] [--debug true│false] [--path file] 
 
 DESCRIPTION
+
     This  manual  page  describes the  MaidRunner,  a versatile task automation software 
     designed to serve as the foundation for various cyber security modules. It provides 
     capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), 
@@ -110,8 +112,9 @@ DESCRIPTION
 OPTIONS
 
 CORE    
-    core    Core describes advanced base functions for one or more secondary function, 
-            the core module permit access and use of the this functions by the user
+    core                        Core describes advanced base functions for one or more 
+                                secondary function, the core module permit access and 
+                                use of the this functions by the user
 
     --remove_metadata           Remove metadata from a picture 
     --path                      Image file path ./folder/image
@@ -121,7 +124,8 @@ CORE
     --debug                     Optional value for debug can be true or false
 
 LOOKUP
-    lookup  Lookup contains automations for the lookup proccess in cyber security
+    lookup                      Lookup contains automations for the lookup proccess in 
+                                cyber security
 
     --mac_address key value     Lookup mac vendor based on first 3 pairs
     --mac                       MAC string like: 00:00 or 00:00:00
@@ -137,15 +141,15 @@ LOOKUP
             │   s            │ search for string                        │
             │   h            │ search for hexadecimals                  │
             │   b            │ search for binary                        │
-            │   r            │ todo                                     │
+            │   d            │ file details                             │
             │   l            │ search for linked library                │
             └────────────────┴──────────────────────────────────────────┘
     --debug                     Optional value for debug can be true or false
 
 WEB SCANNER
 
-    scanner Scanner contains automations for the web scanning proccess thats include
-            namp, dirbuster, dnsenum, etc.
+    scanner                     Scanner contains automations for the web scanning 
+                                proccess thats include namp, dirbuster, dnsenum, etc.
 
     --web_scanner               Scanning domain and ip's 
     --target                    Set target ip or dns can be 172.16.0.1 or example.com
@@ -235,7 +239,7 @@ MAID_AV
 
 FIREWALL
 
-    firewall
+    firewall                    Setup, add, remove, backup, restore and flush firewall rules
 
     --preset                    Use iptables to setup pre-build rule sets 
                                                                         
@@ -260,24 +264,45 @@ FIREWALL
     --protocol                  tcp and udp
     --port                      any
 
+HELP 
 
+    help                        Show help pages and common hints 
+    
+    header                      MaidRunner ASCII art
+    maid                        Show and maid image in ASCII
+
+    deprecated modules: This modules can provide some hints only.  
+
+    unix_network                Linux network                                                                                            
+    unix_sys_info               Linux system status an informations 
+    unix_utility                Linux utility                                                                                            
+    unix_command                Linux command                                                                                             
+    unix_misc                   Linux misc                                                                                       
+    unix_files                  Linux files                                                                                      
+    unix_folders                Linux folders                                                                                            
+    windows_files               Windows important files                                                         
+    windows_reg                 Windows register                                                   
+    windows_cmd                 Windows cmd hints                                                   
+    windows_powershell          Windows powershell hints                                                            
 
 WARNINGS
+
     WARNING: This Tool Is For Cybersecurity Use May Have Legal Implications
     As you use this cybersecurity tool, it is important to be aware of the potential 
     legal implications. Depending on how the tool is used, there may be consequences 
     under various laws and regulations.
 
 ENVIRONMENT
+
     To ensure a smooth installation process, make sure your Linux system has all 
     necessary dependencies, including packages and files.    
 
 FILES
+
     Attention! The 'maid_list' folder must be located within '/var/maid/' directory, 
     and the current user must have read/write permissions to access it. Failure to 
     meet these requirements may result in unexpected behavior or errors during the 
     cleaning process. 
-
 
 "#;
 
