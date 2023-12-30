@@ -310,3 +310,23 @@ Date: sex 22 dez 2023 20:14:37 -03
     → Update warning section
     → Partial update
     → Update firewall unit tests.
+
+Version 0.14.0:
+
+Date: sex 29 dez 2023 20:51:45 -03
+
+    → Implemented city_geo_location function
+    → Fixed file names from conf to config
+    → Added private modules configs
+    → Corrected country_code file name
+    → Added base IP and city geolocation functions
+    → Added private modules path
+    → Added hosts database from StevenBlack/hosts
+    → Moved manual to the readme file
+    → Removed manpage
+    → Updated manual page
+    → Added OSINT domains hosts names (dns) names update script
+    → Opened link with Firefox
+    → Added base OSINT module and OpenStreetMap link generator
+    → Hardcoded debug option to force take_system_args return an 
+	  empty string instead of an error message

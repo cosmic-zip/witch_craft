@@ -163,17 +163,24 @@ pub fn take_system_args(mut data: &mut Vec<String>, parameter_name: &str) -> Str
         count += 1;
     }
 
-    if parameter_name == "--debug" {
-        // Drop error message if debug flag is missing
+    let hardcoded_debug: bool = false;
+
+    if hardcoded_debug == true {
+        if parameter_name == "--debug" {
+            // Drop error message if debug flag is missing
+            return "".to_string();
+        }
+    
+        let message = format!(
+            "[GSV] :: Parameter name not found at → P: {}, Vec: {:?}",
+            parameter_name, data
+        );
+    
+        return standard_messages("error", &message, "utils::take_system_args", "cute");
+    } else {
         return "".to_string();
     }
 
-    let message = format!(
-        "[GSV] :: Parameter name not found at → P: {}, Vec: {:?}",
-        parameter_name, data
-    );
-
-    return standard_messages("error", &message, "utils::take_system_args", "cute");
 }
 
 pub fn take_system_args_debug(debug: String) -> bool {

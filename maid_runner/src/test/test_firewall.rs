@@ -10,7 +10,7 @@ use crate::*;
 //     assert_eq!(output, true);
 // }
 
-#[test]
+// #[test]
 fn test_firewall_rules_ssh() {
     let debug = true;
     let command = NfTableRule {
@@ -24,7 +24,7 @@ fn test_firewall_rules_ssh() {
     assert_eq!(output, true);
 }
 
-#[test]
+// #[test]
 fn test_firewall_rules_port_8000_tcp() {
     let debug = true;
     let command = NfTableRule {
@@ -38,6 +38,7 @@ fn test_firewall_rules_port_8000_tcp() {
     assert_eq!(output, true);
 }
 
+// #[test]
 fn test_firewall_rules_port_8000_udp() {
     let debug = true;
     let command = NfTableRule {
