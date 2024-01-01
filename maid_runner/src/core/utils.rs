@@ -128,7 +128,7 @@ pub fn system_text(text: &str, color: &str) -> bool {
             None => break,
         }
     }
-    println!("");
+    // println!("");
     return true;
 }
 
