@@ -2,6 +2,8 @@ use crate::core::messages::standard_messages;
 use crate::core::structs::ProcessInit;
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
+use crate::core::report::logger;
+use crate::core::structs::Logger;
 use crate::modules::lookup::lookup_structs::*;
 
 pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
@@ -25,8 +27,28 @@ pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
         Ok(result) => {
             if !result.is_empty() {
                 for line in result {
+                    let data = Logger {
+                        source: "lookup_mac_address".to_string(),
+                        source_from: "lookup".to_string(),
+                        source_description: "Lookup mac address".to_string(),
+                        status: 0.to_string(),
+                        stdout: format!("{:?}", line),
+                        stderr: "none".to_string(),
+                        debug: debug,
+                    };
+                
+                    match logger(data) {
+                        Ok(_result) => {
+                            // standard_messages("saved", "Log saved", "", "cute");
+                        }
+                        Err(_err) => println!("error:src.modules.osint.city_geo_location"),
+                    }
+
                     standard_messages("falged", "Found", &line, "cute");
                 }
+
+                
+
                 return true;
             } else {
                 standard_messages("warning", "Pattern not found in any line.", "", "cute");
