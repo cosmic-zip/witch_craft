@@ -71,7 +71,7 @@ pub fn city_geo_location(query: CityGeoLocation, debug: bool) -> bool {
                             Ok(_result) => {
                                 // standard_messages("saved", "Log saved", "", "cute");
                             }
-                            Err(_err) => println!("Error"),
+                            Err(_err) => println!("error:src.modules.osint.city_geo_location"),
                         }
                         standard_messages("falged", "Found", &line, "cute");
                     }
