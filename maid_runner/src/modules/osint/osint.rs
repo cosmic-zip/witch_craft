@@ -58,7 +58,7 @@ pub fn city_geo_location(query: CityGeoLocation, debug: bool) -> bool {
                     for line in result {
                         
                         let data = Logger {
-                            source: "find_all_matching_lines".to_string(),
+                            source: "city_geo_location".to_string(),
                             source_from: "osint".to_string(),
                             source_description: "Look up geographic information on a city".to_string(),
                             status: 0.to_string(),
