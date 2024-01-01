@@ -62,7 +62,7 @@ pub fn json_filter(line: &str) -> String {
         } else if symbol == '\n' {
             filtered_line = format!("{}{}", filtered_line, "");
         } else if symbol == '\t' {
-            // tab to 4
+            // tab to 4 spaces
             filtered_line = format!("{}{}", filtered_line, "    ");
         } else {
             filtered_line = format!("{}{}", filtered_line, symbol);

@@ -128,7 +128,7 @@ pub fn system_text(text: &str, color: &str) -> bool {
             None => break,
         }
     }
-    println!("");
+    // println!("");
     return true;
 }
 
@@ -240,7 +240,7 @@ pub fn find_all_matching_lines(file_path: &str, pattern: &str) -> Result<Vec<Str
         Ok(_result) => {
             // standard_messages("saved", "Log saved", "", "cute");
         }
-        Err(_err) => println!("Error"),
+        Err(_err) => println!("error:core.utils.find_all_matching_lines"),
     }
 
     Ok(matching_lines)
