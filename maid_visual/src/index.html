@@ -128,6 +128,11 @@
                             <i class="fa-solid fa-satellite-dish"></i>
                             <!-- <span class="sidebar-item-text"> scanner</span> -->
                         </div>
+
+                        <div class="navbar-btn" onclick="toggle('osint')">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                            <!-- <span class="sidebar-item-text"> Osint</span> -->
+                        </div>
                     </header>
                 </div>
 
@@ -287,6 +292,23 @@
 
                         </div>
                     </section>
+                
+                    <section class="osint toggle" id="osint">
+                        <div class="card">
+
+                            <header class="card-header space-bt">
+                                <h3 class="card-title"><i class="fa-solid fa-magnifying-glass-chart"></i> osint</h3>
+                                <span>🔶</span>
+                            </header>
+                            <div class="card-body">
+                                <div class="tables">
+                                    <table id="logsOsint" class="display"></table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                
                 </div>
 
                 <section class="reports toggle" id="reports">

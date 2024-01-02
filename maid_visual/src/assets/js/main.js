@@ -74,4 +74,5 @@ invoke('select_report', { from: 'utils', size: 100 }).then((data) => exec_write_
 invoke('select_report', { from: 'maid_ce', size: 100 }).then((data) => exec_write_table(data, "logsCe"));
 invoke('select_report', { from: 'rootkit', size: 100 }).then((data) => exec_write_table(data, "logsRookit"));
 invoke('select_report', { from: 'scanner', size: 100 }).then((data) => exec_write_table(data, "logsScanner"));
+invoke('select_report', { from: 'osint', size: 100 }).then((data) => exec_write_table(data, "logsOsint"));
 
