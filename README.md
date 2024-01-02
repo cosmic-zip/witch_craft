@@ -2,6 +2,11 @@
 
 ![banner](maid_docs/images/lineBar.png)
 
+![maid_runner](https://img.shields.io/github/actions/workflow/status/th3maid/MaidRunner/maid_runner.yml)
+![GitHub issues](https://img.shields.io/github/issues/th3maid/MaidRunner)
+![GitHub License](https://img.shields.io/github/license/th3maid/MaidRunner)
+![GitHub top language](https://img.shields.io/github/languages/top/th3maid/MaidRunner)
+
 # Maid Runner
 
 Maid Runner is a versatile task automation software designed to serve
