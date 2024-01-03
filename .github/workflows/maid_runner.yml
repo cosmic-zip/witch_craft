@@ -3,7 +3,6 @@ name: maid_runner
 on:
   push:
     branches:
-      - "*/*"
       - "trunk"
       - "build"
       - "stable"
