@@ -65,3 +65,8 @@ pub struct Backup<'from, 'to, 'technic> {
     pub to: &'to str,
     pub technic: &'technic str,
 }
+
+pub struct Session<'name, 'desc> {
+    pub name: &'name str,
+    pub desc: &'desc str,
+}
