@@ -141,7 +141,7 @@
 
     @browser
 
-        attack_browser_grap_cookies
+        attack_browser_grab_cookies
         attack_browser_harvest_data
 
     @wireless
@@ -149,7 +149,7 @@
         attack_wifi_de_auth_broadcast
         attack_wifi_poisoned_ussid
         attack_wifi_dns_redirect
-        attack_wifi_sefl_arp_spoof
+        attack_wifi_self_arp_spoof
         attack_wifi_poisoned_hotspot
         attack_wifi_crack_password
         attack_wifi_dos

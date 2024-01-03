@@ -129,7 +129,7 @@ CORE
     --wipe                      If "yes" will set name and description to default
 
 LOOKUP
-    lookup                      Lookup contains automations for the lookup proccess in 
+    lookup                      Lookup contains automation's for the lookup process in 
                                 cyber security
 
     --mac_address key value     Lookup mac vendor based on first 3 pairs
@@ -153,8 +153,8 @@ LOOKUP
 
 WEB SCANNER
 
-    scanner                     Scanner contains automations for the web scanning 
-                                proccess thats include namp, dirbuster, dnsenum, etc.
+    scanner                     Scanner contains automation's for the web scanning 
+                                process thats include namp, dirbuster, dnsenum, etc.
 
     --web_scanner               Scanning domain and ip's 
     --target                    Set target ip or dns can be 172.16.0.1 or example.com
@@ -237,9 +237,9 @@ MAID_AV
 
     maid_av                     Maid_av is a basic malware detection tool based on hashes. 
 
-    --hash                      Hash sha256, return the hash if an malware are dectec  
-    --pattern                   Search on a database for hash md5, sha256, name, extencion 
-    --scanner                   Automaticly scanner all files and folders inside an base path
+    --hash                      Hash sha256, return the hash if an malware are detected  
+    --pattern                   Search on a database for hash md5, sha256, name, extension 
+    --scanner                   Automatically scanner all files and folders inside an base path
                                 like: /path/ or ./path
 
 FIREWALL
@@ -254,7 +254,7 @@ FIREWALL
             │   reset        │ Remove all firewall rules                │
             │   kill         │ Drop all in/out connection and allow     │
             │                │ ports for outgoing: 80,443,24.           │
-            │   hardned      │ Same kill rules, but allow more outging  │
+            │   hardened     │ Same kill rules, but allow more outgoing │
             │                │ ports: 80, 8080, 443, 20, 21, 22, 25,    │
             │                │ 110, 143, 53, 123.                       │
             └────────────────┴──────────────────────────────────────────┘ 
@@ -278,13 +278,13 @@ HELP
 
     deprecated modules: This modules can provide some hints only.  
 
-    unix_network                Linux network                                                                                            
-    unix_sys_info               Linux system status an informations 
-    unix_utility                Linux utility                                                                                            
-    unix_command                Linux command                                                                                             
-    unix_misc                   Linux misc                                                                                       
-    unix_files                  Linux files                                                                                      
-    unix_folders                Linux folders                                                                                            
+    unix_network                Linux network 
+    unix_sys_info               Linux system status an information 
+    unix_utility                Linux utility
+    unix_command                Linux command
+    unix_misc                   Linux misc
+    unix_files                  Linux files
+    unix_folders                Linux folders
     windows_files               Windows important files                                                         
     windows_reg                 Windows register                                                   
     windows_cmd                 Windows cmd hints                                                   
@@ -331,8 +331,8 @@ pub const UNIX_NETWORK: &str = r#"
     dig -x ip                                           Domain lookup for IP
     host ip                                             Domain lookup for IP
     host -t SRV service tcp.url.com                     Domain SRV lookup
-    dig @ ip domain -t AXrR                             DNS Zone Xfer
-    host -1 domain namesvr                              DNS Zone Xfer
+    dig @ ip domain -t AXrR                             DNS Zone Transfer
+    host -1 domain namesvr                              DNS Zone Transfer
     ip xfrm state list                                  Print existing VPN kejs
     ip addr add ip /cidr aev ethO                       Adds 'hidden' interface
     cat /var/log/messages | grep DHCP                       List DHCP assignments
@@ -351,7 +351,7 @@ pub const UNIX_SYSTEMINFO: &str = r#"
     ps -ef                                              Process listing (top)           
     df -h                                               Disk usage (free)               
     uname -a                                            Kernel version/CPU info         
-    mount                                               t1ounted file Sjstems           
+    mount                                               Mounted file Systems           
     getent passwd                                       Show list of users              
     PATH~$PATH:/home/mypath                             Add to PATH variable            
     kill pid                                            Kills process with pid          
@@ -360,7 +360,7 @@ pub const UNIX_SYSTEMINFO: &str = r#"
     cat /proc/version                                   Show kernel info                
     rpm --querJ -all                                    Installed pkgs (Redhat)         
     rpm -ivh ) .rpm                                     Install RPM (-e~remove)         
-    dpkg -get-selections                                Installed pkgs (Obuntu)         
+    dpkg -get-selections                                Installed pkgs (Ubuntu)         
     dpkg -I .deb                                        Install DEB (-r~remove)         
     pkginfo                                             Installed pkgs (Solaris)        
     which tscsh/csh/ksh/bash                            Show location of executable     
@@ -387,10 +387,10 @@ pub const UNIX_COMMAND: &str = r#"
     diff filel file2                                    Compare files
     rm -rf dir                                          Force delete of dir
     shred -f -u file                                    Overwrite/delete file
-    touch -r ref_file file                              slaches ref_ file timestamp
+    touch -r ref_file file                              slashes ref_ file timestamp
     touch -t YYYYDDHHSS file                            Set file timestamp
     sudo fdisk -l                                       List connected drives
-    mount /dev/sda# /mnt/usbkey                         t1ount USB key
+    mount /dev/sda# /mnt/usbkey                         Mount USB key
     md5sum -t file                                      Compute md5 hash
     echo -n "str" | md5sum                              Generate md5 hash
     sha1sum file                                        SHAl hash of file
@@ -462,7 +462,7 @@ pub const UNIX_FOLDERS: &str = r#"
     Sjstern and running programs       /proc
     Home directory of root user        /root
     System administrator binaries      /sbin
-    Temporary files                    /trnp
+    Temporary files                    /temp
     Less critical files                /usr
     Variable Sjstern files             /var
 "#;
@@ -559,6 +559,7 @@ pub const WINDOWS_POWERSHELL_BASICS: &str = r#"
 
 pub fn system_exec_manual(page: &str) -> bool {
     match page {
+        // UNIX
         "unix_network" => system_text(UNIX_NETWORK, "cyan"),
         "unix_sys_info" => system_text(UNIX_SYSTEMINFO, "cyan"),
         "unix_utility" => system_text(UNIX_UTILITY, "cyan"),
@@ -566,10 +567,12 @@ pub fn system_exec_manual(page: &str) -> bool {
         "unix_misc" => system_text(UNIX_MISC, "cyan"),
         "unix_files" => system_text(UNIX_FILES, "cyan"),
         "unix_folders" => system_text(UNIX_FOLDERS, "cyan"),
+        // WINDOWS 
         "windows_files" => system_text(WINDOWS_FILES, "cyan"),
         "windows_reg" => system_text(WINDOWS_COMMON_REGISTER_LOCATIONS, "cyan"),
         "windows_cmd" => system_text(WINDOWS_CMD_BASICS, "cyan"),
         "windows_powershell" => system_text(WINDOWS_POWERSHELL_BASICS, "cyan"),
+        // ETC
         "header" => system_text(MAID_RUNNER_HEADER, "purple"),
         "maid" => system_text(MAID_RUNNER_BANNER, "white"),
         _ => {

@@ -44,7 +44,7 @@ pub fn select_report_from_db(conn: &Connection, from: String, size: i32) -> Resu
         }
     }
 
-    let mut formated_rows: Vec<Vec<String>> = Vec::new();
+    let mut formatted_rows: Vec<Vec<String>> = Vec::new();
 
     let rows = result.query_map([], |row| {
         // Create a ProcessResult struct and populate its fields
@@ -69,13 +69,13 @@ pub fn select_report_from_db(conn: &Connection, from: String, size: i32) -> Resu
 
     for row in rows {
         match row {
-            Ok(data) => formated_rows.push(data),
+            Ok(data) => formatted_rows.push(data),
             Err(_) => todo!(),
         }
         
     }
 
-    Ok(formated_rows)
+    Ok(formatted_rows)
 }
 
 #[tauri::command]

@@ -25,15 +25,15 @@ pub fn write_process_result_to_db<'a>(
             source_description TEXT,
             timestemp TEXT,
             returned_status TEXT,
-            formated_stdout TEXT,
-            formated_stderr TEXT,
+            formatted_stdout TEXT,
+            formatted_stderr TEXT,
             debug INTEGER
         )",
         [],
     );
 
     conn.execute(
-        "INSERT INTO process_results (session, session_description, source_from, source_command, source_detail, source_description, timestemp, returned_status, formated_stdout, formated_stderr, debug)
+        "INSERT INTO process_results (session, session_description, source_from, source_command, source_detail, source_description, timestemp, returned_status, formatted_stdout, formatted_stderr, debug)
          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         params![
             result.session,
@@ -44,8 +44,8 @@ pub fn write_process_result_to_db<'a>(
             result.source_description,
             result.timestemp,
             result.returned_status,
-            result.formated_stdout.join("\n"),
-            result.formated_stderr.join("\n"),
+            result.formatted_stdout.join("\n"),
+            result.formatted_stderr.join("\n"),
             result.debug,
         ],
     )?;
@@ -72,23 +72,23 @@ pub fn json_filter(line: &str) -> String {
 }
 
 pub fn format_std(data: String) -> Vec<String> {
-    let mut formated: Vec<String> = Vec::new();
+    let mut formatted: Vec<String> = Vec::new();
     let mut lines = data.lines();
     loop {
         match lines.next() {
             Some(line) => {
                 let filtered_line = json_filter(line);
-                formated.push(filtered_line);
+                formatted.push(filtered_line);
             }
             None => break,
         }
     }
-    return formated;
+    return formatted;
 }
 
 pub fn logger(data: Logger) -> std::io::Result<()> {
-    let formated_stdout: Vec<String> = format_std(data.stdout);
-    let formated_stderr: Vec<String> = format_std(data.stderr);
+    let formatted_stdout: Vec<String> = format_std(data.stdout);
+    let formatted_stderr: Vec<String> = format_std(data.stderr);
 
     let cmd: Vec<String> = data.source.split_whitespace().map(String::from).collect();
 
@@ -113,8 +113,8 @@ pub fn logger(data: Logger) -> std::io::Result<()> {
         source_description: data.source_description.as_str(),
         timestemp: binding.as_str(),
         returned_status: data.status.as_str(),
-        formated_stdout: formated_stdout,
-        formated_stderr: formated_stderr,
+        formatted_stdout: formatted_stdout,
+        formatted_stderr: formatted_stderr,
         debug: data.debug,
     };
 

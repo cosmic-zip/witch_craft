@@ -17,8 +17,8 @@ pub struct ProcessResult<
     pub source_description: &'source_description str,
     pub timestemp: &'timestemp str,
     pub returned_status: &'returned_status str,
-    pub formated_stdout: Vec<String>,
-    pub formated_stderr: Vec<String>,
+    pub formatted_stdout: Vec<String>,
+    pub formatted_stderr: Vec<String>,
     pub debug: i32,
 }
 

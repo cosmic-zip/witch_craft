@@ -58,7 +58,7 @@ when MaidRunner is compiled a certain way.
 - What equipment did you use? A packet capture may be useful; different
 equipment behaves differently, they have different Wi-Fi stacks,
 drivers, and
-firmwares.
+firmware.
 - A patch to fix the issue, if available.
 - If CVE numbers have been assigned, please provide them as well.
 

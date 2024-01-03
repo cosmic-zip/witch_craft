@@ -22,7 +22,7 @@ pub fn core_local_downloader_web_page(url: CoreGenericUrl, debug: bool) -> bool 
     let instance = ProcessInit {
         source: &format!("wget --wait=0.1 --level=5 --limit-rate=500K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension -e robots=off --convert-links --adjust-extension {}", url.url),
         source_from: "core",
-        source_description: "Downlading all files inside the web server",
+        source_description: "Downloading all files inside the web server",
         debug: debug,
     };
     system_command_exec(instance)
