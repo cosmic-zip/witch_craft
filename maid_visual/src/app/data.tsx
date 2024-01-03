@@ -1,19 +1,21 @@
 'use client'
-
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { invoke } from '@tauri-apps/api/tauri'
 
 export default function Data() {
-  const [greeting, setGreeting] = useState('');
+    const [data, setData] = useState('');
 
-  useEffect(() => {
-    invoke<string>('select_report', { from: 'all', size: 100 })
-      .then(result => setGreeting(result))
-      .catch(console.error)
-  }, [])
+    console.log(data);
 
-  // Necessary because we will have to use Greet as a component later.
-  return <div>{greeting}</div>;
+    useEffect(() => {
+        invoke<string>('select_report', { from: 'scanner', size: 100 })
+            .then(result => setData(result))
+            .catch(console.error)
+    }, [])
+
+    // Necessary because we will have to use Greet as a component later.
+    return <div>{`Object: ${JSON.stringify(data)}`}</div>;
 }
 
 // invoke('select_report', { from: 'all', size: 100 }).then((data) => exec_write_table(data, "logsTable"));
