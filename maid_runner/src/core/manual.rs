@@ -123,6 +123,11 @@ CORE
     --url                       Target web page URL with www.example.com
     --debug                     Optional value for debug can be true or false
 
+    --session                   Manage sessions
+    --name                      Setup session name
+    --desc                      Setup session description
+    --wipe                      If "yes" will set name and description to default
+
 LOOKUP
     lookup                      Lookup contains automations for the lookup proccess in 
                                 cyber security

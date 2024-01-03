@@ -3,7 +3,6 @@ name: maid_visual
 on:
   push:
     branches:
-      - "*/*"
       - "trunk"
       - "build"
       - "stable"

@@ -44,6 +44,8 @@ tasks.
 
 - Scanner: Provides a web scanner for general use.
 
+- Osint: Provides search engine to local and remote databases
+
 - Core/Mod.rs: Allows for the download of entire web servers (if linked)
 and offers automations for tools like Exif and common ports for Nmap.
 

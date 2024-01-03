@@ -1,6 +1,8 @@
 use crate::core::messages::*;
 use crate::core::structs::*;
 use crate::core::utils::*;
+use std::fs::File;
+use std::io::Write;
 
 // @core
 
@@ -36,6 +38,37 @@ pub fn core_binary_backup(backup: Backup, debug: bool) -> bool {
     system_command_exec(instance)
 }
 
+pub fn session_manager(session: Session, debug: bool) -> bool {
+
+    let mut file = match File::create("/var/maid/maid_lists/embedded/session.meow") {
+        Ok(file) => file,
+        Err(err) => {
+            eprintln!("Error creating file: {}", err);
+            return false;
+        }
+    };
+
+    let content = format!( 
+        "MEOW LATEST_SESSION = \"{}\"\nMEOW DESCRIPTION = \"{}\"",
+        session.name,
+        session.desc,
+    );
+    
+    match file.write_all(content.as_bytes()) {
+        Ok(_) => {
+            if debug == true {
+                println!("Data has been written to the file.");
+            }
+            return true;
+        }
+        Err(err) => {
+            eprintln!("Error writing to file: {}", err);
+            return false;
+        }
+    }
+
+}
+
 pub fn shell_core(system_input: &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
@@ -69,6 +102,28 @@ pub fn shell_core(system_input: &mut Vec<String>) -> bool {
 
             core_binary_backup(instance, debug)
         }
+
+        "--session" => {
+            let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
+            let instance = Session {
+                name: &take_system_args(system_input, "--name"),
+                desc: &take_system_args(system_input, "--desc"),
+            };
+
+            let wipe = &take_system_args(system_input, "--wipe");
+            if wipe == "yes" {
+                let instance = Session {
+                    name: "default",
+                    desc: "default",
+                };
+
+                return session_manager(instance, debug);
+            }
+
+            session_manager(instance, debug)
+        }
+
+
 
         _ => {
             standard_messages("warning", "Invalid user input", "shell_core", "cute");
