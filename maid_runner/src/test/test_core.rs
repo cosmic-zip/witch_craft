@@ -1,5 +1,8 @@
 use super::*;
 use crate::core::structs::ProcessInit;
+use crate::core::structs::Session;
+use crate::core::core::session_manager;
+
 use crate::*;
 
 #[test]
@@ -25,3 +28,31 @@ fn test_maid_runner_command_chain() {
 }
 
 // DELETED → fn test_system_command_deep_exec()
+
+#[test]
+fn test_set_session() {
+
+    let debug = true;
+
+    let instance = Session {
+        name: "default_test_name",
+        desc: "default_test_desc",
+    };
+    
+    session_manager(instance, debug);
+
+    let session_config = read_meow("/var/maid/maid_lists/embedded/session.meow", false);
+    let session = session_config["LATEST_SESSION"].to_string();
+    let session_description = session_config["DESCRIPTION"].to_string();
+
+    assert_eq!(session, "default_test_name");
+    assert_eq!(session_description, "default_test_desc");
+
+    let instance = Session {
+        name: "default",
+        desc: "default",
+    };
+    
+    session_manager(instance, debug);
+
+}
