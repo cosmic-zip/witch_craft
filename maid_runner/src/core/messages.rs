@@ -22,7 +22,7 @@ pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) -
             icon = "🔍";
             color = "white";
         }
-        "flaged" => {
+        "flagged" => {
             icon = "🔖";
             color = "white";
         }
@@ -57,11 +57,11 @@ pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) -
     }
 
     if message == "" {
-        f_message = format!("🚧 [WARNING] :: None information givem :: at → standard_messages");
+        f_message = format!("🚧 [WARNING] :: None information given :: at → standard_messages");
         system_text(&f_message, "yellow");
         return f_message;
     } else if level == "" {
-        f_message = format!("🚧 [WARNING] :: Message level not givem :: at → standard_messages");
+        f_message = format!("🚧 [WARNING] :: Message level not given :: at → standard_messages");
         system_text(&f_message, "yellow");
         return f_message;
     }

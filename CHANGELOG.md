@@ -157,12 +157,12 @@ Date: qua 13 set 2023 17:07:56 -03
 	→ Rename files folder to maid_lists
 	→ Updated version
 	→ Fix config file paths
-	→ Merged maid_list project to MaisRunner
+	→ Merged maid_list project to MaidRunner
 		→ Added maid_lists xss-payload-list.txt
 		→ Added maid_lists user_names.ascii
 		→ Added maid_lists maid_list_universal.ascii
 		→ Added maid_lists files_extensions.ascii
-		→ Added maid_lists mallware_hash.ascii
+		→ Added maid_lists malware_hash.ascii
 		→ Added maid_lists repo_keyword_scan.ascii
 		→ Added maid_lists dice_eff_words.ascii
 
@@ -180,7 +180,7 @@ Date: dom 01 out 2023 16:46:59 -03
 	→ Documentation updated with sample source code included
 	→ Manual pages updated
 	→ Unit tests updated
-	→ Docs and images moved to subfolders for easier navigation
+	→ Docs and images moved to sub folders for easier navigation
 	→ Removed unused debugs
 	→ Removed warnings about unused variables and imports
 	→ Documentation split into separate files inside docs
@@ -190,7 +190,7 @@ Version 0.9.0
 
 Date: seg 09 out 2023 21:18:50 -03
 
-	→ Added maid_av Active intivurus scanner
+	→ Added maid_av Active antivirus scanner
 	→ added a pattern-based AV scanner
 	→ Added hash-based AV scanner
 	→ Added ASCII-based entropy algorithm
@@ -272,8 +272,8 @@ Version 0.12.2
 
 Date: ter 20 nov 2023 12:00:00 -03
 
-	→ Fidex small bugs inside core module.
-    → Fidex missing documentation.
+	→ Fixed small bugs inside core module.
+    → Fixed missing documentation.
 
 Version 0.13.0
 
@@ -319,7 +319,7 @@ Date: sex 29 dez 2023 20:51:45 -03
     → Fixed file names from conf to config
     → Added private modules configs
     → Corrected country_code file name
-    → Added base IP and city geolocation functions
+    → Added base IP and city geo location functions
     → Added private modules path
     → Added hosts database from StevenBlack/hosts
     → Moved manual to the readme file

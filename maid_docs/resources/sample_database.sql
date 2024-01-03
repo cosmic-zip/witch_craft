@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS logs (
     source_description TEXT NOT NULL,
     timestemp TEXT NOT NULL,
     returned_status TEXT NOT NULL,
-    formated_stdout TEXT NOT NULL,
-    formated_stderr TEXT NOT NULL,
+    formatted_stdout TEXT NOT NULL,
+    formatted_stderr TEXT NOT NULL,
     debug TEXT NOT NULL,
 );

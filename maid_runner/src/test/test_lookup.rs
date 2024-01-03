@@ -4,7 +4,7 @@ use crate::*;
 #[test]
 fn test_lookup_mac_addr() {
     let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
-    let file = &format!("{}{}", config["GENRAL_BASE_PATH"], config["MACADDR"]);
+    let file = &format!("{}{}", config["GENERAL_BASE_PATH"], config["MACADDR"]);
 
     let lk_mac = LookupMacAddress {
         vendor_mac: "01:23",

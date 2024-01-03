@@ -5,7 +5,7 @@ use crate::*;
 // #[test]
 // fn test_firewall_preset() {
 //     let debug = true;
-//     let option = "hardned";
+//     let option = "hardened";
 //     let output = firewall_preset(option, debug);
 //     assert_eq!(output, true);
 // }

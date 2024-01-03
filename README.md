@@ -69,7 +69,7 @@ applications and APIs, and more.
     --wipe                      If "yes" will set name and description to default
 
 **LOOKUP**
-    lookup                      Lookup contains automations for the lookup proccess in 
+    lookup                      Lookup contains automation's for the lookup process in 
                                 cyber security
 
     --mac_address key value     Lookup mac vendor based on first 3 pairs
@@ -93,8 +93,8 @@ applications and APIs, and more.
 
 **WEB SCANNER**
 
-    scanner                     Scanner contains automations for the web scanning 
-                                proccess thats include namp, dirbuster, dnsenum, etc.
+    scanner                     Scanner contains automation's for the web scanning 
+                                process thats include namp, dirbuster, dnsenum, etc.
 
     --web_scanner               Scanning domain and ip's 
     --target                    Set target ip or dns can be 172.16.0.1 or example.com
@@ -177,9 +177,9 @@ applications and APIs, and more.
 
     maid_av                     Maid_av is a basic malware detection tool based on hashes. 
 
-    --hash                      Hash sha256, return the hash if an malware are dectec  
-    --pattern                   Search on a database for hash md5, sha256, name, extencion 
-    --scanner                   Automaticly scanner all files and folders inside an base path
+    --hash                      Hash sha256, return the hash if an malware are detected 
+    --pattern                   Search on a database for hash md5, sha256, name, extension 
+    --scanner                   Automatically scanner all files and folders inside an base path
                                 like: /path/ or ./path
 
 **FIREWALL**
@@ -194,7 +194,7 @@ applications and APIs, and more.
             │   reset        │ Remove all firewall rules                │
             │   kill         │ Drop all in/out connection and allow     │
             │                │ ports for outgoing: 80,443,24.           │
-            │   hardned      │ Same kill rules, but allow more outging  │
+            │   hardened     │ Same kill rules, but allow more outgoing │
             │                │ ports: 80, 8080, 443, 20, 21, 22, 25,    │
             │                │ 110, 143, 53, 123.                       │
             └────────────────┴──────────────────────────────────────────┘ 
@@ -219,7 +219,7 @@ applications and APIs, and more.
     deprecated modules: This modules can provide some hints only.  
 
     unix_network                Linux network                                                                                            
-    unix_sys_info               Linux system status an informations 
+    unix_sys_info               Linux system status an information 
     unix_utility                Linux utility                                                                                            
     unix_command                Linux command                                                                                             
     unix_misc                   Linux misc                                                                                       

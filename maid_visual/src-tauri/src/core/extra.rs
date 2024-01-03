@@ -52,7 +52,7 @@ pub fn standard_messages(level: &str, message: &str, at: &str, cuteness: &str) -
             icon = "🔍";
             color = "white";
         }
-        "flaged" => {
+        "flagged" => {
             icon = "🔖";
             color = "white";
         }

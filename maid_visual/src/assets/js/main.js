@@ -67,7 +67,7 @@ function exec_write_table(data, tag_id) {
 
 invoke('select_report', { from: 'all', size: 100 }).then((data) => exec_write_table(data, "logsTable"));
 invoke('select_report', { from: 'attack', size: 100 }).then((data) => exec_write_table(data, "logsAttack"));
-invoke('select_report', { from: 'bootnet', size: 100 }).then((data) => exec_write_table(data, "logsBotnet"));
+invoke('select_report', { from: 'botnet', size: 100 }).then((data) => exec_write_table(data, "logsBotnet"));
 invoke('select_report', { from: 'bcurl', size: 100 }).then((data) => exec_write_table(data, "logsBcurl"));
 invoke('select_report', { from: 'lookup', size: 100 }).then((data) => exec_write_table(data, "logsLookup"));
 invoke('select_report', { from: 'utils', size: 100 }).then((data) => exec_write_table(data, "logsAv"));

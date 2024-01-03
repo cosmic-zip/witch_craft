@@ -16,7 +16,7 @@ pub fn sample(data: SampleData, debug: bool) -> bool {
     system_command_exec(instance)
 }
 
-pub fn open_streat_map_gen(term: OsintLocationOSM, debug: bool) -> bool {
+pub fn open_street_map_gen(term: OsintLocationOSM, debug: bool) -> bool {
 
     let link = format!(
         "https://www.openstreetmap.org/search?query={}#map={}/{}/{}",
@@ -32,8 +32,8 @@ pub fn open_streat_map_gen(term: OsintLocationOSM, debug: bool) -> bool {
 
     let instance = ProcessInit {
         source: firefox_link.as_str(),
-        source_from: "open_streat_map_gen",
-        source_description: "Create custom links to OpenStreatMap",
+        source_from: "open_street_map_gen",
+        source_description: "Create custom links to OpenStreetMap",
         debug: debug,
     };
 
@@ -73,7 +73,7 @@ pub fn city_geo_location(query: CityGeoLocation, debug: bool) -> bool {
                             }
                             Err(_err) => println!("error:src.modules.osint.city_geo_location"),
                         }
-                        standard_messages("falged", "Found", &line, "cute");
+                        standard_messages("flagged", "Found", &line, "cute");
                     }
 
                     // let data = Logger {
@@ -123,14 +123,14 @@ pub fn city_geo_location(query: CityGeoLocation, debug: bool) -> bool {
 pub fn ip_geo_location(ip: IpGeoLocation, debug: bool ) ->  bool {
 
     // ip filter
-    let mut ip_formated = String::new();
+    let mut ip_formatted = String::new();
     for symbol in ip.ip_string.chars() {
         if symbol == '.' {
-            ip_formated = format!("{}{}", ip_formated, "");
+            ip_formatted = format!("{}{}", ip_formatted, "");
         } else if symbol == ':' {
-            ip_formated = format!("{}{}", ip_formated, "");
+            ip_formatted = format!("{}{}", ip_formatted, "");
         } else {
-            ip_formated = format!("{}{}", ip_formated, symbol);
+            ip_formatted = format!("{}{}", ip_formatted, symbol);
         }
     }
 
@@ -152,7 +152,7 @@ pub fn shell_osint(system_input: &mut Vec<String>) -> bool {
                 long: &take_system_args(system_input, "--long"),
                 lati: &take_system_args(system_input, "--lati"),
             };
-            open_streat_map_gen(instance, debug)
+            open_street_map_gen(instance, debug)
         }
 
         "--city_geo" => {

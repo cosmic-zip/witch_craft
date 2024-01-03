@@ -32,7 +32,7 @@ from its predecessors and offers the following modules:
 - Botnet: Deals with micro VM-based botnets, especially for web-related
 tasks.
 
-- Curl: Provides bindings and automations for the Curl utility.
+- Curl: Provides bindings and automation's for the Curl utility.
 
 - Lookup: Offers file and web lookup functionalities.
 
@@ -47,7 +47,7 @@ tasks.
 - Osint: Provides search engine to local and remote databases
 
 - Core/Mod.rs: Allows for the download of entire web servers (if linked)
-and offers automations for tools like Exif and common ports for Nmap.
+and offers automation's for tools like Exif and common ports for Nmap.
 
 - This core application serves as the foundation for the entire project,
 offering a wide array of cybersecurity and system administration

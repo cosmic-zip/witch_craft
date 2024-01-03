@@ -24,20 +24,20 @@ use std::collections::HashMap;
 use std::fs;
 
 pub fn filter(line: &str) -> String {
-    let mut formated = "".to_string();
+    let mut formatted = "".to_string();
     for symbol in line.chars() {
         if symbol == '"' {
-            formated = format!("{}{}", formated, "");
+            formatted = format!("{}{}", formatted, "");
         } else if symbol == '\\' {
-            formated = format!("{}{}", formated, "\\\\");
+            formatted = format!("{}{}", formatted, "\\\\");
         } else if symbol == '#' {
-            formated = format!("{}{}", formated, "");
+            formatted = format!("{}{}", formatted, "");
         } else {
-            formated = format!("{}{}", formated, symbol);
+            formatted = format!("{}{}", formatted, symbol);
         }
     }
 
-    return formated;
+    return formatted;
 }
 
 pub fn read_meow(path: &str, debug: bool) -> HashMap<String, String> {

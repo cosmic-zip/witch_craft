@@ -8,7 +8,7 @@ use std::{fs, io};
 
 pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
     let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
-    let malware_db = &format!("{}{}", config["GENRAL_BASE_PATH"], config["MALWARE_HASH"]);
+    let malware_db = &format!("{}{}", config["GENERAL_BASE_PATH"], config["MALWARE_HASH"]);
 
     let file_path = malware_db;
 
@@ -38,7 +38,7 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
             let message = format!("{}", err);
             standard_messages(
                 "error",
-                "Error found while looking for malware hashs",
+                "Error found while looking for malware hash's",
                 &message,
                 "cute",
             );
@@ -49,15 +49,15 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
 
 pub fn search_malware_pattern(pattern: &str, _debug: bool) -> bool {
     let config = read_meow("/var/maid/maid_lists/embedded/config.meow", false);
-    let malware_db = &format!("{}{}", config["GENRAL_BASE_PATH"], config["MALWARE_HASH"]);
+    let malware_db = &format!("{}{}", config["GENERAL_BASE_PATH"], config["MALWARE_HASH"]);
 
-    standard_messages("flaged", "Searching for malware pattern", "", "cute");
+    standard_messages("flagged", "Searching for malware pattern", "", "cute");
 
     match find_all_matching_lines(malware_db, pattern) {
         Ok(result) => {
             if !result.is_empty() {
                 for line in result {
-                    standard_messages("flaged", "Malware was discovered.", &line, "cute");
+                    standard_messages("flagged", "Malware was discovered.", &line, "cute");
                 }
                 return true;
             } else {
@@ -83,8 +83,8 @@ pub fn calculate_sha256_hash(file_path: &str, debug: bool) -> Result<String, io:
     let hash = try_digest(input).unwrap();
 
     if debug == true {
-        standard_messages("flaged", "SHA256", &hash, "cute");
-        standard_messages("flaged", "File path", &hash, "cute");
+        standard_messages("flagged", "SHA256", &hash, "cute");
+        standard_messages("flagged", "File path", &hash, "cute");
     }
 
     Ok(hash)
@@ -107,12 +107,12 @@ pub fn list_files_and_folders(dir_path: &str) -> Result<Vec<PathBuf>, std::io::E
     Ok(items)
 }
 
-pub fn active_malware_scanner(derectory: &str, debug: bool) -> bool {
+pub fn active_malware_scanner(directory: &str, debug: bool) -> bool {
     if debug == true {
-        println!("{}", derectory);
+        println!("{}", directory);
     }
 
-    match list_files_and_folders(derectory) {
+    match list_files_and_folders(directory) {
         Ok(items) => {
             for _item in items {
                 match calculate_sha256_hash("/bin/yes", true) {
