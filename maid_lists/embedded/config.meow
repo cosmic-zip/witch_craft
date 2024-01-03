@@ -9,25 +9,25 @@
 #                                                  #
 # ------------------------------------------------ #
 
-MEOW GENRAL_BASE_PATH       = "/var/maid/maid_lists/general/"
+MEOW GENERAL_BASE_PATH       = "/var/maid/maid_lists/general/"
 MEOW VALIDATORS_BASE_PATH   = "/var/maid/maid_lists/validators/"
 MEOW REPORT_BASE_PATH       = "/var/maid/maid_lists/report/"
 MEOW INDEX                  = "/var/maid/maid_lists/html/index.html"
 
 MEOW DIRECTORIES            = "directories.config" 
 MEOW DISPOSABLE_EMAIL_BLK   = "disposable_email_blocklist.config"
-MOEW EFF_DICE               = "dice_eff_words.config"  
+MEOW EFF_DICE               = "dice_eff_words.config"  
 MEOW EMAIL_TRUSTED_DOMAIN   = "email_trusted_list.config"
 MEOW FILES_EXT              = "files_extensions.config"
 MEOW LDNS                   = "large_dns.config"  
 MEOW MACADDR                = "macaddr_lockup.config"  
-MOEW MIAD_LISTS_UNIVERSAL   = "maid_list_universal.config"
-MOEW REPOSITORY_KEYWORDS    = "repo_keyword_scan.config"
+MEOW MIAD_LISTS_UNIVERSAL   = "maid_list_universal.config"
+MEOW REPOSITORY_KEYWORDS    = "repo_keyword_scan.config"
 MEOW SDNS                   = "small_dns.config"  
-MOEW TABLES                 = "tables.config"
+MEOW TABLES                 = "tables.config"
 MEOW TLDS                   = "tlds.config"
-MOEW USER_NAMES             = "user_names.config"
-MOEW XSS_PAYLOAD_LIST       = "xss-payload-list.config"
+MEOW USER_NAMES             = "user_names.config"
+MEOW XSS_PAYLOAD_LIST       = "xss-payload-list.config"
 MEOW MALWARE_HASH           = "malware_hash.config"
 
 # REPORTS AND SESSIONS
@@ -47,7 +47,7 @@ MEOW TEST_SDNS              = "test_small_dns.config"
 
 MEOW PRIVATE_MODULES        = "/var/maid/maid_lists/private/"
 
-MOEW GEODATA_COUNTRY_CODES  = "geodata/country_codes.config"
+MEOW GEODATA_COUNTRY_CODES  = "geodata/country_codes.config"
 MEOW GEODATA_CITY_CODES     = "geodata/geodata.config"
 MEOW GEODATA_WORLDCITIES    = "geodata/worldcities.config"
-MOEW IP_GEO_LOCATION        = "ip2location.config"
+MEOW IP_GEO_LOCATION        = "ip2location.config"
