@@ -92,7 +92,7 @@ pub fn select_report_from_db(conn: &Connection, from: String, size: i32) -> Resu
 #[tauri::command]
 pub fn select_report(from: String, size: i32) -> Vec<HashMap<String, String>> {
 
-    let report_config = read_meow("/var/maid/witch_spells/embedded/config.meow", false);
+    let report_config = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let report = format!(
         "{}{}",
         report_config["REPORT_BASE_PATH"], report_config["REPORT_LOG"]
