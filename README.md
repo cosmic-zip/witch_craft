@@ -173,7 +173,7 @@ applications and APIs, and more.
 
 **ANTIVIRUS**
 
-    antivirus                   Maid_av is a basic malware detection tool based on hashes. 
+    antivirus                   antivirus is a basic malware detection tool based on hashes. 
 
     --hash                      Hash sha256, return the hash if an malware are detected 
     --pattern                   Search on a database for hash md5, sha256, name, extension 
@@ -242,10 +242,10 @@ applications and APIs, and more.
 
 **FILES**
 
-    Attention! The 'maid_list' folder must be located within '/var/witch_craft/' directory, 
-    and the current user must have read/write permissions to access it. Failure to 
-    meet these requirements may result in unexpected behavior or errors during the 
-    cleaning process. 
+    Attention! The 'witch_spells' folder must be located within '/var/witch_craft/' 
+    directory, and the current user must have read/write permissions to access it. 
+    Failure to meet these requirements may result in unexpected behavior or errors 
+    during the cleaning process. 
 
 <hr>
 
@@ -288,14 +288,14 @@ Step 3: Explore the Release Folder
 
 Navigate to the release folder to find the built components:
 
-* **witch_craft**: The Maid application executable.
-* **witch_oracle**: Executable for data visualization.
+* **witch_craft**: The cli application executable.
+* **witch_oracle**: The gui application executable.
 
 **Usage**
 
 After building the project, you can run each component individually. Here's a brief overview:
 
-**Running witch_craft**
+**Running Witch_Craft**
 
 Execute the following command to run the witch_craft application:
 
@@ -305,9 +305,9 @@ Execute the following command to run the witch_craft application:
 
 ```
 
-**Running Maid Visual**
+**Running Witch Oracle**
 
-To visualize data, run the Maid Visual application:
+To visualize data, run the Witch Oracle application:
 
 ```bash
 ./release/witch_oracle
