@@ -1,4 +1,5 @@
-use crate::core::{core::*, manual::*, messages::*, structs::*, utils::*};
+use crate::core::{core::*, messages::*, structs::*, utils::*};
+use crate::manual::manual::*;
 
 use crate::modules::{
     attack::attack::*,

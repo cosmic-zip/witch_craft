@@ -5,7 +5,9 @@ mod core;
 mod meow;
 mod modules;
 mod shell;
+mod manual;
 
+use crate::manual::manual::*;
 use crate::core::utils::*;
 use crate::meow::meow::*;
 use crate::modules::{
