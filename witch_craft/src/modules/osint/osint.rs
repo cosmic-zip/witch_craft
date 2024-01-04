@@ -55,9 +55,13 @@ pub fn city_geo_location(query: CityGeoLocation, debug: bool) -> bool {
 
     for file in paths {
         match find_all_matching_lines(&file, query.city) {
+
             Ok(result) => {
+            
                 if !result.is_empty() {
+            
                     for line in result {
+            
                         let data = Logger {
                             source: "city_geo_location".to_string(),
                             source_from: "osint".to_string(),
@@ -70,6 +74,7 @@ pub fn city_geo_location(query: CityGeoLocation, debug: bool) -> bool {
                         };
 
                         match logger(data) {
+
                             Ok(_result) => {
                                 // standard_messages("saved", "Log saved", "", "cute");
                             }
@@ -77,23 +82,6 @@ pub fn city_geo_location(query: CityGeoLocation, debug: bool) -> bool {
                         }
                         standard_messages("flagged", "Found", &line, "cute");
                     }
-
-                    // let data = Logger {
-                    //     source: "find_all_matching_lines".to_string(),
-                    //     source_from: "osint".to_string(),
-                    //     source_description: "Look up geographic information on a city".to_string(),
-                    //     status: 0.to_string(),
-                    //     stdout: format!("{:?}", line),
-                    //     stderr: "none".to_string(),
-                    //     debug: debug,
-                    // };
-
-                    // match logger(data) {
-                    //     Ok(_result) => {
-                    //         // standard_messages("saved", "Log saved", "", "cute");
-                    //     }
-                    //     Err(_err) => println!("Error"),
-                    // }
 
                     return true;
                 } else {

@@ -1,16 +1,17 @@
 use crate::core::{core::*, manual::*, messages::*, structs::*, utils::*};
 
 use crate::modules::{
+    attack::attack::*,
     antivirus::antivirus::*,
+    botnet::botnet::*,
     curl::curl::*,
     firewall::firewall::*,
-    // attack::attack::*,
-    iso::iso::*,
-    // botnet::botnet::*,
+    botnet::botnet::*,
     lookup::lookup::*,
-    osint::osint::*,
-    // rootkit::rootkit::*,
+    rootkit::rootkit::*,
+    cubes::cubes::*,
     scanner::scanner::*,
+    osint::osint::*,
 };
 
 // command structure
@@ -35,6 +36,10 @@ pub fn init() -> u8 {
             shell_antivirus(system_input);
         }
 
+        "cubes" | "c" => {
+            shell_cubes(system_input);
+        }
+
         "lookup" | "l" => {
             shell_lookup(system_input);
         }
@@ -55,7 +60,7 @@ pub fn init() -> u8 {
             shell_firewall(system_input);
         }
 
-        "osint" => {
+        "osint" | "in" => {
             shell_osint(system_input);
         }
 

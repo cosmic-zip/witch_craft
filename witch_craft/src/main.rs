@@ -29,6 +29,8 @@ use crate::modules::{
     cubes::cubes_structs::*,
     scanner::scanner::*,
     scanner::scanner_structs::*,
+    osint::osint::*,
+    osint::osint_structs::*,
 };
 
 use crate::shell::shell::init;
