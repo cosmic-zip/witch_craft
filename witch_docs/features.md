@@ -1,4 +1,4 @@
-# Maid Runner syntax
+# witch_craft syntax
 
 ### Main Keys
 
