@@ -7,7 +7,11 @@
 ![GitHub License](https://img.shields.io/github/license/th3maid/witch_craft)
 ![GitHub top language](https://img.shields.io/github/languages/top/th3maid/witch_craft)
 
-# witch_craft
+<center>
+<br>
+<h1>WITCH_CRAFT</h1>
+<br>
+</center>
 
 witch_craft is a versatile task automation software designed to serve
 as the foundation for various cyber security modules. It provides
