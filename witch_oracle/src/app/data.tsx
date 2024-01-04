@@ -25,7 +25,7 @@ export default function Data() {
 // invoke('select_report', { from: 'bcurl', size: 100 }).then((data) => exec_write_table(data, "logsBcurl"));
 // invoke('select_report', { from: 'lookup', size: 100 }).then((data) => exec_write_table(data, "logsLookup"));
 // invoke('select_report', { from: 'utils', size: 100 }).then((data) => exec_write_table(data, "logsAv"));
-// invoke('select_report', { from: 'pods', size: 100 }).then((data) => exec_write_table(data, "logsPods"));
+// invoke('select_report', { from: 'cubes', size: 100 }).then((data) => exec_write_table(data, "logsPods"));
 // invoke('select_report', { from: 'rootkit', size: 100 }).then((data) => exec_write_table(data, "logsRookit"));
 // invoke('select_report', { from: 'scanner', size: 100 }).then((data) => exec_write_table(data, "logsScanner"));
 // invoke('select_report', { from: 'osint', size: 100 }).then((data) => exec_write_table(data, "logsOsint"));
