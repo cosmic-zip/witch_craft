@@ -39,7 +39,6 @@ pub fn core_binary_backup(backup: Backup, debug: bool) -> bool {
 }
 
 pub fn session_manager(session: Session, debug: bool) -> bool {
-
     let mut file = match File::create("/var/witch_craft/witch_spells/embedded/session.meow") {
         Ok(file) => file,
         Err(err) => {
@@ -48,12 +47,11 @@ pub fn session_manager(session: Session, debug: bool) -> bool {
         }
     };
 
-    let content = format!( 
+    let content = format!(
         "MEOW LATEST_SESSION = \"{}\"\nMEOW DESCRIPTION = \"{}\"",
-        session.name,
-        session.desc,
+        session.name, session.desc,
     );
-    
+
     match file.write_all(content.as_bytes()) {
         Ok(_) => {
             if debug == true {
@@ -66,7 +64,6 @@ pub fn session_manager(session: Session, debug: bool) -> bool {
             return false;
         }
     }
-
 }
 
 pub fn shell_core(system_input: &mut Vec<String>) -> bool {
@@ -122,8 +119,6 @@ pub fn shell_core(system_input: &mut Vec<String>) -> bool {
 
             session_manager(instance, debug)
         }
-
-
 
         _ => {
             standard_messages("warning", "Invalid user input", "shell_core", "cute");

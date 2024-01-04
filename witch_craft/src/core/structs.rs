@@ -59,7 +59,6 @@ pub struct ProcessResult<
     pub debug: bool,
 }
 
-
 pub struct Backup<'from, 'to, 'technic> {
     pub from: &'from str,
     pub to: &'to str,

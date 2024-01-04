@@ -1,16 +1,16 @@
 use crate::core::{core::*, manual::*, messages::*, structs::*, utils::*};
 
 use crate::modules::{
+    antivirus::antivirus::*,
     curl::curl::*,
     firewall::firewall::*,
-    // botnet::botnet::*,
-    lookup::lookup::*,
     // attack::attack::*,
     iso::iso::*,
-    antivirus::antivirus::*,
+    // botnet::botnet::*,
+    lookup::lookup::*,
+    osint::osint::*,
     // rootkit::rootkit::*,
     scanner::scanner::*,
-    osint::osint::*,
 };
 
 // command structure

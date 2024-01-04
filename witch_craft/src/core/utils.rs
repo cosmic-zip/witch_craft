@@ -153,7 +153,7 @@ pub fn system_exec_shell(debug: bool) -> Vec<String> {
 pub fn take_system_args(mut data: &mut Vec<String>, parameter_name: &str) -> String {
     if data.len() <= 2 {
         return "[GSV] :: Invalid vector size at → gsv".to_string();
-    } 
+    }
 
     let mut count = 2;
     while count < data.len() {
@@ -170,17 +170,16 @@ pub fn take_system_args(mut data: &mut Vec<String>, parameter_name: &str) -> Str
             // Drop error message if debug flag is missing
             return "".to_string();
         }
-    
+
         let message = format!(
             "[GSV] :: Parameter name not found at → P: {}, Vec: {:?}",
             parameter_name, data
         );
-    
+
         return standard_messages("error", &message, "utils::take_system_args", "cute");
     } else {
         return "".to_string();
     }
-
 }
 
 pub fn take_system_args_debug(debug: String) -> bool {

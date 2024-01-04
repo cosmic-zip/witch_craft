@@ -567,7 +567,7 @@ pub fn system_exec_manual(page: &str) -> bool {
         "unix_misc" => system_text(UNIX_MISC, "cyan"),
         "unix_files" => system_text(UNIX_FILES, "cyan"),
         "unix_folders" => system_text(UNIX_FOLDERS, "cyan"),
-        // WINDOWS 
+        // WINDOWS
         "windows_files" => system_text(WINDOWS_FILES, "cyan"),
         "windows_reg" => system_text(WINDOWS_COMMON_REGISTER_LOCATIONS, "cyan"),
         "windows_cmd" => system_text(WINDOWS_CMD_BASICS, "cyan"),

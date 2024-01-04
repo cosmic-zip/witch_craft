@@ -1,12 +1,12 @@
+pub mod test_antivirus;
 pub mod test_attack;
 pub mod test_bcurl;
 pub mod test_botnet;
 pub mod test_core;
+pub mod test_cubes;
 pub mod test_firewall;
 pub mod test_iso27x;
 pub mod test_lookup;
-pub mod test_antivirus;
-pub mod test_cubes;
 pub mod test_rootkit;
 pub mod test_scanner;
 pub mod test_shell;

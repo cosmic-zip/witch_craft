@@ -1,9 +1,9 @@
 use crate::core::messages::standard_messages;
+use crate::core::report::logger;
+use crate::core::structs::Logger;
 use crate::core::structs::ProcessInit;
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
-use crate::core::report::logger;
-use crate::core::structs::Logger;
 use crate::modules::lookup::lookup_structs::*;
 
 pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
@@ -36,7 +36,7 @@ pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
                         stderr: "none".to_string(),
                         debug: debug,
                     };
-                
+
                     match logger(data) {
                         Ok(_result) => {
                             // standard_messages("saved", "Log saved", "", "cute");
@@ -46,8 +46,6 @@ pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
 
                     standard_messages("falged", "Found", &line, "cute");
                 }
-
-                
 
                 return true;
             } else {

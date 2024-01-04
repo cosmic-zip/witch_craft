@@ -1,7 +1,7 @@
 use super::*;
+use crate::core::core::session_manager;
 use crate::core::structs::ProcessInit;
 use crate::core::structs::Session;
-use crate::core::core::session_manager;
 
 use crate::*;
 
@@ -31,14 +31,13 @@ fn test_witch_craft_command_chain() {
 
 #[test]
 fn test_set_session() {
-
     let debug = true;
 
     let instance = Session {
         name: "default_test_name",
         desc: "default_test_desc",
     };
-    
+
     session_manager(instance, debug);
 
     let session_config = read_meow("/var/witch_craft/witch_spells/embedded/session.meow", false);
@@ -52,7 +51,6 @@ fn test_set_session() {
         name: "default",
         desc: "default",
     };
-    
-    session_manager(instance, debug);
 
+    session_manager(instance, debug);
 }
