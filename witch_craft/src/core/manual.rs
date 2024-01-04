@@ -1,6 +1,6 @@
 use crate::core::utils::system_text;
 
-pub const MAID_RUNNER_HEADER: &str = r#"
+pub const WITCH_CRAFT_HEADER: &str = r#"
 
       ███╗   ███╗ █████╗ ██╗██████╗         ██████╗ ██╗   ██╗███╗   ██╗███╗   ██╗███████╗██████╗ 
       ████╗ ████║██╔══██╗██║██╔══██╗        ██╔══██╗██║   ██║████╗  ██║████╗  ██║██╔════╝██╔══██╗
@@ -11,7 +11,7 @@ pub const MAID_RUNNER_HEADER: &str = r#"
                                                                       
 "#;
 
-pub const MAID_RUNNER_BANNER: &str = r#"
+pub const WITCH_CRAFT_BANNER: &str = r#"
 
                                                                                                                                                       
                                                                                                                                                       
@@ -90,12 +90,12 @@ pub const MAID_RUNNER_BANNER: &str = r#"
 
 "#;
 
-pub const MAID_RUNNER_MAIN_HELP: &str = r#"                                                                                          
-MAIDRUNNER
+pub const WITCH_CRAFT_MAIN_HELP: &str = r#"                                                                                          
+WITCH_CRAFT
 
 NAME
 
-    witch_craft - Maid Runner is a versatile task automation software designed to serve as 
+    witch_craft - witch_craft is a versatile task automation software designed to serve as 
     the foundation for various cyber security modules.
 
 SYNOPSIS
@@ -233,9 +233,9 @@ BCURL
     --status_code               Show status code from a GET request (useful for is_alive 
                                 tests).
 
-MAID_AV
+ANTIVIRUS
 
-    maid_av                     Maid_av is a basic malware detection tool based on hashes. 
+    antivirus                     Maid_av is a basic malware detection tool based on hashes. 
 
     --hash                      Hash sha256, return the hash if an malware are detected  
     --pattern                   Search on a database for hash md5, sha256, name, extension 
@@ -304,7 +304,7 @@ ENVIRONMENT
 
 FILES
 
-    Attention! The 'maid_list' folder must be located within '/var/maid/' directory, 
+    Attention! The 'maid_list' folder must be located within '/var/witch_craft/' directory, 
     and the current user must have read/write permissions to access it. Failure to 
     meet these requirements may result in unexpected behavior or errors during the 
     cleaning process. 
@@ -573,11 +573,11 @@ pub fn system_exec_manual(page: &str) -> bool {
         "windows_cmd" => system_text(WINDOWS_CMD_BASICS, "cyan"),
         "windows_powershell" => system_text(WINDOWS_POWERSHELL_BASICS, "cyan"),
         // ETC
-        "header" => system_text(MAID_RUNNER_HEADER, "purple"),
-        "maid" => system_text(MAID_RUNNER_BANNER, "white"),
+        "header" => system_text(WITCH_CRAFT_HEADER, "purple"),
+        "maid" => system_text(WITCH_CRAFT_BANNER, "white"),
         _ => {
-            system_text(MAID_RUNNER_HEADER, "purple");
-            system_text(MAID_RUNNER_MAIN_HELP, "purple");
+            system_text(WITCH_CRAFT_HEADER, "purple");
+            system_text(WITCH_CRAFT_MAIN_HELP, "purple");
             return true;
         }
     }

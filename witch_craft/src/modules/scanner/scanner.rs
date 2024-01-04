@@ -84,7 +84,7 @@ pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
         }
 
         "sub_domains" => {
-            let path = read_meow("/var/maid/witch_spells/embedded/config.meow", false);
+            let path = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
             let final_path = &path["REPORT_BASE_PATH"];
 
             let command = format!(
@@ -105,7 +105,7 @@ pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
         }
 
         "sub_directories" => {
-            let path = read_meow("/var/maid/witch_spells/embedded/config.meow", false);
+            let path = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
             let final_path = &path["REPORT_BASE_PATH"];
 
             let command = format!(

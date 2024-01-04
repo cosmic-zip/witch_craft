@@ -43,7 +43,7 @@ pub fn open_street_map_gen(term: OsintLocationOSM, debug: bool) -> bool {
 
 pub fn city_geo_location(query: CityGeoLocation, debug: bool) -> bool {
 
-    let path_location = read_meow("/var/maid/witch_spells/embedded/config.meow", false);
+    let path_location = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let paths: Vec<String> = vec![
         format!("{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_CITY_CODES"]),
         format!("{}{}", path_location["PRIVATE_MODULES"], path_location["GEODATA_COUNTRY_CODES"]),

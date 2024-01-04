@@ -2,7 +2,7 @@ use super::*;
 use crate::*;
 
 // #[test]
-fn test_maid_av_pass() {
+fn test_antivirus_pass() {
     let debug = true;
     let instance = "2dd12ba5ec9cefe83d3d75f694fcb042e38bfa2497f7faab35925f502aa01200";
 

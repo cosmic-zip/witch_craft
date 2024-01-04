@@ -1,13 +1,13 @@
 use crate::core::messages::standard_messages;
 use crate::core::utils::*;
 use crate::meow::meow::read_meow;
-use crate::modules::maid_av::entropy::advanced_entropy_scanner;
+use crate::modules::antivirus::entropy::advanced_entropy_scanner;
 use sha256::{digest, try_digest};
 use std::path::{Path, PathBuf};
 use std::{fs, io};
 
 pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
-    let config = read_meow("/var/maid/witch_spells/embedded/config.meow", false);
+    let config = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let malware_db = &format!("{}{}", config["GENERAL_BASE_PATH"], config["MALWARE_HASH"]);
 
     let file_path = malware_db;
@@ -48,7 +48,7 @@ pub fn search_malware_hash(search_term: &str, debug: bool) -> bool {
 }
 
 pub fn search_malware_pattern(pattern: &str, _debug: bool) -> bool {
-    let config = read_meow("/var/maid/witch_spells/embedded/config.meow", false);
+    let config = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let malware_db = &format!("{}{}", config["GENERAL_BASE_PATH"], config["MALWARE_HASH"]);
 
     standard_messages("flagged", "Searching for malware pattern", "", "cute");
@@ -146,7 +146,7 @@ pub fn active_malware_scanner(directory: &str, debug: bool) -> bool {
     }
 }
 
-pub fn shell_maid_av(system_input: &mut Vec<String>) -> bool {
+pub fn shell_antivirus(system_input: &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
@@ -178,7 +178,7 @@ pub fn shell_maid_av(system_input: &mut Vec<String>) -> bool {
         }
 
         _ => {
-            standard_messages("warning", "Invalid user input", "shell_maid_av", "cute");
+            standard_messages("warning", "Invalid user input", "shell_antivirus", "cute");
             standard_messages("warning", "Trying exec command", cmd_arg_name, "cute");
             return false;
         }

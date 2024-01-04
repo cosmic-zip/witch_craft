@@ -3,7 +3,7 @@ use crate::*;
 
 #[test]
 fn test_lookup_mac_addr() {
-    let config = read_meow("/var/maid/witch_spells/embedded/config.meow", false);
+    let config = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let file = &format!("{}{}", config["GENERAL_BASE_PATH"], config["MACADDR"]);
 
     let lk_mac = LookupMacAddress {

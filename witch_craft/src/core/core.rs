@@ -40,7 +40,7 @@ pub fn core_binary_backup(backup: Backup, debug: bool) -> bool {
 
 pub fn session_manager(session: Session, debug: bool) -> bool {
 
-    let mut file = match File::create("/var/maid/witch_spells/embedded/session.meow") {
+    let mut file = match File::create("/var/witch_craft/witch_spells/embedded/session.meow") {
         Ok(file) => file,
         Err(err) => {
             eprintln!("Error creating file: {}", err);

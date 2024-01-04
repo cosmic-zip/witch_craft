@@ -7,7 +7,7 @@ use crate::modules::{
     lookup::lookup::*,
     // attack::attack::*,
     iso::iso::*,
-    maid_av::maid_av::*,
+    antivirus::antivirus::*,
     // rootkit::rootkit::*,
     scanner::scanner::*,
     osint::osint::*,
@@ -31,8 +31,8 @@ pub fn init() -> u8 {
             shell_core(system_input);
         }
 
-        "maid_av" | "av" => {
-            shell_maid_av(system_input);
+        "antivirus" | "av" => {
+            shell_antivirus(system_input);
         }
 
         "lookup" | "l" => {

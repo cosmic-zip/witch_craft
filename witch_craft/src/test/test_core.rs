@@ -41,7 +41,7 @@ fn test_set_session() {
     
     session_manager(instance, debug);
 
-    let session_config = read_meow("/var/maid/witch_spells/embedded/session.meow", false);
+    let session_config = read_meow("/var/witch_craft/witch_spells/embedded/session.meow", false);
     let session = session_config["LATEST_SESSION"].to_string();
     let session_description = session_config["DESCRIPTION"].to_string();
 

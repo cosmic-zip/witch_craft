@@ -92,13 +92,13 @@ pub fn logger(data: Logger) -> std::io::Result<()> {
 
     let cmd: Vec<String> = data.source.split_whitespace().map(String::from).collect();
 
-    let report_config = read_meow("/var/maid/witch_spells/embedded/config.meow", false);
+    let report_config = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let report = format!(
         "{}{}",
         report_config["REPORT_BASE_PATH"], report_config["REPORT_LOG"]
     );
 
-    let session_config = read_meow("/var/maid/witch_spells/embedded/session.meow", false);
+    let session_config = read_meow("/var/witch_craft/witch_spells/embedded/session.meow", false);
     let session = session_config["LATEST_SESSION"].to_string();
     let session_description = session_config["DESCRIPTION"].to_string();
 

@@ -172,7 +172,7 @@ fn test_scanner_web_nmap_udp() {
 
 #[test]
 fn test_scanner_web_sub_domains() {
-    let path = read_meow("/var/maid/witch_spells/embedded/config.meow", false);
+    let path = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let final_path = format!("{}{}", path["TEST_BASE_PATH"], path["TEST_SDNS"]);
 
     let output = scanner_web(
@@ -190,7 +190,7 @@ fn test_scanner_web_sub_domains() {
 
 #[test]
 fn test_scanner_web_sub_directories() {
-    let path = read_meow("/var/maid/witch_spells/embedded/config.meow", false);
+    let path = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let final_path = format!("{}{}", path["TEST_BASE_PATH"], path["TEST_DIRECTORIES"]);
 
     let output = scanner_web(
