@@ -1,14 +1,18 @@
 name: maid-runner
 base: core22
-version: '0.13.9'
+version: "0.15.0"
 summary: witch_craft is a companion for cyber security tasks.
 description: |
- witch_craft is a versatile task automation software designed to serve as the foundation for various cyber security modules. It provides capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion testing of applications and APIs, and more.
+  witch_craft is a versatile task automation software designed to serve
+  as the foundation for various cyber security modules. It provides
+  capabilities for tasks such as forensic research, OSINT (Open Source
+  Intelligence), scanning, backup and copying, intrusion testing of
+  applications and APIs, and more.
 license: GPL-3.0+
 architectures:
   - build-on: amd64
 grade: devel
-confinement: devmode
+confinement: classic
 compression: lzo
 
 layout:
@@ -26,17 +30,17 @@ parts:
     rust-channel: "1.70"
     source: witch_oracle/src-tauri/
     build-packages:
-      - libwebkit2gtk-4.0-dev 
-      - build-essential 
-      - libssl-dev 
-      - libgtk-3-dev 
-      - libayatana-appindicator3-dev 
+      - libwebkit2gtk-4.0-dev
+      - build-essential
+      - libssl-dev
+      - libgtk-3-dev
+      - libayatana-appindicator3-dev
       - librsvg2-dev
       - cargo
       - rustc
     stage-packages:
-      - curl 
-      - wget 
+      - curl
+      - wget
       - file
     override-build: |
       cargo build --release
@@ -48,27 +52,27 @@ parts:
       - rustc
       - cargo
     stage-packages:
-      - p7zip-full 
-      - nmap 
-      - curl 
-      - xxd 
-      - libc6 
-      - exiftool 
-      - traceroute 
-      - wget 
-      - iproute2 
-      - whois 
-      - dnsutils 
-      - dirb 
+      - p7zip-full
+      - nmap
+      - curl
+      - xxd
+      - libc6
+      - exiftool
+      - traceroute
+      - wget
+      - iproute2
+      - whois
+      - dnsutils
+      - dirb
       - dnsenum
 
 apps:
   witch-craft:
     command: bin/witch_craft
     plugs:
-        - home
-        - network
-  
+      - home
+      - network
+
   witch-oracle:
     command: bin/witch_oracle
     plugs:
