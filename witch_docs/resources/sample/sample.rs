@@ -25,5 +25,11 @@ pub fn shell_sample(system_input: &mut Vec<String>) -> bool {
             };
             sample(sample_data, debug)
         }
+
+        _ => {
+            standard_messages("warning", "Invalid user input", "shell_sample", "cute");
+            standard_messages("warning", "Trying exec command", cmd_arg_name, "cute");
+            return false;
+        }
     }
 }
