@@ -10,10 +10,6 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "cargo" # See documentation for possible values
-    directory: "/maid_api" # Location of package manifests
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "cargo" # See documentation for possible values
     directory: "/witch_oracle/src-tauri" # Location of package manifests
     schedule:
       interval: "weekly"
