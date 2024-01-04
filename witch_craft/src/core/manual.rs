@@ -235,7 +235,7 @@ BCURL
 
 ANTIVIRUS
 
-    antivirus                     Maid_av is a basic malware detection tool based on hashes. 
+    antivirus                     antivirus is a basic malware detection tool based on hashes. 
 
     --hash                      Hash sha256, return the hash if an malware are detected  
     --pattern                   Search on a database for hash md5, sha256, name, extension 
