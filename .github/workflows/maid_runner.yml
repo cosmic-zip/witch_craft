@@ -1,4 +1,4 @@
-name: maid_runner
+name: witch_craft
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
       - name: Install Depedencies
         run: |
           sudo mkdir /var/maid
-          sudo cp maid_lists/ /var/maid -R
+          sudo cp witch_spells/ /var/maid -R
           sudo chown $(whoami):$(whoami) /var/maid -R
           sudo apt update
           sudo apt install aptitude
@@ -40,11 +40,11 @@ jobs:
         run: git lfs checkout
       - name: Uncompress needed files
         run: |
-          7z x /var/maid/maid_lists/malware/malware.csv.7z.001
-          mv ./full.csv /var/maid/maid_lists/general/malware_hash.bin
+          7z x /var/maid/witch_spells/malware/malware.csv.7z.001
+          mv ./full.csv /var/maid/witch_spells/general/malware_hash.bin
       - name: Test Depedencies
         run: nmap --version && curl --version
       - name: Build
-        run: cargo build --verbose --manifest-path maid_runner/Cargo.toml
+        run: cargo build --verbose --manifest-path witch_craft/Cargo.toml
       - name: Run tests
-        run: cargo test --verbose --manifest-path maid_runner/Cargo.toml
+        run: cargo test --verbose --manifest-path witch_craft/Cargo.toml
