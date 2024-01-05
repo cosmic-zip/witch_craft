@@ -2,7 +2,6 @@ use crate::core::utils::system_text;
 use crate::manual::hints::*;
 
 pub const WITCH_CRAFT_BANNER: &str = r#"
-
                                                                                 
                                                  ↑↑                                       
                                           ↗↑↑↑↑↑ ↑↑↑ ↑↑↑↑↑                                
@@ -40,19 +39,10 @@ pub const WITCH_CRAFT_BANNER: &str = r#"
          ╚══╝╚══╝ ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   
 
 
-        OPTION:
-
-            help 
-            antivirus  
-            attack  
-            botnet  
-            cubes  
-            curl  
-            firewall  
-            lookup  
-            osint  
-            rootkit  
-            scanner
+        OPTIONS:
+        
+        ☢ help         ☢ antivirus    ☢ attack       ☢ botnet      ☢ cubes    ☢ curl   
+        ☢ firewall     ☢ lookup       ☢ osint        ☢ rootkit     ☢ scanner
 
 
 "#;
