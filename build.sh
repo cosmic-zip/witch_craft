@@ -8,7 +8,7 @@ sudo apt update -y
 sudo apt install -y aptitude p7zip-full nmap curl xxd libc6 exiftool \
 traceroute wget iproute2 whois dnsutils dirb dnsenum tree htop iftop \
 clang sudo libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev \
-libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev 
+libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev qemu
 
 echo && echo "Move config folders to /var"
 sudo mkdir -p /var/witch_craft
