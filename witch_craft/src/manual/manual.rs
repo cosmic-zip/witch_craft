@@ -1,8 +1,37 @@
 use crate::core::utils::system_text;
 use crate::manual::hints::*;
 
-pub const WITCH_CRAFT_HEADER: &str = r#"
+pub const WITCH_CRAFT_BANNER: &str = r#"
 
+                                                                                
+                                                 ↑↑                                       
+                                          ↗↑↑↑↑↑ ↑↑↑ ↑↑↑↑↑                                
+                                       ↑↑↑↑↑    ↑↑↑↑     ↑↑↑↑↑                            
+                                    ↑↑↑↑       ↑↑ ↑↑↑        ↑↑↑                          
+                                  ↑↑↑          ↑↑  ↑↑          ↑↑↑↗                       
+                                ↑↑↑           ↑↑    ↑↑           ↑↑↑                      
+                               ↑↑↑            ↑↑    ↑↑↑            ↑↑                     
+                              ↑↑             ↑↑      ↑↑             ↑↑                    
+                             ↑↑             ↑↑                                            
+                          ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ↑↑ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑                 
+                             ↑↑↑↑          ↑↑          ↑↑           ↑↑↑                   
+                            ↑↑ ↑↑↑↑        ↑↑          ↑↑↑       ↑↑↑   ↑↑                 
+                            ↑↑    ↑↑↑↑    ↑↑            ↑↑     ↑↑↑     ↑↑                 
+                            ↑↑      ↑↑↑↑  ↑              ↑↑ ↑↑↑        ↑↑                 
+                            ↑↑         ↑↑↑↑              ↑↑ ↑          ↑↑                 
+                            ↑↑            ↑↑↑          ↑↑ ↑↑          ↑↑                  
+                             ↑↑         ↑↑  ↑↑↑↑     ↑↑↑  ↑↑↑         ↑↑                  
+                             ↑↑↑       ↑↑      ↑  ↑↑↑      ↑↑        ↑↑                   
+                              ↑↑↑      ↑        ↑↑↑ ↑       ↑↑      ↑↑                    
+                               ↑↑↑    ↑↑     ↑↑↑    ↑↑↑↑    ↑↑     ↑↑                     
+                                 ↑↑  ↑↑   ↑↑↑↑         ↑↑↑   ↑↑  ↑↑↑                      
+                                  ↑→ ↑↑ ↑↑↑              ↑↑↑↑ ↑↑ ↑                        
+                                    ↑↑↑↑↑                   ↑↑↑↑                          
+                                    ↑↑  ↑↑↑↑            ↑↑↑↑↑ ↑↑↑                         
+                                   ↑       ↑↑↑↑↑↑↑↑↑↑↑↑↑↑        ↑                        
+                                                      
+                                   
+                                                                     
         ██╗    ██╗██╗████████╗ ██████╗██╗  ██╗         ██████╗██████╗  █████╗ ███████╗████████╗
         ██║    ██║██║╚══██╔══╝██╔════╝██║  ██║        ██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝
         ██║ █╗ ██║██║   ██║   ██║     ███████║        ██║     ██████╔╝███████║█████╗     ██║   
@@ -10,9 +39,25 @@ pub const WITCH_CRAFT_HEADER: &str = r#"
         ╚███╔███╔╝██║   ██║   ╚██████╗██║  ██║███████╗╚██████╗██║  ██║██║  ██║██║        ██║   
          ╚══╝╚══╝ ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   
 
+
+        OPTION:
+
+            help 
+            antivirus  
+            attack  
+            botnet  
+            cubes  
+            curl  
+            firewall  
+            lookup  
+            osint  
+            rootkit  
+            scanner
+
+
 "#;
 
-pub const MAID_BANNER: &str = r#"
+pub const MAID: &str = r#"
 
                                                                                                                                                       
                                                                                                                                                       
@@ -91,7 +136,11 @@ pub const MAID_BANNER: &str = r#"
 
 "#;
 
-pub const WITCH_CRAFT_MAIN_HELP: &str = r#"                                                                                          
+
+// antivirus  attack  bcurl botnet  cubes    firewall  iso  lookup  osint  rootkit  scanner
+
+pub const WITCH_CRAFT_HEADER: &str = r#"
+
 WITCH_CRAFT
 
 NAME
@@ -112,6 +161,62 @@ DESCRIPTION
 
 OPTIONS
 
+"#;
+
+pub const WITCH_CRAFT_ANTIVIRUS: &str = r#"
+ANTIVIRUS
+
+    antivirus                   Antivirus is a basic malware detection tool based on hashes. 
+
+    --hash                      Hash sha256, return the hash if an malware are detected  
+    --pattern                   Search on a database for hash md5, sha256, name, extension 
+    --scanner                   Automatically scanner all files and folders inside an base path
+                                like: /path/ or ./path
+"#;
+
+pub const WITCH_CRAFT_ATTACK: &str = r#"
+ATTACK
+
+    attack                      Todo
+
+"#;
+
+pub const WITCH_CRAFT_BCURL: &str = r#"
+BCURL
+
+    bcurl                       Rust binding for the curl command.
+
+    --curl_bind                 Binds for curl command.
+    --method                    Allow http methods: get, post, put, patch, delete, head, 
+                                options, connect, trace.
+    --auth_type                 Setup the authentication type: basic, bearer, api_key, 
+                                ntlm.   
+    --auth_token                Setup the authentication token or user:password.
+    --url                       Setup target url, they must be: www.example.com.
+    --ctn_type                  Setup content type, they need to be one of this: 
+                                json, xml, form_data, text, multi_part_form_data.
+    --data                      Setup data, if needed, but ony in the fallow formats: 
+                                json/formData/xml/text/multi_part_form_data.
+    --header                    Show http response header.
+    --status_code               Show status code from a GET request (useful for is_alive 
+                                tests).
+
+"#;
+
+pub const WITCH_CRAFT_BOTNET: &str = r#"
+BOTNET
+    
+    botnet                      Todo
+
+"#;
+pub const WITCH_CRAFT_CUBES: &str = r#"
+CUBES
+    
+    cubes                       Cubes are an simple virtual machine manager over qemu
+
+"#;
+
+pub const WITCH_CRAFT_CORE: &str = r#"
 CORE    
     core                        Core describes advanced base functions for one or more 
                                 secondary function, the core module permit access and 
@@ -129,6 +234,39 @@ CORE
     --desc                      Setup session description
     --wipe                      If "yes" will set name and description to default
 
+"#;
+
+pub const WITCH_CRAFT_FIREWALL: &str = r#"
+FIREWALL
+
+    firewall                    Setup, add, remove, backup, restore and flush firewall rules
+
+    --preset                    Use iptables to setup pre-build rule sets 
+                                                                        
+            ┌────────────────┬──────────────────────────────────────────┐
+            │    OPTION      │       DESCRIPTION                        │
+            ├────────────────┼──────────────────────────────────────────┤
+            │   reset        │ Remove all firewall rules                │
+            │   kill         │ Drop all in/out connection and allow     │
+            │                │ ports for outgoing: 80,443,24.           │
+            │   hardened     │ Same kill rules, but allow more outgoing │
+            │                │ ports: 80, 8080, 443, 20, 21, 22, 25,    │
+            │                │ 110, 143, 53, 123.                       │
+            └────────────────┴──────────────────────────────────────────┘ 
+    
+    --backup                    Backup and restore firewall rules
+    --option                    backup to Backup and restore to restore
+    --path                      Backup destination folder or file to restore
+    
+    --rule                      Setup an custom firewall rule
+    --table                     ACCEPT, DROP, REJECT and LOG
+    --chain                     INPUT, OUTPUT and FORWARD
+    --protocol                  tcp and udp
+    --port                      any
+
+"#;
+
+pub const WITCH_CRAFT_LOOKUP: &str = r#"
 LOOKUP
     lookup                      Lookup contains automation's for the lookup process in 
                                 cyber security
@@ -152,6 +290,11 @@ LOOKUP
             └────────────────┴──────────────────────────────────────────┘
     --debug                     Optional value for debug can be true or false
 
+"#;
+
+
+
+pub const WITCH_CRAFT_SCANNER: &str = r#"
 WEB SCANNER
 
     scanner                     Scanner contains automation's for the web scanning 
@@ -215,69 +358,32 @@ WEB SCANNER
             
     --debug                     Optional value for debug can be true or false.
 
-BCURL
+"#;
 
-    bcurl                       Rust binding for the curl command.
+pub const WITCH_CRAFT_OSINT: &str = r#"
+OSINT
 
-    --curl_bind                 Binds for curl command.
-    --method                    Allow http methods: get, post, put, patch, delete, head, 
-                                options, connect, trace.
-    --auth_type                 Setup the authentication type: basic, bearer, api_key, 
-                                ntlm.   
-    --auth_token                Setup the authentication token or user:password.
-    --url                       Setup target url, they must be: www.example.com.
-    --ctn_type                  Setup content type, they need to be one of this: 
-                                json, xml, form_data, text, multi_part_form_data.
-    --data                      Setup data, if needed, but ony in the fallow formats: 
-                                json/formData/xml/text/multi_part_form_data.
-    --header                    Show http response header.
-    --status_code               Show status code from a GET request (useful for is_alive 
-                                tests).
+    osint                       Osint modules provides (for premium members) tool
+                                like: geolocation, search engines like google, brave
+                                duckduckgo and more, phone numbers, email, passwords,
+                                ssh, company information, and more.
 
-ANTIVIRUS
+"#;
 
-    antivirus                     antivirus is a basic malware detection tool based on hashes. 
+pub const WITCH_CRAFT_ROOTKIT: &str = r#"
+ROOTKIT
 
-    --hash                      Hash sha256, return the hash if an malware are detected  
-    --pattern                   Search on a database for hash md5, sha256, name, extension 
-    --scanner                   Automatically scanner all files and folders inside an base path
-                                like: /path/ or ./path
+    rootkit                     Todo
 
-FIREWALL
+"#;
 
-    firewall                    Setup, add, remove, backup, restore and flush firewall rules
-
-    --preset                    Use iptables to setup pre-build rule sets 
-                                                                        
-            ┌────────────────┬──────────────────────────────────────────┐
-            │    OPTION      │       DESCRIPTION                        │
-            ├────────────────┼──────────────────────────────────────────┤
-            │   reset        │ Remove all firewall rules                │
-            │   kill         │ Drop all in/out connection and allow     │
-            │                │ ports for outgoing: 80,443,24.           │
-            │   hardened     │ Same kill rules, but allow more outgoing │
-            │                │ ports: 80, 8080, 443, 20, 21, 22, 25,    │
-            │                │ 110, 143, 53, 123.                       │
-            └────────────────┴──────────────────────────────────────────┘ 
-    
-    --backup                    Backup and restore firewall rules
-    --option                    backup to Backup and restore to restore
-    --path                      Backup destination folder or file to restore
-    
-    --rule                      Setup an custom firewall rule
-    --table                     ACCEPT, DROP, REJECT and LOG
-    --chain                     INPUT, OUTPUT and FORWARD
-    --protocol                  tcp and udp
-    --port                      any
-
+pub const WITCH_CRAFT_HELP: &str = r#"
 HELP 
 
     help                        Show help pages and common hints 
-    
-    header                      witch_craft ASCII art
-    maid                        Show and maid image in ASCII
+    banner                      witch_craft ASCII art
 
-    deprecated modules: This modules can provide some hints only.  
+    deprecated modules: This modules no longer work.  
 
     unix_network                Linux network 
     unix_sys_info               Linux system status an information 
@@ -289,8 +395,10 @@ HELP
     windows_files               Windows important files                                                         
     windows_reg                 Windows register                                                   
     windows_cmd                 Windows cmd hints                                                   
-    windows_powershell          Windows powershell hints                                                            
+    windows_powershell          Windows powershell hints 
+"#;
 
+pub const WITCH_CRAFT_FOOTER: &str = r#"                                                                                          
 WARNINGS
 
     WARNING: This Tool Is For Cybersecurity Use May Have Legal Implications
@@ -314,29 +422,45 @@ FILES
 
 
 
+
+pub fn full_manual(color: &str) -> bool {
+
+    system_text(WITCH_CRAFT_BANNER, color);
+    system_text(WITCH_CRAFT_HEADER, color);
+    system_text(WITCH_CRAFT_ANTIVIRUS, color);
+    system_text(WITCH_CRAFT_ATTACK, color);
+    system_text(WITCH_CRAFT_BCURL, color);
+    system_text(WITCH_CRAFT_BOTNET, color);
+    system_text(WITCH_CRAFT_CORE, color);
+    system_text(WITCH_CRAFT_CUBES, color);
+    system_text(WITCH_CRAFT_FIREWALL, color);
+    system_text(WITCH_CRAFT_LOOKUP, color);
+    system_text(WITCH_CRAFT_OSINT, color);
+    system_text(WITCH_CRAFT_ROOTKIT, color);
+    system_text(WITCH_CRAFT_SCANNER, color);
+    system_text(WITCH_CRAFT_HELP, color);
+    system_text(WITCH_CRAFT_FOOTER, color);
+
+    return true;
+
+}
+
 pub fn system_exec_manual(page: &str) -> bool {
     match page {
-        // UNIX
-        "unix_network" => system_text(UNIX_NETWORK, "cyan"),
-        "unix_sys_info" => system_text(UNIX_SYSTEMINFO, "cyan"),
-        "unix_utility" => system_text(UNIX_UTILITY, "cyan"),
-        "unix_command" => system_text(UNIX_COMMAND, "cyan"),
-        "unix_misc" => system_text(UNIX_MISC, "cyan"),
-        "unix_files" => system_text(UNIX_FILES, "cyan"),
-        "unix_folders" => system_text(UNIX_FOLDERS, "cyan"),
-        // WINDOWS
-        "windows_files" => system_text(WINDOWS_FILES, "cyan"),
-        "windows_reg" => system_text(WINDOWS_COMMON_REGISTER_LOCATIONS, "cyan"),
-        "windows_cmd" => system_text(WINDOWS_CMD_BASICS, "cyan"),
-        "windows_powershell" => system_text(WINDOWS_POWERSHELL_BASICS, "cyan"),
-        // ETC
-        "header" => system_text(WITCH_CRAFT_HEADER, "purple"),
-        "maid" => system_text(MAID_BANNER, "white"),
-        _ => {
-            system_text(WITCH_CRAFT_HEADER, "purple");
-            system_text(WITCH_CRAFT_MAIN_HELP, "purple");
-            return true;
-        }
+        "antivirus" => system_text(WITCH_CRAFT_ANTIVIRUS, "green"),
+        "attack"    => system_text(WITCH_CRAFT_ATTACK, "yellow"),
+        "bcurl"     => system_text(WITCH_CRAFT_BCURL, "green"),
+        "botnet"    => system_text(WITCH_CRAFT_BOTNET, "cyan"),
+        "core"      => system_text(WITCH_CRAFT_CORE, "red"),
+        "cubes"     => system_text(WITCH_CRAFT_CUBES, "green"),
+        "firewall"  => system_text(WITCH_CRAFT_FIREWALL, "yellow"),
+        "lookup"    => system_text(WITCH_CRAFT_LOOKUP, "blue"),
+        "osint"     => system_text(WITCH_CRAFT_OSINT, "purple"),
+        "rootkit"   => system_text(WITCH_CRAFT_ROOTKIT, "cyan"),
+        "scanner"   => system_text(WITCH_CRAFT_SCANNER, "white"),
+        "banner"    => system_text(WITCH_CRAFT_BANNER, "purple"),
+        "shy.maid"  => system_text(MAID, "white"),
+        _ => full_manual("purple"),
     }
 }
 

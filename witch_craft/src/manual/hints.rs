@@ -243,3 +243,18 @@ pub const WINDOWS_POWERSHELL_BASICS: &str = r#"
     Where-Object                        ?       Selects objects from a collection based 
                                                 on their property values.
 "#;
+
+
+// // UNIX
+// "unix_network" => system_text(UNIX_NETWORK, "cyan"),
+// "unix_sys_info" => system_text(UNIX_SYSTEMINFO, "cyan"),
+// "unix_utility" => system_text(UNIX_UTILITY, "cyan"),
+// "unix_command" => system_text(UNIX_COMMAND, "cyan"),
+// "unix_misc" => system_text(UNIX_MISC, "cyan"),
+// "unix_files" => system_text(UNIX_FILES, "cyan"),
+// "unix_folders" => system_text(UNIX_FOLDERS, "cyan"),
+// // WINDOWS
+// "windows_files" => system_text(WINDOWS_FILES, "cyan"),
+// "windows_reg" => system_text(WINDOWS_COMMON_REGISTER_LOCATIONS, "cyan"),
+// "windows_cmd" => system_text(WINDOWS_CMD_BASICS, "cyan"),
+// "windows_powershell" => system_text(WINDOWS_POWERSHELL_BASICS, "cyan"),
