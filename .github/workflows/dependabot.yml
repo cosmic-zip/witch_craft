@@ -6,10 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "cargo" # See documentation for possible values
-    directory: "/maid_runer" # Location of package manifests
+    directory: "/witch_craft" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "daily"
   - package-ecosystem: "cargo" # See documentation for possible values
     directory: "/witch_oracle/src-tauri" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "daily"
