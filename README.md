@@ -42,7 +42,7 @@ To build the project, follow these instructions:
 **Step 1: Clone the Repository**
 
 ```bash
-git clone https://github.com/th3Maid/witch_craft.git
+git clone https://github.com/th3Maid/witch_craft.git --branch=trunk --depth 1
 cd witch_craft
 ```
 
