@@ -1,19 +1,14 @@
 'use client'
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { invoke } from '@tauri-apps/api/tauri'
+import CardsReport from '@/app/ui/dashboard/cards-report';
 
-export default function EverySection(){
-    const [data, setData] = useState('');
 
-    // console.log(data);
+export default function EverySection({ from = '' }) {
 
-    useEffect(() => {
-        invoke<string>('select_report', { from: 'utils', size: 9999 })
-            .then(result => setData(result))
-            .catch(console.error)
-    }, [])
+    return <div>
 
-    return <div>{`Object: ${JSON.stringify(data)}`}</div>;
+        <CardsReport from="utils"></CardsReport>
+
+    </div>;
 
 }

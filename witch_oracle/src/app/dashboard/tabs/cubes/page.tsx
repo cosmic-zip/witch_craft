@@ -7,7 +7,7 @@ export default function EverySection({ from = '' }) {
 
     return <div>
 
-        <CardsReport from="attack"></CardsReport>
+        <CardsReport from="cubes"></CardsReport>
 
     </div>;
 
