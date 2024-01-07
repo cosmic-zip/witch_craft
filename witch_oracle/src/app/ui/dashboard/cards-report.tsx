@@ -19,11 +19,7 @@ interface CoreResult {
     debug: string;
 };
 
-type From = {
-    from: string
-}
-
-export default function CardsReport(from: From) {
+export default function CardsReport({ from = ''}) {
     const [data, setData] = useState(Array<CoreResult>);
 
     console.log(data);
@@ -67,7 +63,7 @@ export default function CardsReport(from: From) {
 
                         <div className='m-2'>
 
-                            <div className='p-2 m-2 bg-gradient-to-r from-slate-900 to-gray-700 text-indigo-100 rounded-xl'>
+                            <div className='font-mono p-2 m-2 bg-gradient-to-r from-slate-900 to-gray-700 text-indigo-100 rounded-xl'>
                                 <h1 className='font-bold'>formatted stdout: </h1>
                                 <div>
                                     {
@@ -78,7 +74,7 @@ export default function CardsReport(from: From) {
                                 </div>
                             </div>
 
-                            <div className='p-2 m-2 bg-gradient-to-r from-slate-900 to-gray-700 text-indigo-100 rounded-xl'>
+                            <div className='font-mono p-2 m-2 bg-gradient-to-r from-slate-900 to-gray-700 text-indigo-100 rounded-xl'>
                                 <h1 className='font-bold'>formatted stderr: </h1>
                                 <div>
                                     {

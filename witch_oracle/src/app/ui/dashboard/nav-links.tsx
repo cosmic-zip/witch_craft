@@ -19,7 +19,7 @@ const links = [
   { name: 'botnet', href: '/dashboard/tabs/botnet' },
   { name: 'lookup', href: '/dashboard/tabs/lookup' },
   { name: 'osint', href: '/dashboard/tabs/osint' },
-  { name: 'pods', href: '/dashboard/tabs/pods' },
+  { name: 'cubes', href: '/dashboard/tabs/cubes' },
   { name: 'rootkit', href: '/dashboard/tabs/rootkit' },
   { name: 'scanner', href: '/dashboard/tabs/scanner' },
   { name: 'utils', href: '/dashboard/tabs/utils' },
