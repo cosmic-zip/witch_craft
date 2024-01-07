@@ -19,7 +19,11 @@ interface CoreResult {
     debug: string;
 };
 
-export default function CardsReport({ from = '' }) {
+type From = {
+    from: string
+}
+
+export default function CardsReport(from: From) {
     const [data, setData] = useState(Array<CoreResult>);
 
     console.log(data);
@@ -68,7 +72,7 @@ export default function CardsReport({ from = '' }) {
                                 <div>
                                     {
                                         result.formatted_stdout.split('\n').map((item, index) => (
-                                            <p>{item}</p>
+                                            <p key={index}>{item}</p>
                                         ))
                                     }
                                 </div>
@@ -79,7 +83,7 @@ export default function CardsReport({ from = '' }) {
                                 <div>
                                     {
                                         result.formatted_stderr.split('\n').map((item, index) => (
-                                            <p>{item}</p>
+                                            <p key={index}>{item}</p>
                                         ))
                                     }
                                 </div>
