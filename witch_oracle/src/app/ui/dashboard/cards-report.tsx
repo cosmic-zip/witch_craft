@@ -39,7 +39,7 @@ export default function CardsReport({ from = '' }) {
                     <header className='rounded-t-xl p-4 bg-[#d4d409] text-black'>
                         <h1 className='uppercase font-bold'>⚫ id: {result.id}</h1>
                     </header>
-                    <div className='card bg-gradient-to-r from-gray-800 to-gray-700 mb-4 p-4 rounded-b-xl'>
+                    <div className='card backdrop-blur-xl mb-4 p-4 rounded-b-xl'>
 
                         <div className='p-2 mb-2 mx-2'>
                             <h2> <b>session</b>: {result.session}</h2>
@@ -63,8 +63,8 @@ export default function CardsReport({ from = '' }) {
 
                         <div className='m-2'>
 
-                            <div className='p-2 m-2 bg-gray-900 text-indigo-100 rounded-xl'>
-                                <h1>formatted_stdout: </h1>
+                            <div className='p-2 m-2 bg-gradient-to-r from-slate-900 to-gray-700 text-indigo-100 rounded-xl'>
+                                <h1 className='font-bold'>formatted stdout: </h1>
                                 <div>
                                     {
                                         result.formatted_stdout.split('\n').map((item, index) => (
@@ -74,8 +74,8 @@ export default function CardsReport({ from = '' }) {
                                 </div>
                             </div>
 
-                            <div className='p-2 m-2 bg-gray-900 text-indigo-100 rounded-xl'>
-                                <h1>formatted_stderr: </h1>
+                            <div className='p-2 m-2 bg-gradient-to-r from-slate-900 to-gray-700 text-indigo-100 rounded-xl'>
+                                <h1 className='font-bold'>formatted stderr: </h1>
                                 <div>
                                     {
                                         result.formatted_stderr.split('\n').map((item, index) => (

@@ -24,4 +24,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  background-image: url('bg2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
