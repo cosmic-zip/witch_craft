@@ -5,6 +5,7 @@ const nextConfig = {
 }
 
 module.exports = {
+  distDir: 'build',
     async redirects() {
       return [
         {
