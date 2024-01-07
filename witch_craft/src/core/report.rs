@@ -121,7 +121,7 @@ pub fn logger(data: Logger) -> std::io::Result<()> {
     let connection = Connection::open(report);
     match connection {
         Ok(conn) => {
-            let _ = write_process_result_to_db(&conn, proccess_result);
+            write_process_result_to_db(&conn, proccess_result).expect("Error while insert on database")
         }
         Err(_err) => {
             standard_messages(
