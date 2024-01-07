@@ -2,26 +2,39 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { invoke } from '@tauri-apps/api/tauri'
-import { string } from 'zod';
+
+
+interface CoreResult {
+    id: string;
+    session: string;
+    session_description: string;
+    source_from: string;
+    source_command: string;
+    source_detail: string;
+    source_description: string;
+    timestemp: string;
+    returned_status: string;
+    formatted_stdout: string;
+    formatted_stderr: string;
+    debug: string;
+};
 
 export default function EverySection() {
-    const [data, setData] = useState('');
+    const [data, setData] = useState(Array<CoreResult>);
 
     console.log(data);
 
     useEffect(() => {
-        invoke<string>('select_report', { from: 'all', size: 9999 })
+        invoke<Array<CoreResult>>('select_report', { from: 'all', size: 9999 })
             .then(result => setData(result))
             .catch(console.error)
     }, []);
 
-    const datamap = { "data": data }
-
     return <div>
 
         {
-            datamap["data"].map((result) => (
-                <div className='card bg-slate-400 p-2 m-4'>
+            data.map((result) => (
+                <div className='card bg-slate-600 p-2 m-4 rounded-xl'>
                     <p>id: {result.id}</p>
                     <p>session: {result.session}</p>
                     <p>session_description: {result.session_description}</p>
@@ -31,8 +44,22 @@ export default function EverySection() {
                     <p>source_description: {result.source_description}</p>
                     <p>timestemp: {result.timestemp}</p>
                     <p>returned_status: {result.returned_status}</p>
-                    <p>formatted_stdout: {result.formatted_stdout}</p>
-                    <p>formatted_stderr: {result.formatted_stderr}</p>
+
+                    <div className='p2 bg-gray-900 text-indigo-100'>
+                        <h1>formatted_stdout: </h1>
+                        <div>
+                            {
+                                result.formatted_stdout.split('\n').map((item, index) => (
+                                    <p>{item}</p>
+                                ))
+                            }
+                        </div>
+
+
+                    </div>
+
+
+                    <p>formatted_stderr: {result.formatted_stderr.split('\n')}</p>
                     <p>debug: {result.debug}</p>
                 </div>
             ))
