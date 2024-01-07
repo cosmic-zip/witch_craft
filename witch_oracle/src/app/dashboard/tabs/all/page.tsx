@@ -34,34 +34,63 @@ export default function EverySection() {
 
         {
             data.map((result) => (
-                <div className='card bg-slate-600 p-2 m-4 rounded-xl'>
-                    <p>id: {result.id}</p>
-                    <p>session: {result.session}</p>
-                    <p>session_description: {result.session_description}</p>
-                    <p>source_from: {result.source_from}</p>
-                    <p>source_command: {result.source_command}</p>
-                    <p>source_detail: {result.source_detail}</p>
-                    <p>source_description: {result.source_description}</p>
-                    <p>timestemp: {result.timestemp}</p>
-                    <p>returned_status: {result.returned_status}</p>
+                <>
 
-                    <div className='p2 bg-gray-900 text-indigo-100'>
-                        <h1>formatted_stdout: </h1>
-                        <div>
-                            {
-                                result.formatted_stdout.split('\n').map((item, index) => (
-                                    <p>{item}</p>
-                                ))
-                            }
+                    <header className='rounded-t-xl p-4 bg-[#d4d409] text-black'>
+                        <h1 className='uppercase font-bold'>⚫ id: {result.id}</h1>
+                    </header>
+                    <div className='card bg-gradient-to-r from-gray-800 to-gray-700 mb-4 p-4 rounded-b-xl'>
+
+                        <div className='p-2 mb-2 mx-2'>
+                            <h2> <b>session</b>: {result.session}</h2>
+                            <h2> <b>session description</b>: {result.session_description}</h2>
+                            <h2> <b>source from</b>: {result.source_from}</h2>
+                            <h2> <b>source command</b>: {result.source_command}</h2>
+                            <h2> <b>source detail</b>: {result.source_detail}</h2>
+                            <h2> <b>source description</b>: {result.source_description}</h2>
+                            <h2> <b>timestemp</b>: {result.timestemp}</h2>
+                            <h2> <b>returned_status</b>: {result.returned_status}</h2>
+                            <h2> 
+                                <b>debug</b>: {
+                                    result.debug === 'true' ? (
+                                        <span className='text-green-500 font-bold'>{result.debug}</span>
+                                    ) : (
+                                        <span className='text-red-500 font-bold'>{result.debug}</span>
+                                    )
+                                }
+                            </h2>
+                        </div>
+
+                        <div className='m-2'>
+
+                            <div className='p-2 m-2 bg-gray-900 text-indigo-100 rounded-xl'>
+                                <h1>formatted_stdout: </h1>
+                                <div>
+                                    {
+                                        result.formatted_stdout.split('\n').map((item, index) => (
+                                            <p>{item}</p>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+
+                            <div className='p-2 m-2 bg-gray-900 text-indigo-100 rounded-xl'>
+                                <h1>formatted_stderr: </h1>
+                                <div>
+                                    {
+                                        result.formatted_stderr.split('\n').map((item, index) => (
+                                            <p>{item}</p>
+                                        ))
+                                    }
+                                </div>
+                                <br />
+                            </div>
                         </div>
 
 
                     </div>
 
-
-                    <p>formatted_stderr: {result.formatted_stderr.split('\n')}</p>
-                    <p>debug: {result.debug}</p>
-                </div>
+                </>
             ))
         }
 
