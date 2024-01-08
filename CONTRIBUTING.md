@@ -1,17 +1,17 @@
-# MaidRunner Open Source Project Contribution Guidelines
+# witch_craft Open Source Project Contribution Guidelines
 
-Welcome to the MaidRunner project! MaidRunner provides capabilities for
+Welcome to the witch_craft project! witch_craft provides capabilities for
 tasks such as forensic research, OSINT (Open Source Intelligence),
 scanning,
 backup and copying, intrusion testing of applications and APIs, and more.
 
 To ensure a smooth and collaborative development process, please
 follow the
-guidelines outlined below when contributing to MaidRunner.
+guidelines outlined below when contributing to witch_craft.
 
 **Contribution Workflow**
 
-MaidRunner follows a Continuous Integration/Continuous Deployment (CI/CD)
+witch_craft follows a Continuous Integration/Continuous Deployment (CI/CD)
 model, replacing the traditional Git Flow model. Our development
 process is
 centered around: push changes on trunk branch, automated testing and
@@ -137,13 +137,13 @@ Example commit messages:
 
 **Getting Started**
 
-To get started with contributing to MaidRunner, follow these steps:
+To get started with contributing to witch_craft, follow these steps:
 
-1. Fork the MaidRunner repository on GitHub.
+1. Fork the witch_craft repository on GitHub.
 2. Clone your forked repository to your local machine:
 
 ``` bash
-git clone <https://github.com/th3maid/MaidRunner.git>
+git clone <https://github.com/th3maid/witch_craft.git>
 ```
 
 Create a new branch for your contribution:
@@ -161,16 +161,16 @@ Push your branch to your GitHub fork:
 git push origin feature/your-feature
 ```
 
-Create a pull request to the trunk branch of the main MaidRunner
+Create a pull request to the trunk branch of the main witch_craft
 repository.
 
 **Code of Conduct**
 
-Please adhere to our Code of Conduct when participating in the MaidRunner
+Please adhere to our Code of Conduct when participating in the witch_craft
 community. We promote a welcoming and inclusive environment for all
 contributors.
 
-Thank you for contributing to MaidRunner.
+Thank you for contributing to witch_craft.
 
 Note: This Contribution Guidelines document is subject to change, so make
 sure to check it regularly for updates.

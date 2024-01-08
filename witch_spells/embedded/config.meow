@@ -1,0 +1,53 @@
+# ------------------------------------------------ #
+#                                                  #
+#                                                  #
+#                   DOT MEOW (🐈‍)                  #
+#                                                  #
+#                  By Th3witch_craft 2023                 #
+#                                                  #
+#   Use: MEOW VAR_NAME = "", to declare variables  #
+#                                                  #
+# ------------------------------------------------ #
+
+MEOW GENERAL_BASE_PATH       = "/var/witch_craft/witch_spells/general/"
+MEOW VALIDATORS_BASE_PATH   = "/var/witch_craft/witch_spells/validators/"
+MEOW REPORT_BASE_PATH       = "/var/witch_craft/witch_spells/report/"
+MEOW INDEX                  = "/var/witch_craft/witch_spells/html/index.html"
+
+MEOW DIRECTORIES            = "directories.config" 
+MEOW DISPOSABLE_EMAIL_BLK   = "disposable_email_blocklist.config"
+MEOW EFF_DICE               = "dice_eff_words.config"  
+MEOW EMAIL_TRUSTED_DOMAIN   = "email_trusted_list.config"
+MEOW FILES_EXT              = "files_extensions.config"
+MEOW LDNS                   = "large_dns.config"  
+MEOW MACADDR                = "macaddr_lockup.config"  
+MEOW MIAD_LISTS_UNIVERSAL   = "witch_craft_list_universal.config"
+MEOW REPOSITORY_KEYWORDS    = "repo_keyword_scan.config"
+MEOW SDNS                   = "small_dns.config"  
+MEOW TABLES                 = "tables.config"
+MEOW TLDS                   = "tlds.config"
+MEOW USER_NAMES             = "user_names.config"
+MEOW XSS_PAYLOAD_LIST       = "xss-payload-list.config"
+MEOW MALWARE_HASH           = "malware_hash.config"
+
+# REPORTS AND SESSIONS
+
+MEOW REPORT_DOC       = "report.html"
+MEOW REPORT_LOG       = "archive.db"
+MEOW SAFE_LOOK        = "session.meow"
+
+# AUTOMATED TESTS
+
+MEOW TEST_BASE_PATH   = "/var/witch_craft/witch_spells/tests/"
+
+MEOW TEST_DIRECTORIES       = "test_directories.config"
+MEOW TEST_SDNS              = "test_small_dns.config"
+
+# PRIVATE MODULES
+
+MEOW PRIVATE_MODULES        = "/var/witch_craft/witch_spells/private/"
+
+MEOW GEODATA_COUNTRY_CODES  = "geodata/country_codes.config"
+MEOW GEODATA_CITY_CODES     = "geodata/geodata.config"
+MEOW GEODATA_WORLDCITIES    = "geodata/worldcities.config"
+MEOW IP_GEO_LOCATION        = "ip2location.config"

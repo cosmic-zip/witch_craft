@@ -1,6 +1,6 @@
 # From FreeBSD Code of Conduct
 
-The MaidRunner community has always worked to be a welcoming and
+The witch_craft community has always worked to be a welcoming and
 respectful
 community, and we want to ensure that doesn’t change as we grow and
 evolve. To that end, we have a few ground rules that we ask people to
@@ -17,9 +17,9 @@ This isn’t an exhaustive list of things that you can’t do. Rather,
 take it in the spirit in which it’s intended - a guide to make it easier
 to communicate and participate in the community.
 
-This code of conduct applies to all spaces managed by the MaidRunner
+This code of conduct applies to all spaces managed by the witch_craft
 project. This includes online chat, mailing lists, bug trackers,
-MaidRunner
+witch_craft
 events such as the developer meetings and socials, and any other forums
 created
 by the project that the community uses for communication. It applies
@@ -34,7 +34,7 @@ them,
 when the conduct amounts to an egregious violation of this code.
 
 If you believe someone is violating the code of conduct, we ask that you
-report it by emailing conduct@MaidRunner.org. For more details please see
+report it by emailing conduct@witch_craft.org. For more details please see
 our Reporting Guide.
 
 **Be friendly and patient.**
@@ -65,8 +65,8 @@ to turn
 into a personal attack. It’s important to remember that a community
 where
 people feel uncomfortable or threatened is not a productive one. Members
-of the MaidRunner community should be respectful when dealing with other
-members as well as with people outside the MaidRunner community.
+of the witch_craft community should be respectful when dealing with other
+members as well as with people outside the witch_craft community.
 
 **Be careful in the words that you choose and be kind to others.** Do not
 insult or put down other participants. Harassment and other exclusionary
@@ -86,10 +86,10 @@ behavior after being asked to stop is considered harassment.
 
 **When we disagree, try to understand why.** Disagreements, both
 social and
-technical, happen all the time and MaidRunner is no exception. It is
+technical, happen all the time and witch_craft is no exception. It is
 important
 that we resolve disagreements and differing views constructively. Remember
-that we’re different. The strength of MaidRunner comes from its varied
+that we’re different. The strength of witch_craft comes from its varied
 community, people from a wide range of backgrounds. Different people have
 different perspectives on issues. Being unable to understand why someone
 holds a viewpoint doesn’t mean that they’re wrong. Don’t forget that

@@ -1,38 +1,39 @@
 #!/bin/bash
 set -e
 
-echo "MR Build System"
+echo "Build System"
 
 echo && echo "Install dependencies"
 sudo apt update -y
-sudo apt install -y aptitude p7zip-full nmap curl xxd libc6 exiftool traceroute wget iproute2 whois dnsutils dirb dnsenum tree htop iftop clang sudo libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
+sudo apt install -y aptitude p7zip-full nmap curl xxd libc6 exiftool \
+traceroute wget iproute2 whois dnsutils dirb dnsenum tree htop iftop \
+clang sudo libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev \
+libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev qemu
 
 echo && echo "Move config folders to /var"
-sudo mkdir -p /var/maid
-sudo cp -r maid_lists/ /var/maid
-sudo chown -R $(whoami):$(whoami) /var/maid
+sudo mkdir -p /var/witch_craft
+sudo cp -r witch_spells/ /var/witch_craft
+sudo chown -R $(whoami):$(whoami) /var/witch_craft
 
 echo && echo "Uncompress files"
-7z x /var/maid/maid_lists/malware/malware.csv.7z.001 -o/var/maid/maid_lists/general/
-mv /var/maid/maid_lists/general/full.csv /var/maid/maid_lists/general/malware_hash.config
+7z x /var/witch_craft/witch_spells/malware/malware.csv.7z.001 -o/var/witch_craft/witch_spells/general/
+mv /var/witch_craft/witch_spells/general/full.csv /var/witch_craft/witch_spells/general/malware_hash.config
 
 echo && echo "SNAP Setup"
 sudo apt install snapd -y
-sudo snap install vlc
 
 echo && echo "Install virtualization"
 sudo apt install virt-manager docker -y
 
 echo && echo "Cargo build monorepo"
-cargo build --release --manifest-path maid_visual/src-tauri/Cargo.toml
-cargo build --release --manifest-path maid_runner/Cargo.toml
-cargo build --release --manifest-path maid_api/Cargo.toml
+cargo build --release --manifest-path witch_oracle/src-tauri/Cargo.toml
+cargo build --release --manifest-path witch_craft/Cargo.toml
 
 echo && echo "Move applications to release"
 mkdir -p ./release
-cp -r ./maid_visual/src-tauri/target/release/maid_visual ./release/
-cp -r ./maid_runner/target/release/maid_runner ./release/
-cp -r ./maid_api/target/release/maid_api ./release/
+
+cp -r ./witch_oracle/src-tauri/target/release/witch_oracle ./release/
+cp -r ./witch_craft/target/release/witch_craft ./release/
 
 echo && echo "TEST THE BINARY EXIT CODES"
 
@@ -50,6 +51,5 @@ test_binary() {
   fi
 }
 
-test_binary "maid_api"
-test_binary "maid_runner"
-test_binary "maid_visual"
+test_binary "witch_craft"
+test_binary "witch_oracle"

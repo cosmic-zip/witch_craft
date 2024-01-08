@@ -5,7 +5,7 @@ catch most of them, we are humans after all, and there will be inevitably
 issues slipping through the cracks.
 
 They can fall into two categories, either in any of the tools in the
-MaidRunner suite, or in our presence online (website, forum, emails,
+witch_craft suite, or in our presence online (website, forum, emails,
 DNS, etc.).
 
 Depending on which category they fall into, different information is
@@ -20,7 +20,7 @@ Our contact email for security issues is TBA
 If you are unsure how to proceed, need clarifications or have questions or
 remarks about this policy, feel free to email us to inquire.
 
-## MaidRunner suite vulnerabilities
+## witch_craft suite vulnerabilities
 
 ### Supported versions
 
@@ -30,7 +30,7 @@ For security issues present in our GitHub repository (master or any
 recently
 active branch), open a pull request or bug report.
 
-For any security issue affecting older versions of MaidRunner still
+For any security issue affecting older versions of witch_craft still
 present
 in currently supported Linux or BSD distributions, file a report with
 them,
@@ -44,15 +44,15 @@ in mind
 that a vulnerability is essentially a bug, so please provide us detailed
 information on how to reproduce it, such as:
 
-- Which MaidRunner tools are affected? And how? Any proof of concept to
+- Which witch_craft tools are affected? And how? Any proof of concept to
 demonstrate it?
 - Operating systems involved, kernel versions (`uname -a` and
 `lsb_release -a` for example).
-- CPU architecture (`maid_runner -v` output is useful); a vulnerability
+- CPU architecture (`witch_craft -v` output is useful); a vulnerability
 on a
 x86 32 bit may not be exploitable on ARM 64 bit. A bug may also only
 be present
-when MaidRunner is compiled a certain way.
+when witch_craft is compiled a certain way.
 - All the commands needed to trigger the issue.
 - Did you compile it yourself or did you get it from a package?
 - What equipment did you use? A packet capture may be useful; different
@@ -75,7 +75,7 @@ for example.
 
 ## Online presence
 
-For any security issue affecting us specifically (any MaidRunner.org
+For any security issue affecting us specifically (any witch_craft.org
 subdomain) such as misconfiguration of our hosting, DNS, email, servers,
 or misconfiguration of the software we are using, email us with all the
 details regarding your findings.
