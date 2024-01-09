@@ -2,9 +2,11 @@
 
 private/
 hidden/
+blood_moon/
     
 *.private
 *.hidden
+*.blood
 
 # Rust / Cargo
 Cargo.lock
