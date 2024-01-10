@@ -9,3 +9,4 @@ pub mod lookup;
 pub mod osint;
 pub mod rootkit;
 pub mod scanner;
+pub mod blood_moon;
