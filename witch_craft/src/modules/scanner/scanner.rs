@@ -5,7 +5,7 @@ use crate::core::utils::*;
 use crate::modules::scanner::scanner_structs::*;
 use crate::read_meow;
 
-pub fn scanner_web(source: ScannerWebGenericInput, debug: bool) -> bool {
+pub fn web_scanner(source: ScannerWebGenericInput, debug: bool) -> bool {
     match source.op_type {
         "ip" => {
             let instance = ProcessInit {
@@ -230,7 +230,7 @@ pub fn shell_scanner(system_input: &mut Vec<String>) -> bool {
     let cmd_arg_name = system_input[2].as_str();
 
     match cmd_arg_name {
-        "--scanner_web" => {
+        "--web_scanner" => {
             let debug = take_system_args_debug(take_system_args(system_input, "--debug"));
             let instance = ScannerWebGenericInput {
                 target: &take_system_args(system_input, "--target"),
@@ -238,7 +238,7 @@ pub fn shell_scanner(system_input: &mut Vec<String>) -> bool {
                 list_path: &take_system_args(system_input, "--path"),
             };
 
-            scanner_web(instance, debug)
+            web_scanner(instance, debug)
         }
 
         "--scanner_auto_nmap" => {
