@@ -29,7 +29,7 @@ pub fn web_scanner(source: ScannerWebGenericInput, debug: bool) -> bool {
 
         "routes" => {
             let instance = ProcessInit {
-                source: &format!("traceroute -I {}", source.target),
+                source: &format!("traceroute {}", source.target),
                 source_from: "scanner",
                 source_description: "Scanning traceroute ICMP",
                 debug: debug,
