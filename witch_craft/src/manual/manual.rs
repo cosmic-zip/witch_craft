@@ -389,7 +389,7 @@ HELP
     
 "#;
 
-pub const WITCH_CRAFT_HELP: &str = r#"
+pub const WITCH_BLOOD_MOON: &str = r#"
 BLOOD_MOON 
 
     blood_moon                  Osint modules provide to research ONLY and manager for 
