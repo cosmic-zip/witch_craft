@@ -11,7 +11,7 @@ pub fn lookup_mac_address(mac_address: LookupMacAddress, debug: bool) -> bool {
 
     if mac_address.list_path == "default" {
         let config = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
-        file = format!("{}{}", config["GENRAL_BASE_PATH"], config["MACADDR"]);
+        file = format!("{}{}", config["GENERAL_BASE_PATH"], config["MACADDR"]);
     } else {
         file = mac_address.list_path.to_string();
     }

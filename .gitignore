@@ -5,6 +5,7 @@ hidden/
     
 *.private
 *.hidden
+*.blood
 
 # Rust / Cargo
 Cargo.lock

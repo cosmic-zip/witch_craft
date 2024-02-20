@@ -1,4 +1,4 @@
-name: maid-runner
+name: witchcraft-cybersecurity
 base: core22
 version: "0.15.0"
 summary: witch_craft is a companion for cyber security tasks.
@@ -44,7 +44,7 @@ parts:
       - file
     override-build: |
       cargo build --release
-  maid-runner:
+  witch-craft:
     plugin: rust
     source: witch_craft/
     build-packages:

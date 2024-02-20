@@ -353,7 +353,7 @@ WEB SCANNER
 pub const WITCH_CRAFT_OSINT: &str = r#"
 OSINT
 
-    osint                       Osint modules provides (for premium members) tool
+    osint                       Osint modules provides (for premium members) tools
                                 like: geolocation, search engines like google, brave
                                 duckduckgo and more, phone numbers, email, passwords,
                                 ssh, company information, and more.
@@ -386,6 +386,22 @@ HELP
     windows_reg                 Windows register                                                   
     windows_cmd                 Windows cmd hints                                                   
     windows_powershell          Windows powershell hints 
+    
+"#;
+
+pub const WITCH_BLOOD_MOON: &str = r#"
+BLOOD_MOON 
+
+    blood_moon                  Osint modules provide to research ONLY and manager for 
+                                attacks with loaders and ransomware.
+                                
+    --backdoor                  Use the blood_moon_backdoor software to install and run 
+                                an loader thats get commands from an API endpoint.
+
+    --url                       Setup the api url, can be local address like 127.0.0.0:4000
+    --ask                       Decide how long the backdoor will look for a new command in seconds.
+    --info                      Give the attacker the target's information. 
+
 "#;
 
 pub const WITCH_CRAFT_FOOTER: &str = r#"                                                                                          

@@ -33,6 +33,8 @@ use crate::modules::{
     scanner::scanner_structs::*,
     osint::osint::*,
     osint::osint_structs::*,
+    blood_moon::blood_moon::*,
+    blood_moon::blood_moon_structs::*,
 };
 
 use crate::shell::shell::init;

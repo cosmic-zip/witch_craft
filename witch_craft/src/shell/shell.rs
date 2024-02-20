@@ -13,6 +13,7 @@ use crate::modules::{
     cubes::cubes::*,
     scanner::scanner::*,
     osint::osint::*,
+    blood_moon::blood_moon::*,
 };
 
 // command structure
@@ -63,6 +64,10 @@ pub fn init() -> u8 {
 
         "osint" | "in" => {
             shell_osint(system_input);
+        }
+
+        "blood_moon" | "bm" => {
+            shell_blood_moon(system_input);
         }
 
         _ => {

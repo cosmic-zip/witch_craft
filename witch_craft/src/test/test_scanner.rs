@@ -2,7 +2,7 @@ use super::*;
 use crate::*;
 
 // #[test]
-// fn test_scanner_web() {
+// fn test_web_scanner() {
 //     // suported types:
 //     //      ip
 //     //      whois
@@ -16,7 +16,7 @@ use crate::*;
 //     //      c_api_url
 //     //      c_web_url
 
-//     let output_ip = scanner_web(
+//     let output_ip = web_scanner(
 //         ScannerWebGenericInput {
 //             target: "1.1.1.1",
 //             op_type: "ip",
@@ -26,7 +26,7 @@ use crate::*;
 //     );
 //     assert_eq!(output_ip, true);
 
-//     let output_routes = scanner_web(
+//     let output_routes = web_scanner(
 //         ScannerWebGenericInput {
 //             target: "1.1.1.1",
 //             op_type: "routes",
@@ -81,8 +81,8 @@ fn test_scanner_autonmap_udp() {
 
 //**Test 1: IP Address**
 #[test]
-fn test_scanner_web_ip() {
-    let output = scanner_web(
+fn test_web_scanner_ip() {
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "1.1.1.1",
             op_type: "ip",
@@ -96,8 +96,8 @@ fn test_scanner_web_ip() {
 //**Test 2: WHOIS Information**
 
 #[test]
-fn test_scanner_web_whois() {
-    let output = scanner_web(
+fn test_web_scanner_whois() {
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "example.com",
             op_type: "whois",
@@ -111,8 +111,8 @@ fn test_scanner_web_whois() {
 // **Test 3: Routes Information**
 
 #[test]
-fn test_scanner_web_routes() {
-    let output = scanner_web(
+fn test_web_scanner_routes() {
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "1.1.1.1",
             op_type: "routes",
@@ -126,8 +126,8 @@ fn test_scanner_web_routes() {
 // **Test 4: DNS Information**
 
 #[test]
-fn test_scanner_web_dns() {
-    let output = scanner_web(
+fn test_web_scanner_dns() {
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "example.com",
             op_type: "dns",
@@ -141,8 +141,8 @@ fn test_scanner_web_dns() {
 // **Test 5: Nmap TCP Syn**
 
 #[test]
-fn test_scanner_web_nmap_tcp() {
-    let output = scanner_web(
+fn test_web_scanner_nmap_tcp() {
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "localhost",
             op_type: "nmap_tcp",
@@ -156,8 +156,8 @@ fn test_scanner_web_nmap_tcp() {
 // **Test 6: Nmap UDP**
 
 #[test]
-fn test_scanner_web_nmap_udp() {
-    let output = scanner_web(
+fn test_web_scanner_nmap_udp() {
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "localhost",
             op_type: "nmap_udp",
@@ -171,11 +171,11 @@ fn test_scanner_web_nmap_udp() {
 // **Test 7: Sub-Domains**
 
 #[test]
-fn test_scanner_web_sub_domains() {
+fn test_web_scanner_sub_domains() {
     let path = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let final_path = format!("{}{}", path["TEST_BASE_PATH"], path["TEST_SDNS"]);
 
-    let output = scanner_web(
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "example.com",
             op_type: "sub_domains",
@@ -189,11 +189,11 @@ fn test_scanner_web_sub_domains() {
 // **Test 8: Sub-Directories**
 
 #[test]
-fn test_scanner_web_sub_directories() {
+fn test_web_scanner_sub_directories() {
     let path = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let final_path = format!("{}{}", path["TEST_BASE_PATH"], path["TEST_DIRECTORIES"]);
 
-    let output = scanner_web(
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "example.com",
             op_type: "sub_directories",
@@ -207,8 +207,8 @@ fn test_scanner_web_sub_directories() {
 // **Test 9: Build with**
 
 #[test]
-fn test_scanner_web_build() {
-    let output = scanner_web(
+fn test_web_scanner_build() {
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "example.com",
             op_type: "build_with",
@@ -222,8 +222,8 @@ fn test_scanner_web_build() {
 // **Test 10: C API URL**
 
 #[test]
-fn test_scanner_web_c_api() {
-    let output = scanner_web(
+fn test_web_scanner_c_api() {
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "example.com",
             op_type: "c_api_url",
@@ -237,8 +237,8 @@ fn test_scanner_web_c_api() {
 // **Test 11: C WEB URL**
 
 #[test]
-fn test_scanner_web_c_url() {
-    let output = scanner_web(
+fn test_web_scanner_c_url() {
+    let output = web_scanner(
         ScannerWebGenericInput {
             target: "example.com",
             op_type: "c_web_url",
