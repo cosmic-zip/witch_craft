@@ -12,6 +12,7 @@ clang sudo build-essential curl wget file libssl-dev qemu
 echo && echo "Move config folders to /var"
 sudo mkdir -p /var/witch_craft
 sudo cp -r witch_spells/ /var/witch_craft
+sudo cp -r blood_moon/ /var/witch_craft/witch_spells/private/
 sudo chown -R $(whoami):$(whoami) /var/witch_craft
 
 echo && echo "Uncompress files"

