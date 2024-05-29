@@ -7,6 +7,7 @@ use crate::modules::core::core::*;
 
 fn main() {
     println!("Hello, world!");
+    lazy_exec("ls -lha".to_string(), true);
 }
 
 #[cfg(test)]

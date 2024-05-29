@@ -1,5 +1,6 @@
-#[allow(unused_imports)]
 use super::*;
+#[allow(unused_imports)]
+use crate::modules::core::data::*;
 use crate::*;
 
 #[test]
@@ -30,8 +31,11 @@ fn test_string_to_command() {
         newvec.push(x.to_string());
     }
 
-    let meta_string = "command -S @@@some -A @@@another -N @@@numeric -P @@@path";
-    let out = lazy_loop(meta_string, newvec);
+    let meta_string = format!(
+        "command -S {}some -A {}another -N {}numeric -P {}path",
+        TONK, TONK, TONK, TONK
+    );
+    let out = lazy_loop(&meta_string, newvec);
 
     assert_eq!(expected, out);
 }
