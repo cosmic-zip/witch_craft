@@ -47,8 +47,8 @@ pub fn search_value(term: String, vector: Vec<String>) -> String {
     }
 
     println!("{}", raise(
-        &format!("No value found for {} | fall back to \"none\"", term), 0));
-    return "none".to_string()
+        &format!("No value found for {} → Send empty string", term), 0));
+    return "".to_string()
 }
 
 pub fn search_key(key: String, vector: Vec<String>) -> String {
