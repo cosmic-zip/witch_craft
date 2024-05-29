@@ -1,5 +1,4 @@
 use crate::core::{core::*, messages::*, structs::*, utils::*};
-use crate::manual::manual::*;
 
 use crate::modules::{
     attack::attack::*,
@@ -14,6 +13,7 @@ use crate::modules::{
     scanner::scanner::*,
     osint::osint::*,
     blood_moon::blood_moon::*,
+    manual::manual::*,
 };
 
 // command structure

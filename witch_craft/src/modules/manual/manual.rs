@@ -1,5 +1,5 @@
 use crate::core::utils::system_text;
-use crate::manual::hints::*;
+use crate::modules::manual::hints::*;
 
 pub const WITCH_CRAFT_BANNER: &str = r#"
                                                                                 

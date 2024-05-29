@@ -5,9 +5,7 @@ mod core;
 mod meow;
 mod modules;
 mod shell;
-mod manual;
 
-use crate::manual::manual::*;
 use crate::core::utils::*;
 use crate::meow::meow::*;
 use crate::modules::{
@@ -35,6 +33,7 @@ use crate::modules::{
     osint::osint_structs::*,
     blood_moon::blood_moon::*,
     blood_moon::blood_moon_structs::*,
+    manual::manual::*,
 };
 
 use crate::shell::shell::init;
