@@ -7,23 +7,13 @@ echo && echo "Install dependencies"
 sudo apt update -y
 sudo apt install -y aptitude p7zip-full nmap curl xxd libc6 exiftool \
 traceroute wget iproute2 whois dnsutils dirb dnsenum tree htop iftop \
-clang sudo build-essential curl wget file libssl-dev qemu
+clang sudo build-essential curl wget file libssl-dev
 
 echo && echo "Move config folders to /var"
 sudo mkdir -p /var/witch_craft
 sudo cp -r witch_spells/ /var/witch_craft
 sudo cp -r blood_moon/ /var/witch_craft/witch_spells/private/
 sudo chown -R $(whoami):$(whoami) /var/witch_craft
-
-echo && echo "Uncompress files"
-7z x /var/witch_craft/witch_spells/malware/malware.csv.7z.001 -o/var/witch_craft/witch_spells/general/
-mv /var/witch_craft/witch_spells/general/full.csv /var/witch_craft/witch_spells/general/malware_hash.config
-
-echo && echo "SNAP Setup"
-sudo apt install snapd -y
-
-echo && echo "Install virtualization"
-sudo apt install virt-manager docker -y
 
 echo && echo "Cargo build monorepo"
 cargo build --release --manifest-path witch_craft/Cargo.toml

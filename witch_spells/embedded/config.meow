@@ -9,7 +9,7 @@
 #                                                  #
 # ------------------------------------------------ #
 
-MEOW GENERAL_BASE_PATH       = "/var/witch_craft/witch_spells/general/"
+MEOW GENERAL_BASE_PATH      = "/var/witch_craft/witch_spells/general/"
 MEOW VALIDATORS_BASE_PATH   = "/var/witch_craft/witch_spells/validators/"
 MEOW REPORT_BASE_PATH       = "/var/witch_craft/witch_spells/report/"
 MEOW INDEX                  = "/var/witch_craft/witch_spells/html/index.html"
@@ -28,7 +28,7 @@ MEOW TABLES                 = "tables.config"
 MEOW TLDS                   = "tlds.config"
 MEOW USER_NAMES             = "user_names.config"
 MEOW XSS_PAYLOAD_LIST       = "xss-payload-list.config"
-MEOW MALWARE_HASH           = "malware_hash.config"
+MEOW MALWARE_HASH           = "full_sha256.config"
 
 # REPORTS AND SESSIONS
 
