@@ -39,3 +39,24 @@ fn test_string_to_command() {
 
     assert_eq!(expected, out);
 }
+
+#[test]
+fn test_lazy_pipeline() {
+    let argsv = vec![
+        "complete/path/to/here/".to_string(),
+        "--pretty".to_string(),
+        "-lha".to_string(),
+    ];
+    
+    let cmds  = "ls @@pretty";
+    let out = lazy_loop(cmds, argsv.clone());
+    let a = lazy_exec(out, true);    
+
+    assert_eq!(0, a);
+
+}
+
+    // let argsv = readargs()
+    // let cmds  = "ls @@pretty";
+    // let out = lazy_loop(cmds, argsv.clone());
+    // let a = lazy_exec(out, true);

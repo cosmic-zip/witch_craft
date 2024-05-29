@@ -8,27 +8,20 @@ pub fn readargs() -> Vec<String> {
 }
 
 pub fn raise(arg: &str, fancy: i32) -> String {
-    let fancy_options = vec![
-        "warning",
-        "error",
-        "message",
-        "done",
-        "fail",
-        "chiken",
-        "raise",
-        "fairy",
-        "good luck",
-        "carl",
-        "for rock and stone",
+    let fc = fancy as usize;
+    let opts = vec![
+        "⚪ [ message ]",
+        "🟢 [ done ]",
+        "🔴 [ fail ]", 
+        "🟠 [ warning ]",
+        "💀 [ error ]",
     ];
 
-    let mut option = "fallback";
-    let fc = fancy as usize;
-    if fancy_options.len() < fc {
-        option = fancy_options[fc];
+    if fc > opts.len(){
+        return "🔴 Index overflow at @raise function".to_string()
     }
 
-    return format!("💠 [{}] :: {}", arg, option);
+    return format!("\x1b[1m{}\x1b[0m :: {}", opts[fc].to_uppercase(), arg);
 }
 
 pub fn search_value(term: String, vector: Vec<String>) -> String {
@@ -53,7 +46,9 @@ pub fn search_value(term: String, vector: Vec<String>) -> String {
         counter += 1;
     }
 
-    return raise("Not found!", 0);
+    println!("{}", raise(
+        &format!("No value found for {} | fall back to \"none\"", term), 0));
+    return "none".to_string()
 }
 
 pub fn search_key(key: String, vector: Vec<String>) -> String {
@@ -62,7 +57,8 @@ pub fn search_key(key: String, vector: Vec<String>) -> String {
             return item;
         }
     }
-    return raise("Not found!", 0);
+    println!("{}",raise("Not found!", 0));
+    return "none".to_string()
 }
 
 pub fn lazy_loop(meta_string: &str, argsv: Vec<String>) -> String {
@@ -77,7 +73,6 @@ pub fn lazy_loop(meta_string: &str, argsv: Vec<String>) -> String {
         }
     }
 
-    println!("{}", cmds);
     return cmds;
 }
 
@@ -98,13 +93,13 @@ pub fn lazy_exec(command_line: String, pretty: bool) -> i32 {
             if output.status.success() {
                 let stdout = String::from_utf8_lossy(&output.stdout);
                 if pretty {
-                    println!("🏮 Start");
+                    raise("Start", 4);
                 }
                 println!("\n{}\n", stdout);
             } else {
                 let stderr = String::from_utf8_lossy(&output.stderr);
                 if pretty {
-                    println!("💀 Error");
+                    raise("Error", 4);
                 }
                 eprintln!("\n{}\n", stderr);
             }
