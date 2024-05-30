@@ -1,7 +1,6 @@
 use crate::modules::core::data::*;
-use std::env;
-use std::io;
 use std::process::{Command, Output};
+use std::env;
 
 pub fn readargs() -> Vec<String> {
     return env::args().collect();
