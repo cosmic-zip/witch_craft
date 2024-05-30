@@ -47,16 +47,15 @@ fn test_lazy_pipeline() {
         "--pretty".to_string(),
         "-lha".to_string(),
     ];
-    
-    let cmds  = "ls @@pretty";
+
+    let cmds = "ls @@pretty";
     let out = lazy_loop(cmds, argsv.clone());
-    let a = lazy_exec(out, true);    
+    let a = lazy_exec(out, true);
 
     assert_eq!(0, a);
-
 }
 
-    // let argsv = readargs()
-    // let cmds  = "ls @@pretty";
-    // let out = lazy_loop(cmds, argsv.clone());
-    // let a = lazy_exec(out, true);
+// let argsv = readargs()
+// let cmds  = "ls @@pretty";
+// let out = lazy_loop(cmds, argsv.clone());
+// let a = lazy_exec(out, true);

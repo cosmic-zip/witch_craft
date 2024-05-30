@@ -1,6 +1,6 @@
 use crate::modules::core::data::*;
-use std::process::{Command, Output};
 use std::env;
+use std::process::{Command, Output};
 
 pub fn readargs() -> Vec<String> {
     return env::args().collect();
@@ -11,13 +11,13 @@ pub fn raise(arg: &str, fancy: i32) -> String {
     let opts = vec![
         "⚪ [ message ]",
         "🟢 [ done ]",
-        "🔴 [ fail ]", 
+        "🔴 [ fail ]",
         "🟠 [ warning ]",
         "💀 [ error ]",
     ];
 
-    if fc > opts.len(){
-        return "🔴 Index overflow at @raise function".to_string()
+    if fc > opts.len() {
+        return "🔴 Index overflow at @raise function".to_string();
     }
 
     return format!("\x1b[1m{}\x1b[0m :: {}", opts[fc].to_uppercase(), arg);
@@ -45,9 +45,14 @@ pub fn search_value(term: String, vector: Vec<String>) -> String {
         counter += 1;
     }
 
-    println!("{}", raise(
-        &format!("No value found for {} → Send empty string", term), 0));
-    return "".to_string()
+    println!(
+        "{}",
+        raise(
+            &format!("No value found for {} → Send empty string", term),
+            0
+        )
+    );
+    return "".to_string();
 }
 
 pub fn search_key(key: String, vector: Vec<String>) -> String {
@@ -56,8 +61,8 @@ pub fn search_key(key: String, vector: Vec<String>) -> String {
             return item;
         }
     }
-    println!("{}",raise("Not found!", 0));
-    return "none".to_string()
+    println!("{}", raise("Not found!", 0));
+    return "none".to_string();
 }
 
 pub fn lazy_loop(meta_string: &str, argsv: Vec<String>) -> String {
@@ -104,10 +109,6 @@ pub fn lazy_exec(command_line: String, pretty: bool) -> i32 {
             }
             output.status.code().unwrap_or(-1)
         }
-        None => {
-            return 0
-        }
+        None => return 0,
     }
 }
-
-
