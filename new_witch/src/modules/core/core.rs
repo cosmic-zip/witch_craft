@@ -128,3 +128,14 @@ pub fn lazy_exec(command_line: String, pretty: bool) -> i32 {
         None => return 0,
     }
 }
+
+pub fn bob(set: DataSet, argsv: Vec<String>) -> i32 {
+    println!("🟣 {}", set.name);
+    let cmd = lazy_loop(&set.meta, argsv);
+    let out = lazy_exec(cmd, true);
+    if out != 0 {
+        return out;
+    }
+
+    return 0;
+}

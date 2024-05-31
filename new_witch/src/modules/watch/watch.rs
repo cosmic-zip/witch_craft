@@ -11,13 +11,8 @@ pub fn dns(argsv: Vec<String>) -> i32 {
         let name = format!("dns.{}", record_type.to_lowercase());
         let set = DataSet::from_str(&name, &meta);
 
-        println!("🟣 {}", set.name);
-        let cmd = lazy_loop(&set.meta, argsv.clone());
-        let out = lazy_exec(cmd, true);
-
-        if out != 0 {
-            return out;
-        }
+        bob(set, argsv.clone());
+       
     }
 
     // Perform extra scans
@@ -30,14 +25,7 @@ pub fn dns(argsv: Vec<String>) -> i32 {
         DataSet::from_str("extras.sitemap", "curl -sS -L https://@@domain/sitemap.xml"),
     ];
     for extra in extras {
-        println!("🟣 {}", extra.name);
-        let cmd = lazy_loop(&extra.meta, argsv.clone());
-        println!("🟣 {}", &cmd);
-        let out = lazy_exec(cmd, true);
-
-        if out != 0 {
-            return out;
-        }
+        bob(extra, argsv.clone());   
     }
 
     return 0;

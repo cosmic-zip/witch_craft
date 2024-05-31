@@ -17,9 +17,7 @@ fn main() {
 
     for set in data {
         if set.name == mname {
-            println!("🟣 {}", set.name);
-            let cmd = lazy_loop(&set.meta, argsv.clone());
-            lazy_exec(cmd, true);
+            bob(set, argsv.clone());
         }
     }
 }
