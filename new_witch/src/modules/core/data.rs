@@ -25,12 +25,13 @@ impl DataSet {
 
 pub fn data() -> Vec<DataSet> {
     return vec![
+        DataSet::from_str("map.test", "echo @@some"),
         DataSet::from_str("map.local", "ss -tupanr"),
         DataSet::from_str("list.processes.using.file", "lsof @@file_path"),
-        DataSet::from_str("map.tcp", "nmap -sS -T1 -p- -A -O -D RND:10 -f --data-length 32 -Pn @@target"),
-        DataSet::from_str("map.udp", "nmap -sU -T1 -p- -A -O -D RND:10 -f --data-length 32 -Pn @@target"),
-        DataSet::from_str("map.ping", "nmap -sP -T1 -D RND:10 -f --data-length 32 @@target"),
-        DataSet::from_str("map.tcp_udp", "nmap -sS -sU -T1 -p- -A -O -D RND:10 -f --data-length 32 -Pn @@target"),
+        DataSet::from_str("map.tcp", "nmap -sS -T2 -p- -A -O -D RND:10 -f --data-length 32 -Pn @@target"),
+        DataSet::from_str("map.udp", "nmap -sU -T2 -p- -A -O -D RND:10 -f --data-length 32 -Pn @@target"),
+        DataSet::from_str("map.ping", "nmap -sP -T2 -D RND:10 -f --data-length 32 @@target"),
+        DataSet::from_str("map.tcp_udp", "nmap -sS -sU -T2 -p- -A -O -D RND:10 -f --data-length 32 -Pn @@target"),
         DataSet::from_str(
             "web.donwload", 
             "wget --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows --random-wait --wait=@@wait --limit-rate=200k --tries=inf --domains example.com --no-parent @@url"

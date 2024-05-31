@@ -9,7 +9,7 @@ fn main() {
 
     let data = data();
     let argsv = readargs();
-    let mname = argsv[1].to_string();
+    let mname = argsv[1].as_str();
 
     if mname == "dns" {
         dns(argsv.clone());

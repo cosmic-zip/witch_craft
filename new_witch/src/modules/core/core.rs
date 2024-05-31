@@ -70,7 +70,23 @@ pub fn lazy_loop(meta_string: &str, argsv: Vec<String>) -> String {
     let mut cmds: String = meta_string.to_string();
 
     for item in meta {
-        if item.contains(TONK) {
+        if item.contains("http") {
+            let aaaa = item.split("/");
+            let mut new = String::new();
+
+            for c in aaaa {
+                if c.contains(TONK) {
+                    let opt = c.replace(TONK, "");
+                    let val = search_value(opt, argsv.clone());
+                    new = item.replace(c, &val);
+                }
+            }
+            
+            cmds = cmds.replace(item, &new);
+            println!("{}", new);
+        }
+        
+        if item.contains(TONK) & !item.contains("http") {
             let opt = item.replace(TONK, "");
             let val = search_value(opt, argsv.clone());
             cmds = cmds.replace(item, &val);
