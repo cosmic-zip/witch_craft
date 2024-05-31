@@ -4,7 +4,6 @@ use crate::modules::core::core::*;
 use crate::modules::core::data::*;
 use crate::modules::watch::watch::*;
 
-
 fn main() {
 
     let data = data();
@@ -14,6 +13,8 @@ fn main() {
     if mname == "dns" {
         dns(argsv.clone());
     }
+
+    // argv need to be iven
 
     for set in data {
         if set.name == mname {

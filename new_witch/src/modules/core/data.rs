@@ -32,6 +32,16 @@ pub fn data() -> Vec<DataSet> {
         DataSet::from_str("xxd.dec", "xxd -d @@file"),
         DataSet::from_str("xxd.dump", "xxd -ps @@file"),
         DataSet::from_str("xxd.list", "xxd -i @@file"),
+        DataSet::from_str("ldd", "ldd -v @@file"),
+    ];
+
+    let metadata = vec![
+        DataSet::from_str("meta.img", "exiftool @@file"),
+    ];
+
+    let dns_brute_force = vec![
+        DataSet::from_str("dns.attack.subs", "dirb @@domain -w @@wordlist -o @@output"),
+        DataSet::from_str("dns.attack.file", "dnsenum --enum @@domain -t 15 --threads 4 -f @@wordlist -o @@output"),
     ];
 
     let iptables = vec![
