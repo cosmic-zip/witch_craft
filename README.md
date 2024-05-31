@@ -19,7 +19,7 @@
 <center>
 
         🚧 warning: For detailed information about how to use witch_craft 
-        run witch_craft h or witch_craft --help.
+        run or witch_craft help.
 
 </center>
 <hr>

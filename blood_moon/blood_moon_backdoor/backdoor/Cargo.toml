@@ -1,9 +1,0 @@
-[package]
-name = "blood_moon_backdoor"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-reqwest = { version = "0.11.23", features = ["blocking"] }
