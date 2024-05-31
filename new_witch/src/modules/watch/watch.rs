@@ -11,7 +11,7 @@ pub fn dns(argsv: Vec<String>) -> i32 {
         let name = format!("dns.{}", record_type.to_lowercase());
         let set = DataSet::from_str(&name, &meta);
 
-        println!("🟣 {}", set.name); break;
+        println!("🟣 {}", set.name);
         let cmd = lazy_loop(&set.meta, argsv.clone());
         let out = lazy_exec(cmd, true);
 

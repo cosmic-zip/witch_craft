@@ -71,6 +71,7 @@ pub fn lazy_loop(meta_string: &str, argsv: Vec<String>) -> String {
 
     for item in meta {
         if item.contains("http") {
+            // Fix for urls like https://@@domain/some/thing
             let aaaa = item.split("/");
             let mut new = String::new();
 
@@ -83,7 +84,6 @@ pub fn lazy_loop(meta_string: &str, argsv: Vec<String>) -> String {
             }
             
             cmds = cmds.replace(item, &new);
-            println!("{}", new);
         }
         
         if item.contains(TONK) & !item.contains("http") {
