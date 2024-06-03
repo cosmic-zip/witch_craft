@@ -27,12 +27,13 @@ impl DataSet {
 pub fn data() -> Vec<DataSet> {
 
     let xxd = vec![
-        DataSet::from_str("xxd.hex", "xxd @@file"),
-        DataSet::from_str("xxd.bin", "xxd -b @@file"),
-        DataSet::from_str("xxd.dec", "xxd -d @@file"),
-        DataSet::from_str("xxd.dump", "xxd -ps @@file"),
-        DataSet::from_str("xxd.list", "xxd -i @@file"),
-        DataSet::from_str("ldd", "ldd -v @@file"),
+        DataSet::from_str("file.hex", "xxd @@file"),
+        DataSet::from_str("file.bin", "xxd -b @@file"),
+        DataSet::from_str("file.dec", "xxd -d @@file"),
+        DataSet::from_str("file.dump", "xxd -ps @@file"),
+        DataSet::from_str("file.list", "xxd -i @@file"),
+        DataSet::from_str("file.link", "ldd -v @@file"),
+        DataSet::from_str("file", "file @@file"),
     ];
 
     let metadata = vec![
