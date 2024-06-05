@@ -24,6 +24,11 @@ pub fn check() -> bool {
 
 }
 
+
+pub fn private_enable() {
+    println!("{}", KEY);
+}
+
 pub fn shell() -> i32 {
     // Argsv are and Vec<String>, the first item are 
     // the path of binary, the rest are all arguments
@@ -51,7 +56,9 @@ pub fn shell() -> i32 {
         "check" => {
             check();
         },
-
+        "private" => {
+            private_enable();
+        },
         _ => {
             //
         }

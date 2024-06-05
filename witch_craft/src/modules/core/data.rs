@@ -24,7 +24,14 @@ impl DataSet {
     }
 }
 
+
+pub fn private() -> Vec<DataSet> {
+    return vec![];    
+}
+
 pub fn data() -> Vec<DataSet> {
+
+    
 
     let xxd = vec![
         DataSet::from_str("file.hex", "xxd @@file"),
@@ -80,7 +87,6 @@ pub fn data() -> Vec<DataSet> {
         DataSet::from_str("map.local", "ss -tupanr"),
         DataSet::from_str("list.processes.using.file", "lsof @@file_path"),    
     ];
-
 
     return [xxd, metadata, dns_brute_force, iptables, nmap, general].concat();
 
