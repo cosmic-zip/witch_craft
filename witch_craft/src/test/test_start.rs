@@ -1,7 +1,7 @@
+use crate::modules::binds::binds::*;
 use crate::modules::core::core::*;
 use crate::modules::core::data::*;
 use crate::modules::shell::fancy::*;
-use crate::modules::binds::binds::*;
 use crate::modules::shell::shell::*;
 
 #[test]
@@ -58,7 +58,6 @@ fn test_lazy_pipeline() {
 
 #[test]
 fn test_check() {
-
     let exit = check();
     assert_eq!(exit, true);
 }

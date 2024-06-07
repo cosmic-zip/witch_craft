@@ -1,14 +1,23 @@
+use crate::modules::binds::binds::*;
 use crate::modules::core::core::*;
 use crate::modules::core::data::*;
 use crate::modules::shell::fancy::*;
-use crate::modules::binds::binds::*;
 
 pub fn check() -> bool {
-
     let packages: Vec<&str> = vec![
-        "nmap", "dirb", "dnsenum", "ldd", "xxd", "iptables",
-        "ss", "stat", "wget", "curl", "dig", "shred", 
-        "traceroute"
+        "nmap",
+        "dirb",
+        "dnsenum",
+        "ldd",
+        "xxd",
+        "iptables",
+        "ss",
+        "stat",
+        "wget",
+        "curl",
+        "dig",
+        "shred",
+        "traceroute",
     ];
 
     for pkg in packages {
@@ -22,11 +31,10 @@ pub fn check() -> bool {
 
     raise("All checks pass!", 1);
     return true;
-
 }
 
 pub fn shell() -> i32 {
-    // Argsv are and Vec<String>, the first item are 
+    // Argsv are and Vec<String>, the first item are
     // the path of binary, the rest are all arguments
     // them, exist only two valid cases:
     // witchcraft something (exec something that dont have args)
@@ -36,7 +44,7 @@ pub fn shell() -> i32 {
     let argsv = readargs();
 
     if argsv.len() % 2 != 0 {
-        println!("{}", WITCH); 
+        println!("{}", WITCH);
         return 1;
     }
 
@@ -45,23 +53,24 @@ pub fn shell() -> i32 {
     match mname {
         "dns" => {
             dns(argsv.clone());
-        },
+        }
         "check" => {
             check();
-        },
+        }
         "file.compact" => {
             plugin_file_compact(argsv.clone());
-        },"nuke.alllogs" => {
+        }
+        "nuke.alllogs" => {
             logs_fallout(argsv.clone());
-        },
+        }
         _ => {
             let data = data();
             for set in data {
                 if set.name == mname {
                     let out = bob(set.clone(), argsv.clone());
-                    if out != 0 { 
-                        raise("Shell falied to execute at bob()", 4); 
-                        raise(&set.meta, 4); 
+                    if out != 0 {
+                        raise("Shell falied to execute at bob()", 4);
+                        raise(&set.meta, 4);
                         return out;
                     }
                 }
@@ -69,6 +78,5 @@ pub fn shell() -> i32 {
         }
     }
 
-    return 0
-
+    return 0;
 }

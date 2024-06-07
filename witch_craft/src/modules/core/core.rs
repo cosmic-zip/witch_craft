@@ -87,10 +87,10 @@ pub fn lazy_loop(meta_string: &str, argsv: Vec<String>) -> String {
                     new = item.replace(c, &val);
                 }
             }
-            
+
             cmds = cmds.replace(item, &new);
         }
-        
+
         if item.contains(TONK) & !item.contains("http") {
             let opt = item.replace(TONK, "");
             let val = search_value(opt, argsv.clone());
