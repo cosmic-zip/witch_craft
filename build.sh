@@ -17,7 +17,7 @@ fi
 # Install packages
 if [ "$package_manager" == "apt" ]; then
     apt update
-    apt install -y nmap dirb dnsenum ldd xxd iptables ss coreutils wget curl dnsutils traceroute
+    apt install -y nmap dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute
 elif [ "$package_manager" == "yum" ]; then
     yum update -y
     yum install -y nmap dirb dnsenum glibc-utils xxd iptables-utils iproute wget curl bind-utils traceroute

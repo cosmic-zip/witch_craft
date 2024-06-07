@@ -29,7 +29,7 @@ jobs:
           sudo mkdir -p /var/witch_craft
           sudo cp -r witch_spells/ /var/witch_craft
           sudo chown -R $(whoami):$(whoami) /var/witch_craft
-          sudo apt install -y nmap dirb dnsenum ldd xxd iptables ss coreutils wget curl dnsutils traceroute
+          sudo apt install -y nmap dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute
       - name: Build
         run: |
           cargo build --release --manifest-path witch_craft/Cargo.toml
