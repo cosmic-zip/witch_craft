@@ -1,52 +1,46 @@
 #!/bin/bash
 set -e
 
-echo "Build System"
-
 echo && echo "Install dependencies"
-sudo apt update -y
-sudo apt install -y aptitude p7zip-full nmap curl xxd libc6 exiftool \
-traceroute wget iproute2 whois dnsutils dirb dnsenum tree htop iftop \
-clang sudo build-essential curl wget file libssl-dev qemu
+#!/bin/bash
 
-echo && echo "Move config folders to /var"
+# Check if the package manager is apt or yum
+if command -v apt &> /dev/null; then
+    package_manager="apt"
+elif command -v yum &> /dev/null; then
+    package_manager="yum"
+else
+    echo "Unsupported package manager. Please install the packages manually."
+    exit 1
+fi
+
+# Install packages
+if [ "$package_manager" == "apt" ]; then
+    apt update
+    apt install -y nmap dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute
+elif [ "$package_manager" == "yum" ]; then
+    yum update -y
+    yum install -y nmap dirb dnsenum glibc-utils xxd iptables-utils iproute wget curl bind-utils traceroute
+fi
+
+# Install data
+echo && echo "Install witch_spells data"
 sudo mkdir -p /var/witch_craft
 sudo cp -r witch_spells/ /var/witch_craft
-sudo cp -r blood_moon/ /var/witch_craft/witch_spells/private/
 sudo chown -R $(whoami):$(whoami) /var/witch_craft
 
-echo && echo "Uncompress files"
-7z x /var/witch_craft/witch_spells/malware/malware.csv.7z.001 -o/var/witch_craft/witch_spells/general/
-mv /var/witch_craft/witch_spells/general/full.csv /var/witch_craft/witch_spells/general/malware_hash.config
-
-echo && echo "SNAP Setup"
-sudo apt install snapd -y
-
-echo && echo "Install virtualization"
-sudo apt install virt-manager docker -y
-
-echo && echo "Cargo build monorepo"
+# Build binary
+echo && echo "Cargo build"
 cargo build --release --manifest-path witch_craft/Cargo.toml
+chmod +x ./witch_craft/target/release/witch_craft
+cp -r ./witch_craft/target/release/witch_craft /bin
 
-echo && echo "Move applications to release"
-mkdir -p ./release
-
-cp -r ./witch_craft/target/release/witch_craft ./release/
-
-echo && echo "TEST THE BINARY EXIT CODES"
-
-chmod +x ./release/*
-cd ./release
 
 # Test and print status for each binary
-test_binary() {
-  ./$1
-  status=$?
-  if [ $status -eq 0 ]; then
-    echo "$1 exited successfully."
-  else
-    echo "$1 exited with an error code."
-  fi
-}
-
-test_binary "witch_craft"
+witch_craft
+if [ $? -eq 0 ]; then
+    echo "Exit code is 0, all good!"
+else
+    echo "Exit code is not 0, something went wrong."
+    exit
+fi

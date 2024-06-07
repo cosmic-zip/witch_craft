@@ -1,19 +1,6 @@
 [package]
 name = "witch_craft"
-authors = ["Cosmic Lace"]
-license = "GPL-v3"
-description = "witch_craft is a versatile task automation software designed to serve as the foundation for various cyber security modules."
-readme = "../README.md"
-homepage = "https://github.com/th3Maid/witch_craft"
-version = "0.15.0"
+version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
-chrono = "0.4.26"
-colored = "2.0.4"
-csv = "1.2.2"
-hex = "0.4.3"
-rusqlite = "0.29.0"
-sha256 = "1.4.0"

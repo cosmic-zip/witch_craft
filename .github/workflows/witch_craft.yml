@@ -26,25 +26,14 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install Depedencies
         run: |
-          sudo mkdir /var/witch_craft
-          sudo cp witch_spells/ /var/witch_craft -R
-          sudo chown $(whoami):$(whoami) /var/witch_craft -R
-          sudo apt update
-          sudo apt install aptitude
-          sudo aptitude install -y p7zip-full nmap curl xxd libc6 exiftool traceroute wget iproute2 whois dnsutils dirb dnsenum 
-      - name: Checkout github repo (+ download lfs dependencies)
-        uses: actions/checkout@v2
-        with:
-          lfs: true
-      - name: Checkout LFS objects
-        run: git lfs checkout
-      - name: Uncompress needed files
-        run: |
-          7z x /var/witch_craft/witch_spells/malware/malware.csv.7z.001
-          mv ./full.csv /var/witch_craft/witch_spells/general/malware_hash.bin
-      - name: Test Depedencies
-        run: nmap --version && curl --version
+          sudo mkdir -p /var/witch_craft
+          sudo cp -r witch_spells/ /var/witch_craft
+          sudo chown -R $(whoami):$(whoami) /var/witch_craft
+          sudo apt install -y nmap dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute
       - name: Build
-        run: cargo build --verbose --manifest-path witch_craft/Cargo.toml
+        run: |
+          cargo build --release --manifest-path witch_craft/Cargo.toml
+          sudo chmod +x ./witch_craft/target/release/witch_craft
+          sudo cp -r ./witch_craft/target/release/witch_craft /bin
       - name: Run tests
         run: cargo test --verbose --manifest-path witch_craft/Cargo.toml
