@@ -7,7 +7,8 @@ pub fn check() -> bool {
 
     let packages: Vec<&str> = vec![
         "nmap", "dirb", "dnsenum", "ldd", "xxd", "iptables",
-        "ss", "stat", "wget", "curl", "dig", "shred",
+        "ss", "stat", "wget", "curl", "dig", "shred", 
+        "traceroute"
     ];
 
     for pkg in packages {
