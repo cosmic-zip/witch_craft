@@ -1,4 +1,6 @@
 use crate::modules::core::data::*;
+use crate::modules::core::structs::DataSet;
+
 use std::env;
 use std::process::{Command, Output};
 

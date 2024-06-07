@@ -1,7 +1,7 @@
 use crate::modules::core::core::*;
 use crate::modules::core::data::*;
 use crate::modules::shell::fancy::*;
-use crate::modules::watch::watch::*;
+use crate::modules::binds::binds::*;
 use crate::modules::shell::shell::*;
 
 #[test]

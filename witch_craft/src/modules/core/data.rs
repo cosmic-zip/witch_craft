@@ -1,37 +1,29 @@
+use crate::modules::core::structs::DataSet;
+
 pub const TONK: &str = "@@";
 pub const SPLIT_II: &str = "--";
 pub const SPLIT_I: &str = "-";
 
-#[derive(Debug, Clone)]
-pub struct DataSet {
-    pub name: String,
-    pub meta: String,
-}
-
-impl DataSet {
-    pub fn new() -> Self {
-        DataSet {
-            name: String::new(),
-            meta: String::new(),
-        }
-    }
-
-    pub fn from_str(a: &str, b: &str) -> Self {
-        DataSet {
-            name: a.to_string(),
-            meta: b.to_string(),
-        }
-    }
-}
-
-
-pub fn private() -> Vec<DataSet> {
-    return vec![];    
+pub fn nuke() -> Vec<DataSet> {
+    return vec![
+        DataSet::from_str("nuke.hd", "shred -vzn 7 @@device"),
+        DataSet::from_str("nuke.file", "shred -u -z -n 7 @@file"),     
+        DataSet::from_str("nuke.historic", "unset HISTFILE && history -c && cat /dev/null > ~/.sh_history && cat /dev/null > ~/.bash_history && history -c && history -w && cat /dev/null > ~/.zsh_history && history -c && history -w"),
+        DataSet::from_str("nuke.syslog", "cat /dev/null > /var/log/syslog && cat /dev/null > /var/log/messages"),
+        DataSet::from_str("nuke.authlog", "cat /dev/null > /var/log/auth.log && cat /dev/null > /var/log/secure"),
+        DataSet::from_str("nuke.kernlog", "cat /dev/null > /var/log/kern.log"),
+        DataSet::from_str("nuke.applogs", "find /var/log -type f -name \"*.log\" -exec cat /dev/null > {} \\;"),
+        DataSet::from_str("nuke.auditlog", "cat /dev/null > /var/log/audit/audit.log"),
+        DataSet::from_str("nuke.loginlogs", "cat /dev/null > /var/log/wtmp && cat /dev/null > /var/log/btmp && cat /dev/null > /var/log/lastlog"),
+        DataSet::from_str("nuke.alllogs", "cat /dev/null > /var/log/syslog && cat /dev/null > /var/log/messages && cat /dev/null > /var/log/auth.log && cat /dev/null > /var/log/secure && cat /dev/null > /var/log/kern.log && find /var/log -type f -name \"*.log\" -exec cat /dev/null > {} \\; && cat /dev/null > /var/log/audit/audit.log && cat /dev/null > /var/log/wtmp && cat /dev/null > /var/log/btmp && cat /dev/null > /var/log/lastlog"),
+    ];
 }
 
 pub fn data() -> Vec<DataSet> {
 
-    
+    let osint = vec![
+        DataSet::from_str("file.hex", "xxd @@file"),
+    ];
 
     let xxd = vec![
         DataSet::from_str("file.hex", "xxd @@file"),

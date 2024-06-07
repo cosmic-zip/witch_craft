@@ -1,4 +1,4 @@
 pub mod core;
 pub mod llm;
-pub mod watch;
+pub mod binds;
 pub mod shell;

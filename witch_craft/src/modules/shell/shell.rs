@@ -1,7 +1,7 @@
 use crate::modules::core::core::*;
 use crate::modules::core::data::*;
 use crate::modules::shell::fancy::*;
-use crate::modules::watch::watch::*;
+use crate::modules::binds::binds::*;
 
 pub fn check() -> bool {
 
@@ -58,6 +58,9 @@ pub fn shell() -> i32 {
         },
         "private" => {
             private_enable();
+        },
+        "file.compact" => {
+            plugin_file_compact(argsv.clone());
         },
         _ => {
             //
