@@ -19,8 +19,3 @@ impl DataSet {
         }
     }
 }
-
-
-pub fn private() -> Vec<DataSet> {
-    return vec![];    
-}

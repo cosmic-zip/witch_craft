@@ -7,7 +7,7 @@ pub fn check() -> bool {
 
     let packages: Vec<&str> = vec![
         "nmap", "dirb", "dnsenum", "ldd", "xxd", "iptables",
-        "ss", "stat", "wget", "curl", "dig"
+        "ss", "stat", "wget", "curl", "dig", "shred",
     ];
 
     for pkg in packages {
@@ -24,11 +24,6 @@ pub fn check() -> bool {
 
 }
 
-
-pub fn private_enable() {
-    println!("{}", KEY);
-}
-
 pub fn shell() -> i32 {
     // Argsv are and Vec<String>, the first item are 
     // the path of binary, the rest are all arguments
@@ -40,13 +35,10 @@ pub fn shell() -> i32 {
     let argsv = readargs();
 
     if argsv.len() % 2 != 0 {
-        raise("Not enough parameters provided.", 3);
         println!("{}", WITCH); 
         return 1;
     }
 
-
-    let data = data();
     let mname = argsv[1].as_str();
 
     match mname {
@@ -56,23 +48,22 @@ pub fn shell() -> i32 {
         "check" => {
             check();
         },
-        "private" => {
-            private_enable();
-        },
         "file.compact" => {
             plugin_file_compact(argsv.clone());
+        },"nuke.alllogs" => {
+            logs_fallout(argsv.clone());
         },
         _ => {
-            //
-        }
-    }
-
-    for set in data {
-        if set.name == mname {
-            let out = bob(set, argsv.clone());
-            if out != 0 { 
-                raise("Shell falied to execute at bob()", 4); 
-                return out;
+            let data = data();
+            for set in data {
+                if set.name == mname {
+                    let out = bob(set.clone(), argsv.clone());
+                    if out != 0 { 
+                        raise("Shell falied to execute at bob()", 4); 
+                        raise(&set.meta, 4); 
+                        return out;
+                    }
+                }
             }
         }
     }
