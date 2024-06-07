@@ -26,11 +26,14 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install Depedencies
         run: |
-          mkdir -p /var/witch_craft
-          cp -r witch_spells/ /var/witch_craft
-          chown -R $(whoami):$(whoami) /var/witch_craft
-          apt install -y nmap dirb dnsenum ldd xxd iptables ss coreutils wget curl dnsutils traceroute
+          sudo mkdir -p /var/witch_craft
+          sudo cp -r witch_spells/ /var/witch_craft
+          sudo chown -R $(whoami):$(whoami) /var/witch_craft
+          sudo apt install -y nmap dirb dnsenum ldd xxd iptables ss coreutils wget curl dnsutils traceroute
       - name: Build
-        run: cargo build --verbose --manifest-path witch_craft/Cargo.toml
+        run: |
+          cargo build --release --manifest-path witch_craft/Cargo.toml
+          sudo chmod +x ./witch_craft/target/release/witch_craft
+          sudo cp -r ./witch_craft/target/release/witch_craft /bin
       - name: Run tests
         run: cargo test --verbose --manifest-path witch_craft/Cargo.toml
