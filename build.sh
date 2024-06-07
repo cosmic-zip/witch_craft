@@ -27,7 +27,6 @@ fi
 echo && echo "Install witch_spells data"
 sudo mkdir -p /var/witch_craft
 sudo cp -r witch_spells/ /var/witch_craft
-sudo cp -r blood_moon/ /var/witch_craft/witch_spells/private/
 sudo chown -R $(whoami):$(whoami) /var/witch_craft
 
 # Build binary
