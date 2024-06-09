@@ -1,5 +1,6 @@
 #[derive(Debug, Clone)]
 pub struct DataSet {
+    pub docs: String,
     pub name: String,
     pub meta: String,
 }
@@ -7,15 +8,17 @@ pub struct DataSet {
 impl DataSet {
     pub fn new() -> Self {
         DataSet {
+            docs: String::new(),
             name: String::new(),
             meta: String::new(),
         }
     }
 
-    pub fn from_str(a: &str, b: &str) -> Self {
+    pub fn from_str(docs: &str, name: &str, meta: &str) -> Self {
         DataSet {
-            name: a.to_string(),
-            meta: b.to_string(),
+            docs: docs.to_string(),
+            name: name.to_string(),
+            meta: meta.to_string(),
         }
     }
 }
