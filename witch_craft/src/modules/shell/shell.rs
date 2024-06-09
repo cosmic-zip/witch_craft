@@ -57,6 +57,9 @@ pub fn shell() -> i32 {
         "check" => {
             check();
         }
+        "help" => {
+            magic_docs();
+        }
         "file.compact" => {
             plugin_file_compact(argsv.clone());
         }

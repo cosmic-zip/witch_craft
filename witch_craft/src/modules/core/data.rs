@@ -161,17 +161,17 @@ pub fn data() -> Vec<DataSet> {
             "ip6tables -F && iptables -F",
         ),
         DataSet::from_str(
-            "docs",
+            "Drop all incomme connections",
             "firewall.drop.in.all",
             "iptables -A INPUT -p tcp -j DROP && iptables -A INPUT -p udp -j DROP && ip6tables -A INPUT -p tcp -j DROP && ip6tables -A INPUT -p udp -j DROP",
         ),
         DataSet::from_str(
-            "docs",
+            "Derop all outcome connections",
             "firewall.drop.out.all",
             "iptables -A OUTPUT -p tcp -j DROP && iptables -A OUTPUT -p udp -j DROP && ip6tables -A OUTPUT -p tcp -j DROP && ip6tables -A OUTPUT -p udp -j DROP",
         ),
         DataSet::from_str(
-            "docs",
+            "Drop all outcome port bigger than expecified port",
             "firewall.drop.bigger",
             "iptables -A OUTPUT -p tcp --dport @@port: -j DROP && iptables -A OUTPUT -p udp --dport @@port: -j DROP && ip6tables -A OUTPUT -p tcp --dport @@port: -j DROP &&    ip6tables -A OUTPUT -p udp --dport @@port: -j DROP",
         ),

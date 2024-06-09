@@ -144,3 +144,34 @@ pub fn bob(set: DataSet, argsv: Vec<String>) -> i32 {
 
     return 0;
 }
+
+pub fn magic_docs() {
+
+    let data = data();
+    for dataset in data {
+
+
+        if dataset.docs == "" {
+            println!("\nNo manual page found");
+        } else {
+            println!("\n{}", dataset.docs);
+        }
+
+
+
+        println!("\n\t{}", dataset.name);
+
+
+        let options: Vec<&str> = dataset.meta.split(" ").collect();
+        for opt in options {
+
+            if opt.contains(TONK) {
+                println!("\t{}{}", SPLIT_II, opt.replace(TONK, ""));
+            }
+
+
+        }
+
+    }
+
+}
