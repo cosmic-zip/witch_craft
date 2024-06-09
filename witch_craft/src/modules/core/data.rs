@@ -149,8 +149,31 @@ pub fn data() -> Vec<DataSet> {
         ),
         DataSet::from_str(
             "",
-            "map.tcp_udp",
+            "map.all",
             "nmap -sS -sU -T2 -p- -A -O -D RND:10 -f --data-length 32 -Pn @@target",
+        ),
+    ];
+
+    let firewall = vec![
+        DataSet::from_str(
+            "Remove all firewall rules non-resible",
+            "firewall.flush",
+            "ip6tables -F && iptables -F",
+        ),
+        DataSet::from_str(
+            "docs",
+            "firewall.drop.in.all",
+            "iptables -A INPUT -p tcp -j DROP && iptables -A INPUT -p udp -j DROP && ip6tables -A INPUT -p tcp -j DROP && ip6tables -A INPUT -p udp -j DROP",
+        ),
+        DataSet::from_str(
+            "docs",
+            "firewall.drop.out.all",
+            "iptables -A OUTPUT -p tcp -j DROP && iptables -A OUTPUT -p udp -j DROP && ip6tables -A OUTPUT -p tcp -j DROP && ip6tables -A OUTPUT -p udp -j DROP",
+        ),
+        DataSet::from_str(
+            "docs",
+            "firewall.drop.bigger",
+            "iptables -A OUTPUT -p tcp --dport @@port: -j DROP && iptables -A OUTPUT -p udp --dport @@port: -j DROP && ip6tables -A OUTPUT -p tcp --dport @@port: -j DROP &&    ip6tables -A OUTPUT -p udp --dport @@port: -j DROP",
         ),
     ];
 
@@ -169,6 +192,7 @@ pub fn data() -> Vec<DataSet> {
         metadata,
         dns_brute_force,
         nmap,
+        firewall,
         general,
     ]
     .concat();
