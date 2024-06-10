@@ -16,9 +16,10 @@ pub fn raise(arg: &str, fancy: i32) -> String {
         "🔴 [ fail ]",
         "🟠 [ warning ]",
         "💀 [ error ]",
+        "🟣 [ manual ]",
     ];
 
-    if fc > 4 {
+    if fc >= opts.len() {
         return "🔴 Index overflow at @raise function".to_string();
     }
 
@@ -112,22 +113,34 @@ pub fn raw_exec(command_line: String) -> Option<Output> {
     }
 }
 
+fn split_line(input: &str, max_length: usize) -> Vec<String> {
+    let mut lines = Vec::new();
+    let mut start = 0;
+    while start < input.len() {
+        let end = std::cmp::min(start + max_length, input.len());
+        lines.push(input[start..end].to_string());
+        start = end;
+    }
+    lines
+}
+
 pub fn lazy_exec(command_line: String, pretty: bool) -> i32 {
     match raw_exec(command_line) {
         Some(output) => {
             if output.status.success() {
                 let stdout = String::from_utf8_lossy(&output.stdout);
-                if pretty {
-                    raise("Start", 0);
+                let lines = stdout.split("\n");
+                for line in lines {
+                    let result = split_line(&line, 180);
+                    for line in result {
+                        println!("\t{}", line);
+                    }
                 }
-                println!("\n{}\n", stdout);
             } else {
                 let stderr = String::from_utf8_lossy(&output.stderr);
-                if pretty {
-                    raise("Error", 4);
-                }
                 eprintln!("\n{}\n", stderr);
             }
+            println!("");
             output.status.code().unwrap_or(-1)
         }
         None => return 0,
@@ -154,7 +167,7 @@ pub fn magic_docs() {
         if dataset.docs == "" {
             println!("\nNo manual page found");
         } else {
-            println!("\n{}", dataset.docs);
+            raise(&dataset.docs, 5);
         }
 
 
