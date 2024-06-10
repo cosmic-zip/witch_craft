@@ -133,25 +133,30 @@ pub fn data() -> Vec<DataSet> {
 
     let nmap = vec![
         DataSet::from_str(
-            "",
-            "map.tcp",
-            "nmap -sS -T2 -p- -A -O -D RND:10 -f --data-length 32 -Pn @@target",
-        ),
+            "Default set of nmap NSE scripts, same as nmap [options] -sC [ip or dns]",
+            "map.default",
+            "nmap -T3 -D RND:8 --script default @@target",
+        ), 
         DataSet::from_str(
-            "",
-            "map.udp",
-            "nmap -sU -T2 -p- -A -O -D RND:10 -f --data-length 32 -Pn @@target",
-        ),
+            "Try to actively discover more about the network by querying public registries, SNMP-enabled devices, directory services, and the like",
+            "map.discovery",
+            "nmap -T3 -D RND:88 --script discovery @@target",
+        ), 
         DataSet::from_str(
-            "",
-            "map.ping",
-            "nmap -sP -T2 -D RND:10 -f --data-length 32 @@target",
-        ),
+            "Deal with authentication credentials (or bypassing them) on the target system",
+            "map.auth",
+            "nmap -T3 -D RND:8 --script auth @@target",
+        ), 
         DataSet::from_str(
-            "",
-            "map.all",
-            "nmap -sS -sU -T2 -p- -A -O -D RND:10 -f --data-length 32 -Pn @@target",
-        ),
+            "Perform general network discovery, are less likely to offend remote administrators",
+            "map.safe",
+            "nmap -T3 -D RND:8 --script safe @@target",
+        ), 
+        DataSet::from_str(
+            "Check for specific known vulnerabilities and generally only report results if they are found. ",
+            "map.vuln",
+            "nmap -T3 -D RND:8 --script vuln @@target",
+        ), 
     ];
 
     let firewall = vec![
