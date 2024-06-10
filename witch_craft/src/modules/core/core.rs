@@ -35,15 +35,15 @@ pub fn search_value(term: String, vector: Vec<String>) -> String {
     while counter < vector.len() {
         if counter + 1 < vector.len() {
             if vector[counter].contains(SPLIT_I) {
-                let keyname = vector[counter].replace(SPLIT_I, "");
-                if keyname == term {
+                let key_name = vector[counter].replace(SPLIT_I, "");
+                if key_name == term {
                     return vector[counter + 1].to_string();
                 }
             }
 
             if vector[counter].contains(SPLIT_II) {
-                let keyname = vector[counter].replace(SPLIT_II, "");
-                if keyname == term {
+                let key_name = vector[counter].replace(SPLIT_II, "");
+                if key_name == term {
                     return vector[counter + 1].to_string();
                 }
             }
@@ -159,32 +159,21 @@ pub fn bob(set: DataSet, argsv: Vec<String>) -> i32 {
 }
 
 pub fn magic_docs() {
-
     let data = data();
     for dataset in data {
-
-
         if dataset.docs == "" {
             println!("\nNo manual page found");
         } else {
             raise(&dataset.docs, 5);
         }
 
-
-
         println!("\n\t{}", dataset.name);
-
 
         let options: Vec<&str> = dataset.meta.split(" ").collect();
         for opt in options {
-
             if opt.contains(TONK) {
                 println!("\t{}{}", SPLIT_II, opt.replace(TONK, ""));
             }
-
-
         }
-
     }
-
 }

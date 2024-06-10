@@ -72,7 +72,7 @@ pub fn data() -> Vec<DataSet> {
     ];
 
     let file_plugin = vec![
-        DataSet::from_str("lsof alias", "file.usedby", "lsof @@file_path"),
+        DataSet::from_str("lsof alias", "file.by", "lsof @@file_path"),
         DataSet::from_str(
             "creates  a hex dump of a given file or standard input.",
             "file.hex",
@@ -136,27 +136,27 @@ pub fn data() -> Vec<DataSet> {
             "Default set of nmap NSE scripts, same as nmap [options] -sC [ip or dns]",
             "map.default",
             "nmap -T3 -D RND:8 --script default @@target",
-        ), 
+        ),
         DataSet::from_str(
             "Try to actively discover more about the network by querying public registries, SNMP-enabled devices, directory services, and the like.",
             "map.discovery",
             "nmap -T3 -D RND:88 --script discovery @@target",
-        ), 
+        ),
         DataSet::from_str(
             "Deal with authentication credentials (or bypassing them) on the target system",
             "map.auth",
             "nmap -T3 -D RND:8 --script auth @@target",
-        ), 
+        ),
         DataSet::from_str(
             "Perform general network discovery, are less likely to offend remote administrators",
             "map.safe",
             "nmap -T3 -D RND:8 --script safe @@target",
-        ), 
+        ),
         DataSet::from_str(
             "Check for specific known vulnerabilities and generally only report results if they are found.",
             "map.vuln",
             "nmap -T3 -D RND:8 --script vuln @@target",
-        ), 
+        ),
         DataSet::from_str("Scan local open connections", "map.local", "ss -tupanr"),
     ];
 
