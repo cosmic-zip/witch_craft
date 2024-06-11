@@ -13,6 +13,7 @@ Phishing
 
 Malware
 
+    Loaders
     Viruses
     Worms
     Trojans
