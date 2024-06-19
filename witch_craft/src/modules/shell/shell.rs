@@ -18,7 +18,7 @@ pub fn check() -> bool {
         "dnsutils",
         "traceroute",
         "openssl",
-        "openssh-server"
+        "openssh-server",
         "xattr",
         "libimage-exiftool-perl",
         "tor"
