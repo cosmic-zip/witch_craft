@@ -123,3 +123,9 @@ Keyloggers
     Kernel-Based Keyloggers
     Acoustic Keyloggers
     Screen Scraping Keyloggers
+
+Artifical Inteligence 
+
+    Prompt Hacking
+    Adversarial prompt
+    
