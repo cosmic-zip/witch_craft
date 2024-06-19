@@ -8,16 +8,20 @@ pub fn check() -> bool {
         "nmap",
         "dirb",
         "dnsenum",
-        "ldd",
+        "libc-bin",
+        "iproute2",
         "xxd",
         "iptables",
-        "ss",
-        "stat",
+        "coreutils",
         "wget",
         "curl",
-        "dig",
-        "shred",
+        "dnsutils",
         "traceroute",
+        "openssl",
+        "openssh-server",
+        "xattr",
+        "libimage-exiftool-perl",
+        "tor"
     ];
 
     for pkg in packages {
@@ -56,6 +60,9 @@ pub fn shell() -> i32 {
         }
         "check" => {
             check();
+        }
+        "help" => {
+            magic_docs();
         }
         "file.compact" => {
             plugin_file_compact(argsv.clone());

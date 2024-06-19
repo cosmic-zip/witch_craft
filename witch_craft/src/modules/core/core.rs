@@ -16,9 +16,10 @@ pub fn raise(arg: &str, fancy: i32) -> String {
         "🔴 [ fail ]",
         "🟠 [ warning ]",
         "💀 [ error ]",
+        "🟣 [ manual ]",
     ];
 
-    if fc > 4 {
+    if fc >= opts.len() {
         return "🔴 Index overflow at @raise function".to_string();
     }
 
@@ -34,15 +35,15 @@ pub fn search_value(term: String, vector: Vec<String>) -> String {
     while counter < vector.len() {
         if counter + 1 < vector.len() {
             if vector[counter].contains(SPLIT_I) {
-                let keyname = vector[counter].replace(SPLIT_I, "");
-                if keyname == term {
+                let key_name = vector[counter].replace(SPLIT_I, "");
+                if key_name == term {
                     return vector[counter + 1].to_string();
                 }
             }
 
             if vector[counter].contains(SPLIT_II) {
-                let keyname = vector[counter].replace(SPLIT_II, "");
-                if keyname == term {
+                let key_name = vector[counter].replace(SPLIT_II, "");
+                if key_name == term {
                     return vector[counter + 1].to_string();
                 }
             }
@@ -112,22 +113,34 @@ pub fn raw_exec(command_line: String) -> Option<Output> {
     }
 }
 
+fn split_line(input: &str, max_length: usize) -> Vec<String> {
+    let mut lines = Vec::new();
+    let mut start = 0;
+    while start < input.len() {
+        let end = std::cmp::min(start + max_length, input.len());
+        lines.push(input[start..end].to_string());
+        start = end;
+    }
+    lines
+}
+
 pub fn lazy_exec(command_line: String, pretty: bool) -> i32 {
     match raw_exec(command_line) {
         Some(output) => {
             if output.status.success() {
                 let stdout = String::from_utf8_lossy(&output.stdout);
-                if pretty {
-                    raise("Start", 0);
+                let lines = stdout.split("\n");
+                for line in lines {
+                    let result = split_line(&line, 180);
+                    for line in result {
+                        println!("\t{}", line);
+                    }
                 }
-                println!("\n{}\n", stdout);
             } else {
                 let stderr = String::from_utf8_lossy(&output.stderr);
-                if pretty {
-                    raise("Error", 4);
-                }
                 eprintln!("\n{}\n", stderr);
             }
+            println!("");
             output.status.code().unwrap_or(-1)
         }
         None => return 0,
@@ -143,4 +156,24 @@ pub fn bob(set: DataSet, argsv: Vec<String>) -> i32 {
     }
 
     return 0;
+}
+
+pub fn magic_docs() {
+    let data = data();
+    for dataset in data {
+        if dataset.docs == "" {
+            println!("\nNo manual page found");
+        } else {
+            raise(&dataset.docs, 5);
+        }
+
+        println!("\n\t{}", dataset.name);
+
+        let options: Vec<&str> = dataset.meta.split(" ").collect();
+        for opt in options {
+            if opt.contains(TONK) {
+                println!("\t{}{}", SPLIT_II, opt.replace(TONK, ""));
+            }
+        }
+    }
 }
