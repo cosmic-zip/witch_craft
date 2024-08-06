@@ -3,40 +3,6 @@ use crate::modules::core::core::*;
 use crate::modules::core::data::*;
 use crate::modules::shell::fancy::*;
 
-pub fn check() -> bool {
-    let packages: Vec<&str> = vec![
-        "nmap",
-        "dirb",
-        "dnsenum",
-        "libc-bin",
-        "iproute2",
-        "xxd",
-        "iptables",
-        "coreutils",
-        "wget",
-        "curl",
-        "dnsutils",
-        "traceroute",
-        "openssl",
-        "openssh-server",
-        "xattr",
-        "libimage-exiftool-perl",
-        "tor"
-    ];
-
-    for pkg in packages {
-        let out = lazy_exec(pkg.to_string(), true);
-        // code 127 are for not found
-        if out == 127 {
-            raise(&format!("Fail! {}", pkg), 4);
-            return false;
-        }
-    }
-
-    raise("All checks pass!", 1);
-    return true;
-}
-
 pub fn shell() -> i32 {
     // Argsv are and Vec<String>, the first item are
     // the path of binary, the rest are all arguments

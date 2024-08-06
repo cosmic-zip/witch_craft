@@ -177,3 +177,38 @@ pub fn magic_docs() {
         }
     }
 }
+
+pub fn check_install() -> bool {
+    let packages: Vec<&str> = vec![
+            "nmap",
+            "dirb",
+            "dnsenum",
+            "libc-bin",
+            "iproute2",
+            "xxd",
+            "iptables",
+            "coreutils",
+            "wget",
+            "curl",
+            "dnsutils",
+            "traceroute",
+            "openssl",
+            "openssh-server",
+            "xattr",
+            "libimage-exiftool-perl",
+            "tor",
+            "foremost",
+    ];
+
+    for pkg in packages {
+        let out = lazy_exec(pkg.to_string(), true);
+        // code 127 are for not found
+        if out == 127 {
+            raise(&format!("Fail! {}", pkg), 4);
+            return false;
+        }
+    }
+
+    raise("All checks pass!", 1);
+    return true;
+}
