@@ -14,11 +14,9 @@
 </center>
 
 
-
-
 <center>
 
-        🚧 warning: For detailed information about how to use witch_craft 
+        🚧 warning: For detailed information about how to use witch_craft
         run or witch_craft help.
 
 </center>
@@ -30,10 +28,10 @@ The project initially includes a set of default files. These files
 are created using the best possible data analysis techniques, and
 their final versions are merged into the main project.
 
-It consists of two main components: 
+It consists of two main components:
 
-* **witch_craft** for CLI application.
-* **witch_oracle** for GUI application 
+- **witch_craft** for CLI application.
+- **witch_oracle** for GUI application
 
 ### Build Instructions
 
@@ -60,8 +58,8 @@ Step 3: Explore the Release Folder
 
 Navigate to the release folder to find the built components:
 
-* **witch_craft**: The cli application executable.
-* **witch_oracle**: The gui application executable.
+- **witch_craft**: The cli application executable.
+- **witch_oracle**: The gui application executable.
 
 **Usage**
 
@@ -86,6 +84,24 @@ To visualize data, run the Witch Oracle application:
 ```
 
 Feel free to contribute to witch_craft by submitting issues or pull requests. Your input is valuable!
+
+### Plugins
+
+The Witch_Craft project is extensible through static files and Rust code. Moreover, it is possible to extend its functionalities using `db.json`. This file contains a list of small shell scripts, which means you can integrate anything that interacts with the terminal using ARGS (argsv, readargs(), sys.args(), etc).
+
+```javascript
+{
+  "description": "Securely deletes and overwrites the contents of a device seven times",
+  "name": "nuke.hd",
+  "command": "shred -vzn 7 @@device"
+}
+```
+
+#### This script will run like:
+
+```bash
+witchcraft nuke.hd --device /dev/sdx1
+```
 
 ### License
 
