@@ -161,8 +161,6 @@ pub fn bob(set: DataSet, argsv: Vec<String>) -> i32 {
 pub fn magic_docs() {
     let data: Vec<DataSet> = data();
 
-    println!("{:?}", data);
-
     if data.is_empty() {
         raise("Datasets is empty", 1);
     }
