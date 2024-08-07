@@ -21,11 +21,11 @@ pub fn shell() -> i32 {
     let mname = argsv[1].as_str();
 
     match mname {
-        "dns" => {
+        "map.dns" => {
             dns(argsv.clone());
         }
         "check" => {
-            check();
+            check_install();
         }
         "help" => {
             magic_docs();

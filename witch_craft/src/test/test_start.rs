@@ -58,6 +58,6 @@ fn test_lazy_pipeline() {
 
 #[test]
 fn test_check() {
-    let exit = check();
+    let exit = check_install();
     assert_eq!(exit, true);
 }

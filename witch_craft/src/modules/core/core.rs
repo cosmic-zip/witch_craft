@@ -159,7 +159,14 @@ pub fn bob(set: DataSet, argsv: Vec<String>) -> i32 {
 }
 
 pub fn magic_docs() {
-    let data = data();
+    let data: Vec<DataSet> = data();
+
+    println!("{:?}", data);
+
+    if data.is_empty() {
+        raise("Datasets is empty", 1);
+    }
+
     for dataset in data {
         if dataset.docs == "" {
             println!("\nNo manual page found");

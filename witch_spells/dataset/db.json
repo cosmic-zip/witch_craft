@@ -1,0 +1,359 @@
+{
+  "general": [
+    {
+      "description": "Securely deletes and overwrites the contents of a device seven times",
+      "name": "nuke.hd",
+      "command": "shred -vzn 7 @@device"
+    },
+    {
+      "description": "Securely deletes and overwrites a file seven times, then removes it from the filesystem to prevent data recovery.",
+      "name": "nuke.file",
+      "command": "shred -u -z -n 7 @@file"
+    },
+    {
+      "description": "Remove all firewall rules non-resible",
+      "name": "firewall.flush",
+      "command": "ip6tables -F && iptables -F"
+    },
+    {
+      "description": "Drop all incomme connections",
+      "name": "firewall.drop.in.all",
+      "command": "iptables -A INPUT -p tcp -j DROP && iptables -A INPUT -p udp -j DROP && ip6tables -A INPUT -p tcp -j DROP && ip6tables -A INPUT -p udp -j DROP"
+    },
+    {
+      "description": "Derop all outcome connections",
+      "name": "firewall.drop.out.all",
+      "command": "iptables -A OUTPUT -p tcp -j DROP && iptables -A OUTPUT -p udp -j DROP && ip6tables -A OUTPUT -p tcp -j DROP && ip6tables -A OUTPUT -p udp -j DROP"
+    },
+    {
+      "description": "Drop all outcome port bigger than expecified port",
+      "name": "firewall.drop.bigger",
+      "command": "iptables -A OUTPUT -p tcp --dport @@port: -j DROP && iptables -A OUTPUT -p udp --dport @@port: -j DROP && ip6tables -A OUTPUT -p tcp --dport @@port: -j DROP &&    ip6tables -A OUTPUT -p udp --dport @@port: -j DROP"
+    },
+    {
+      "description": "Full website downloader",
+      "name": "web.donwload",
+      "command": "wget --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows --random-wait --wait=@@wait --limit-rate=200k --tries=inf --domains example.com --no-parent @@url"
+    },
+    {
+      "description": "Creates a directory named 'out' and copies files from a specified folder to a remote host via SCP.",
+      "name": "scp.copy",
+      "command": "mkdir out && scp -P @@port @@folder/* hostuser@@@ip:./out/"
+    },
+    {
+      "description": "Enables Bluetooth functionality by bringing up the hci0 interface, unblocking Bluetooth, and printing 'done'.",
+      "name": "blue.enable",
+      "command": "sudo hciconfig hci0 up > /dev/null 2>&1 && sudo hciconfig hci0 > /dev/null 2>&1 && sudo rfkill unblock bluetooth > /dev/null 2>&1 && echo done"
+    },
+    {
+      "description": "Lists Bluetooth devices and their status.",
+      "name": "blue.list",
+      "command": "rfkill list"
+    },
+    {
+      "description": "Generates a long random username and password, then performs a POST request to a specified domain with the generated credentials.",
+      "name": "dos.longpass",
+      "command": "curl -X POST @@domain -H 'Content-Type: application/json' -d '{\"username\": \"random_user_\"$(openssl rand -base64 @@size),\"password\": \"random_password_\"$(openssl rand -base64 @@size)}'"
+    },
+    {
+      "description": "Sends a POST request with JSON data containing a 'main' field and a message field specified by @@message to a specified domain.",
+      "name": "span.text",
+      "command": "curl -X POST -H \"Content-Type: application/json\" -d '{\"main\": \"somename\", \"@@message\": \"somemsg\"}' @@domain"
+    },
+    {
+      "description": "Capture all packets on a specified network interface.",
+      "name": "capture.all",
+      "command": "tcpdump -i @@interface -w capture.pcap"
+    },
+    {
+      "description": "Capture all packets from/to a specified IP address on a specified network interface.",
+      "name": "capture.all.from_ip",
+      "command": "tcpdump -i @@interface host @@ip -w capture.pcap"
+    },
+    {
+      "description": "Capture only one packet on a specified network interface.",
+      "name": "capture.one",
+      "command": "tcpdump -i @@interface -c 1 -w capture.pcap"
+    },
+    {
+      "description": "Capture only one packet from/to a specified IP address on a specified network interface.",
+      "name": "capture.one.from_ip",
+      "command": "tcpdump -i @@interface host @@ip -c 1 -w capture.pcap"
+    },
+    {
+      "description": "Create a disk dump from a specified input device to an output file.",
+      "name": "disk.dump",
+      "command": "dd if=@@device of=@@file bs=4M"
+    },
+    {
+      "description": "Carve files from a specified disk image using foremost.",
+      "name": "disk.recover",
+      "command": "foremost -i @@image -o @@folder"
+    },
+    {
+      "description": "lsof alias",
+      "name": "file.by",
+      "command": "lsof @@file"
+    },
+    {
+      "description": "creates  a hex dump of a given file or standard input.",
+      "name": "file.hex",
+      "command": "xxd @@file"
+    },
+    {
+      "description": "Switch to bits (binary digits) dump, rather than hex dump.",
+      "name": "file.bin",
+      "command": "xxd -b @@file"
+    },
+    {
+      "description": "Takes a hexadecimal dump and converts it back into binary format.",
+      "name": "file.dec",
+      "command": "xxd -d @@file"
+    },
+    {
+      "description": "Output in PostScript continuous hex dump style. Also known as plain hex dump style.",
+      "name": "file.dump",
+      "command": "xxd -ps @@file"
+    },
+    {
+      "description": "Create a C header file from a binary file. This header file contains a C array definition representing the binary data in hexadecimal format.",
+      "name": "file.list",
+      "command": "xxd -i @@file"
+    },
+    {
+      "description": "Utility used to determine the type of a file.",
+      "name": "file",
+      "command": "file @@file"
+    },
+    {
+      "description": "Extracts and displays all metadata from an image file using exiftool.",
+      "name": "file.meta",
+      "command": "exiftool @@file"
+    },
+    {
+      "description": "Removes all metadata from an image to protect privacy",
+      "name": "file.clean.meta",
+      "command": "exiftool -all= @@image"
+    },
+    {
+      "description": "scans a domain for directories with a specified wordlist, and saves the results to an output file.",
+      "name": "map.dns.dirs",
+      "command": "dirb @@domain -w @@wordlist -o @@output"
+    },
+    {
+      "description": "It scans a domain for subdomains using the specified wordlist and saves the results to an output file.",
+      "name": "map.dns.subdomain",
+      "command": "dnsenum --enum @@domain -t 15 --threads 4 -f @@wordlist -o @@output"
+    },
+    {
+      "description": "Default set of nmap NSE scripts, same as nmap [options] -sC [ip or dns]",
+      "name": "map.default",
+      "command": "nmap -T3 -D RND:8 --script default @@target"
+    },
+    {
+      "description": "Try to actively discover more about the network by querying public registries, SNMP-enabled devices, directory services, and the like.",
+      "name": "map.discovery",
+      "command": "nmap -T3 -D RND:88 --script discovery @@target"
+    },
+    {
+      "description": "Deal with authentication credentials (or bypassing them) on the target system",
+      "name": "map.auth",
+      "command": "nmap -T3 -D RND:8 --script auth @@target"
+    },
+    {
+      "description": "Perform general network discovery, are less likely to offend remote administrators",
+      "name": "map.safe",
+      "command": "nmap -T3 -D RND:8 --script safe @@target"
+    },
+    {
+      "description": "Check for specific known vulnerabilities and generally only report results if they are found.",
+      "name": "map.vuln",
+      "command": "nmap -T3 -D RND:8 --script vuln @@target"
+    },
+    {
+      "description": "Scan local open connections",
+      "name": "map.local",
+      "command": "ss -tupanr"
+    },
+    {
+      "description": "Show the current ip address",
+      "name": "map.myip",
+      "command": "curl ip.me"
+    },
+    {
+      "description": "Crack ZIP file encryption using Hashcat",
+      "name": "crack.zip",
+      "command": "hashcat -m 13600 -a 0 @@file @@wordlist"
+    },
+    {
+      "description": "Crack LUKS1 disk image encryption using Hashcat",
+      "name": "crack.luks1",
+      "command": "hashcat -m 14600 -a 0 @@file @@wordlist"
+    },
+    {
+      "description": "Crack LUKS2 disk image encryption using Hashcat",
+      "name": "crack.luks2",
+      "command": "hashcat -m 29600 -a 0 @@file @@wordlist"
+    },
+    {
+      "description": "Crack KeePass database encryption using Hashcat",
+      "name": "crack.keepass",
+      "command": "hashcat -m 13400 -a 0 @@file @@wordlist"
+    },
+    {
+      "description": "Crack WPA/WPA2 encryption in PCAP files using Hashcat",
+      "name": "crack.pcap",
+      "command": "hcxpcapngtool -o hash.hc22000 @@file && hashcat -m 22000 -a 0 hash.hc22000 @@wordlist"
+    },
+    {
+      "description": "Applogs typically refer to logs generated by specific applications or software. They contain information about the operation, performance, and errors of the application.",
+      "name": "view.applogs",
+      "command": "find /var/log -type f -name \"*.log\" -exec tail -n 1000 {} \\;"
+    },
+    {
+      "description": "syslog: General system messages.",
+      "name": "view.syslog",
+      "command": "tail -n 1000 /var/log/syslog"
+    },
+    {
+      "description": "messages: System messages, including kernel and service messages.",
+      "name": "view.messages",
+      "command": "tail -n 1000 /var/log/messages"
+    },
+    {
+      "description": "authlog: Authentication-related messages.",
+      "name": "view.authlog",
+      "command": "tail -n 1000 /var/log/auth.log"
+    },
+    {
+      "description": "secure: Security-related messages, including authentication and authorization events.",
+      "name": "view.secure",
+      "command": "tail -n 1000 /var/log/secure"
+    },
+    {
+      "description": "kernlog: Kernel-related messages.",
+      "name": "view.kernlog",
+      "command": "tail -n 1000 /var/log/kern.log"
+    },
+    {
+      "description": "auditlog: Audit messages, tracking system events for security auditing.",
+      "name": "view.auditlog",
+      "command": "tail -n 1000 /var/log/audit/audit.log"
+    },
+    {
+      "description": "wtmp: Records all user logins and logouts.",
+      "name": "view.wtmp",
+      "command": "last -n 1000"
+    },
+    {
+      "description": "btmp: Records failed login attempts.",
+      "name": "view.btmp",
+      "command": "lastb -n 1000"
+    },
+    {
+      "description": "lastlog: Records last login information for all users.",
+      "name": "view.lastlog",
+      "command": "tail -n 1000 /var/log/lastlog"
+    },
+    {
+      "name": "backup.mysql",
+      "description": "MySQL database backup",
+      "command": "mysqldump -u @@username -p@@password @@database_name > /path/to/local/backup/mysql_backup.sql"
+    },
+    {
+      "name": "backup.postgresql",
+      "description": "PostgreSQL database backup",
+      "command": "pg_dump -U @@username -W @@database_name > /path/to/local/backup/postgresql_backup.sql"
+    },
+    {
+      "name": "backup.sqlite",
+      "description": "SQLite database backup",
+      "command": "sqlite3 @@database_name .dump > /path/to/local/backup/sqlite_backup.sql"
+    },
+    {
+      "name": "backup.microsoft_sql_server",
+      "description": "Microsoft SQL Server database backup",
+      "command": "sqlcmd -S @@server_name -U @@username -P @@password -Q \"BACKUP DATABASE [@@database_name] TO DISK = '/path/to/local/backup/sql_server_backup.bak'\""
+    },
+    {
+      "name": "backup.oracle_database",
+      "description": "Oracle Database backup",
+      "command": "exp @@username/@@password@@@database_name file=/path/to/local/backup/oracle_backup.dmp full=y"
+    },
+    {
+      "name": "backup.mongodb",
+      "description": "MongoDB database backup",
+      "command": "mongodump --host @@host --port @@port --username @@username --password @@password --db @@database_name --out /path/to/local/backup/mongodb_backup"
+    },
+    {
+      "name": "backup.redis",
+      "description": "Redis database backup",
+      "command": "redis-cli --rdb /path/to/local/backup/redis_backup.rdb"
+    },
+    {
+      "name": "backup.cassandra",
+      "description": "Cassandra database backup",
+      "command": "nodetool snapshot -t backup @@keyspace_name -d /path/to/local/backup/cassandra_backup"
+    },
+    {
+      "name": "backup.mariadb",
+      "description": "MariaDB database backup",
+      "command": "mysqldump -u @@username -p@@password @@database_name > /path/to/local/backup/mariadb_backup.sql"
+    },
+    {
+      "name": "backup.ibm_db2",
+      "description": "IBM Db2 database backup",
+      "command": "db2 backup database @@database_name to /path/to/local/backup/db2_backup"
+    },
+    {
+      "name": "backup.elasticsearch",
+      "description": "Elasticsearch backup",
+      "command": "curl -X PUT 'localhost:9200/_snapshot/my_backup/snapshot_1' -H 'Content-Type: application/json' -d'{\"indices\":\"@@index_name\",\"ignore_unavailable\":true,\"include_global_state\":false}'"
+    },
+    {
+      "name": "backup.firebase_realtime_database",
+      "description": "Firebase Realtime Database backup",
+      "command": "curl -X GET 'https://@@project_id.firebaseio.com/.json?access_token=@@access_token' > /path/to/local/backup/firebase_backup.json"
+    },
+    {
+      "name": "backup.couchbase",
+      "description": "Couchbase database backup",
+      "command": "cbbackup couchbase://@@host @@path/to/local/backup/couchbase_backup -u @@username -p @@password"
+    },
+    {
+      "name": "backup.neo4j",
+      "description": "Neo4j database backup",
+      "command": "neo4j-admin dump --database @@database_name --to /path/to/local/backup/neo4j_backup.dump"
+    },
+    {
+      "name": "backup.amazon_dynamodb",
+      "description": "Amazon DynamoDB backup",
+      "command": "aws dynamodb create-backup --table-name @@table_name --backup-name dynamodb_backup_$(date +%F_%T) > /path/to/local/backup/dynamodb_backup.json"
+    },
+    {
+      "name": "backup.snowflake",
+      "description": "Snowflake database backup",
+      "command": "snowsql -a @@account -u @@username -p @@password -d @@database_name -q 'COPY INTO @~/backup/snowflake_backup.csv FROM @@database_name;'"
+    },
+    {
+      "name": "backup.teradata",
+      "description": "Teradata database backup",
+      "command": "tpt -c -f /path/to/local/backup/teradata_backup.txt -j 4 -u @@username -pw @@password -db @@database_name"
+    },
+    {
+      "name": "backup.hbase",
+      "description": "HBase database backup",
+      "command": "hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot @@snapshot_name -copy-to /path/to/local/backup/hbase_backup"
+    },
+    {
+      "name": "backup.influxdb",
+      "description": "InfluxDB database backup",
+      "command": "influxd backup -database @@database_name /path/to/local/backup/influxdb_backup"
+    },
+    {
+      "name": "backup.memcached",
+      "description": "Memcached database backup",
+      "command": "memcached-tool @@host:@@port dump > /path/to/local/backup/memcached_backup"
+    }
+  ]
+}
