@@ -1,7 +1,7 @@
 use crate::modules::binds::binds::*;
 use crate::modules::core::core::*;
 use crate::modules::core::data::*;
-use crate::modules::shell::fancy::*;
+use crate::modules::core::consts::*;
 
 pub fn shell() -> i32 {
     // Argsv are and Vec<String>, the first item are
