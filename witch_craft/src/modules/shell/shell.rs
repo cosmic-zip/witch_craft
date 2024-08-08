@@ -30,9 +30,6 @@ pub fn shell() -> i32 {
         "file.compact" => {
             plugin_file_compact(argsv.clone());
         }
-        "nuke.alllogs" => {
-            logs_fallout(argsv.clone());
-        }
         _ => {
             let data = data();
             for set in data {
