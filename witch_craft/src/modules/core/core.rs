@@ -19,7 +19,7 @@ pub fn raise(arg: &str, fancy: i32) -> String {
         "🔴 [ fail ] ::",
         "🟠 [ warning ] ::",
         "💀 [ error ] ::",
-        "🟣 [ entry ] ::",
+        "🔘 [ entry ] ::",
         "", //6
     ];
 
@@ -104,6 +104,15 @@ pub fn magic_docs() {
 
     println!("{}", PANZER_MAID);
 
+    fn loop_parser(arg_name: &str) -> String {
+        for tuple in MAGIC_DOCS {
+            if tuple.0 == arg_name.replace("--", "") {
+                return format!("\t--{} :: {}", tuple.0, tuple.1);
+            }
+        }
+        return format!("\t{}", arg_name);
+    }
+
     for dataset in data {
         raise(&dataset.name, 5);
 
@@ -119,8 +128,8 @@ pub fn magic_docs() {
                 out = out.replace(":", "\n\t");
                 out = out.replace(",", "");
                 let re = Regex::new(r"^.*?--").unwrap();
-                let result = re.replace_all(&out, "--");
-                println!("\t{}", result);
+                let result = re.replace_all(&out, "--").to_string();
+                println!("{}", loop_parser(&result));
 
             }
         }
