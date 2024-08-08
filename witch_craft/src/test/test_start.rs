@@ -3,6 +3,7 @@ use crate::modules::core::core::*;
 use crate::modules::core::data::*;
 use crate::modules::shell::fancy::*;
 use crate::modules::shell::shell::*;
+use crate::modules::core::consts::*;
 
 #[test]
 fn test_start() {
