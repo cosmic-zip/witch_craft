@@ -56,11 +56,6 @@
       "command": "rfkill list"
     },
     {
-      "description": "Generates a long random username and password, then performs a POST request to a specified domain with the generated credentials.",
-      "name": "dos.longpass",
-      "command": "curl -X POST @@domain -H 'Content-Type: application/json' -d '{\"username\": \"random_user_\"$(openssl rand -base64 @@size),\"password\": \"random_password_\"$(openssl rand -base64 @@size)}'"
-    },
-    {
       "description": "Sends a POST request with JSON data containing a 'main' field and a message field specified by @@message to a specified domain.",
       "name": "span.text",
       "command": "curl -X POST -H \"Content-Type: application/json\" -d '{\"main\": \"somename\", \"@@message\": \"somemsg\"}' @@domain"
