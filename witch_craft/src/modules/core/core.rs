@@ -1,5 +1,8 @@
 use crate::modules::core::data::*;
 use crate::modules::core::structs::DataSet;
+use crate::modules::core::consts::*;
+use regex::Regex;
+use colored::*;
 
 use std::env;
 use std::process::{Command, Output};
@@ -11,21 +14,22 @@ pub fn readargs() -> Vec<String> {
 pub fn raise(arg: &str, fancy: i32) -> String {
     let fc = fancy as usize;
     let opts = vec![
-        "🟣 [ message ]",
-        "🟢 [ done ]",
-        "🔴 [ fail ]",
-        "🟠 [ warning ]",
-        "💀 [ error ]",
-        "🟣 [ manual ]",
+        "🟣 [ message ] ::",
+        "🟢 [ done ] ::",
+        "🔴 [ fail ] ::",
+        "🟠 [ warning ] ::",
+        "💀 [ error ] ::",
+        "🟣 [ entry ] ::",
+        "", //6
     ];
 
     if fc >= opts.len() {
-        return "🔴 Index overflow at @raise function".to_string();
+        return "Index overflow at @raise function".to_string();
     }
 
-    let out = format!("\x1b[1m{}\x1b[0m :: {}", opts[fc].to_uppercase(), arg);
+    let out = format!("{} {}", opts[fc].to_uppercase(), arg);
 
-    println!("\n{}\n", out);
+    println!("\n{}\n", out.bold());
     return out;
 }
 
@@ -165,22 +169,31 @@ pub fn magic_docs() {
         raise("Datasets is empty", 1);
     }
 
+    println!("{}", PANZER_MAID);
+
     for dataset in data {
-        if dataset.docs == "" {
-            println!("\nNo manual page found");
-        } else {
-            raise(&dataset.docs, 5);
-        }
+        raise(&dataset.name, 5);
 
-        println!("\n\t{}", dataset.name);
+        let docs = format!("\t{}", &dataset.docs);
+        raise(&docs, 6);
 
-        let options: Vec<&str> = dataset.meta.split(" ").collect();
-        for opt in options {
-            if opt.contains(TONK) {
-                println!("\t{}{}", SPLIT_II, opt.replace(TONK, ""));
+        let args: Vec<_> = dataset.meta.split(" ").collect();
+        for arg in args {
+
+            if arg.contains("@@") {
+
+                let mut out: String = arg.replace("@@", "--");
+                out = out.replace(":", "\n\t");
+                out = out.replace(",", "");
+                let re = Regex::new(r"^.*?--").unwrap();
+                let result = re.replace_all(&out, "--");
+                println!("\t{}", result);
+
             }
         }
+
     }
+
 }
 
 pub fn check_install() -> bool {

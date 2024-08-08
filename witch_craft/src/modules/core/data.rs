@@ -1,14 +1,10 @@
 use crate::modules::core::structs::DataSet;
+use crate::modules::core::consts::*;
 use serde::Deserialize;
 use std::fs::File;
 use std::io::Read;
 
 use super::core::raise;
-
-pub const TONK: &str = "@@";
-pub const SPLIT_II: &str = "--";
-pub const SPLIT_I: &str = "-";
-pub const DBPATH: &str = "/var/witch_craft/witch_spells/dataset/db.json";
 
 #[derive(Debug, Deserialize)]
 struct JsonEntry {
