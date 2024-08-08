@@ -258,52 +258,52 @@
     {
       "name": "backup.mysql",
       "description": "MySQL database backup",
-      "command": "mysqldump -u @@username -p@@password @@database_name > /path/to/local/backup/mysql_backup.sql"
+      "command": "mysqldump -u @@username -p@@password @@database_name > /var/backup/mysql_backup.sql"
     },
     {
       "name": "backup.postgresql",
       "description": "PostgreSQL database backup",
-      "command": "pg_dump -U @@username -W @@database_name > /path/to/local/backup/postgresql_backup.sql"
+      "command": "pg_dump -U @@username -W @@database_name > /var/backup/postgresql_backup.sql"
     },
     {
       "name": "backup.sqlite",
       "description": "SQLite database backup",
-      "command": "sqlite3 @@database_name .dump > /path/to/local/backup/sqlite_backup.sql"
+      "command": "sqlite3 @@database_name .dump > /var/backup/sqlite_backup.sql"
     },
     {
       "name": "backup.microsoft_sql_server",
       "description": "Microsoft SQL Server database backup",
-      "command": "sqlcmd -S @@server_name -U @@username -P @@password -Q \"BACKUP DATABASE [@@database_name] TO DISK = '/path/to/local/backup/sql_server_backup.bak'\""
+      "command": "sqlcmd -S @@server_name -U @@username -P @@password -Q \"BACKUP DATABASE [@@database_name] TO DISK = '/var/backup/sql_server_backup.bak'\""
     },
     {
       "name": "backup.oracle_database",
       "description": "Oracle Database backup",
-      "command": "exp @@username/@@password@@@database_name file=/path/to/local/backup/oracle_backup.dmp full=y"
+      "command": "exp @@username/@@password@@@database_name file=/var/backup/oracle_backup.dmp full=y"
     },
     {
       "name": "backup.mongodb",
       "description": "MongoDB database backup",
-      "command": "mongodump --host @@host --port @@port --username @@username --password @@password --db @@database_name --out /path/to/local/backup/mongodb_backup"
+      "command": "mongodump --host @@host --port @@port --username @@username --password @@password --db @@database_name --out /var/backup/mongodb_backup"
     },
     {
       "name": "backup.redis",
       "description": "Redis database backup",
-      "command": "redis-cli --rdb /path/to/local/backup/redis_backup.rdb"
+      "command": "redis-cli --rdb /var/backup/redis_backup.rdb"
     },
     {
       "name": "backup.cassandra",
       "description": "Cassandra database backup",
-      "command": "nodetool snapshot -t backup @@keyspace_name -d /path/to/local/backup/cassandra_backup"
+      "command": "nodetool snapshot -t backup @@keyspace_name -d /var/backup/cassandra_backup"
     },
     {
       "name": "backup.mariadb",
       "description": "MariaDB database backup",
-      "command": "mysqldump -u @@username -p@@password @@database_name > /path/to/local/backup/mariadb_backup.sql"
+      "command": "mysqldump -u @@username -p@@password @@database_name > /var/backup/mariadb_backup.sql"
     },
     {
       "name": "backup.ibm_db2",
       "description": "IBM Db2 database backup",
-      "command": "db2 backup database @@database_name to /path/to/local/backup/db2_backup"
+      "command": "db2 backup database @@database_name to /var/backup/db2_backup"
     },
     {
       "name": "backup.elasticsearch",
@@ -313,7 +313,7 @@
     {
       "name": "backup.firebase_realtime_database",
       "description": "Firebase Realtime Database backup",
-      "command": "curl -X GET 'https://@@project_id.firebaseio.com/.json?access_token=@@access_token' > /path/to/local/backup/firebase_backup.json"
+      "command": "curl -X GET 'https://@@project_id.firebaseio.com/.json?access_token=@@access_token' > /var/backup/firebase_backup.json"
     },
     {
       "name": "backup.couchbase",
@@ -323,12 +323,12 @@
     {
       "name": "backup.neo4j",
       "description": "Neo4j database backup",
-      "command": "neo4j-admin dump --database @@database_name --to /path/to/local/backup/neo4j_backup.dump"
+      "command": "neo4j-admin dump --database @@database_name --to /var/backup/neo4j_backup.dump"
     },
     {
       "name": "backup.amazon_dynamodb",
       "description": "Amazon DynamoDB backup",
-      "command": "aws dynamodb create-backup --table-name @@table_name --backup-name dynamodb_backup_$(date +%F_%T) > /path/to/local/backup/dynamodb_backup.json"
+      "command": "aws dynamodb create-backup --table-name @@table_name --backup-name dynamodb_backup_$(date +%F_%T) > /var/backup/dynamodb_backup.json"
     },
     {
       "name": "backup.snowflake",
@@ -338,22 +338,27 @@
     {
       "name": "backup.teradata",
       "description": "Teradata database backup",
-      "command": "tpt -c -f /path/to/local/backup/teradata_backup.txt -j 4 -u @@username -pw @@password -db @@database_name"
+      "command": "tpt -c -f /var/backup/teradata_backup.txt -j 4 -u @@username -pw @@password -db @@database_name"
     },
     {
       "name": "backup.hbase",
       "description": "HBase database backup",
-      "command": "hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot @@snapshot_name -copy-to /path/to/local/backup/hbase_backup"
+      "command": "hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot @@snapshot_name -copy-to /var/backup/hbase_backup"
     },
     {
       "name": "backup.influxdb",
       "description": "InfluxDB database backup",
-      "command": "influxd backup -database @@database_name /path/to/local/backup/influxdb_backup"
+      "command": "influxd backup -database @@database_name /var/backup/influxdb_backup"
     },
     {
       "name": "backup.memcached",
       "description": "Memcached database backup",
-      "command": "memcached-tool @@host:@@port dump > /path/to/local/backup/memcached_backup"
+      "command": "memcached-tool @@host:@@port dump > /var/backup/memcached_backup"
+    },
+    {
+      "name": "self.setup",
+      "description": "Setup and install witch_craft",
+      "command": "sudo mkdir /var/backup && sudo chown $USER:$USER -R /var/backup/ && sudo apt install nmap dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost"
     }
   ]
 }

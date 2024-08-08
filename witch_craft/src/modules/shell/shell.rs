@@ -24,9 +24,6 @@ pub fn shell() -> i32 {
         "map.dns" => {
             dns(argsv.clone());
         }
-        "check" => {
-            check_install();
-        }
         "help" => {
             magic_docs();
         }
