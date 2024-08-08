@@ -328,7 +328,7 @@ Date: sex 29 dez 2023 20:51:45 -03
     → Added OSINT domains hosts names (dns) names update script
     → Opened link with Firefox
     → Added base OSINT module and OpenStreetMap link generator
-    → Hardcoded debug option to force take_system_args return an 
+    → Hardcoded debug option to force take_system_args return an
 	  empty string instead of an error message
 
 Version: 0.15.0 Rebranding witch_craft
@@ -356,3 +356,19 @@ Version 0.16.0 Backend rebuild from scretch
 	→ The virus hashes database now only contains hashes with no additional info.
 	→ All old modules have been removed, and AV features are unavailable.
 	→ Backend now follows a meta-string based CLI architecture.
+
+Version 0.17.0
+
+Date: Thu Aug  8 07:32:58 AM -03 2024
+
+  → Alive2 update - back witch_craft development
+  → Change dataset from Rust struct to db.json
+  → Update functions documentation, run, and code cleanup
+  → Add DOS long passwords bind
+  → Remove check_install, remove setup bind, add setup with install in db.json
+  → Add regex and colored output
+  → Add db.json setup script
+  → Update magic documentation
+  → Move fancy image in chafa format to constants
+  → Add magic arguments list
+  → Update README
