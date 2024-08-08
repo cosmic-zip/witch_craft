@@ -1,14 +1,19 @@
 {
   "general": [
     {
-      "description": "Securely deletes and overwrites the contents of a device seven times",
+      "description": "Securely overwrites and deletes the contents of a device seven times",
       "name": "nuke.hd",
       "command": "shred -vzn 7 @@device"
     },
     {
-      "description": "Securely deletes and overwrites a file seven times, then removes it from the filesystem to prevent data recovery.",
+      "description": "Securely overwrites and deletes a file seven times, then removes it from the filesystem to prevent data recovery.",
       "name": "nuke.file",
       "command": "shred -u -z -n 7 @@file"
+    },
+    {
+      "description": "Securely overwrites and deletes the /var/logs",
+      "name": "nuke.logs",
+      "command": "sudo find /var/log -type f -exec shred -u {} \\;"
     },
     {
       "description": "Remove all firewall rules non-resible",
