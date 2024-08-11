@@ -273,7 +273,7 @@
     {
       "name": "backup.microsoft_sql_server",
       "description": "Microsoft SQL Server database backup",
-      "command": "sqlcmd -S @@server_name -U @@username -P @@password -Q \"BACKUP DATABASE [@@database_name] TO DISK = '/var/backup/sql_server_backup.bak'\""
+      "command": "sqlcmd -S @@server_name -U @@username -P @@password -Q \"BACKUP DATABASE [ @@database_name ] TO DISK = '/var/backup/sql_server_backup.bak'\""
     },
     {
       "name": "backup.oracle_database",
@@ -308,7 +308,7 @@
     {
       "name": "backup.elasticsearch",
       "description": "Elasticsearch backup",
-      "command": "curl -X PUT 'localhost:9200/_snapshot/my_backup/snapshot_1' -H 'Content-Type: application/json' -d'{\"indices\":\"@@index_name\",\"ignore_unavailable\":true,\"include_global_state\":false}'"
+      "command": "curl -X PUT 'localhost:9200/_snapshot/my_backup/snapshot_1' -H 'Content-Type: application/json' -d'{\"indices\":\" @@index_name \",\"ignore_unavailable\":true,\"include_global_state\":false}'"
     },
     {
       "name": "backup.firebase_realtime_database",
@@ -318,7 +318,7 @@
     {
       "name": "backup.couchbase",
       "description": "Couchbase database backup",
-      "command": "cbbackup couchbase://@@host @@path/to/local/backup/couchbase_backup -u @@username -p @@password"
+      "command": "cbbackup couchbase://@@host /var/backup/couchbase_backup -u @@username -p @@password"
     },
     {
       "name": "backup.neo4j",
