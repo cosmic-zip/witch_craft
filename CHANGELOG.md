@@ -357,18 +357,19 @@ Version 0.16.0 Backend rebuild from scretch
 	→ All old modules have been removed, and AV features are unavailable.
 	→ Backend now follows a meta-string based CLI architecture.
 
-Version 0.17.0
+Version 0.17.1
 
-Date: Thu Aug  8 07:32:58 AM -03 2024
+Date: Sun Aug 11 04:23:53 PM -03 2024
 
-  → Alive2 update - back witch_craft development
-  → Change dataset from Rust struct to db.json
-  → Update functions documentation, run, and code cleanup
-  → Add DOS long passwords bind
-  → Remove check_install, remove setup bind, add setup with install in db.json
-  → Add regex and colored output
-  → Add db.json setup script
-  → Update magic documentation
-  → Move fancy image in chafa format to constants
-  → Add magic arguments list
-  → Update README
+    → Alive2 update - back witch_craft development
+    → Add netrunner wiki and manual
+    → Change dataset from Rust struct to db.json
+    → Update functions documentation, run, and code cleanup
+    → Add DOS long passwords bind
+    → Remove check_install, remove setup bind, add setup with install in db.json
+    → Add regex and colored output
+    → Add db.json setup script
+    → Update magic documentation
+    → Move fancy image in chafa format to constants
+    → Add magic arguments list
+    → improve witch_fmt and magic docs
