@@ -3,6 +3,7 @@ use crate::modules::core::structs::DataSet;
 use crate::modules::core::consts::*;
 use regex::Regex;
 use colored::*;
+use serde_json::Result;
 
 use std::env;
 use std::process::{Command, Output};
@@ -75,62 +76,105 @@ pub fn search_key(key: String, vector: Vec<String>) -> String {
     return "none".to_string();
 }
 
-fn split_line(input: &str, max_length: usize) -> Vec<String> {
+
+/// Formats a string into multiple lines with a specified maximum length, similar to `fmt` in GNU utilities.
+///
+/// The `witch_fmt` function splits the input string into one or more lines, each of which does not exceed
+/// the specified `max_length`. It attempts to avoid breaking words between lines. If a word is longer than
+/// the maximum line length, it will be placed on its own line, potentially exceeding `max_length`.
+///
+/// # Parameters
+///
+/// - `input`: A string slice (`&str`) that contains the text to be formatted.
+/// - `max_length`: The maximum number of characters allowed in each line. Lines will be wrapped to
+///   adhere to this limit, but words will be preserved whole whenever possible.
+///
+/// # Returns
+///
+/// A `Vec<String>` where each `String` represents a line of text. Each line will be formatted to
+/// have a length of up to `max_length`, with words kept intact as much as possible.
+///
+fn witch_fmt(input: &str, max_length: usize) -> Vec<String> {
     let mut lines = Vec::new();
     let mut start = 0;
+
     while start < input.len() {
-        let end = std::cmp::min(start + max_length, input.len());
+        let mut end = std::cmp::min(start + max_length, input.len());
+        if end < input.len() && !input[end..end+1].chars().all(char::is_whitespace) {
+            if let Some(space_index) = input[..end].rfind(|c: char| c.is_whitespace()) {
+                end = space_index + 1;
+            }
+        }
+        if end == start {
+            end = std::cmp::min(start + max_length, input.len());
+        }
         lines.push(input[start..end].to_string());
         start = end;
     }
-    lines
+    return lines;
 }
 
-/// Generates a pretty-formatted manual from `db.json`.
+
+
+/// Generates a well-formatted manual from the `db.json` file.
 ///
-/// Parses command strings and adds fancy shell images in Chafa format.
-/// Prints the formatted manual result.
+/// This function parses command strings from the `db.json` file and incorporates
+/// Chafa images for visual enhancements, producing a visually appealing and
+/// readable manual. The final result is printed to the console with improved
+/// formatting for better readability and presentation.
 ///
 /// # Functionality
-/// - Parses command strings stored in `db.json`.
-/// - Integrates Chafa images for visual enhancements.
-/// - Outputs the result with improved formatting.
+/// - **Parsing**: Reads and parses command strings stored in the `db.json` file.
+/// - **Visual Enhancement**: Integrates Chafa images to enhance the visual appearance
+///   of the output. Chafa is a tool that converts images into ASCII art for terminal display.
+/// - **Formatting**: Outputs the manual with improved formatting to ensure the result
+///   is both attractive and easy to read.
+///
 pub fn magic_docs() {
     let data: Vec<DataSet> = data();
 
     if data.is_empty() {
         raise("Datasets is empty", 1);
+        return;
     }
 
     println!("{}", PANZER_MAID);
+    raise(MAN_HEADER, 6);
 
-    fn loop_parser(arg_name: &str) -> String {
+    fn loop_parser(arg_name: &str) -> Vec<String> {
+        let mut result_string = String::new();
         for tuple in MAGIC_DOCS {
             if tuple.0 == arg_name.replace("--", "") {
-                return format!("\t--{} :: {}", tuple.0, tuple.1);
+                return witch_fmt(&format!("{}--{} :: {}", " ".repeat(8), tuple.0, tuple.1), 72);
             }
         }
-        return format!("\t{}", arg_name);
+        return witch_fmt(&format!("{}{}", " ".repeat(8), arg_name), 72);
     }
 
     for dataset in data {
-        raise(&dataset.name, 5);
+        let header = witch_fmt(&format!("    {} ► {}", dataset.name, dataset.docs), 72).join("\n     ");
+        raise(&header, 6);
 
-        let docs = format!("\t{}", &dataset.docs);
-        raise(&docs, 6);
-
-        let args: Vec<_> = dataset.meta.split(" ").collect();
+        let mut out: String = dataset.meta.to_string();
+        out = out.replace("/","");
+        out = out.replace(",", "");
+        out = out.replace("'", "");
+        out = out.replace("\"", "");
+        out = out.replace(";", "");
+        out = out.replace(":", " ");
+        out = out.replace("@@@", "@ @@");
+        let args: Vec<_> = out.split(" ").collect();
         for arg in args {
 
             if arg.contains("@@") {
-
-                let mut out: String = arg.replace("@@", "--");
-                out = out.replace(":", "\n\t");
-                out = out.replace(",", "");
+                let mut out = arg.replace(TONK, "--");
                 let re = Regex::new(r"^.*?--").unwrap();
                 let result = re.replace_all(&out, "--").to_string();
-                println!("{}", loop_parser(&result));
 
+                let lp = loop_parser(&result);
+                for item in lp {
+                    println!("{}", item);
+                }
             }
         }
 
@@ -220,7 +264,7 @@ pub fn lazy_exec(command_line: String, pretty: bool) -> i32 {
                 let stdout = String::from_utf8_lossy(&output.stdout);
                 let lines = stdout.split("\n");
                 for line in lines {
-                    let result = split_line(&line, 180);
+                    let result = witch_fmt(&line, 180);
                     for line in result {
                         println!("\t{}", line);
                     }
