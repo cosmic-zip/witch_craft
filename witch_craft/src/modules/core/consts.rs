@@ -22,7 +22,43 @@ pub const MAGIC_DOCS: &[(&str, &str)]  = &[
     ("username", "Username; well, it setup user name"),
     ("password", "Specify password; it will be shown in plaintext"),
     ("host", "Host name ip address"),
+    ("database_name", "Specify database name"),
+    ("snapshot_name", "Specify snapshot name, not the location btw"),
 ];
+
+pub const MAN_HEADER: &str = r#"
+
+NAME
+    witch_craft - A versatile task automation software designed to serve
+    as the foundation for various cyber security modules
+
+SYNOPSIS
+    witch_craft [MODULE] [OPTION]... [FILE]...
+
+DESCRIPTION
+
+    WITCH_CRAFT is a versatile task automation software designed to
+    serve as the foundation for various cyber security modules. It
+    provides capabilities for tasks such as forensic research, OSINT
+    (Open Source Intelligence), scanning, backup and copying, intrusion
+    testing of applications and APIs, and more.
+
+PLUGINS
+    The Witch_Craft project is extensible through static files and Rust
+    code. Moreover, it is possible to extend its functionalities using
+    db.json. This file contains a list of small shell scripts, which
+    means you can integrate anything that interacts with the terminal
+    using ARGS (argsv, readargs(), sys.args()).
+
+OPTIONS SUMMARY
+    This options summary is printed when witch_craft is run with
+    no arguments, and the latest version is always available at
+    https://github.com/cosmic-zip/witch_craft. It helps people remember
+    the most common options, but is no substitute for the in-depth
+    documentation in the rest of this manual. Some obscure options aren't
+    even included here.
+
+"#;
 
 pub const MAID: &str = r#"
 
