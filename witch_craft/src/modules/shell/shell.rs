@@ -1,41 +1,7 @@
 use crate::modules::binds::binds::*;
 use crate::modules::core::core::*;
 use crate::modules::core::data::*;
-use crate::modules::shell::fancy::*;
-
-pub fn check() -> bool {
-    let packages: Vec<&str> = vec![
-        "nmap",
-        "dirb",
-        "dnsenum",
-        "libc-bin",
-        "iproute2",
-        "xxd",
-        "iptables",
-        "coreutils",
-        "wget",
-        "curl",
-        "dnsutils",
-        "traceroute",
-        "openssl",
-        "openssh-server",
-        "xattr",
-        "libimage-exiftool-perl",
-        "tor"
-    ];
-
-    for pkg in packages {
-        let out = lazy_exec(pkg.to_string(), true);
-        // code 127 are for not found
-        if out == 127 {
-            raise(&format!("Fail! {}", pkg), 4);
-            return false;
-        }
-    }
-
-    raise("All checks pass!", 1);
-    return true;
-}
+use crate::modules::core::consts::*;
 
 pub fn shell() -> i32 {
     // Argsv are and Vec<String>, the first item are
@@ -55,20 +21,14 @@ pub fn shell() -> i32 {
     let mname = argsv[1].as_str();
 
     match mname {
-        "dns" => {
+        "map.dns" => {
             dns(argsv.clone());
-        }
-        "check" => {
-            check();
         }
         "help" => {
             magic_docs();
         }
         "file.compact" => {
             plugin_file_compact(argsv.clone());
-        }
-        "nuke.alllogs" => {
-            logs_fallout(argsv.clone());
         }
         _ => {
             let data = data();
