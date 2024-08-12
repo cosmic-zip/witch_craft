@@ -1,6 +1,7 @@
 use crate::modules::binds::binds::*;
 use crate::modules::core::core::*;
 use crate::modules::core::data::*;
+use crate::modules::core::structs::DataSet;
 use crate::modules::shell::shell::*;
 use crate::modules::core::consts::*;
 
@@ -49,9 +50,39 @@ fn test_lazy_pipeline() {
         "-lha".to_string(),
     ];
 
-    let cmds = "ls @@pretty";
-    let out = lazy_loop(cmds, &argsv);
-    let a = lazy_exec(out, true);
+    let meta = "ls @@pretty";
+    let parsed_cmd = lazy_loop(meta, &argsv);
+    let out = lazy_exec(parsed_cmd, true);
 
-    assert_eq!(0, a);
+    assert_eq!(0, out);
+}
+
+#[test]
+fn flawless_exec_pipeline_argsv_without_args() {
+    let argsv = vec![
+        "test.local".to_string(),
+    ];
+
+    let set = DataSet::from_str(
+        "", "test.local", "ps -aux");
+
+    let out = flawless_exec(set, &argsv);
+
+    assert_eq!(0, out);
+}
+
+#[test]
+fn flawless_exec_pipeline_argsv_with_args() {
+    let argsv = vec![
+        "test.local".to_string(),
+        "--some".to_string(),
+        "localhost".to_string(),
+    ];
+
+    let set = DataSet::from_str(
+        "", "test.local", "ping -c1 @@some");
+
+    let out = flawless_exec(set, &argsv);
+
+    assert_eq!(0, out);
 }
