@@ -1,17 +1,6 @@
-use crate::modules::binds::binds::*;
-use crate::modules::core::core::*;
-use crate::modules::core::data::*;
-use crate::modules::core::structs::DataSet;
-use crate::modules::shell::shell::*;
 use crate::modules::core::consts::*;
-
-#[test]
-fn test_start() {
-    println!("TEST HERE!");
-
-    let exit = true;
-    assert_eq!(exit, true);
-}
+use crate::modules::core::core::*;
+use crate::modules::core::structs::DataSet;
 
 #[test]
 fn test_string_to_command() {
@@ -52,19 +41,16 @@ fn test_lazy_pipeline() {
 
     let meta = "ls @@pretty";
     let parsed_cmd = lazy_loop(meta, &argsv);
-    let out = lazy_exec(parsed_cmd, true);
+    let out = lazy_exec(parsed_cmd);
 
     assert_eq!(0, out);
 }
 
 #[test]
 fn flawless_exec_pipeline_argsv_without_args() {
-    let argsv = vec![
-        "test.local".to_string(),
-    ];
+    let argsv = vec!["test.local".to_string()];
 
-    let set = DataSet::from_str(
-        "", "test.local", "ps -aux");
+    let set = DataSet::from_str("", "test.local", "ps -aux");
 
     let out = flawless_exec(set, &argsv);
 
@@ -79,8 +65,7 @@ fn flawless_exec_pipeline_argsv_with_args() {
         "localhost".to_string(),
     ];
 
-    let set = DataSet::from_str(
-        "", "test.local", "ping -c1 @@some");
+    let set = DataSet::from_str("", "test.local", "ping -c1 @@some");
 
     let out = flawless_exec(set, &argsv);
 

@@ -1,10 +1,9 @@
 use crate::modules::core::core::*;
-use crate::modules::core::data::*;
 use crate::modules::core::structs::DataSet;
 
 pub fn dns(argsv: Vec<String>) -> i32 {
     //Check if domain key exists
-    if search_value("domain", &argsv) == "".to_string() {
+    if search_value("domain", &argsv).is_empty() {
         raise("Domain name not found, quit!", 4);
         return 1;
     }
@@ -75,25 +74,24 @@ pub fn plugin_file_compact(argsv: Vec<String>) -> i32 {
         ("zip", "unzip @@file", "zip -r @@folder"),
     ];
 
-    let mut option = search_value("type", &argsv);
+    let option = search_value("type", &argsv);
     let mut command = String::new();
 
     if option == "decompress" {
         let file = search_value("file", &argsv);
-        for (ext, decomp, comp) in extensions {
+        for (ext, decomp, _comp) in extensions {
             if file.ends_with(ext) {
                 command = lazy_loop(decomp, &argsv);
             }
         }
     } else {
         let format = search_value("ext", &argsv);
-        for (ext, decomp, comp) in extensions {
+        for (ext, _decomp, comp) in extensions {
             if ext == format {
                 command = lazy_loop(comp, &argsv);
                 println!("{}", command);
             }
         }
     }
-
-    return 0;
+    lazy_exec(command)
 }
