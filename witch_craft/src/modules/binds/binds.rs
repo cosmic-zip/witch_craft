@@ -4,7 +4,7 @@ use crate::modules::core::structs::DataSet;
 
 pub fn dns(argsv: Vec<String>) -> i32 {
     //Check if domain key exists
-    if search_value("domain".to_string(), argsv.clone()) == "".to_string() {
+    if search_value("domain", &argsv) == "".to_string() {
         raise("Domain name not found, quit!", 4);
         return 1;
     }
@@ -75,18 +75,18 @@ pub fn plugin_file_compact(argsv: Vec<String>) -> i32 {
         ("zip", "unzip @@file", "zip -r @@folder"),
     ];
 
-    let mut option = search_value("type".to_string(), argsv.clone());
+    let mut option = search_value("type", &argsv);
     let mut command = String::new();
 
     if option == "decompress" {
-        let file = search_value("file".to_string(), argsv.clone());
+        let file = search_value("file", &argsv);
         for (ext, decomp, comp) in extensions {
             if file.ends_with(ext) {
                 command = lazy_loop(decomp, argsv.clone());
             }
         }
     } else {
-        let format = search_value("ext".to_string(), argsv.clone());
+        let format = search_value("ext", &argsv);
         for (ext, decomp, comp) in extensions {
             if ext == format {
                 command = lazy_loop(comp, argsv.clone());
@@ -96,11 +96,4 @@ pub fn plugin_file_compact(argsv: Vec<String>) -> i32 {
     }
 
     return 0;
-}
-
-pub fn dos_long_password(argsv: Vec<String>, cmd: &str) -> i32 {
-    let cmd = "curl -X POST @@domain -H 'Content-Type: application/json' -d \
-        '{\"username\": \"random_user_\"$(openssl rand -base64 @@size),\
-        \"password\": \"random_password_\"$(openssl rand -base64 @@size)}'";
-    return lazy_exec_loop(argsv, cmd);
 }

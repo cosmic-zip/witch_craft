@@ -34,21 +34,21 @@ pub fn raise(arg: &str, fancy: i32) -> String {
     return out;
 }
 
-pub fn search_value(term: String, vector: Vec<String>) -> String {
+pub fn search_value(key: &str, vector: &Vec<String>) -> String {
     let mut counter = 0;
 
     while counter < vector.len() {
         if counter + 1 < vector.len() {
             if vector[counter].contains(SPLIT_I) {
                 let key_name = vector[counter].replace(SPLIT_I, "");
-                if key_name == term {
+                if key_name == key {
                     return vector[counter + 1].to_string();
                 }
             }
 
             if vector[counter].contains(SPLIT_II) {
                 let key_name = vector[counter].replace(SPLIT_II, "");
-                if key_name == term {
+                if key_name == key {
                     return vector[counter + 1].to_string();
                 }
             }
@@ -59,21 +59,21 @@ pub fn search_value(term: String, vector: Vec<String>) -> String {
     println!(
         "{}",
         raise(
-            &format!("No value found for {} → Send empty string", term),
+            &format!("No value found for {} → Send empty string", key),
             3
         )
     );
     return "".to_string();
 }
 
-pub fn search_key(key: String, vector: Vec<String>) -> String {
+pub fn search_key(key: &str, vector: &Vec<String>) -> String {
     for item in vector {
         if item == key {
-            return item;
+            return item.to_string();
         }
     }
     println!("{}", raise("Not found!", 3));
-    return "none".to_string();
+    return "".to_string();
 }
 
 
@@ -206,7 +206,7 @@ pub fn lazy_loop(meta_string: &str, argsv: Vec<String>) -> String {
             for c in aaaa {
                 if c.contains(TONK) {
                     let opt = c.replace(TONK, "");
-                    let val = search_value(opt, argsv.clone());
+                    let val = search_value(&opt, &argsv);
                     new = item.replace(c, &val);
                 }
             }
@@ -216,7 +216,7 @@ pub fn lazy_loop(meta_string: &str, argsv: Vec<String>) -> String {
 
         if item.contains(TONK) & !item.contains("http") {
             let opt = item.replace(TONK, "");
-            let val = search_value(opt, argsv.clone());
+            let val = search_value(&opt, &argsv);
             cmds = cmds.replace(item, &val);
         }
     }
@@ -297,7 +297,7 @@ pub fn lazy_exec(command_line: String, pretty: bool) -> i32 {
 /// foo --count 5 --bar example
 /// ```
 pub fn lazy_exec_loop(argsv: Vec<String>, cmd: &str) -> i32 {
-    let out = search_value("count".to_string(), argsv.clone());
+    let out = search_value("count", &argsv);
     let range: i32 = out.parse().unwrap_or(1);
     let mut exit = 0;
     for i in 1..range {
