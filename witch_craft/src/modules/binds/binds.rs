@@ -18,7 +18,7 @@ pub fn dns(argsv: Vec<String>) -> i32 {
         let name = format!("dns.{}", record_type.to_lowercase());
         let set = DataSet::from_str("", &name, &meta);
 
-        bob(set, argsv.clone());
+        flawless_exec(set, &argsv);
     }
 
     // Perform extra scans
@@ -36,7 +36,7 @@ pub fn dns(argsv: Vec<String>) -> i32 {
         ),
     ];
     for extra in extras {
-        bob(extra, argsv.clone());
+        flawless_exec(extra, &argsv);
     }
 
     return 0;
@@ -82,14 +82,14 @@ pub fn plugin_file_compact(argsv: Vec<String>) -> i32 {
         let file = search_value("file", &argsv);
         for (ext, decomp, comp) in extensions {
             if file.ends_with(ext) {
-                command = lazy_loop(decomp, argsv.clone());
+                command = lazy_loop(decomp, &argsv);
             }
         }
     } else {
         let format = search_value("ext", &argsv);
         for (ext, decomp, comp) in extensions {
             if ext == format {
-                command = lazy_loop(comp, argsv.clone());
+                command = lazy_loop(comp, &argsv);
                 println!("{}", command);
             }
         }

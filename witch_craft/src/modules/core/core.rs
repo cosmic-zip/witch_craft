@@ -194,7 +194,7 @@ pub fn magic_docs() {
 /// - cmd: foo --flag @@bar
 /// - input: foo --bar "some value"
 /// - out: foo --flag "some value"
-pub fn lazy_loop(meta_string: &str, argsv: Vec<String>) -> String {
+pub fn lazy_loop(meta_string: &str, argsv: &Vec<String>) -> String {
     let meta: Vec<&str> = meta_string.split_whitespace().collect();
     let mut cmds: String = meta_string.to_string();
 
@@ -302,28 +302,28 @@ pub fn lazy_exec_loop(argsv: Vec<String>, cmd: &str) -> i32 {
     let mut exit = 0;
     for i in 1..range {
         let exec = DataSet::from_str("name", "some.thing", cmd);
-        exit = bob(exec, argsv.clone());
+        exit = flawless_exec(exec, &argsv);
     }
     return exit;
 }
 
 /// Calls `lazy_exec` and `lazy_loop` with the provided arguments.
 ///
-/// This function uses `DataSet` and `argsv` (a `Vec<String>` of terminal arguments) to:
+/// This function uses `DataSet` and `argsv` (a `&Vec<String>` of terminal arguments) to:
 /// - Parse and execute the command string found in `set.meta`.
 ///
 /// # Arguments
 /// - `set`: Contains the command metadata.
-/// - `argsv`: Vector of terminal arguments to be parsed.
+/// - `&argsv`: Vector of terminal arguments to be parsed.
 ///
 /// # Example
 /// ```
 /// let dataset = DataSet { /* ... */ };
 /// let args = vec!["--flag".to_string(), "value".to_string()];
-/// bob(dataset, args);
+/// flawless_exec(dataset, &args);
 /// ```
-pub fn bob(set: DataSet, argsv: Vec<String>) -> i32 {
+pub fn flawless_exec(set: DataSet, argsv: &Vec<String>) -> i32 {
     raise(&set.name, 0);
-    let cmd = lazy_loop(&set.meta, argsv);
+    let cmd = lazy_loop(&set.meta, &argsv);
     return lazy_exec(cmd, false);
 }

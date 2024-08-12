@@ -34,7 +34,7 @@ pub fn shell() -> i32 {
             let data = data();
             for set in data {
                 if set.name == mname {
-                    let out = bob(set.clone(), argsv.clone());
+                    let out = flawless_exec(set.clone(), &argsv);
                     if out != 0 {
                         raise("Shell falied to execute at bob()", 4);
                         raise(&set.meta, 4);
