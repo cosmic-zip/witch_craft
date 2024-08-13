@@ -373,7 +373,7 @@
     {
       "name": "self.setup",
       "description": "Setup and install witch_craft",
-      "command": "sudo mkdir /var/backup && sudo chown $USER:$USER -R /var/backup/ && sudo apt install nmap dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost"
+      "command": "sudo mkdir /var/backup && sudo chown $USER:$USER -R /var/backup/ && sudo apt install nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost"
     }
   ]
 }
