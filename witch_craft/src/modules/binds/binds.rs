@@ -1,47 +1,6 @@
 use crate::modules::core::core::*;
-use crate::modules::core::structs::DataSet;
 
-pub fn dns(argsv: Vec<String>) -> i32 {
-    //Check if domain key exists
-    if search_value("domain", &argsv).is_empty() {
-        raise("Domain name not found, quit!", 4);
-        return 1;
-    }
-
-    let record_types = vec![
-        "A", "AAAA", "CNAME", "MX", "NS", "TXT", "SOA", "SRV", "PTR", "DNSKEY",
-    ];
-
-    for record_type in &record_types {
-        let meta = format!("dig @@domain {} +short", record_type);
-        let name = format!("dns.{}", record_type.to_lowercase());
-        let set = DataSet::from_str("", &name, &meta);
-
-        flawless_exec(set, &argsv);
-    }
-
-    // Perform extra scans
-    let extras = vec![
-        DataSet::from_str("", "extras.whois", "whois @@domain"),
-        DataSet::from_str(
-            "",
-            "extras.robots.txt",
-            "curl -sS -L https://@@domain/robots.txt",
-        ),
-        DataSet::from_str(
-            "",
-            "extras.sitemap",
-            "curl -sS -L https://@@domain/sitemap.xml",
-        ),
-    ];
-    for extra in extras {
-        flawless_exec(extra, &argsv);
-    }
-
-    return 0;
-}
-
-pub fn plugin_file_compact(argsv: Vec<String>) -> i32 {
+pub fn file_compact(argsv: Vec<String>) -> i32 {
     let extensions = vec![
         ("7z", "7z x @@file", "7z a @@folder"),
         ("arj", "arj x @@file", "arj a @@folder"),

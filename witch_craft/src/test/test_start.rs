@@ -1,6 +1,7 @@
 use crate::modules::core::consts::*;
 use crate::modules::core::core::*;
 use crate::modules::core::structs::DataSet;
+use crate::modules::network::structs::*;
 
 #[test]
 fn test_string_to_command() {
@@ -71,8 +72,6 @@ fn flawless_exec_pipeline_argsv_with_args() {
 
     assert_eq!(0, out);
 }
-
-use crate::modules::network::structs::*;
 
 #[test]
 fn test_network_request_response_fail() {

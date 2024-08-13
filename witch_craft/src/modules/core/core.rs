@@ -64,7 +64,7 @@ pub fn search_value(key: &str, vector: &[String]) -> String {
     String::new()
 }
 
-pub fn search_key(key: &str, vector: &Vec<String>) -> String {
+pub fn search_key(key: &str, vector: &[String]) -> String {
     for item in vector {
         if item == key {
             return item.to_string();
@@ -276,7 +276,7 @@ pub fn lazy_exec(command_line: String) -> i32 {
 
 /// Calls `lazy_exec` and `lazy_loop` with the provided arguments.
 ///
-/// This function uses `DataSet` and `argsv` (a `&Vec<String>` of terminal arguments) to:
+/// This function uses `DataSet` and `argsv` (a `&[String]` of terminal arguments) to:
 /// - Parse and execute the command string found in `set.meta`.
 ///
 /// # Arguments

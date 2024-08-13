@@ -10,7 +10,7 @@ pub struct Response {
 pub struct Request {
     pub url: String,
     pub method: String,
-    pub body: Option<HashMap<String, String>>,
+    pub body: Option<HashMap<&'static str, &'static str>>,
 }
 
 impl Request {
