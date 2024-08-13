@@ -1,6 +1,21 @@
 {
   "general": [
     {
+      "description": "Return common DNS information and reverse DNS",
+      "name": "map.dns",
+      "command": "map.dns @@domain"
+    },
+    {
+      "description": "Send and X number of get requests without data",
+      "name": "dos.simple",
+      "command": "dos.simple @@domain @@times"
+    },
+    {
+      "description": "Send and X number of get requests without data",
+      "name": "dos.longpw",
+      "command": "dos.longpw @@domain @@times @@size"
+    },
+    {
       "description": "Securely overwrites and deletes the contents of a device seven times",
       "name": "nuke.hd",
       "command": "shred -vzn 7 @@device"
