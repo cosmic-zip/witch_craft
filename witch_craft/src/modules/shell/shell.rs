@@ -4,11 +4,11 @@ use crate::modules::core::core::*;
 use crate::modules::core::data::*;
 
 pub fn flawless_entry_point(argsv: &[String]) -> i32 {
-    let mname = &argsv[1].as_str();
+    let mname = argsv[1].as_str();
     let data = data();
     for set in data {
         if set.name == mname {
-            let out = flawless_exec(set.clone(), &argsv);
+            let out = flawless_exec(set.clone(), argsv);
             if out != 0 {
                 raise("Shell falied to execute at flawless_exec()", 4);
                 raise(&set.meta, 4);
@@ -17,7 +17,7 @@ pub fn flawless_entry_point(argsv: &[String]) -> i32 {
         }
     }
 
-    return 1;
+    return 42;
 }
 
 pub fn shell() -> i32 {
@@ -32,7 +32,7 @@ pub fn shell() -> i32 {
 
     if argsv.len() % 2 != 0 {
         println!("{}", WITCH);
-        return 1;
+        return 42;
     }
 
     match argsv[1].as_str() {

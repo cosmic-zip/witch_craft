@@ -1,17 +1,14 @@
 use crate::modules::core::core::*;
-use std::collections::HashMap;
-use std::iter::repeat;
-
-use crate::modules::core::core::*;
 use crate::modules::core::structs::DataSet;
 use crate::modules::network::structs::*;
+use std::collections::HashMap;
 
 /// Revice --domain
 pub fn map_dns(argsv: &[String]) -> i32 {
     //Check if domain key exists
     if search_value("domain", argsv).is_empty() {
         raise("Domain name not found, quit!", 4);
-        return 1;
+        return 42;
     }
 
     let record_types = vec![
@@ -32,12 +29,12 @@ pub fn map_dns(argsv: &[String]) -> i32 {
         DataSet::from_str(
             "",
             "extras.robots.txt",
-            "curl -sS -L https://@@domain/robots.txt",
+            "cdomain -sS -L https://@@domain/robots.txt",
         ),
         DataSet::from_str(
             "",
             "extras.sitemap",
-            "curl -sS -L https://@@domain/sitemap.xml",
+            "cdomain -sS -L https://@@domain/sitemap.xml",
         ),
     ];
     for extra in extras {
@@ -47,31 +44,32 @@ pub fn map_dns(argsv: &[String]) -> i32 {
     return 0;
 }
 
-/// Need an --url url
+/// Need:
+/// --domain domain
+/// --times int
 pub fn dos_simple_get_span(argsv: &[String]) -> i32 {
     let mut req = Request::new();
-    req.url = search_value("url", argsv);
+    req.url = search_value("domain", argsv);
     req.method = "GET".to_string();
 
-    match search_key("repeat", argsv).parse::<i32>() {
-        Ok(times) => {
-            for _ in 0..times {
-                req.make();
-            }
-            return 0;
-        }
-        Err(_) => 255,
+    let times = seach_number_value("times", argsv);
+
+    for _i in 0..times {
+        let out = req.make();
+        println!("{} - {}", out.url, out.status);
     }
+    return 0;
 }
 
 /// Need:
 /// --size int Size of string attak
-/// --url url  Target domain
+/// --domain domain  Target domain
+/// --times int
 pub fn dos_long_auth_span(argsv: &[String]) -> i32 {
     let size = seach_number_value("size", argsv);
     let seed = "3l34_=3k4vç~4vu,,20-v";
     let mut req = Request::new();
-    req.url = search_value("url", argsv);
+    req.url = search_value("domain", argsv);
     req.method = "GET".to_string();
     req.body = Some(HashMap::from([
         ("user", seed),
@@ -82,15 +80,13 @@ pub fn dos_long_auth_span(argsv: &[String]) -> i32 {
         ("auth", seed),
     ]));
 
-    match search_key("repeat", argsv).parse::<i32>() {
-        Ok(times) => {
-            for _ in 0..times {
-                req.make();
-            }
-            return 0;
-        }
-        Err(_) => 255,
+    let times = seach_number_value("times", argsv);
+
+    for _i in 0..times {
+        let out = req.make();
+        println!("{} - {}", out.url, out.status);
     }
+    return 0;
 }
 
 /// Compress and Decompress files

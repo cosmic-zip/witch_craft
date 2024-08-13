@@ -70,7 +70,7 @@ pub fn search_key(key: &str, vector: &[String]) -> String {
             return item.to_string();
         }
     }
-    println!("{}", raise("Not found!", 3));
+    println!("{}", raise(&format!("Key not found! {}", key), 3));
     String::new()
 }
 
@@ -135,7 +135,7 @@ pub fn magic_docs() -> i32 {
 
     if data.is_empty() {
         raise("Datasets is empty", 1);
-        return;
+        return 42;
     }
 
     println!("{}", PANZER_MAID);
@@ -297,7 +297,7 @@ pub fn lazy_exec(command_line: String) -> i32 {
 /// flawless_exec(dataset, &args);
 /// ```
 pub fn flawless_exec(set: DataSet, argsv: &[String]) -> i32 {
-    raise(&set.name, 0);
+    raise(&set.name, 6);
     let cmd = lazy_parser(&set.meta, argsv);
     lazy_exec(cmd)
 }
