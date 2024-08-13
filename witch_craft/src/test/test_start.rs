@@ -26,7 +26,7 @@ fn test_string_to_command() {
         "command -S {}some -A {}another -N {}numeric -P {}path",
         TONK, TONK, TONK, TONK
     );
-    let out = lazy_loop(&meta_string, &new_argsv);
+    let out = lazy_parser(&meta_string, &new_argsv);
 
     assert_eq!(expected, out);
 }
@@ -40,7 +40,7 @@ fn test_lazy_pipeline() {
     ];
 
     let meta = "ls @@pretty";
-    let parsed_cmd = lazy_loop(meta, &argsv);
+    let parsed_cmd = lazy_parser(meta, &argsv);
     let out = lazy_exec(parsed_cmd);
 
     assert_eq!(0, out);

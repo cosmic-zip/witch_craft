@@ -81,14 +81,14 @@ pub fn plugin_file_compact(argsv: Vec<String>) -> i32 {
         let file = search_value("file", &argsv);
         for (ext, decomp, _comp) in extensions {
             if file.ends_with(ext) {
-                command = lazy_loop(decomp, &argsv);
+                command = lazy_parser(decomp, &argsv);
             }
         }
     } else {
         let format = search_value("ext", &argsv);
         for (ext, _decomp, comp) in extensions {
             if ext == format {
-                command = lazy_loop(comp, &argsv);
+                command = lazy_parser(comp, &argsv);
                 println!("{}", command);
             }
         }

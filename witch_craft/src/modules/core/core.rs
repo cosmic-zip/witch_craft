@@ -189,7 +189,7 @@ pub fn magic_docs() {
 /// - cmd: foo --flag @@bar
 /// - input: foo --bar "some value"
 /// - out: foo --flag "some value"
-pub fn lazy_loop(meta_string: &str, argsv: &[String]) -> String {
+pub fn lazy_parser(meta_string: &str, argsv: &[String]) -> String {
     let meta: Vec<&str> = meta_string.split_whitespace().collect();
     let mut cmds: String = meta_string.to_string();
 
@@ -274,33 +274,6 @@ pub fn lazy_exec(command_line: String) -> i32 {
     }
 }
 
-/// Executes the specified command (`cmd`) `count` times.
-///
-/// For example, `foo --count 10 --foo bar` runs `--foo bar` 10 times.
-/// Useful for automation and stress testing.
-///
-/// # Notes
-/// - Commands are executed immediately in interactive mode; no scheduling support.
-///
-/// # Arguments
-/// - `cmd`: The command to execute.
-/// - `count`: Number of executions.
-///
-/// # Example
-/// ```
-/// foo --count 5 --bar example
-/// ```
-pub fn lazy_exec_loop(argsv: Vec<String>, cmd: &str) -> i32 {
-    let out = search_value("count", &argsv);
-    let range: i32 = out.parse().unwrap_or(1);
-    let mut exit = 0;
-    for _i in 1..range {
-        let exec = DataSet::from_str("name", "some.thing", cmd);
-        exit = flawless_exec(exec, &argsv);
-    }
-    exit
-}
-
 /// Calls `lazy_exec` and `lazy_loop` with the provided arguments.
 ///
 /// This function uses `DataSet` and `argsv` (a `&Vec<String>` of terminal arguments) to:
@@ -318,6 +291,6 @@ pub fn lazy_exec_loop(argsv: Vec<String>, cmd: &str) -> i32 {
 /// ```
 pub fn flawless_exec(set: DataSet, argsv: &[String]) -> i32 {
     raise(&set.name, 0);
-    let cmd = lazy_loop(&set.meta, argsv);
+    let cmd = lazy_parser(&set.meta, argsv);
     lazy_exec(cmd)
 }
