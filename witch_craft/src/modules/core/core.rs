@@ -130,7 +130,7 @@ fn witch_fmt(input: &str, max_length: usize) -> Vec<String> {
 /// - **Formatting**: Outputs the manual with improved formatting to ensure the result
 ///   is both attractive and easy to read.
 ///
-pub fn magic_docs() {
+pub fn magic_docs() -> i32 {
     let data: Vec<DataSet> = data();
 
     if data.is_empty() {
@@ -180,6 +180,8 @@ pub fn magic_docs() {
             }
         }
     }
+
+    return 0;
 }
 
 /// Parses a UwU formatted command string.
