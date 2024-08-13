@@ -1,20 +1,20 @@
 use reqwest::blocking::Client;
 use std::collections::HashMap;
 
-struct Response {
-    url: String,
-    status: String,
-    body: String,
+pub struct Response {
+    pub url: String,
+    pub status: String,
+    pub body: String,
 }
 
-struct Request {
-    url: String,
-    method: String,
-    body: Option<HashMap<String, String>>,
+pub struct Request {
+    pub url: String,
+    pub method: String,
+    pub body: Option<HashMap<String, String>>,
 }
 
 impl Request {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Request {
             url: String::new(),
             method: String::new(),
@@ -22,7 +22,9 @@ impl Request {
         }
     }
 
-    fn make(&self) -> Response {
+    /// Make an request using a struct  Request and return and
+    /// struct Response { ... }
+    pub fn make(&self) -> Response {
         let client = Client::new();
         let res = match self.method.as_str() {
             "POST" => client.post(&self.url).json(&self.body).send().unwrap(),

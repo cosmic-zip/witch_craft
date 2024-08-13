@@ -71,3 +71,37 @@ fn flawless_exec_pipeline_argsv_with_args() {
 
     assert_eq!(0, out);
 }
+
+use crate::modules::network::structs::*;
+
+#[test]
+fn test_network_request_response_fail() {
+    let mut request = Request::new();
+    request.url = "http://example.com/clover".to_string();
+    request.method = "GET".to_string();
+
+    let response = request.make();
+    let url = response.url;
+    let status = response.status;
+    let body = response.body;
+
+    assert_eq!(url, "http://example.com/clover".to_string());
+    assert_eq!(status, "500 Internal Server Error");
+    // assert_eq!(body, "");
+}
+
+#[test]
+fn test_network_request_response_ok() {
+    let mut request = Request::new();
+    request.url = "http://example.com".to_string();
+    request.method = "GET".to_string();
+
+    let response = request.make();
+    let url = response.url;
+    let status = response.status;
+    let body = response.body;
+
+    assert_eq!(url, "http://example.com".to_string());
+    assert_eq!(status, "200 OK");
+    // assert_eq!(body, "");
+}
