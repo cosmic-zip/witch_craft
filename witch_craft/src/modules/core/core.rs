@@ -74,6 +74,11 @@ pub fn search_key(key: &str, vector: &[String]) -> String {
     String::new()
 }
 
+#[allow(dead_code)]
+pub fn seach_number_value(key: &str, argsv: &[String]) -> i32 {
+    search_value(key, argsv).parse::<i32>().unwrap_or(0)
+}
+
 /// Formats a string into multiple lines with a specified maximum length, similar to `fmt` in GNU utilities.
 ///
 /// The `witch_fmt` function splits the input string into one or more lines, each of which does not exceed
