@@ -373,3 +373,12 @@ Date: Sun Aug 11 04:23:53 PM -03 2024
     → Move fancy image in chafa format to constants
     → Add magic arguments list
     → improve witch_fmt and magic docs
+
+Version 0.17.3
+
+Date: Tue Aug 13 05:13:55 PM -03 2024
+
+    → Add binds inside db.json
+    → Refatored shell flawless entry point
+    → Fixed DOS functions
+    → Fix lint warnings
