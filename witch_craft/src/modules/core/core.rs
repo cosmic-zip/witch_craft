@@ -4,6 +4,8 @@ use crate::modules::core::structs::DataSet;
 use colored::*;
 use regex::Regex;
 use std::env;
+use std::fs;
+use std::path::Path;
 use std::process::{Command, Output};
 
 pub fn readargs() -> Vec<String> {
@@ -300,4 +302,30 @@ pub fn flawless_exec(set: DataSet, argsv: &[String]) -> i32 {
     raise(&set.name, 6);
     let cmd = lazy_parser(&set.meta, argsv);
     lazy_exec(cmd)
+}
+
+/// Recursively lists all files and directories within a given directory path.
+///
+/// Returns a vector of strings containing the absolute paths of all found files and directories.
+///
+/// # Example:
+/// ```rust
+/// use std::path::Path;
+///
+/// let path = Path::new(".");
+/// let paths = directory_lookup(path);
+/// println!("{:?}", paths);
+/// ```
+pub fn directory_lookup(dir: &Path) -> Vec<String> {
+    let mut files = Vec::new();
+    for entry in fs::read_dir(dir).unwrap() {
+        let path = entry.unwrap().path();
+        if path.is_dir() {
+            files.extend(directory_lookup(&path));
+        } else {
+            files.push(path.to_string_lossy().to_string());
+        }
+    }
+
+    files
 }
