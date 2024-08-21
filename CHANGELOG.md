@@ -381,4 +381,14 @@ Date: Tue Aug 13 05:13:55 PM -03 2024
     → Add binds inside db.json
     → Refatored shell flawless entry point
     → Fixed DOS functions
-    → Fix lint warnings
+    → Fixed lint warnings
+
+Version 0.17.10
+
+Date: Tue Aug 20 08:30:19 PM -03 2024
+
+    → Rollback signature based AV with a new backend
+    → Add directory_lookup has AV backend
+    → Small overall fixes
+    → Updated wiki
+    → Updated malware list
