@@ -17,7 +17,7 @@ fi
 # Install packages
 if [ "$package_manager" == "apt" ]; then
     sudo apt update
-    sudo apt install -y nmap dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute
+    sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost
 elif [ "$package_manager" == "yum" ]; then
     sudo yum update -y
     sudo yum install -y nmap dirb dnsenum glibc-utils xxd iptables-utils iproute wget curl bind-utils traceroute
