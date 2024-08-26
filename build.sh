@@ -16,11 +16,11 @@ fi
 
 # Install packages
 if [ "$package_manager" == "apt" ]; then
-    apt update
-    apt install -y nmap dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute
+    sudo apt update
+    sudo apt install -y nmap dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute
 elif [ "$package_manager" == "yum" ]; then
-    yum update -y
-    yum install -y nmap dirb dnsenum glibc-utils xxd iptables-utils iproute wget curl bind-utils traceroute
+    sudo yum update -y
+    sudo yum install -y nmap dirb dnsenum glibc-utils xxd iptables-utils iproute wget curl bind-utils traceroute
 fi
 
 # Install data
@@ -33,7 +33,7 @@ sudo chown -R $(whoami):$(whoami) /var/witch_craft
 echo && echo "Cargo build"
 cargo build --release --manifest-path witch_craft/Cargo.toml
 chmod +x ./witch_craft/target/release/witch_craft
-cp -r ./witch_craft/target/release/witch_craft /bin
+sudo cp -r ./witch_craft/target/release/witch_craft /bin
 
 
 # Test and print status for each binary

@@ -210,7 +210,7 @@ pub fn lazy_parser(meta_string: &str, argsv: &[String]) -> String {
             for c in aaaa {
                 if c.contains(TONK) {
                     let opt = c.replace(TONK, "");
-                    let val = search_value(&opt, &argsv);
+                    let val = search_value(&opt, argsv);
                     new = item.replace(c, &val);
                 }
             }
@@ -220,7 +220,7 @@ pub fn lazy_parser(meta_string: &str, argsv: &[String]) -> String {
 
         if item.contains(TONK) & !item.contains("http") {
             let opt = item.replace(TONK, "");
-            let val = search_value(&opt, &argsv);
+            let val = search_value(&opt, argsv);
             cmds = cmds.replace(item, &val);
         }
     }
