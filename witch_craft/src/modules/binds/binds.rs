@@ -150,8 +150,8 @@ pub fn file_compact(argsv: Vec<String>) -> i32 {
 
 pub fn malware_scanner(path: String) -> Vec<String> {
     let malware_signatures: String = match fs::read_to_string(
-        "/home/cosmic/workspace/witch_craft/witch_craft/src/test/malware_list.txt",
-        // "/var/witch_craft/witch_spells/malware/malware.list",
+        // "/home/cosmic/workspace/witch_craft/witch_craft/src/test/malware_list.txt",
+        "/var/witch_craft/witch_spells/malware/malware.list",
     ) {
         Ok(value) => value,
         Err(err) => {
@@ -221,7 +221,7 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
 
     for dn in done {
         let msg = format!("Malware removed :: {}", dn);
-        raise(&msg, 2);
+        raise(&msg, 1);
     }
 
     for gn in &gone {
