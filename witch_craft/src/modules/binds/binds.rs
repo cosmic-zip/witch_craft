@@ -2,6 +2,7 @@ use crate::modules::core::core::*;
 use crate::modules::core::structs::DataSet;
 use crate::modules::network::structs::*;
 use sha256::try_digest;
+use std::borrow::Borrow;
 use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
@@ -165,7 +166,7 @@ pub fn malware_scanner(path: String) -> Vec<String> {
         let file_path = Path::new(&path);
         let file_sig = try_digest(file_path).unwrap();
         if malware_signatures.contains(&file_sig) {
-            malware_found.push(file_sig);
+            malware_found.push(file_path.to_string_lossy().to_string());
         }
     }
 
@@ -211,7 +212,7 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
         match fs::remove_file(path) {
             Ok(_) => done.push(path.to_string_lossy().to_string()),
             Err(err) => {
-                println!("{} {:?}", err, path);
+                println!("@@@@ {} :::: {:?}", err, &mal);
                 gone.push(path.to_string_lossy().to_string())
             }
         }
@@ -223,7 +224,7 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
     }
 
     for gn in &gone {
-        let msg = format!("Malware founded but not removed :: {}", gn);
+        let msg = format!("Malware found but not removed :: {}", gn);
         raise(&msg, 2);
     }
 
