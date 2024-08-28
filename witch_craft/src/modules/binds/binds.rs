@@ -2,7 +2,6 @@ use crate::modules::core::core::*;
 use crate::modules::core::structs::DataSet;
 use crate::modules::network::structs::*;
 use sha256::try_digest;
-use std::borrow::Borrow;
 use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
@@ -212,7 +211,7 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
         match fs::remove_file(path) {
             Ok(_) => done.push(path.to_string_lossy().to_string()),
             Err(err) => {
-                println!("@@@@ {} :::: {:?}", err, &mal);
+                println!("{}", err);
                 gone.push(path.to_string_lossy().to_string())
             }
         }
