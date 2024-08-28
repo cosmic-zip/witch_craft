@@ -40,7 +40,6 @@ pub fn shell() -> i32 {
         "dos.simple" => dos_simple_get_span(&argsv),
         "dos.longpw" => dos_long_auth_span(&argsv),
         "map.dns" => map_dns(&argsv),
-        "file.cpdp" => map_dns(&argsv),
         "blackcat.av" => blackcat_av(&argsv),
         _ => flawless_entry_point(&argsv),
     }

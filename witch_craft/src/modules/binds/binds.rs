@@ -149,16 +149,14 @@ pub fn file_compact(argsv: Vec<String>) -> i32 {
 }
 
 pub fn malware_scanner(path: String) -> Vec<String> {
-    let malware_signatures: String = match fs::read_to_string(
-        "/home/cosmic/workspace/witch_craft/witch_craft/src/test/malware_list.txt",
-        // "/var/witch_craft/witch_spells/malware/malware.list",
-    ) {
-        Ok(value) => value,
-        Err(err) => {
-            raise(&format!("Error at {}", err), 0);
-            String::new()
-        }
-    };
+    let malware_signatures: String =
+        match fs::read_to_string("/var/witch_craft/witch_spells/malware/malware.list") {
+            Ok(value) => value,
+            Err(err) => {
+                raise(&format!("Error at {}", err), 0);
+                String::new()
+            }
+        };
 
     let metadata = fs::metadata(&path).unwrap();
     let mut malware_found = Vec::new();
@@ -167,7 +165,7 @@ pub fn malware_scanner(path: String) -> Vec<String> {
         let file_path = Path::new(&path);
         let file_sig = try_digest(file_path).unwrap();
         if malware_signatures.contains(&file_sig) {
-            malware_found.push(file_sig);
+            malware_found.push(file_path.to_string_lossy().to_string());
         }
     }
 
@@ -201,7 +199,7 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
 
     if action != "remove" {
         let msg = format!(
-            "Malware found! RUN this command with --action remove ::\n {} ",
+            "Malware found! RUN this command with --action remove ::\nLocation :: {} ",
             &path
         );
         raise(&msg, 6);
@@ -221,11 +219,11 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
 
     for dn in done {
         let msg = format!("Malware removed :: {}", dn);
-        raise(&msg, 2);
+        raise(&msg, 1);
     }
 
     for gn in &gone {
-        let msg = format!("Malware founded but not removed :: {}", gn);
+        let msg = format!("Malware found but not removed :: {}", gn);
         raise(&msg, 2);
     }
 
