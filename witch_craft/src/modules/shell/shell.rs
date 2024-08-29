@@ -1,4 +1,5 @@
 use crate::modules::binds::binds::*;
+use crate::modules::blackcat::blackcat::*;
 use crate::modules::core::consts::*;
 use crate::modules::core::core::*;
 use crate::modules::core::data::*;
@@ -17,7 +18,7 @@ pub fn flawless_entry_point(argsv: &[String]) -> i32 {
         }
     }
 
-    return 42;
+    42
 }
 
 pub fn shell() -> i32 {
