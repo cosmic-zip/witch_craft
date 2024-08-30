@@ -402,5 +402,5 @@ Date: Fri Aug 30 07:12:51 PM -03 2024
     → Add per module api
     → Add Closure type for api returns
     → Move core out of modules
-    → Removed shell moduel
+    → Removed shell module
     → Add process::exit to the main function
