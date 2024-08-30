@@ -1,12 +1,15 @@
-use crate::modules::core::consts::*;
-use crate::modules::core::data::*;
-use crate::modules::core::structs::DataSet;
+use crate::core::consts::WITCH;
+use crate::core::consts::*;
+use crate::core::data::*;
+use crate::core::structs::DataSet;
 use colored::*;
 use regex::Regex;
 use std::env;
 use std::fs;
 use std::path::Path;
 use std::process::{Command, Output};
+
+use super::types::Closure;
 
 pub fn readargs() -> Vec<String> {
     env::args().collect()
@@ -81,23 +84,6 @@ pub fn seach_number_value(key: &str, argsv: &[String]) -> i32 {
     search_value(key, argsv).parse::<i32>().unwrap_or(0)
 }
 
-/// Formats a string into multiple lines with a specified maximum length, similar to `fmt` in GNU utilities.
-///
-/// The `witch_fmt` function splits the input string into one or more lines, each of which does not exceed
-/// the specified `max_length`. It attempts to avoid breaking words between lines. If a word is longer than
-/// the maximum line length, it will be placed on its own line, potentially exceeding `max_length`.
-///
-/// # Parameters
-///
-/// - `input`: A string slice (`&str`) that contains the text to be formatted.
-/// - `max_length`: The maximum number of characters allowed in each line. Lines will be wrapped to
-///   adhere to this limit, but words will be preserved whole whenever possible.
-///
-/// # Returns
-///
-/// A `Vec<String>` where each `String` represents a line of text. Each line will be formatted to
-/// have a length of up to `max_length`, with words kept intact as much as possible.
-///
 fn witch_fmt(input: &str, max_length: usize) -> Vec<String> {
     let mut lines = Vec::new();
     let mut start = 0;
@@ -118,20 +104,6 @@ fn witch_fmt(input: &str, max_length: usize) -> Vec<String> {
     lines
 }
 
-/// Generates a well-formatted manual from the `db.json` file.
-///
-/// This function parses command strings from the `db.json` file and incorporates
-/// Chafa images for visual enhancements, producing a visually appealing and
-/// readable manual. The final result is printed to the console with improved
-/// formatting for better readability and presentation.
-///
-/// # Functionality
-/// - **Parsing**: Reads and parses command strings stored in the `db.json` file.
-/// - **Visual Enhancement**: Integrates Chafa images to enhance the visual appearance
-///   of the output. Chafa is a tool that converts images into ASCII art for terminal display.
-/// - **Formatting**: Outputs the manual with improved formatting to ensure the result
-///   is both attractive and easy to read.
-///
 pub fn magic_docs() -> i32 {
     let data: Vec<DataSet> = data();
 
@@ -186,18 +158,6 @@ pub fn magic_docs() -> i32 {
     return 0;
 }
 
-/// Parses a UwU formatted command string.
-///
-/// Replaces placeholders `@@bar` in `meta_string` with values from `argsv`.
-///
-/// # Parameters
-/// - `meta_string`: The command string to be parsed.
-/// - `argsv`: A vector of strings where each pair represents a `--for` key and its value.
-///
-/// # Exemple:
-/// - cmd: foo --flag @@bar
-/// - input: foo --bar "some value"
-/// - out: foo --flag "some value"
 pub fn lazy_parser(meta_string: &str, argsv: &[String]) -> String {
     let meta: Vec<&str> = meta_string.split_whitespace().collect();
     let mut cmds: String = meta_string.to_string();
@@ -228,16 +188,6 @@ pub fn lazy_parser(meta_string: &str, argsv: &[String]) -> String {
     cmds
 }
 
-/// Executes a command string on the host system.
-///
-/// Takes a command string that has been parsed by `lazy_loop` or is a static command string.
-/// Executes the command using the system's command interpreter and returns the output.
-///
-/// # Parameters
-/// - `command_line`: The command string to execute.
-///
-/// # Returns
-/// - `Option<Output>`: The output of the executed command. Returns `None` if the command execution fails.
 pub fn raw_exec(command_line: String) -> Option<Output> {
     let mut parts = command_line.split_whitespace();
     let command = parts.next().expect("No command found");
@@ -249,17 +199,6 @@ pub fn raw_exec(command_line: String) -> Option<Output> {
     }
 }
 
-/// A wrapper for `raw_exec` that handles command execution and output formatting.
-///
-/// Executes `raw_exec` with the given command string. If `pretty` is `true`, it formats the output.
-/// Prints the command's standard output on success and the standard error if any errors occur.
-/// Returns the exit status code of the command as an `i32`.
-///
-/// # Parameters
-/// - `command_line`: The command string to execute.
-///
-/// # Returns
-/// - `i32`: The exit status code of the executed command, which is zero or greater if successful.
 pub fn lazy_exec(command_line: String) -> i32 {
     match raw_exec(command_line) {
         Some(output) => {
@@ -283,39 +222,12 @@ pub fn lazy_exec(command_line: String) -> i32 {
     }
 }
 
-/// Calls `lazy_exec` and `lazy_loop` with the provided arguments.
-///
-/// This function uses `DataSet` and `argsv` (a `&[String]` of terminal arguments) to:
-/// - Parse and execute the command string found in `set.meta`.
-///
-/// # Arguments
-/// - `set`: Contains the command metadata.
-/// - `&argsv`: Vector of terminal arguments to be parsed.
-///
-/// # Example
-/// ```
-/// let dataset = DataSet { /* ... */ };
-/// let args = vec!["--flag".to_string(), "value".to_string()];
-/// flawless_exec(dataset, &args);
-/// ```
 pub fn flawless_exec(set: DataSet, argsv: &[String]) -> i32 {
     raise(&set.name, 6);
     let cmd = lazy_parser(&set.meta, argsv);
     lazy_exec(cmd)
 }
 
-/// Recursively lists all files and directories within a given directory path.
-///
-/// Returns a vector of strings containing the absolute paths of all found files and directories.
-///
-/// # Example:
-/// ```rust
-/// use std::path::Path;
-///
-/// let path = Path::new(".");
-/// let paths = directory_lookup(path);
-/// println!("{:?}", paths);
-/// ```
 pub fn directory_lookup(dir: &Path) -> Vec<String> {
     let mut files = Vec::new();
     for entry in fs::read_dir(dir).unwrap() {
@@ -328,4 +240,21 @@ pub fn directory_lookup(dir: &Path) -> Vec<String> {
     }
 
     files
+}
+
+pub fn closure_shell(options: Closure, argsv: &[String]) -> i32 {
+    if argsv.len() % 2 != 0 {
+        println!("{}", WITCH);
+        return 0;
+    }
+
+    let name = argsv[1].as_str();
+
+    for function in options {
+        if function.0 == name {
+            return function.1(argsv);
+        }
+    }
+
+    11223300
 }

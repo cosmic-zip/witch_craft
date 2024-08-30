@@ -1,5 +1,5 @@
-use crate::modules::core::structs::DataSet;
-use crate::modules::core::consts::*;
+use crate::core::consts::*;
+use crate::core::structs::DataSet;
 use serde::Deserialize;
 use std::fs::File;
 use std::io::Read;
@@ -19,11 +19,11 @@ struct JsonData {
 }
 
 fn read_dataset() -> Option<Vec<DataSet>> {
-    let mut file = match File::open(DBPATH){
+    let mut file = match File::open(DBPATH) {
         Ok(file) => file,
         Err(err) => {
             raise(&err.to_string(), 4);
-            return None
+            return None;
         }
     };
 
@@ -36,13 +36,15 @@ fn read_dataset() -> Option<Vec<DataSet>> {
         Ok(data) => data,
         Err(err) => {
             raise(&err.to_string(), 4);
-            return  None;
+            return None;
         }
     };
 
-    let dataset: Vec<DataSet> = json_data.general.iter().map(
-        |entry| DataSet::from_str(&entry.description, &entry.name, &entry.command)
-    ).collect();
+    let dataset: Vec<DataSet> = json_data
+        .general
+        .iter()
+        .map(|entry| DataSet::from_str(&entry.description, &entry.name, &entry.command))
+        .collect();
 
     Some(dataset)
 }
