@@ -1,5 +1,5 @@
-use crate::core::types::Closure;
+use crate::{core::types::Closure, modules::social::qrcode::gen_qrcode_from_argsv};
 
 pub fn api() -> Closure {
-    vec![]
+    vec![("qrcode", gen_qrcode_from_argsv)]
 }

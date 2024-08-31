@@ -2,6 +2,7 @@ use crate::core::consts::WITCH;
 use crate::core::consts::*;
 use crate::core::data::*;
 use crate::core::structs::DataSet;
+use chrono;
 use colored::*;
 use regex::Regex;
 use std::env;
@@ -13,6 +14,11 @@ use super::types::Closure;
 
 pub fn readargs() -> Vec<String> {
     env::args().collect()
+}
+
+pub fn datetime_now() -> String {
+    let time = chrono::offset::Local::now();
+    return time.to_string();
 }
 
 pub fn raise(arg: &str, fancy: i32) -> String {
