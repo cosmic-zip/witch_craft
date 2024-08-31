@@ -24,6 +24,12 @@
 
 ### Instalation
 
+#### Install using snap store
+
+<a href="https://snapcraft.io/witchcraft-cybersecurity">
+  <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
+</a>
+
 The project initially includes a set of default files. These files
 are created using the best possible data analysis techniques, and
 their final versions are merged into the main project.
