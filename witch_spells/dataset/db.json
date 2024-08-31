@@ -1,6 +1,11 @@
 {
   "general": [
     {
+      "description": "Create a QR code from the provided data.",
+      "name": "gen.qrcode",
+      "command": "qrcode @@data"
+    },
+    {
       "description": "Return common DNS information and reverse DNS",
       "name": "map.dns",
       "command": "map.dns @@domain"
