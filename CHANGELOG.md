@@ -392,3 +392,15 @@ Date: Tue Aug 20 08:30:19 PM -03 2024
     → Small overall fixes
     → Updated wiki
     → Updated malware list
+
+Version 0.17.65
+
+Date: Fri Aug 30 07:12:51 PM -03 2024
+
+    → Rebuild all backends
+    → Split binds into domains, like: osint, social
+    → Add per module api
+    → Add Closure type for api returns
+    → Move core out of modules
+    → Removed shell module
+    → Add process::exit to the main function

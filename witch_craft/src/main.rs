@@ -1,10 +1,44 @@
+use core::{consts::WITCH, core::*};
+use std::process;
+
+use modules::{
+    binds::binds::{self, flawless_entry_point},
+    blackcat::blackcat,
+    network::network,
+    osint::osint,
+    social::social,
+};
+
+mod core;
 mod modules;
 
-use crate::modules::shell::shell::shell;
-
-#[allow(dead_code)]
 fn main() {
-    shell();
+    let argsv = readargs();
+    if argsv.len() % 2 != 0 {
+        println!("{}", WITCH);
+        process::exit(42);
+    }
+
+    let arg_name = argsv[1].as_str();
+
+    let mut join_closures = Vec::new();
+    join_closures.extend(binds::api());
+    join_closures.extend(blackcat::api());
+    join_closures.extend(network::api());
+    join_closures.extend(osint::api());
+    join_closures.extend(social::api());
+
+    if arg_name == "help" || arg_name == "h" {
+        magic_docs();
+    }
+
+    let code = closure_shell(join_closures, &argsv);
+    if code == 11223300 {
+        let code = flawless_entry_point(&argsv);
+        process::exit(code);
+    }
+
+    process::exit(code);
 }
 
 #[cfg(test)]

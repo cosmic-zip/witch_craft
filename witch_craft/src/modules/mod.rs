@@ -1,5 +1,6 @@
 pub mod binds;
-pub mod core;
+pub mod blackcat;
 pub mod llm;
 pub mod network;
-pub mod shell;
+pub mod osint;
+pub mod social;
