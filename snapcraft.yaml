@@ -1,0 +1,24 @@
+name: witchcraft
+version: "0.17.65"
+summary: Your OPSEC companion
+description: |
+    **WITCH_CRAFT** is a versatile task automation software designed to serve as the foundation for various cyber security modules. It provides capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion testing of applications and APIs, and more.
+
+grade: stable
+confinement: devmode
+
+base: core22
+
+parts:
+    witchcraft:
+        plugin: rust
+        source: ../witch_craft
+        stage-packages:
+            - nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost
+
+apps:
+    witchcraft:
+        command: bin/witch_craft
+        plugs:
+            - network
+            - network-bind
