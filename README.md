@@ -33,6 +33,12 @@ It consists of two main components:
 - **witch_craft** for CLI application.
 - **witch_oracle** for GUI application
 
+### Install using snap!
+
+<a href="https://snapcraft.io/witchcraft-cybersecurity">
+  <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
+</a>
+
 ### Build Instructions
 
 To build the project, follow these instructions:
