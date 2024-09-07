@@ -22,6 +22,13 @@
 </center>
 <hr>
 
+### WITCH_CRAFT
+
+  WITCH_CRAFT is a versatile task automation software designed to serve as the
+  foundation for various cybersecurity modules. It provides capabilities for tasks
+  such as forensic research, OSINT (Open Source Intelligence), scanning, backup and
+  copying, intrusion testing of applications and APIs, and more.
+
 ### Instalation
 
 The project initially includes a set of default files. These files
