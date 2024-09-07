@@ -1,4 +1,4 @@
-![banner](witch_docs/media_kit/trans_banner/witch_craft_banner_transp.png)
+![banner](witch_docs/media_kit/splited.png)
 
 ![banner](witch_docs/images/lineBar.png)
 
@@ -28,12 +28,7 @@ The project initially includes a set of default files. These files
 are created using the best possible data analysis techniques, and
 their final versions are merged into the main project.
 
-It consists of two main components:
-
-- **witch_craft** for CLI application.
-- **witch_oracle** for GUI application
-
-### Install using snap!
+### Install using snap
 
 <a href="https://snapcraft.io/witchcraft-cybersecurity">
   <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
@@ -95,7 +90,7 @@ Feel free to contribute to witch_craft by submitting issues or pull requests. Yo
 
 The Witch_Craft project is extensible through static files and Rust code. Moreover, it is possible to extend its functionalities using `db.json`. This file contains a list of small shell scripts, which means you can integrate anything that interacts with the terminal using ARGS (argsv, readargs(), sys.args(), etc).
 
-```javascript
+```json
 {
   "description": "Securely deletes and overwrites the contents of a device seven times",
   "name": "nuke.hd",
@@ -112,8 +107,10 @@ witchcraft nuke.hd --device /dev/sdx1
 ### License
 
 <center>
+<div>
 <b>
 This project is licensed under the GNU General Public License
 v3.0.
 </b>
+</div>
 </center>
