@@ -2,6 +2,11 @@
 name = "witch_craft"
 version = "0.17.65"
 edition = "2021"
+readme = "README.md"
+homepage = "https://github.com/cosmic-zip/witch_craft"
+repository = "https://github.com/cosmic-zip/witch_craft"
+keywords = ["cli", "hacking", "pentest", "security"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 chrono = "0.4.38"
