@@ -8,6 +8,11 @@ description: |
 grade: stable
 confinement: strict
 base: core24
+platforms:
+    amd64:
+    arm64:
+        build-on: [amd64, arm64]
+        build-for: [arm64]
 
 parts:
     witchcraft:
