@@ -411,7 +411,7 @@ Date: Mon Sep  9 11:42:09 AM -03 2024
 
     → Removed general/wordlists
     → Added defaults-credentials wordlist
-    → Added ladybug (comapact) wordlist
+    → Added ladybug (compact) wordlist
     → Added moth (large) wordlist
     → Updated malware db
     → Updated snapcraft
