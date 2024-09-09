@@ -1,48 +1,47 @@
 name: witchcraft-cybersecurity
-version: "0.17.70"
+version: "0.17.72"
 summary: Your OPSEC companion
 description: |
-    **WITCH_CRAFT** is a versatile task automation software designed to serve as the foundation for various cybersecurity modules. It provides capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion testing of applications and APIs, and more.
-
+  **WITCH_CRAFT** is a versatile task automation software designed to serve as the foundation for various cybersecurity modules. It provides capabilities for tasks such as forensic research, OSINT (Open Source Intelligence), scanning, backup and copying, intrusion testing of applications and APIs, and more.
 
 grade: stable
 confinement: strict
 base: core24
 platforms:
-    amd64:
-        build-on: [amd64]
-        build-for: [amd64]
-    arm64:
-        build-on: [arm64]
-        build-for: [arm64]
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
+  arm64:
+    build-on: [arm64]
+    build-for: [arm64]
 
 parts:
-    witchcraft:
-        plugin: rust
-        source: ./witch_craft
-        stage-packages:
-            - nmap
-            - whois
-            - dirb
-            - dnsenum
-            - libc-bin
-            - iproute2
-            - xxd
-            - iptables
-            - coreutils
-            - wget
-            - curl
-            - dnsutils
-            - traceroute
-            - openssl
-            - openssh-server
-            - libssl-dev
-            - xattr
-            - libimage-exiftool-perl
-            - tor
-            - foremost
+  witchcraft:
+    plugin: rust
+    source: ./witch_craft
+    stage-packages:
+      - nmap
+      - whois
+      - dirb
+      - dnsenum
+      - libc-bin
+      - iproute2
+      - xxd
+      - iptables
+      - coreutils
+      - wget
+      - curl
+      - dnsutils
+      - traceroute
+      - openssl
+      - openssh-server
+      - libssl-dev
+      - xattr
+      - libimage-exiftool-perl
+      - tor
+      - foremost
 
 apps:
-    witchcraft:
-        command: bin/witch_craft
-        plugs: [home, network, network-bind, removable-media]
+  witchcraft:
+    command: bin/witch_craft
+    plugs: [home, network, network-bind, removable-media]

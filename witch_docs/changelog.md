@@ -404,3 +404,15 @@ Date: Fri Aug 30 07:12:51 PM -03 2024
     → Move core out of modules
     → Removed shell module
     → Add process::exit to the main function
+
+Version 0.17.72
+
+Date: Mon Sep  9 11:42:09 AM -03 2024
+
+    → Removed general/wordlists
+    → Added defaults-credentials wordlist
+    → Added ladybug (comapact) wordlist
+    → Added moth (large) wordlist
+    → Updated malware db
+    → Updated snapcraft
+    → Updated witch_craft version
