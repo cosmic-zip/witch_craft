@@ -3,7 +3,75 @@ pub const SPLIT_II: &str = "--";
 pub const SPLIT_I: &str = "-";
 pub const DBPATH: &str = "/var/witch_craft/witch_spells/dataset/db.json";
 
-pub const MAGIC_DOCS: &[(&str, &str)]  = &[
+pub const PATHS: &[(&str, &str)] = &[
+    ("dataset", "./witch_spells/dataset/db.json"),
+    (
+        "default_passwords",
+        "./witch_spells/default-credentials/default-passwords.csv",
+    ),
+    (
+        "defaults_pwned",
+        "./witch_spells/default-credentials/defaults.pwned",
+    ),
+    (
+        "scada_pass",
+        "./witch_spells/default-credentials/scada-pass.csv",
+    ),
+    (
+        "dice_eff_words",
+        "./witch_spells/general/dice_eff_words.list",
+    ),
+    ("directories", "./witch_spells/general/directories.list"),
+    (
+        "domain_complete",
+        "./witch_spells/general/domain_complete.list",
+    ),
+    ("domain_fast", "./witch_spells/general/domain_fast.list"),
+    (
+        "email_disposable",
+        "./witch_spells/general/email_disposable.list",
+    ),
+    (
+        "email_trusted_list",
+        "./witch_spells/general/email_trusted_list.list",
+    ),
+    (
+        "files_extensions",
+        "./witch_spells/general/files_extensions.list",
+    ),
+    (
+        "mac_addres_lockup",
+        "./witch_spells/general/mac_addres_lockup.list",
+    ),
+    (
+        "repo_keyword_scan",
+        "./witch_spells/general/repo_keyword_scan.list",
+    ),
+    ("tlds", "./witch_spells/general/tlds.list"),
+    ("user_names", "./witch_spells/general/user_names.list"),
+    (
+        "xss_payload_list",
+        "./witch_spells/general/xss-payload-list.list",
+    ),
+    ("hosts", "./witch_spells/hosts/hosts"),
+    ("malware", "./witch_spells/malware/malware.list"),
+    ("ans_ipv4", "./witch_spells/osint/ans/ans.ipv4.csv"),
+    ("ans_ipv6", "./witch_spells/osint/ans/ans.ipv6.csv"),
+    (
+        "geodata_ipv4",
+        "./witch_spells/osint/geolocation/geodata.ipv4.csv",
+    ),
+    (
+        "geodata_ipv6",
+        "./witch_spells/osint/geolocation/geodata.ipv6.csv",
+    ),
+    ("proxy_ipv4", "./witch_spells/osint/proxy/proxy.ipv4.csv"),
+    ("proxy_ipv6", "./witch_spells/osint/proxy/proxy.ipv6.csv"),
+    ("ladybug_pwned", "./witch_spells/wordlists/ladybug.pwned"),
+    ("moth_pwned", "./witch_spells/wordlists/moth.pwned"),
+];
+
+pub const MAGIC_DOCS: &[(&str, &str)] = &[
     ("dns", "Domain name"),
     ("target", "Refers to IP or DOMAIN name"),
     ("ip", "IP address"),
@@ -20,10 +88,16 @@ pub const MAGIC_DOCS: &[(&str, &str)]  = &[
     ("recursive", "Enable recursive mode"),
     ("url", "Target complete URL path with http/https"),
     ("username", "Username; well, it setup user name"),
-    ("password", "Specify password; it will be shown in plaintext"),
+    (
+        "password",
+        "Specify password; it will be shown in plaintext",
+    ),
     ("host", "Host name ip address"),
     ("database_name", "Specify database name"),
-    ("snapshot_name", "Specify snapshot name, not the location btw"),
+    (
+        "snapshot_name",
+        "Specify snapshot name, not the location btw",
+    ),
 ];
 
 pub const MAN_HEADER: &str = r#"
