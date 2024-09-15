@@ -9,7 +9,7 @@ hidden/
 
 
 # Wordlists
-.pwned
+*.pwned
 
 *.snap
 
