@@ -2,10 +2,12 @@
 
 private/
 hidden/
-    
+
 *.private
 *.hidden
 *.blood
+
+.osint/
 
 *.snap
 
