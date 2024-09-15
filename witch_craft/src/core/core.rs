@@ -10,7 +10,6 @@ use std::fs;
 use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 use std::path::Path;
 use std::process::{Command, Output};
-use std::str::pattern::Pattern;
 use std::str::FromStr;
 
 use super::types::Closure;
