@@ -7,7 +7,9 @@ hidden/
 *.hidden
 *.blood
 
-.osint/
+
+# Wordlists
+.pwned
 
 *.snap
 
