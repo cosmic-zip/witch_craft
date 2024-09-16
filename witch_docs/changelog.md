@@ -416,3 +416,12 @@ Date: Mon Sep  9 11:42:09 AM -03 2024
     → Updated malware db
     → Updated snapcraft
     → Updated witch_craft version
+
+Version 0.18.0
+
+Date:
+
+    → Added Ip lookup for ANS, IP Geolocation and proxy
+    → Added local lookup database
+    → Removed wiki (wiki will be inside cosmic-zip.github.io only)
+    →
