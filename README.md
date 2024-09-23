@@ -114,10 +114,9 @@ witchcraft nuke.hd --device /dev/sdx1
 ### License
 
 <center>
-<div>
-<b>
-This project is licensed under the GNU General Public License
-v3.0.
-</b>
-</div>
+  <div class="center">
+  <b>This project is licensed under the GNU General Public License v3.0.</b>
+  </div>
 </center>
+
+#### WITCH_CRAFT includes IP2Proxy LITE data available from https://www.ip2location.com/proxy-database.

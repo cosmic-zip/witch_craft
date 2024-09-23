@@ -2,10 +2,14 @@
 
 private/
 hidden/
-    
+
 *.private
 *.hidden
 *.blood
+
+
+# Wordlists
+*.pwned
 
 *.snap
 

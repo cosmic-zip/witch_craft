@@ -7,8 +7,10 @@ use colored::*;
 use regex::Regex;
 use std::env;
 use std::fs;
+use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 use std::path::Path;
 use std::process::{Command, Output};
+use std::str::FromStr;
 
 use super::types::Closure;
 
@@ -263,4 +265,51 @@ pub fn closure_shell(options: Closure, argsv: &[String]) -> i32 {
     }
 
     11223300
+}
+
+pub fn read_file_to_lines(path: &str) -> Vec<String> {
+    match fs::read_to_string(path) {
+        Ok(value) => value.lines().map(String::from).collect(),
+        Err(err) => {
+            raise(&format!("Error at {}", err), 0);
+            return Vec::new();
+        }
+    }
+}
+
+pub fn ip_to_number(ip_str: &str) -> String {
+    fn convert_addr(ip: IpAddr) -> u128 {
+        match ip {
+            IpAddr::V4(ipv4) => u128::from(u32::from_be_bytes(ipv4.octets())),
+            IpAddr::V6(ipv6) => {
+                let bytes = ipv6.octets();
+                let mut num = 0u128;
+                for byte in bytes {
+                    num = (num << 8) | u128::from(byte);
+                }
+                num
+            }
+        }
+    }
+
+    match IpAddr::from_str(ip_str) {
+        Ok(ip) => {
+            let number = convert_addr(ip);
+            number.to_string()
+        }
+        Err(e) => {
+            println!("Failed to parse IP address '{}': {}", ip_str, e);
+            String::new()
+        }
+    }
+}
+
+pub fn spells(pattern: &str) -> (&str, &str) {
+    for path in PATHS {
+        if pattern == path.0 {
+            return path.to_owned();
+        }
+    }
+
+    return ("null", "Not found in PATHS");
 }
