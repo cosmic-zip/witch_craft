@@ -1,46 +1,46 @@
-# SHOWCASE
+# APRESENTAÇÃO
 
-Mapea conneções locais
-map.local
+Mapea conexões locais
+`map.local`
 
-Mapea propriedades de enderoço DNS
-map.dns
+Mapea propriedades de endereço DNS
+`map.dns`
 
-NMAP defaul scan
-map.default
+Escaneamento padrão do NMAP
+`map.default`
 
-Nmap NSE discovery script
-map.discovery
+Script de descoberta NSE do Nmap
+`map.discovery`
 
-Nmap NSE authentication script
-map.auth
+Script de autenticação NSE do Nmap
+`map.auth`
 
-Nmap NSE safiest scan script
-map.safe
+Script de escaneamento seguro NSE do Nmap
+`map.safe`
 
-Nmap NSE vulnerability scanner script
-map.vuln
+Script de scanner de vulnerabilidades NSE do Nmap
+`map.vuln`
 
-Mass span simple get request
-dos.simple
+Requisição GET simples para um ataque em massa
+`dos.simple`
 
-Mass span simple post request with a very long password
-dos.longpw
+Requisição POST simples para um ataque em massa com uma senha muito longa
+`dos.longpw`
 
-Secure file deletion (device wide)
-nuke.hd
+Remoção segura de arquivos (em todo o dispositivo)
+`nuke.hd`
 
-Secure file deletion
-nuke.file
+Remoção segura de arquivos
+`nuke.file`
 
-Secure file deletion (logs only)
-nuke.logs
+Remoção segura de arquivos (apenas logs)
+`nuke.logs`
 
-Create a C header file from a binary file.
-file.list
+Cria um arquivo de cabeçalho C a partir de um arquivo binário.
+`file.list`
 
-Show the current ip address
-map.myip
+Mostra o endereço IP atual
+`map.myip`
 
-Extracts and displays all metadata from an image file using exiftool.
-file.meta
+Extrai e exibe todos os metadados de um arquivo de imagem usando o exiftool.
+`file.meta`

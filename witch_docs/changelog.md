@@ -424,3 +424,10 @@ Date: Mon Sep 16 11:35:28 AM -03 2024
     → Added Ip lookup for ANS, IP Geolocation and proxy
     → Added local lookup database
     → Removed wiki (wiki will be inside cosmic-zip.github.io only)
+
+Version 0.18.2
+
+    → Add bind fhide based on steghide for steganography
+    → Update malware database
+    → Update build.sh
+    → Update showcase
