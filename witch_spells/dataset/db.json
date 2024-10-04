@@ -1,6 +1,21 @@
 {
   "general": [
     {
+      "description": "Hides a file within a cover image or audio file using Steghide.",
+      "name": "fhide.embed",
+      "command": "steghide embed -cf @@file -ef @@secret"
+    },
+    {
+      "description": "Extracts hidden data from a cover image or audio file using Steghide.",
+      "name": "fhide.extract",
+      "command": "steghide extract -sf @@file"
+    },
+    {
+      "description": "Displays information about a cover file, including any hidden data, using Steghide.",
+      "name": "fhide.info",
+      "command": "steghide info @@file"
+    },
+    {
       "description": "Create a QR code from the provided data.",
       "name": "gen.qrcode",
       "command": "qrcode @@data"
@@ -193,7 +208,7 @@
     {
       "description": "Scan local open connections",
       "name": "map.local",
-      "command": "ss -tupanr"
+      "command": "ss -tupran"
     },
     {
       "description": "Show the current ip address",
@@ -378,7 +393,7 @@
     {
       "name": "self.setup",
       "description": "Setup and install witch_craft",
-      "command": "sudo apt install nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost doas -y"
+      "command": "sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost pkg-config libssl-dev steghide doas nala"
     }
   ]
 }
