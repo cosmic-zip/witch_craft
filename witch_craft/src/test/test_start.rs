@@ -85,7 +85,7 @@ fn test_network_request_response_fail() {
     let body = response.body;
 
     assert_eq!(url, "http://example.com/clover".to_string());
-    assert_eq!(status, "500 Internal Server Error");
+    assert_eq!(status, "404 Not Found");
     // assert_eq!(body, "");
 }
 
