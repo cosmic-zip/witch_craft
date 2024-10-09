@@ -2,6 +2,7 @@ pub const TONK: &str = "@@";
 pub const SPLIT_II: &str = "--";
 pub const SPLIT_I: &str = "-";
 pub const DBPATH: &str = "/var/witch_craft/witch_spells/dataset/db.json";
+pub const FSROOT: &str = "/var/witch_craft/witch_spells/";
 
 pub const PATHS: &[(&str, &str)] = &[
     ("dataset", "./witch_spells/dataset/db.json"),
