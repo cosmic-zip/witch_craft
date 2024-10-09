@@ -1,6 +1,11 @@
 {
   "general": [
     {
+      "description": "Start a http server that display an local webpage and collect all request data in plain text",
+      "name": "server.eviltwin",
+      "command": "server.eviltwin @@addrr @@path"
+    },
+    {
       "description": "Hides a file within a cover image or audio file using Steghide.",
       "name": "fhide.embed",
       "command": "steghide embed -cf @@file -ef @@secret"
