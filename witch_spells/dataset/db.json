@@ -77,8 +77,8 @@
     },
     {
       "description": "Full website downloader",
-      "name": "web.donwload",
-      "command": "wget --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows --random-wait --wait=@@wait --limit-rate=200k --tries=inf --domains example.com --no-parent @@url"
+      "name": "web.download",
+      "command": "wget --recursive -U 'Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0' --page-requisites --html-extension --convert-links --restrict-file-names=windows --random-wait --wait=@@wait --limit-rate=200k --tries=inf --domains example.com --no-parent @@url"
     },
     {
       "description": "Creates a directory named 'out' and copies files from a specified folder to a remote host via SCP.",
