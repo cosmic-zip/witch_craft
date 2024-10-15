@@ -1,6 +1,11 @@
 {
   "general": [
     {
+      "description": "An cute cat girl tells you basic system information like neofetch",
+      "name": "sysinfo",
+      "command": "sysinfo.maid"
+    },
+    {
       "description": "Start a http server that display an local webpage and collect all request data in plain text",
       "name": "server.eviltwin",
       "command": "server.eviltwin @@address @@path"
