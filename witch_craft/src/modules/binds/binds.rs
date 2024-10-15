@@ -1,4 +1,4 @@
-use crate::core::{core::*, data::data, types::Closure};
+use crate::{core::{core::*, data::data, types::Closure}, modules::binds::sysinfo::sysinfo_maid};
 
 /// Compress and Decompress files
 pub fn file_compact(argsv: &[String]) -> i32 {
@@ -74,5 +74,7 @@ pub fn flawless_entry_point(argsv: &[String]) -> i32 {
 }
 
 pub fn api() -> Closure {
-    vec![("file.zz", file_compact)]
+    vec![("file.zz", file_compact),
+        ("sysinfo", sysinfo_maid)
+    ]
 }

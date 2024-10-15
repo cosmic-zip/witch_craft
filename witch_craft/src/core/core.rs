@@ -1,4 +1,3 @@
-use crate::core::consts::WITCH;
 use crate::core::consts::*;
 use crate::core::data::*;
 use crate::core::structs::DataSet;
@@ -7,7 +6,7 @@ use colored::*;
 use regex::Regex;
 use std::env;
 use std::fs;
-use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
+use std::net::IpAddr;
 use std::path::Path;
 use std::process::{Command, Output};
 use std::str::FromStr;
@@ -302,14 +301,4 @@ pub fn ip_to_number(ip_str: &str) -> String {
             String::new()
         }
     }
-}
-
-pub fn spells(pattern: &str) -> (&str, &str) {
-    for path in PATHS {
-        if pattern == path.0 {
-            return path.to_owned();
-        }
-    }
-
-    return ("null", "Not found in PATHS");
 }
