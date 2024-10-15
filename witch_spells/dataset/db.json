@@ -6,6 +6,21 @@
       "command": "server.eviltwin @@addrr @@path"
     },
     {
+      "description": "Lists available shares on the specified address.",
+      "name": "smbclient.list",
+      "command": "smbclient -L @@address"
+    },
+    {
+      "description": "Accesses a specific share on the specified address.",
+      "name": "smbclient.access",
+      "command": "smbclient \\\\@@address\\@@share"
+    },
+    {
+      "description": "Connects to an FTP server at the specified address.",
+      "name": "ftp.connect",
+      "command": "ftp @@address"
+    },
+    {
       "description": "Hides a file within a cover image or audio file using Steghide.",
       "name": "fhide.embed",
       "command": "steghide embed -cf @@file -ef @@secret"
