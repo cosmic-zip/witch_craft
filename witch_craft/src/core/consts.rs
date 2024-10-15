@@ -8,6 +8,7 @@ pub const MAGIC_DOCS: &[(&str, &str)] = &[
     ("device", "Virtual or physical device like a HDD, SSD, Virtual disk"),
     ("dns", "Domain name"),
     ("domain", "Domain name"),
+    ("database_name", "Database name"),
     ("file", "File location"),
     ("folder", "Path to a folder"),
     ("host", "Host name or IP address"),
