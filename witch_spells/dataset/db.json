@@ -3,7 +3,7 @@
     {
       "description": "Start a http server that display an local webpage and collect all request data in plain text",
       "name": "server.eviltwin",
-      "command": "server.eviltwin @@addrr @@path"
+      "command": "server.eviltwin @@address @@path"
     },
     {
       "description": "Lists available shares on the specified address.",
