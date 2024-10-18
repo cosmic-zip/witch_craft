@@ -1,4 +1,4 @@
-use std::fs::OpenOptions;
+use std::{fs::OpenOptions, process::Output};
 use crate::datetime_now;
 use std::io::Write;
 use super::witchrc::readrc_value;
@@ -51,6 +51,7 @@ impl WitchyLogger {
 
         let output = serde_json::to_string(self).unwrap();
         let witchrc = readrc_value("path_log_file");
+        println!("{}", witchrc);
 
         let mut file = OpenOptions::new()
                 .write(true)
@@ -64,5 +65,25 @@ impl WitchyLogger {
 
         output
     }
+
+}
+
+
+pub fn core_logger(output: &Output, command_line: &String) -> bool {
+    let logger = WitchyLogger::new(
+        String::from_utf8_lossy(&output.stdout).to_string(),
+        output.status.code().unwrap_or(156).to_string().to_owned().clone(),
+        String::from_utf8_lossy(&output.stderr).to_string(),
+        command_line.to_string(),
+        String::from("Some witchy details"),
+    );
+
+    // if logger.save().is_empty() {
+    //     return false;
+    // }
+
+    println!("{}", logger.to_json());
+
+    true
 
 }

@@ -1,5 +1,6 @@
 use crate::core::consts::*;
 use crate::core::data::*;
+use crate::core::logger::core_logger;
 use crate::core::structs::DataSet;
 use chrono;
 use colored::*;
@@ -238,8 +239,9 @@ pub fn raw_exec(command_line: String) -> Option<Output> {
 }
 
 pub fn lazy_exec(command_line: String) -> i32 {
-    match raw_exec(command_line) {
+    match raw_exec(command_line.clone()) {
         Some(output) => {
+            core_logger(&output, &command_line);
             if output.status.success() {
                 let stdout = String::from_utf8_lossy(&output.stdout);
                 let lines = stdout.split("\n");
