@@ -4,14 +4,20 @@ use crate::core::structs::DataSet;
 use chrono;
 use colored::*;
 use regex::Regex;
+use std::collections::HashMap;
 use std::env;
+use std::fmt::write;
 use std::fs;
+use std::fs::OpenOptions;
+use std::io::Write;
 use std::net::IpAddr;
 use std::path::Path;
+use std::path::PathBuf;
 use std::process::{Command, Output};
 use std::str::FromStr;
 
 use super::types::Closure;
+use super::witchrc::readrc_exists;
 
 pub fn readargs() -> Vec<String> {
     env::args().collect()
@@ -255,9 +261,9 @@ pub fn lazy_exec(command_line: String) -> i32 {
                 eprintln!("\n{}\n", stderr);
             }
             println!(" ");
-            output.status.code().unwrap_or(-1)
+            output.status.code().unwrap_or(128)
         }
-        None => 0,
+        None => 255,
     }
 }
 
