@@ -335,3 +335,14 @@ pub fn ip_to_number(ip_str: &str) -> String {
         }
     }
 }
+
+
+pub fn get_os_env(key: &str) -> String {
+    match env::var_os(key) {
+        Some(val) => format!("{:?}/", val).replace("\"", ""),
+        None => {
+            raise("Env key not found", "fail");
+            String::new()
+        }
+    }
+}

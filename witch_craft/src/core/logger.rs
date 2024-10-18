@@ -3,6 +3,7 @@ use crate::datetime_now;
 use std::io::Write;
 use super::witchrc::readrc_value;
 use serde::{Serialize, Deserialize};
+use crate::core::core::get_os_env;
 
 #[derive(Serialize, Deserialize)]
 struct WitchyLogger {
@@ -51,12 +52,13 @@ impl WitchyLogger {
 
         let output = serde_json::to_string(self).unwrap();
         let witchrc = readrc_value("path_log_file");
-        println!("{}", witchrc);
+        let home = get_os_env("HOME");
+        let path = witchrc.replace("~/", &home);
 
         let mut file = OpenOptions::new()
                 .write(true)
                 .append(true)
-                .open(&witchrc)
+                .open(&path)
                 .unwrap();
 
         if let Err(e) = writeln!(file, "{}", output) {
@@ -78,9 +80,9 @@ pub fn core_logger(output: &Output, command_line: &String) -> bool {
         String::from("Some witchy details"),
     );
 
-    // if logger.save().is_empty() {
-    //     return false;
-    // }
+    if logger.save().is_empty() {
+        return false;
+    }
 
     println!("{}", logger.to_json());
 
