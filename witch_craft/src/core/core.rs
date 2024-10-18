@@ -4,20 +4,13 @@ use crate::core::structs::DataSet;
 use chrono;
 use colored::*;
 use regex::Regex;
-use std::collections::HashMap;
 use std::env;
-use std::fmt::write;
 use std::fs;
-use std::fs::OpenOptions;
-use std::io::Write;
 use std::net::IpAddr;
 use std::path::Path;
-use std::path::PathBuf;
 use std::process::{Command, Output};
 use std::str::FromStr;
-
 use super::types::Closure;
-use super::witchrc::readrc_exists;
 
 pub fn readargs() -> Vec<String> {
     env::args().collect()
