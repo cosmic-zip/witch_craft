@@ -10,7 +10,7 @@ pub fn search_ans(argsv: &[String]) -> i32 {
 
         for line in ans_ipv4 {
             if line.as_str().contains(&ans_number) {
-                raise(&format!("ANS Info:: {}", line), 6);
+                raise(&format!("ANS Info:: {}", line), "done");
             }
         }
         return 0;
@@ -21,7 +21,7 @@ pub fn search_ans(argsv: &[String]) -> i32 {
 
     for line in ans_ipv6 {
         if line.as_str().contains(&ans_number) {
-            raise(&format!("ANS Info:: {}", line), 6);
+            raise(&format!("ANS Info:: {}", line), "done");
         }
     }
     return 0;
@@ -37,7 +37,7 @@ pub fn search_geoloc(argsv: &[String]) -> i32 {
 
         for line in ans_ipv4 {
             if line.as_str().contains(&local) {
-                raise(&format!("GEODATA Info:: {}", line), 6);
+                raise(&format!("GEODATA Info:: {}", line), "done");
             }
         }
         return 0;
@@ -48,7 +48,7 @@ pub fn search_geoloc(argsv: &[String]) -> i32 {
 
     for line in ans_ipv6 {
         if line.as_str().contains(&local) {
-            raise(&format!("GEODATA Info:: {}", line), 6);
+            raise(&format!("GEODATA Info:: {}", line), "done");
         }
     }
     return 0;
@@ -64,7 +64,7 @@ pub fn search_proxy(argsv: &[String]) -> i32 {
 
         for line in ans_ipv4 {
             if line.as_str().contains(&proxy) {
-                raise(&format!("PROXY Info:: {}", line), 6);
+                raise(&format!("PROXY Info:: {}", line), "done");
             }
         }
         return 0;
@@ -75,7 +75,7 @@ pub fn search_proxy(argsv: &[String]) -> i32 {
 
     for line in ans_ipv6 {
         if line.as_str().contains(&proxy) {
-            raise(&format!("PROXY Info:: {}", line), 6);
+            raise(&format!("PROXY Info:: {}", line), "done");
         }
     }
     return 0;

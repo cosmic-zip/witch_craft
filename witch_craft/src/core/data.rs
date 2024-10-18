@@ -22,7 +22,7 @@ fn read_dataset() -> Option<Vec<DataSet>> {
     let mut file = match File::open(DBPATH) {
         Ok(file) => file,
         Err(err) => {
-            raise(&err.to_string(), 4);
+            raise(&err.to_string(), "fail");
             return None;
         }
     };
@@ -35,7 +35,7 @@ fn read_dataset() -> Option<Vec<DataSet>> {
     let json_data: JsonData = match serde_json::from_str(&contents) {
         Ok(data) => data,
         Err(err) => {
-            raise(&err.to_string(), 4);
+            raise(&err.to_string(), "fail");
             return None;
         }
     };
@@ -53,7 +53,7 @@ pub fn data() -> Vec<DataSet> {
     match read_dataset() {
         Some(data) => data,
         None => {
-            raise("Dataset are empty", 2);
+            raise("Dataset are empty", "done");
             return vec![];
         }
     }

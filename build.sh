@@ -19,7 +19,8 @@ if [ "$package_manager" == "apt" ]; then
     sudo apt update
     sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl \
     dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost pkg-config \
-    libssl-dev steghide doas nala
+    libssl-dev steghide doas nala libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev \ 
+    libayatana-appindicator3-dev librsvg2-dev
 elif [ "$package_manager" == "yum" ]; then
     sudo yum update -y
     sudo yum install -y nmap dirb dnsenum glibc-utils xxd iptables-utils iproute wget curl bind-utils traceroute
