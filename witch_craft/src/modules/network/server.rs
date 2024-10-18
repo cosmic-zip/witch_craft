@@ -1,4 +1,3 @@
-use crate::core::consts::FSROOT;
 use crate::core::core::*;
 use std::fs;
 use std::io::{Read, Write};

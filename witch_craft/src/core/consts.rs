@@ -2,103 +2,38 @@ pub const TONK: &str = "@@";
 pub const SPLIT_II: &str = "--";
 pub const SPLIT_I: &str = "-";
 pub const DBPATH: &str = "/var/witch_craft/witch_spells/dataset/db.json";
-pub const FSROOT: &str = "/var/witch_craft/witch_spells/";
-
-pub const PATHS: &[(&str, &str)] = &[
-    ("dataset", "./witch_spells/dataset/db.json"),
-    (
-        "default_passwords",
-        "./witch_spells/default-credentials/default-passwords.csv",
-    ),
-    (
-        "defaults_pwned",
-        "./witch_spells/default-credentials/defaults.pwned",
-    ),
-    (
-        "scada_pass",
-        "./witch_spells/default-credentials/scada-pass.csv",
-    ),
-    (
-        "dice_eff_words",
-        "./witch_spells/general/dice_eff_words.list",
-    ),
-    ("directories", "./witch_spells/general/directories.list"),
-    (
-        "domain_complete",
-        "./witch_spells/general/domain_complete.list",
-    ),
-    ("domain_fast", "./witch_spells/general/domain_fast.list"),
-    (
-        "email_disposable",
-        "./witch_spells/general/email_disposable.list",
-    ),
-    (
-        "email_trusted_list",
-        "./witch_spells/general/email_trusted_list.list",
-    ),
-    (
-        "files_extensions",
-        "./witch_spells/general/files_extensions.list",
-    ),
-    (
-        "mac_addres_lockup",
-        "./witch_spells/general/mac_addres_lockup.list",
-    ),
-    (
-        "repo_keyword_scan",
-        "./witch_spells/general/repo_keyword_scan.list",
-    ),
-    ("tlds", "./witch_spells/general/tlds.list"),
-    ("user_names", "./witch_spells/general/user_names.list"),
-    (
-        "xss_payload_list",
-        "./witch_spells/general/xss-payload-list.list",
-    ),
-    ("hosts", "./witch_spells/hosts/hosts"),
-    ("malware", "./witch_spells/malware/malware.list"),
-    ("ans_ipv4", "./witch_spells/osint/ans/ans.ipv4.csv"),
-    ("ans_ipv6", "./witch_spells/osint/ans/ans.ipv6.csv"),
-    (
-        "geodata_ipv4",
-        "./witch_spells/osint/geolocation/geodata.ipv4.csv",
-    ),
-    (
-        "geodata_ipv6",
-        "./witch_spells/osint/geolocation/geodata.ipv6.csv",
-    ),
-    ("proxy_ipv4", "./witch_spells/osint/proxy/proxy.ipv4.csv"),
-    ("proxy_ipv6", "./witch_spells/osint/proxy/proxy.ipv6.csv"),
-    ("ladybug_pwned", "./witch_spells/wordlists/ladybug.pwned"),
-    ("moth_pwned", "./witch_spells/wordlists/moth.pwned"),
-];
 
 pub const MAGIC_DOCS: &[(&str, &str)] = &[
+    ("account", "Generic arguments for account info or token"),
+    ("device", "Virtual or physical device like a HDD, SSD, Virtual disk"),
     ("dns", "Domain name"),
-    ("target", "Refers to IP or DOMAIN name"),
-    ("ip", "IP address"),
-    ("path", "Path, suport start with ./"),
-    ("file", "File location, suport start with ./"),
-    ("wordlist", "Path to wordlist"),
-    ("port", "Port number"),
+    ("domain", "Domain name"),
+    ("database_name", "Database name"),
+    ("file", "File location"),
+    ("folder", "Path to a folder"),
+    ("host", "Host name or IP address"),
+    ("image", "Image file location"),
+    ("interface", "Physical or virtual network device, e.g., wlan0"),
+    ("keyspace_name", "Cassandra database keyspace name"),
+    ("message", "Provide a message string"),
     ("output", "Output file"),
+    ("overwite", "Overwrite existing files"),
+    ("password", "Specify the password; it will be shown in plaintext"),
+    ("path", "Path to a file"),
+    ("port", "Port number"),
     ("protocol", "Communication protocol"),
+    ("recursive", "Enable recursive mode"),
+    ("secret", "A file (data) to be hidden"),
+    ("share", "Refers to a shared resource like a folder, file, or printer"),
+    ("snapshot_name", "Specify the snapshot name; not the location, by the way"),
+    ("table_name", "Database table name"),
+    ("target", "Refers to an IP or domain name"),
     ("timeout", "Timeout duration"),
+    ("url", "Target complete URL path with http/https"),
+    ("username", "Username; the user name to set up"),
     ("wait", "Delay duration in seconds"),
     ("verbose", "Enable verbose mode"),
-    ("overwrite", "Overwrite existing files"),
-    ("recursive", "Enable recursive mode"),
-    ("url", "Target complete URL path with http/https"),
-    ("username", "Username; well, it setup user name"),
-    (
-        "password",
-        "Specify password; it will be shown in plaintext",
-    ),
-    ("host", "Host name ip address"),
-    ("database_name", "Specify database name"),
-    (
-        "snapshot_name",
-        "Specify snapshot name, not the location btw",
-    ),
+    ("wordlist", "Path to a wordlist"),
 ];
 
 pub const MAN_HEADER: &str = r#"
@@ -135,7 +70,7 @@ OPTIONS SUMMARY
 
 "#;
 
-pub const MAID: &str = r#"
+pub const SYSINFO_MAID: &str = r#"
 
       [?25l[0m [38;2;0;0;0m                      [38;2;52;62;50m▅[38;2;31;39;27m▁  [0m [38;2;152;158;151m▂[38;2;226;227;227m▂[38;2;245;245;245m▂[38;2;240;241;240m▂[38;2;226;229;229m▂[38;2;204;213;207m▁[0m [38;2;0;0;0m               [0m
       [38;2;0;0;0m                     [7m[38;2;39;52;31m▊[0m[38;2;60;63;60;48;2;75;74;75m▍[38;2;47;49;45;48;2;68;69;68m┊[0m[38;2;205;205;205m▄[38;2;190;191;189m▆[38;2;42;42;41;48;2;211;214;210m▂[38;2;32;32;32;48;2;233;233;234m▃[38;2;57;57;57;48;2;243;243;243m▄[38;2;24;24;23;48;2;226;226;226m▃[38;2;56;56;56;48;2;248;248;248m▃[38;2;79;79;79;48;2;250;251;251m▂[38;2;129;129;129;48;2;243;243;242m▁[38;2;247;248;247;48;2;152;162;150m▇[0m[38;2;223;225;222m▆[38;2;196;199;194m▄[38;2;130;139;129m▁            [0m
