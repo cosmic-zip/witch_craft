@@ -24,10 +24,10 @@ codegen-units = 1
 lto = "fat"
 panic = "abort"
 strip = true
-opt-level = "s"
+opt-level = "z"
 
 [profile.dev]
-opt-level = "s"
+opt-level = "z"
 
 [build]
 rustflags = ["-C", "link-arg=-fuse-ld=lld"]
