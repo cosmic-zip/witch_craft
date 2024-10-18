@@ -6,7 +6,7 @@ use serde::{Serialize, Deserialize};
 use crate::core::core::get_os_env;
 
 #[derive(Serialize, Deserialize)]
-struct WitchyLogger {
+pub struct WitchyLogger {
     cmd_output: String,
     cmd_status: String,
     cmd_error: String,
@@ -16,7 +16,7 @@ struct WitchyLogger {
 }
 
 impl WitchyLogger {
-    fn new(
+    pub fn new(
         cmd_output: String,
         cmd_status: String,
         cmd_error: String,
@@ -33,7 +33,7 @@ impl WitchyLogger {
         }
     }
 
-    fn empty() -> Self {
+    pub fn empty() -> Self {
         WitchyLogger {
             cmd_output: String::new(),
             cmd_status: String::new(),
@@ -44,11 +44,11 @@ impl WitchyLogger {
         }
     }
 
-    fn to_json(&self) -> String {
+    pub fn to_json(&self) -> String {
         serde_json::to_string(self).unwrap()
     }
 
-    fn save(&self) -> String {
+    pub fn save(&self) -> String {
 
         let output = serde_json::to_string(self).unwrap();
         let witchrc = readrc_value("path_log_file");
