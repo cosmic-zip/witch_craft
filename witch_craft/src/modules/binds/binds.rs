@@ -63,8 +63,8 @@ pub fn flawless_entry_point(argsv: &[String]) -> i32 {
         if set.name == mname {
             let out = flawless_exec(set.clone(), argsv);
             if out != 0 {
-                raise("Shell falied to execute at flawless_exec()", 4);
-                raise(&set.meta, 4);
+                raise("Shell falied to execute at flawless_exec()", "fail");
+                raise(&set.meta, "fail");
                 return out;
             }
         }

@@ -8,7 +8,7 @@ pub fn malware_scanner(path: String) -> Vec<String> {
         match fs::read_to_string("/var/witch_craft/witch_spells/malware/malware.list") {
             Ok(value) => value,
             Err(err) => {
-                raise(&format!("Error at {}", err), 0);
+                raise(&format!("Error at {}", err), "messge");
                 String::new()
             }
         };
@@ -45,7 +45,7 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
     let malware_result = malware_scanner(path.clone());
 
     if malware_result.is_empty() {
-        raise("Nothing found! :: System may be clean", 6);
+        raise("Nothing found! :: System may be clean", "");
         return 0;
     }
 
@@ -57,7 +57,7 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
             "Malware found! RUN this command with --action remove ::\nLocation :: {} ",
             &path
         );
-        raise(&msg, 6);
+        raise(&msg, "done");
         return 0;
     }
 
@@ -74,12 +74,12 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
 
     for dn in done {
         let msg = format!("Malware removed :: {}", dn);
-        raise(&msg, 1);
+        raise(&msg, "done");
     }
 
     for gn in &gone {
         let msg = format!("Malware found but not removed :: {}", gn);
-        raise(&msg, 2);
+        raise(&msg, "warning");
     }
 
     if gone.is_empty() {

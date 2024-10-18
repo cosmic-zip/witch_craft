@@ -22,27 +22,59 @@ pub fn datetime_now() -> String {
     return time.to_string();
 }
 
-pub fn raise(arg: &str, fancy: i32) -> String {
-    let fc = fancy as usize;
+
+/// Raises a formatted message based on the provided warning type.
+///
+/// # Arguments
+///
+/// * `arg` - A string slice that holds the message to be displayed.
+/// * `warning_type` - A string slice that specifies the type of warning.
+///   Valid options are:
+///   - "message": Indicates a general message.
+///   - "done": Indicates a successful operation.
+///   - "fail": Indicates a failure.
+///   - "warning": Indicates a warning condition.
+///   - "error": Indicates an error.
+///   - "entry": Indicates an entry point message.
+///
+/// # Returns
+///
+/// A formatted string that combines the selected warning type with the provided message.
+/// If an invalid `warning_type` is given, an error message will be returned.
+///
+/// # Example
+///
+/// ```rust
+/// let result = raise("Operation completed", "done");
+/// println!("{}", result); // Output: "🟢 [ DONE ] :: Operation completed"
+/// ```
+pub fn raise(arg: &str, warning_type: &str) -> String {
     let opts = [
-        "🟣 [ message ] ::",
-        "🟢 [ done ] ::",
+        "🟣 [ system says ] ::",
+        "🟢 [ well done ] ::",
         "🔴 [ fail ] ::",
         "🟠 [ warning ] ::",
-        "💀 [ error ] ::",
-        "🔘 [ entry ] ::",
-        "", //6
+        "💀 [ burh ] ::",
+        "🔘 [ entry point ] ::",
     ];
 
-    if fc >= opts.len() {
-        return "Index overflow at @raise function".to_string();
-    }
+    // Match the warning_type to find the corresponding option
+    let out = match warning_type {
+        "message" => opts[0],
+        "done" => opts[1],
+        "fail" => opts[2],
+        "warning" => opts[3],
+        "error" => opts[4],
+        "entry" => opts[5],
+        _ => "" // Empty message
+    };
 
-    let out = format!("{} {}", opts[fc].to_uppercase(), arg);
+    let formatted_output = format!("{} {}", out.to_uppercase(), arg);
 
-    println!("\n{}\n", out.bold());
-    out
+    println!("\n{}\n", formatted_output.bold());
+    formatted_output
 }
+
 
 pub fn search_value(key: &str, vector: &[String]) -> String {
     let mut counter = 0;
@@ -70,7 +102,7 @@ pub fn search_value(key: &str, vector: &[String]) -> String {
         "{}",
         raise(
             &format!("No value found for {} → Send empty string", key),
-            3
+            "warning"
         )
     );
     String::new()
@@ -82,7 +114,7 @@ pub fn search_key(key: &str, vector: &[String]) -> String {
             return item.to_string();
         }
     }
-    println!("{}", raise(&format!("Key not found! {}", key), 3));
+    println!("{}", raise(&format!("Key not found! {}", key), "warning"));
     String::new()
 }
 
@@ -115,12 +147,12 @@ pub fn magic_docs() -> i32 {
     let data: Vec<DataSet> = data();
 
     if data.is_empty() {
-        raise("Datasets is empty", 1);
+        raise("Datasets is empty", "fail");
         return 42;
     }
 
     println!("{}", PANZER_MAID);
-    raise(MAN_HEADER, 6);
+    raise(MAN_HEADER, "");
 
     fn loop_parser(arg_name: &str) -> Vec<String> {
         for tuple in MAGIC_DOCS {
@@ -137,7 +169,7 @@ pub fn magic_docs() -> i32 {
     for dataset in data {
         let header =
             witch_fmt(&format!("    {} ► {}", dataset.name, dataset.docs), 72).join("\n     ");
-        raise(&header, 6);
+        raise(&header, "");
 
         let mut out: String = dataset.meta.to_string();
         out = out.replace("/", "");
@@ -230,7 +262,7 @@ pub fn lazy_exec(command_line: String) -> i32 {
 }
 
 pub fn flawless_exec(set: DataSet, argsv: &[String]) -> i32 {
-    raise(&set.name, 6);
+    raise(&set.name, "");
     let cmd = lazy_parser(&set.meta, argsv);
     lazy_exec(cmd)
 }
@@ -270,7 +302,7 @@ pub fn read_file_to_lines(path: &str) -> Vec<String> {
     match fs::read_to_string(path) {
         Ok(value) => value.lines().map(String::from).collect(),
         Err(err) => {
-            raise(&format!("Error at {}", err), 0);
+            raise(&format!("Error at {}", err), "message");
             return Vec::new();
         }
     }

@@ -8,7 +8,7 @@ pub fn gen_qrcode_from_argsv(argsv: &[String]) -> i32 {
     let code = match QrCode::new(data.as_bytes()) {
         Ok(val) => val,
         Err(err) => {
-            raise(&err.to_string(), 2);
+            raise(&err.to_string(), "done");
             return 42;
         }
     };
@@ -18,6 +18,6 @@ pub fn gen_qrcode_from_argsv(argsv: &[String]) -> i32 {
     image.save(format!("./qrcode-{now}.png")).unwrap();
 
     let string = code.render().light_color(' ').dark_color('#').build();
-    raise(&string, 6);
+    raise(&string, "");
     0
 }
