@@ -23,3 +23,15 @@ tauri-plugin-shell = "2.0.0"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 
+[profile.release]
+codegen-units = 1
+lto = "fat"
+panic = "abort"
+strip = true
+opt-level = "z"
+
+[profile.dev]
+opt-level = "z"
+
+[build]
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
