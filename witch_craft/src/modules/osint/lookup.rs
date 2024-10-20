@@ -98,6 +98,8 @@ pub fn cinsscore(argsv: &[String]) -> i32 {
     return 0;
 }
 
+use headless_chrome::{Browser, LaunchOptionsBuilder};
+
 pub fn social_links(argsv: &[String]) -> i32 {
     let keyword = search_value("keyword", argsv);
     // name - url - filter
@@ -155,7 +157,18 @@ pub fn social_links(argsv: &[String]) -> i32 {
 
     for item in social_links {
         let client = Client::new();
+        let browser = Browser::new(
+            LaunchOptionsBuilder::default()
+                .headless(true) // Run the browser in headless mode
+                .build()
+                .unwrap(),
+        )
+        .unwrap();
+        let tab = browser.new_tab().unwrap();
         let url = item.1.replace("@@keyword", &keyword);
+        tab.navigate_to(&url).unwrap();
+        tab.wait_until_navigated().unwrap();
+        let content = tab.get_content().unwrap();
 
         match client.get(&url).send() {
             Ok(res) => {
@@ -166,7 +179,7 @@ pub fn social_links(argsv: &[String]) -> i32 {
                             "done",
                         );
                     } else {
-                        if res.text().unwrap().contains(item.2) == false {
+                        if content.contains(item.2) == false {
                             raise(
                                 &format!("Found! {} {} at {}", &keyword, item.0, &url),
                                 "done",

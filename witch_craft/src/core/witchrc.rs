@@ -1,7 +1,7 @@
-use std::fs;
 use crate::core::core::get_os_env;
+use std::fs;
 
-
+#[allow(dead_code)]
 pub fn readrc_exists(key: &str) -> bool {
     let fkey = format!("{}=", key);
 
@@ -14,7 +14,7 @@ pub fn readrc_exists(key: &str) -> bool {
                 }
             }
             false
-        },
+        }
         Err(err) => {
             eprintln!("{}", err);
             return false;
@@ -35,7 +35,7 @@ pub fn readrc_value(key: &str) -> String {
                 }
             }
             "".to_string()
-        },
+        }
         Err(err) => {
             println!("{}-{}", err, home);
             return "error".to_string();

@@ -1,9 +1,9 @@
-use std::{fs::OpenOptions, process::Output};
-use crate::datetime_now;
-use std::io::Write;
 use super::witchrc::readrc_value;
-use serde::{Serialize, Deserialize};
 use crate::core::core::get_os_env;
+use crate::datetime_now;
+use serde::{Deserialize, Serialize};
+use std::io::Write;
+use std::{fs::OpenOptions, process::Output};
 
 #[derive(Serialize, Deserialize)]
 pub struct WitchyLogger {
@@ -33,6 +33,7 @@ impl WitchyLogger {
         }
     }
 
+    #[allow(dead_code)]
     pub fn empty() -> Self {
         WitchyLogger {
             cmd_output: String::new(),
@@ -49,17 +50,16 @@ impl WitchyLogger {
     }
 
     pub fn save(&self) -> String {
-
         let output = serde_json::to_string(self).unwrap();
         let witchrc = readrc_value("path_log_file");
         let home = get_os_env("HOME");
         let path = witchrc.replace("~/", &home);
 
         let mut file = OpenOptions::new()
-                .write(true)
-                .append(true)
-                .open(&path)
-                .unwrap();
+            .write(true)
+            .append(true)
+            .open(&path)
+            .unwrap();
 
         if let Err(e) = writeln!(file, "{}", output) {
             eprintln!("Couldn't write to file: {}", e);
@@ -67,14 +67,18 @@ impl WitchyLogger {
 
         output
     }
-
 }
-
 
 pub fn core_logger(output: &Output, command_line: &String) -> bool {
     let logger = WitchyLogger::new(
         String::from_utf8_lossy(&output.stdout).to_string(),
-        output.status.code().unwrap_or(156).to_string().to_owned().clone(),
+        output
+            .status
+            .code()
+            .unwrap_or(156)
+            .to_string()
+            .to_owned()
+            .clone(),
         String::from_utf8_lossy(&output.stderr).to_string(),
         command_line.to_string(),
         String::from("Some witchy details"),
@@ -87,5 +91,4 @@ pub fn core_logger(output: &Output, command_line: &String) -> bool {
     println!("{}", logger.to_json());
 
     true
-
 }

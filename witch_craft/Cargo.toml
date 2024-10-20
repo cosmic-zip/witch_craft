@@ -11,6 +11,7 @@ categories = ["command-line-utilities"]
 [dependencies]
 chrono = "0.4.38"
 colored = "2.1.0"
+headless_chrome = "1.0.15"
 image = "0.25.2"
 qrcode = "0.14.1"
 regex = "1.10.6"

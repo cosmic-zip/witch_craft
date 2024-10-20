@@ -1,3 +1,4 @@
+use super::types::Closure;
 use crate::core::consts::*;
 use crate::core::data::*;
 use crate::core::logger::core_logger;
@@ -5,14 +6,12 @@ use crate::core::structs::DataSet;
 use chrono;
 use colored::*;
 use regex::Regex;
-use reqwest::blocking::Client;
 use std::env;
 use std::fs;
 use std::net::IpAddr;
 use std::path::Path;
 use std::process::{Command, Output};
 use std::str::FromStr;
-use super::types::Closure;
 
 pub fn readargs() -> Vec<String> {
     env::args().collect()
@@ -22,7 +21,6 @@ pub fn datetime_now() -> String {
     let time = chrono::offset::Local::now();
     return time.to_string();
 }
-
 
 /// Raises a formatted message based on the provided warning type.
 ///
@@ -67,7 +65,7 @@ pub fn raise(arg: &str, warning_type: &str) -> String {
         "warning" => opts[3],
         "error" => opts[4],
         "entry" => opts[5],
-        _ => "" // Empty message
+        _ => "", // Empty message
     };
 
     let formatted_output = format!("{} {}", out.to_uppercase(), arg);
@@ -75,7 +73,6 @@ pub fn raise(arg: &str, warning_type: &str) -> String {
     println!("{}", formatted_output.bold());
     formatted_output
 }
-
 
 pub fn search_value(key: &str, vector: &[String]) -> String {
     let mut counter = 0;
@@ -336,7 +333,6 @@ pub fn ip_to_number(ip_str: &str) -> String {
         }
     }
 }
-
 
 pub fn get_os_env(key: &str) -> String {
     match env::var_os(key) {
