@@ -5,6 +5,7 @@ use crate::core::structs::DataSet;
 use chrono;
 use colored::*;
 use regex::Regex;
+use reqwest::blocking::Client;
 use std::env;
 use std::fs;
 use std::net::IpAddr;
@@ -71,7 +72,7 @@ pub fn raise(arg: &str, warning_type: &str) -> String {
 
     let formatted_output = format!("{} {}", out.to_uppercase(), arg);
 
-    println!("\n{}\n", formatted_output.bold());
+    println!("{}", formatted_output.bold());
     formatted_output
 }
 
