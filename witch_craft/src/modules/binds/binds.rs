@@ -1,4 +1,4 @@
-use crate::core::{core::*, data::data, types::Closure};
+use crate::{core::{core::*, data::data, types::Closure}, modules::binds::sysinfo::sysinfo_maid};
 
 /// Compress and Decompress files
 pub fn file_compact(argsv: &[String]) -> i32 {
@@ -63,8 +63,8 @@ pub fn flawless_entry_point(argsv: &[String]) -> i32 {
         if set.name == mname {
             let out = flawless_exec(set.clone(), argsv);
             if out != 0 {
-                raise("Shell falied to execute at flawless_exec()", 4);
-                raise(&set.meta, 4);
+                raise("Shell falied to execute at flawless_exec()", "fail");
+                raise(&set.meta, "fail");
                 return out;
             }
         }
@@ -74,5 +74,7 @@ pub fn flawless_entry_point(argsv: &[String]) -> i32 {
 }
 
 pub fn api() -> Closure {
-    vec![("file.zz", file_compact)]
+    vec![("file.zz", file_compact),
+        ("sysinfo", sysinfo_maid)
+    ]
 }

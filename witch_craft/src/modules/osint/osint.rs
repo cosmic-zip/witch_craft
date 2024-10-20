@@ -6,5 +6,7 @@ pub fn api() -> Closure {
         ("search.ans", search_ans),
         ("search.geoloc", search_geoloc),
         ("search.proxy", search_proxy),
+        ("search.ipscore", cinsscore),
+        ("search.social", social_links),
     ]
 }
