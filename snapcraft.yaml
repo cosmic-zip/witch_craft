@@ -35,15 +35,32 @@ parts:
       - traceroute
       - openssl
       - openssh-server
-      - libssl-dev
       - xattr
       - libimage-exiftool-perl
       - tor
       - foremost
       - pkg-config
+      - libssl-dev
       - steghide
       - doas
       - nala
+      - libwebkit2gtk-4.1-dev
+      - build-essential
+      - file
+      - libxdo-dev
+      - 7zip
+      - libayatana-appindicator3-dev
+      - librsvg2-dev
+
+    spells:
+      plugin: nil
+      override-build: |
+        mkdir -p $SNAPCRAFT_PRIME/var/witch_craft
+        cp -R witch_spells $SNAPCRAFT_PRIME/var/witch_craft
+      stage:
+        - -var
+      prime:
+        - var
 
 apps:
   witchcraft:
