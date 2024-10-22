@@ -8,26 +8,22 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/th3maid/witch_craft)
 
 <center>
-<br>
-<h1>WITCH_CRAFT</h1>
-<br>
+  <br>
+    <h1>WITCH_CRAFT</h1>
+  <br>
 </center>
 
-
 <center>
-
-        🚧 warning: For detailed information about how to use witch_craft
-        run or witch_craft help.
-
+  🚧 warning: For detailed information about how to use witch_craft help. 🚧
 </center>
 <hr>
 
 ### WITCH_CRAFT
 
-  WITCH_CRAFT is a versatile task automation software designed to serve as the
-  foundation for various cybersecurity modules. It provides capabilities for tasks
-  such as forensic research, OSINT (Open Source Intelligence), scanning, backup and
-  copying, intrusion testing of applications and APIs, and more.
+WITCH_CRAFT is a versatile task automation software designed to serve as the
+foundation for various cybersecurity modules. It provides capabilities for tasks
+such as forensic research, OSINT (Open Source Intelligence), scanning, backup and
+copying, intrusion testing of applications and APIs, and more.
 
 ### Instalation
 
@@ -78,12 +74,10 @@ After building the project, you can run each component individually. Here's a br
 Execute the following command to run the witch_craft application:
 
 ```bash
-
-./release/witch_craft
-
+witch_craft
 ```
 
-**Running Witch Oracle**
+**Running Witch Oracle 🚧 Not working for now 🚧**
 
 To visualize data, run the Witch Oracle application:
 
@@ -108,7 +102,15 @@ The Witch_Craft project is extensible through static files and Rust code. Moreov
 #### This script will run like:
 
 ```bash
-witchcraft nuke.hd --device /dev/sdx1
+witch_craft nuke.hd --device /dev/sdx1
+```
+
+```bash
+witch_craft search.social --ip 172.16.0.1
+```
+
+```bash
+witch_craft search.ipscore --ip 127.0.0.1
 ```
 
 ### License
@@ -119,4 +121,6 @@ witchcraft nuke.hd --device /dev/sdx1
   </div>
 </center>
 
-#### WITCH_CRAFT includes IP2Proxy LITE data available from https://www.ip2location.com/proxy-database.
+#### WITCH_CRAFT includes IP2Proxy LITE data available from https://www.ip2location.com/proxy-database
+
+#### WITCH_CRAFT includes cinsscore data available from https://www.cinsscore.com
