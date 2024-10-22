@@ -53,6 +53,8 @@ parts:
   witchcraft:
     plugin: rust
     source: ./witch_craft
+    stage-snaps:
+      - chromium/latest/stable
     stage-packages:
       - nmap
       - whois
