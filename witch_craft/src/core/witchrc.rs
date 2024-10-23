@@ -84,7 +84,7 @@ pub fn readrc_value(key: &str) -> String {
             "".to_string()
         }
         Err(err) => {
-            println!("{}-{}", err, home);
+            // println!("{} :: {}", err, home);
             return "".to_string();
         }
     }

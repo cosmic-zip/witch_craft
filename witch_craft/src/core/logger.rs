@@ -53,27 +53,24 @@ impl WitchyLogger {
         let output = serde_json::to_string(self).unwrap();
 
         let witchrc = readrc_value("path_log_file");
-        if witchrc == "" {
-            raise("Couldn't write to file: {}", "error");
+        if witchrc.is_empty() {
             return String::new();
         }
 
         let home = get_os_env("HOME");
-        if home == "" {
-            raise("Couldn't read HOME variable in your system", "error");
+        if home.is_empty() {
             return String::new();
         }
 
         let path = witchrc.replace("~/", &home);
-        let mut file = OpenOptions::new()
-            .write(true)
-            .append(true)
-            .open(&path)
-            .unwrap();
+        let file = OpenOptions::new().write(true).append(true).open(&path);
 
-        if let Err(e) = writeln!(file, "{}", output) {
-            eprintln!("Couldn't write to file: {}", e);
-        }
+        match file {
+            Ok(mut file) => writeln!(file, "{}", output).unwrap(),
+            Err(err) => {
+                eprintln!("Couldn't write to file: {}", err);
+            }
+        };
 
         output
     }

@@ -73,7 +73,7 @@ pub fn raise(arg: &str, warning_type: &str) -> String {
         "🟢 [ well done ] ::",
         "🔴 [ fail ] ::",
         "🟠 [ warning ] ::",
-        "💀 [ burh ] ::",
+        "💀 [ bruh ] ::",
         "🔘 [ entry point ] ::",
     ];
 
