@@ -43,9 +43,6 @@ The Witch_Craft project is extensible through static files and Rust code. Moreov
 }
 ```
 
-Thank you for your patience! Here’s the corrected section about the RC file, formatted clearly and without additional text:
-
-````markdown
 ### RC File
 
 To record logs of all your interactions, create a file named `.witchrc` in your home folder and add the following line to it:
@@ -149,4 +146,7 @@ witch_craft search.ipscore --ip 127.0.0.1
 #### WITCH_CRAFT includes IP2Proxy LITE data available from https://www.ip2location.com/proxy-database
 
 #### WITCH_CRAFT includes cinsscore data available from https://www.cinsscore.com
-````
+
+```
+
+```
