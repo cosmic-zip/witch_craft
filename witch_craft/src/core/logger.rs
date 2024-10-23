@@ -1,5 +1,5 @@
 use super::witchrc::readrc_value;
-use crate::core::core::get_os_env;
+use crate::core::core::*;
 use crate::datetime_now;
 use serde::{Deserialize, Serialize};
 use std::io::Write;
@@ -51,10 +51,20 @@ impl WitchyLogger {
 
     pub fn save(&self) -> String {
         let output = serde_json::to_string(self).unwrap();
-        let witchrc = readrc_value("path_log_file");
-        let home = get_os_env("HOME");
-        let path = witchrc.replace("~/", &home);
 
+        let witchrc = readrc_value("path_log_file");
+        if witchrc == "" {
+            raise("Couldn't write to file: {}", "error");
+            return String::new();
+        }
+
+        let home = get_os_env("HOME");
+        if home == "" {
+            raise("Couldn't read HOME variable in your system", "error");
+            return String::new();
+        }
+
+        let path = witchrc.replace("~/", &home);
         let mut file = OpenOptions::new()
             .write(true)
             .append(true)
