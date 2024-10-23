@@ -52,21 +52,19 @@ impl WitchyLogger {
 
     pub fn save(&self) -> String {
         let output = serde_json::to_string(self).unwrap();
-
         let witchrc = readrc_value("path_log_file");
-        if witchrc.is_empty() {
-            raise("Couldn't retrive path to witchrc file", "error");
-            return String::new();
-        }
-
         let home = get_os_env("HOME");
-        if home.is_empty() {
-            raise("Couldn't retrive HOME variable from system env", "error");
+
+        if witchrc.is_empty() || home.is_empty() {
             return String::new();
         }
 
         let path = witchrc.replace("~/", &home);
-        let file = OpenOptions::new().write(true).append(true).open(&path);
+        let file = OpenOptions::new()
+            .create(true)
+            .write(true)
+            .append(true)
+            .open(&path);
 
         match file {
             Ok(mut file) => writeln!(file, "{}", output).unwrap(),
