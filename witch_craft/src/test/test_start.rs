@@ -124,30 +124,30 @@ fn test_gen_qrcode_from_argsv() {
 
 #[test]
 fn test_blackcat_av_path() {
-    lazy_exec("mkdir -p ./test/blackcatAV".to_string());
-    lazy_exec("touch ./test/blackcatAV/test.exe".to_string());
+    lazy_exec("mkdir -p ./blackcat_av_test/blackcatAV".to_string());
+    lazy_exec("touch ./blackcat_av_test/blackcatAV/test.exe".to_string());
     let out = blackcat_av(&[
         "--path".to_string(),
-        "./test/blackcatAV".to_string(),
+        "./blackcat_av_test/blackcatAV".to_string(),
         "--action".to_string(),
         "none".to_string(),
     ]);
     assert_eq!(out, 0);
-    lazy_exec("rm -r test".to_string());
+    lazy_exec("rm -r blackcat_av_test".to_string());
 }
 
 #[test]
 fn test_blackcat_av_file() {
-    lazy_exec("mkdir -p ./test/blackcatAV".to_string());
-    lazy_exec("touch ./test/blackcatAV/test.exe".to_string());
+    lazy_exec("mkdir -p ./blackcat_av_test/blackcatAV".to_string());
+    lazy_exec("touch ./blackcat_av_test/blackcatAV/test.exe".to_string());
     let out = blackcat_av(&[
         "--path".to_string(),
-        "./test/blackcatAV/test.exe".to_string(),
+        "./blackcat_av_test/blackcatAV/test.exe".to_string(),
         "--action".to_string(),
         "none".to_string(),
     ]);
     assert_eq!(out, 0);
-    lazy_exec("rm -r test".to_string());
+    lazy_exec("rm -r blackcat_av_test".to_string());
 }
 
 #[test]
