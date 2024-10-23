@@ -43,6 +43,12 @@ The Witch_Craft project is extensible through static files and Rust code. Moreov
 }
 ```
 
+### Evilpages
+
+Put your cloned pages in /var/witch_craft/witch_spells/evilpages. Use the SingleFile extension or a similar tool to clone webpages:
+
+https://addons.mozilla.org/en-US/firefox/addon/single-file/
+
 ### RC File
 
 To record logs of all your interactions, create a file named `.witchrc` in your home folder and add the following line to it:
