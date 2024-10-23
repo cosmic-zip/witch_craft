@@ -21,6 +21,7 @@ use std::fs;
 ///     println!("Key does not exist.");
 /// }
 /// ```
+#[allow(dead_code)]
 pub fn readrc_exists(key: &str) -> bool {
     let fkey = format!("{}=", key);
 

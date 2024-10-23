@@ -46,6 +46,7 @@ impl WitchyLogger {
         }
     }
 
+    #[allow(dead_code)]
     pub fn to_json(&self) -> String {
         serde_json::to_string(self).unwrap()
     }

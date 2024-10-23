@@ -30,6 +30,3 @@ opt-level = "z"
 
 [profile.dev]
 opt-level = "z"
-
-[build]
-rustflags = ["-C", "link-arg=-fuse-ld=lld"]

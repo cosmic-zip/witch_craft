@@ -1,5 +1,4 @@
 use crate::{core::consts::SYSINFO_MAID, get_os_env};
-use std::process::Command;
 use sysinfo::System;
 
 pub fn maid_info(_argsv: &[String]) -> i32 {

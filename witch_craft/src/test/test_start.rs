@@ -86,7 +86,7 @@ fn test_network_request_response_fail() {
     let response = request.make();
     let url = response.url;
     let status = response.status;
-    let body = response.body;
+    let _body = response.body;
 
     assert_eq!(url, "http://example.com/clover".to_string());
     assert_eq!(status, "404 Not Found");
@@ -102,7 +102,7 @@ fn test_network_request_response_ok() {
     let response = request.make();
     let url = response.url;
     let status = response.status;
-    let body = response.body;
+    let _body = response.body;
 
     assert_eq!(url, "http://example.com".to_string());
     assert_eq!(status, "200 OK");
@@ -119,17 +119,35 @@ fn test_maidz_info() {
 fn test_gen_qrcode_from_argsv() {
     let out = gen_qrcode_from_argsv(&["--data".to_string(), "some".to_string()]);
     assert_eq!(out, 0);
+    lazy_exec("rm qrcode*".to_string());
 }
 
 #[test]
-fn test_blackcat_av() {
+fn test_blackcat_av_path() {
+    lazy_exec("mkdir -p ./test/blackcatAV".to_string());
+    lazy_exec("touch ./test/blackcatAV/test.exe".to_string());
     let out = blackcat_av(&[
         "--path".to_string(),
-        "/bin".to_string(),
+        "./test/blackcatAV".to_string(),
         "--action".to_string(),
         "none".to_string(),
     ]);
     assert_eq!(out, 0);
+    lazy_exec("rm -r test".to_string());
+}
+
+#[test]
+fn test_blackcat_av_file() {
+    lazy_exec("mkdir -p ./test/blackcatAV".to_string());
+    lazy_exec("touch ./test/blackcatAV/test.exe".to_string());
+    let out = blackcat_av(&[
+        "--path".to_string(),
+        "./test/blackcatAV/test.exe".to_string(),
+        "--action".to_string(),
+        "none".to_string(),
+    ]);
+    assert_eq!(out, 0);
+    lazy_exec("rm -r test".to_string());
 }
 
 #[test]

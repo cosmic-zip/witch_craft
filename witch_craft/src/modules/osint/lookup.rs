@@ -166,8 +166,12 @@ pub fn social_links(argsv: &[String]) -> i32 {
         .unwrap();
         let tab = browser.new_tab().unwrap();
         let url = item.1.replace("@@keyword", &keyword);
+
+        // Tab settings
+        tab.set_default_timeout(std::time::Duration::from_secs(30));
         tab.navigate_to(&url).unwrap();
         tab.wait_until_navigated().unwrap();
+
         let content = tab.get_content().unwrap();
 
         match client.get(&url).send() {
