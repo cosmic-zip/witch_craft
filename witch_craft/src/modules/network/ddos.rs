@@ -2,6 +2,10 @@ use crate::core::core::*;
 use crate::modules::network::structs::*;
 use std::collections::HashMap;
 
+pub fn seach_number_value(key: &str, argsv: &[String]) -> i32 {
+    search_value(key, argsv).parse::<i32>().unwrap_or(0)
+}
+
 pub fn dos_simple_get_span(argsv: &[String]) -> i32 {
     let mut req = Request::new();
     req.url = search_value("domain", argsv);
