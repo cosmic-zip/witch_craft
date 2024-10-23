@@ -104,6 +104,7 @@ parts:
       override-build: |
         mkdir -p $SNAPCRAFT_PRIME/var/witch_craft
         cp -R witch_spells $SNAPCRAFT_PRIME/var/witch_craft
+        7z x $SNAPCRAFT_PRIME/var/witch_craft/witch_spells/osint/archive.7z.001
       stage:
         - -var
       prime:
