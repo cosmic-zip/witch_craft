@@ -153,6 +153,11 @@ pub fn social_links(argsv: &[String]) -> i32 {
             "https://www.xvideos.com/profiles/@@keyword",
             "THIS PROFILE DOESN'T EXIST !",
         ),
+        (
+            "snapchat",
+            "https://www.snapchat.com/add/@@keyword",
+            "This content was not found",
+        ),
     ];
 
     for item in social_links {
