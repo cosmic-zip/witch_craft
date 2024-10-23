@@ -30,7 +30,7 @@ pub fn search_ans(argsv: &[String]) -> i32 {
 }
 
 pub fn search_geoloc(argsv: &[String]) -> i32 {
-    let mut local = search_value("local", argsv);
+    let mut local = search_value("ip", argsv);
     local = ip_to_number(&local);
 
     if local.len() <= 10 {
@@ -57,7 +57,7 @@ pub fn search_geoloc(argsv: &[String]) -> i32 {
 }
 
 pub fn search_proxy(argsv: &[String]) -> i32 {
-    let mut proxy = search_value("local", argsv);
+    let mut proxy = search_value("ip", argsv);
     proxy = ip_to_number(&proxy);
 
     if proxy.len() <= 10 {
@@ -190,7 +190,7 @@ pub fn social_links(argsv: &[String]) -> i32 {
             }
             Err(err) => {
                 eprintln!("{:?}", err);
-                return 0;
+                return 1;
             }
         }
     }

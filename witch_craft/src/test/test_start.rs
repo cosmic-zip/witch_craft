@@ -1,7 +1,11 @@
 use crate::core::consts::*;
 use crate::core::core::*;
 use crate::core::structs::DataSet;
+use crate::modules::binds::sysinfo::maid_info;
+use crate::modules::blackcat::backend::blackcat_av;
 use crate::modules::network::structs::*;
+use crate::modules::osint::lookup::social_links;
+use crate::modules::social::qrcode::gen_qrcode_from_argsv;
 
 #[test]
 fn test_string_to_command() {
@@ -103,4 +107,33 @@ fn test_network_request_response_ok() {
     assert_eq!(url, "http://example.com".to_string());
     assert_eq!(status, "200 OK");
     // assert_eq!(body, "");
+}
+
+#[test]
+fn test_maidz_info() {
+    let out = maid_info(&[]);
+    assert_eq!(out, 0);
+}
+
+#[test]
+fn test_gen_qrcode_from_argsv() {
+    let out = gen_qrcode_from_argsv(&["--data".to_string(), "some".to_string()]);
+    assert_eq!(out, 0);
+}
+
+#[test]
+fn test_blackcat_av() {
+    let out = blackcat_av(&[
+        "--path".to_string(),
+        "/bin".to_string(),
+        "--action".to_string(),
+        "none".to_string(),
+    ]);
+    assert_eq!(out, 0);
+}
+
+#[test]
+fn test_social_links() {
+    let out = social_links(&["--keyword".to_string(), "anon".to_string()]);
+    assert_eq!(out, 0);
 }

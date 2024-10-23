@@ -38,6 +38,38 @@ pub fn malware_scanner(path: String) -> Vec<String> {
     malware_found
 }
 
+/// Scans a file or folder from a given path, and takes an action (currently only "remove") based on user input.
+///
+/// This function processes command-line arguments to scan the provided path. The path can refer to either a single file
+/// or a folder. If the path points to a folder, the function will recursively scan through all files within the folder.
+/// The only available action at the moment is "remove", which will delete the file or folder and its contents (if recursive).
+///
+/// If an invalid action is provided, no action is taken.
+///
+/// # Arguments
+///
+/// * `argsv` - A slice of `String` references representing the command line arguments.
+///
+/// # Returns
+///
+/// * `i32` - Returns `0` on success or `1` if there was an error (e.g., missing argument, invalid path, or failed action).
+///
+/// # Behavior
+///
+/// - If the path is a file, the function will take the specified action directly on that file.
+/// - If the path is a folder, it will recursively scan through the folder and apply the action to each file and sub-folder.
+/// - Only the "remove" action is supported, which will delete the file or recursively delete the contents of the folder.
+///
+/// # Example
+///
+/// ```
+/// let args = vec!["blackcat_av".to_string(), "--path".to_string(), "/path/to/scan".to_string(), "--action".to_string(), "remove".to_string()];
+/// blackcat_av(&args);
+/// ```
+///
+/// In this example, if the path is valid, the function will recursively delete the folder or remove the file at the given path.
+///
+/// Note: Be cautious when using the "remove" action, as it permanently deletes files.
 pub fn blackcat_av(argsv: &[String]) -> i32 {
     let path = search_value("path", argsv);
     let action = search_value("action", argsv);
