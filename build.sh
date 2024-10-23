@@ -16,6 +16,10 @@ fi
 
 # Install packages
 if [ "$package_manager" == "apt" ]; then
+    echo && echo "Trying to install chromium, its used for social media OSINT!"
+    sudo snap install chromium-browser -y
+
+    echo && echo "Install apt depedencies"
     sudo apt update
     sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl \
     dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost pkg-config \
