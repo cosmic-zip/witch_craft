@@ -4,7 +4,7 @@ use crate::core::structs::DataSet;
 use crate::modules::binds::sysinfo::maid_info;
 use crate::modules::blackcat::backend::blackcat_av;
 use crate::modules::network::structs::*;
-use crate::modules::osint::lookup::social_links;
+use crate::modules::osint::meta_search::*;
 use crate::modules::social::qrcode::gen_qrcode_from_argsv;
 
 #[test]
@@ -151,7 +151,9 @@ fn test_blackcat_av_file() {
 }
 
 #[test]
-fn test_social_links() {
-    let out = social_links(&["--keyword".to_string(), "anon".to_string()]);
-    assert_eq!(out, 0);
+fn test_exec_meta_search() {
+    let data = ("youtube", "https://www.youtube.com/@@@keyword", "");
+    let out = exec_meta_search(data, "anon");
+    assert_eq!(out.status, 0);
+    assert_eq!(out.flag, "".to_string());
 }

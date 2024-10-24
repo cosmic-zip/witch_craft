@@ -33,11 +33,7 @@ pub const META_LINKS: [(&str, &str, &str); 18] = [
         "Sorry. Unless you've got a time machine, that content is unavailable.",
     ),
     ("mastodon", "https://mastodon.social/@@@keyword", ""),
-    (
-        "bsky",
-        "https://bsky.app/profile/@@keyword",
-        "Error: handle must be a valid handle",
-    ),
+    ("bsky", "https://bsky.app/profile/@@keyword", "Oops!"),
     ("reddit", "https://www.reddit.com/user/@@keyword", ""),
     (
         "twitter",
