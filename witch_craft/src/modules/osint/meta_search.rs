@@ -56,6 +56,11 @@ pub fn social_links(argsv: &[String]) -> i32 {
         .build_global()
         .unwrap();
 
+    raise(
+        "Some links may have false positives, especially on websites with client-side rendering.",
+        "warning",
+    );
+
     META_LINKS.par_iter().for_each(|&data| {
         exec_meta_search(data, &keyword);
     });
