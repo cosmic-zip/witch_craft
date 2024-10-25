@@ -42,7 +42,7 @@ pub fn exec_meta_search(data: (&str, &str, &str), keyword: &str) -> MetaSearch {
             return MetaSearch::new(0, url, "".to_string(), content);
         }
         Err(err) => {
-            eprintln!("{:?}", err);
+            raise(&format!("exec_meta_search :: {}", err.to_string()), "fail");
             return MetaSearch::new(1, url, "".to_string(), err.to_string());
         }
     }

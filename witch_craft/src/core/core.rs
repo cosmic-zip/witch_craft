@@ -49,7 +49,12 @@ pub fn readargs() -> Vec<String> {
 /// Note: Ensure `WITCH_SPELLS_ROOT_DIR` is set to the root path (e.g., "/var/witch_craft/witch_spells/")
 /// for the returned path to be accurate.
 pub fn get_witch_spells_path(path: &str) -> String {
-    format!("{}{}", WITCH_SPELLS_ROOT_DIR, path)
+    let if_root = get_os_env("WITCH_SPELLS_ROOT_DIR");
+    raise(&if_root, "good");
+    if if_root.is_empty() {
+        return format!("{}{}", WITCH_SPELLS_ROOT_DIR, path);
+    }
+    format!("{}{}", if_root, path)
 }
 
 /// Returns the current date and time as a `String`.
@@ -100,6 +105,7 @@ pub fn raise(arg: &str, warning_type: &str) -> String {
         "🟠 [ warning ] ::",
         "💀 [ bruh ] ::",
         "🔘 [ entry point ] ::",
+        "💖💖💖💖 [ GOOD ] ::",
     ];
 
     // Match the warning_type to find the corresponding option
@@ -110,6 +116,7 @@ pub fn raise(arg: &str, warning_type: &str) -> String {
         "warning" => opts[3],
         "error" => opts[4],
         "entry" => opts[5],
+        "good" => opts[6],
         _ => "", // Empty message
     };
 
@@ -159,12 +166,12 @@ pub fn search_value(key: &str, argsv: &[String]) -> String {
         counter += 1;
     }
 
-    println!(
-        "{}",
-        raise(
-            &format!("No value found for {} → Send empty string", key),
-            "warning"
-        )
+    raise(
+        &format!(
+            "search_value :: No value found for {} → Send empty string",
+            key
+        ),
+        "warning",
     );
     String::new()
 }
@@ -193,7 +200,7 @@ pub fn search_key(key: &str, argsv: &[String]) -> String {
             return item.to_string();
         }
     }
-    println!("{}", raise(&format!("Key not found! {}", key), "warning"));
+    raise(&format!("search_key :: Key not found! {}", key), "warning");
     String::new()
 }
 
@@ -260,7 +267,7 @@ pub fn magic_docs() -> i32 {
     let data: Vec<DataSet> = data();
 
     if data.is_empty() {
-        raise("Datasets is empty", "fail");
+        raise("magic_docs :: dataset is empty", "fail");
         return 42;
     }
 
@@ -444,7 +451,7 @@ pub fn lazy_exec(command_line: String) -> i32 {
                 }
             } else {
                 let stderr = String::from_utf8_lossy(&output.stderr);
-                eprintln!("\n{}\n", stderr);
+                raise(&format!("blackcat_av :: {}", stderr.to_string()), "fail");
             }
             println!(" ");
             output.status.code().unwrap_or(128)
@@ -671,7 +678,7 @@ pub fn ip_to_number(ip_str: &str) -> String {
 /// ```
 pub fn get_os_env(key: &str) -> String {
     match env::var_os(key) {
-        Some(val) => format!("{:?}/", val).replace("\"", ""),
+        Some(val) => format!("{:?}", val).replace("\"", ""),
         None => {
             raise("Env key not found", "fail");
             String::new()

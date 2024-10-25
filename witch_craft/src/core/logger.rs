@@ -70,7 +70,7 @@ impl WitchyLogger {
         match file {
             Ok(mut file) => writeln!(file, "{}", output).unwrap(),
             Err(err) => {
-                eprintln!("Couldn't write to file: {}", err);
+                raise(&format!("WitchyLogger :: {}", err.to_string()), "fail");
             }
         };
 

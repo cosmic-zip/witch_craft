@@ -1,5 +1,6 @@
 use crate::core::consts::*;
 use crate::core::structs::DataSet;
+use crate::get_witch_spells_path;
 use serde::Deserialize;
 use std::fs::File;
 use std::io::Read;
@@ -19,10 +20,17 @@ struct JsonData {
 }
 
 fn read_dataset() -> Option<Vec<DataSet>> {
-    let mut file = match File::open(DBPATH) {
+    let mut file = match File::open(get_witch_spells_path(DBPATH)) {
         Ok(file) => file,
         Err(err) => {
-            raise(&err.to_string(), "fail");
+            raise(
+                &format!(
+                    "read_dataset :: path → {} :: {}",
+                    get_witch_spells_path(DBPATH),
+                    err.to_string()
+                ),
+                "fail",
+            );
             return None;
         }
     };
@@ -35,7 +43,10 @@ fn read_dataset() -> Option<Vec<DataSet>> {
     let json_data: JsonData = match serde_json::from_str(&contents) {
         Ok(data) => data,
         Err(err) => {
-            raise(&err.to_string(), "fail");
+            raise(
+                &format!("read_dataset :: JsonData {}", err.to_string()),
+                "fail",
+            );
             return None;
         }
     };
@@ -53,7 +64,6 @@ pub fn data() -> Vec<DataSet> {
     match read_dataset() {
         Some(data) => data,
         None => {
-            raise("Dataset are empty", "done");
             return vec![];
         }
     }

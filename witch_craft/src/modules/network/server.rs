@@ -42,8 +42,8 @@ pub fn evil_server(argsv: &[String]) -> i32 {
             Ok(stream) => {
                 handle_client(stream, &file_path);
             }
-            Err(e) => {
-                let msg = format!("Error accepting connection: {:?}", e);
+            Err(err) => {
+                let msg = format!("Error accepting connection: {:?}", err.to_string());
                 raise(&msg, "fail");
             }
         }

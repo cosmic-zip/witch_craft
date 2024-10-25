@@ -157,3 +157,9 @@ fn test_exec_meta_search() {
     assert_eq!(out.status, 0);
     assert_eq!(out.flag, "".to_string());
 }
+
+#[test]
+fn test_magic_docs() {
+    let out = magic_docs();
+    assert_eq!(out, 0);
+}

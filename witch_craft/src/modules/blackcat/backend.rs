@@ -8,7 +8,10 @@ pub fn malware_scanner(path: String) -> Vec<String> {
         match fs::read_to_string(&get_witch_spells_path("malware/malware.list")) {
             Ok(value) => value,
             Err(err) => {
-                raise(&format!("Error at {}", err), "messge");
+                raise(
+                    &format!("malware_scanner :: {}", err.to_string()),
+                    "message",
+                );
                 String::new()
             }
         };
@@ -98,7 +101,7 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
         match fs::remove_file(path) {
             Ok(_) => done.push(path.to_string_lossy().to_string()),
             Err(err) => {
-                println!("{}", err);
+                raise(&format!("blackcat_av :: {}", err.to_string()), "fail");
                 gone.push(path.to_string_lossy().to_string())
             }
         }
