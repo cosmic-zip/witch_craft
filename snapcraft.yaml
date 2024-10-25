@@ -1,6 +1,13 @@
 name: witchcraft-cybersecurity
 version: "0.19.0"
 summary: Your OPSEC companion
+grade: stable
+confinement: strict
+base: core24
+type: app
+compression: lzo
+license: GPL-3.0+
+source-code: https://github.com/cosmic-zip/witch_craft
 description: |
   **WITCH_CRAFT**
 
@@ -48,26 +55,21 @@ description: |
     * Usernames Wordlist
     * XSS Wordlist
     * And more, UwU!
-
-grade: stable
-confinement: strict
-base: core24
 platforms:
   amd64:
     build-on: [amd64]
     build-for: [amd64]
-  arm64:
-    build-on: [arm64]
-    build-for: [arm64]
+  # arm64:
+  #   build-on: [arm64]
+  #   build-for: [arm64]
 
 parts:
   spells:
     source: ./
     plugin: dump
     override-build: |
-      mkdir -p $CRAFT_PRIME/var/witch_craft
-      cp -R witch_spells $CRAFT_PRIME/var/witch_craft/
-      7z x $CRAFT_PRIME/var/witch_craft/witch_spells/osint/archive.7z.001
+      cp -R witch_spells $SNAP_COMMON/
+      # 7z x $SNAP_COMMON/osint/archive.7z.001
     stage:
       - -var
     prime:
