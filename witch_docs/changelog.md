@@ -443,7 +443,7 @@ Date: Wed Oct 9 12:37:18 PM -03 2024
 
 Version: 0.19.0
 
-Date: Wed Oct 23 03:24:37 PM -03 2024
+Date: Fri Oct 25 02:22:50 PM -03 2024
 
     → Added social media osint research using headless_chrome
     → Added cinsscore bad ip address list
