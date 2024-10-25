@@ -454,8 +454,10 @@ Date: Wed Oct 23 03:24:37 PM -03 2024
     → Added log system for raw_exec
     → Added json logger for external callers
     → Added witchrc for readrc witchrc files
+    → Added default evilpages if none is given
     → Update snap build
     → Update build script
     → Update readme
     → Fixed missing osint search option not in dataset
     → Fixed panic if .witchrc or log file is missing
+    → Removed hardcoded path in favor of WITCH_SPELLS_ROOT_DIR
