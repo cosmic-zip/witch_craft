@@ -1,5 +1,31 @@
-use crate::core::core::get_os_env;
+use crate::{core::core::get_os_env, raise};
 use std::fs;
+
+/// Checks if the configuration file `.witchrc` exists in the user's home directory.
+///
+/// This function constructs the path to the `.witchrc` file located in the user's home directory
+/// by appending `.witchrc` to the value of the `HOME` environment variable. It then checks
+/// for the existence of the file using the `fs::metadata` function.
+///
+/// # Returns
+/// A `bool` indicating whether the `.witchrc` file exists (`true`) or not (`false`).
+///
+/// # Example
+/// ```
+/// if rc_exists() {
+///     println!("The configuration file '.witchrc' exists.");
+/// } else {
+///     println!("The configuration file '.witchrc' does not exist.");
+/// }
+/// ```
+///
+/// # Note
+/// The function relies on the presence of the `HOME` environment variable to locate the user's
+/// home directory. If the environment variable is not set, the behavior may be undefined.
+pub fn rc_exists() -> bool {
+    let home = format!("{}.witchrc", get_os_env("HOME"));
+    fs::metadata(home).is_ok()
+}
 
 /// Checks if a specific key exists in the configuration file `~/.witchrc`.
 ///
@@ -22,8 +48,12 @@ use std::fs;
 /// }
 /// ```
 #[allow(dead_code)]
-pub fn readrc_exists(key: &str) -> bool {
+pub fn witchy_if_rc_key_exists(key: &str) -> bool {
     let fkey = format!("{}=", key);
+
+    if !rc_exists() {
+        "error".to_string();
+    }
 
     match fs::read_to_string("~/.witchrc") {
         Ok(file) => {
@@ -70,9 +100,13 @@ pub fn readrc_exists(key: &str) -> bool {
 /// This function assumes that the `.witchrc` file is located in the user's home directory.
 /// If the file cannot be read, an error message is printed along with the file path and an empty string
 /// are returned
-pub fn readrc_value(key: &str) -> String {
+pub fn witchy_readrc_value(key: &str) -> String {
     let fkey = format!("{}=", key);
     let home = format!("{}.witchrc", get_os_env("HOME"));
+
+    if !rc_exists() {
+        "error".to_string();
+    }
 
     match fs::read_to_string(&home) {
         Ok(file) => {
@@ -89,30 +123,4 @@ pub fn readrc_value(key: &str) -> String {
             return "".to_string();
         }
     }
-}
-
-/// Checks if the configuration file `.witchrc` exists in the user's home directory.
-///
-/// This function constructs the path to the `.witchrc` file located in the user's home directory
-/// by appending `.witchrc` to the value of the `HOME` environment variable. It then checks
-/// for the existence of the file using the `fs::metadata` function.
-///
-/// # Returns
-/// A `bool` indicating whether the `.witchrc` file exists (`true`) or not (`false`).
-///
-/// # Example
-/// ```
-/// if rc_exists() {
-///     println!("The configuration file '.witchrc' exists.");
-/// } else {
-///     println!("The configuration file '.witchrc' does not exist.");
-/// }
-/// ```
-///
-/// # Note
-/// The function relies on the presence of the `HOME` environment variable to locate the user's
-/// home directory. If the environment variable is not set, the behavior may be undefined.
-pub fn rc_exists() -> bool {
-    let home = format!("{}.witchrc", get_os_env("HOME"));
-    fs::metadata(home).is_ok()
 }

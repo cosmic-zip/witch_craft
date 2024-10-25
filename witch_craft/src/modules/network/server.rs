@@ -8,8 +8,9 @@ fn handle_client(mut stream: TcpStream, file_path: &str) {
     stream.read(&mut buffer).unwrap();
 
     let mut path = file_path;
+    let default = &get_witch_spells_path("evilpages/default/index.html");
     if file_path.is_empty() {
-        path = "/var/witch_craft/witch_spells/evilpages/facebook/facebook.html";
+        path = default;
     }
 
     let index = fs::read_to_string(path).unwrap_or("Index file not found".to_string());

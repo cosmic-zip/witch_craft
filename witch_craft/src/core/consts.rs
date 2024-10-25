@@ -1,11 +1,15 @@
 pub const TONK: &str = "@@";
 pub const SPLIT_II: &str = "--";
 pub const SPLIT_I: &str = "-";
-pub const DBPATH: &str = "/var/witch_craft/witch_spells/dataset/db.json";
+pub const DBPATH: &str = "dataset/db.json";
+pub const WITCH_SPELLS_ROOT_DIR: &str = "/var/witch_craft/witch_spells/";
 
 pub const MAGIC_DOCS: &[(&str, &str)] = &[
     ("account", "Generic arguments for account info or token"),
-    ("device", "Virtual or physical device like a HDD, SSD, Virtual disk"),
+    (
+        "device",
+        "Virtual or physical device like a HDD, SSD, Virtual disk",
+    ),
     ("dns", "Domain name"),
     ("domain", "Domain name"),
     ("database_name", "Database name"),
@@ -13,19 +17,31 @@ pub const MAGIC_DOCS: &[(&str, &str)] = &[
     ("folder", "Path to a folder"),
     ("host", "Host name or IP address"),
     ("image", "Image file location"),
-    ("interface", "Physical or virtual network device, e.g., wlan0"),
+    (
+        "interface",
+        "Physical or virtual network device, e.g., wlan0",
+    ),
     ("keyspace_name", "Cassandra database keyspace name"),
     ("message", "Provide a message string"),
     ("output", "Output file"),
     ("overwite", "Overwrite existing files"),
-    ("password", "Specify the password; it will be shown in plaintext"),
+    (
+        "password",
+        "Specify the password; it will be shown in plaintext",
+    ),
     ("path", "Path to a file"),
     ("port", "Port number"),
     ("protocol", "Communication protocol"),
     ("recursive", "Enable recursive mode"),
     ("secret", "A file (data) to be hidden"),
-    ("share", "Refers to a shared resource like a folder, file, or printer"),
-    ("snapshot_name", "Specify the snapshot name; not the location, by the way"),
+    (
+        "share",
+        "Refers to a shared resource like a folder, file, or printer",
+    ),
+    (
+        "snapshot_name",
+        "Specify the snapshot name; not the location, by the way",
+    ),
     ("table_name", "Database table name"),
     ("target", "Refers to an IP or domain name"),
     ("timeout", "Timeout duration"),

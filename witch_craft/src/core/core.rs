@@ -27,6 +27,31 @@ pub fn readargs() -> Vec<String> {
     env::args().collect()
 }
 
+/// Returns the full path to the `witch_spells` folder by appending the given `path` to the
+/// root directory path defined by `WITCH_SPELLS_ROOT_DIR`.
+///
+/// # Arguments
+///
+/// * `path` - A string slice representing the relative path to a specific file or folder within
+///   the `witch_spells` directory.
+///
+/// # Returns
+///
+/// A `String` containing the complete path, combining the root directory path and the provided relative `path`.
+///
+/// # Example
+///
+/// ```rust
+/// let spell_path = get_witch_spells_path("ancient_spells.txt");
+/// assert_eq!(spell_path, "/var/witch_craft/witch_spells/ancient_spells.txt");
+/// ```
+///
+/// Note: Ensure `WITCH_SPELLS_ROOT_DIR` is set to the root path (e.g., "/var/witch_craft/witch_spells/")
+/// for the returned path to be accurate.
+pub fn get_witch_spells_path(path: &str) -> String {
+    format!("{}{}", WITCH_SPELLS_ROOT_DIR, path)
+}
+
 /// Returns the current date and time as a `String`.
 ///
 /// # Returns

@@ -1,4 +1,4 @@
-use super::witchrc::readrc_value;
+use super::witchrc::witchy_readrc_value;
 use crate::core::core::*;
 use crate::core::witchrc::rc_exists;
 use crate::datetime_now;
@@ -53,7 +53,7 @@ impl WitchyLogger {
 
     pub fn save(&self) -> String {
         let output = serde_json::to_string(self).unwrap();
-        let witchrc = readrc_value("path_log_file");
+        let witchrc = witchy_readrc_value("path_log_file");
         let home = get_os_env("HOME");
 
         if witchrc.is_empty() || home.is_empty() {

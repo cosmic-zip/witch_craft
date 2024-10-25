@@ -5,7 +5,7 @@ use std::path::Path;
 
 pub fn malware_scanner(path: String) -> Vec<String> {
     let malware_signatures: String =
-        match fs::read_to_string("/var/witch_craft/witch_spells/malware/malware.list") {
+        match fs::read_to_string(&get_witch_spells_path("malware/malware.list")) {
             Ok(value) => value,
             Err(err) => {
                 raise(&format!("Error at {}", err), "messge");

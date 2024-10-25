@@ -6,7 +6,7 @@ pub fn search_ans(argsv: &[String]) -> i32 {
 
     if ans_number.len() <= 10 {
         let ans_ipv4: Vec<String> =
-            read_file_to_lines("/var/witch_craft/witch_spells/osint/ans/ans.ipv4.csv");
+            read_file_to_lines(&get_witch_spells_path("osint/ans/ans.ipv4.csv"));
 
         for line in ans_ipv4 {
             if line.as_str().contains(&ans_number) {
@@ -17,7 +17,7 @@ pub fn search_ans(argsv: &[String]) -> i32 {
     }
 
     let ans_ipv6: Vec<String> =
-        read_file_to_lines("/var/witch_craft/witch_spells/osint/ans/ans.ipv6.csv");
+        read_file_to_lines(&get_witch_spells_path("osint/ans/ans.ipv6.csv"));
 
     for line in ans_ipv6 {
         if line.as_str().contains(&ans_number) {
@@ -33,7 +33,7 @@ pub fn search_geoloc(argsv: &[String]) -> i32 {
 
     if local.len() <= 10 {
         let ans_ipv4: Vec<String> =
-            read_file_to_lines("/var/witch_craft/witch_spells/osint/geolocation/geodata.ipv4.csv");
+            read_file_to_lines(&get_witch_spells_path("osint/geolocation/geodata.ipv4.csv"));
 
         for line in ans_ipv4 {
             if line.as_str().contains(&local) {
@@ -44,7 +44,7 @@ pub fn search_geoloc(argsv: &[String]) -> i32 {
     }
 
     let ans_ipv6: Vec<String> =
-        read_file_to_lines("/var/witch_craft/witch_spells/osint/geolocation/geodata.ipv6.csv");
+        read_file_to_lines(&get_witch_spells_path("osint/geolocation/geodata.ipv6.csv"));
 
     for line in ans_ipv6 {
         if line.as_str().contains(&local) {
@@ -60,7 +60,7 @@ pub fn search_proxy(argsv: &[String]) -> i32 {
 
     if proxy.len() <= 10 {
         let ans_ipv4: Vec<String> =
-            read_file_to_lines("/var/witch_craft/witch_spells/osint/proxy/proxy.ipv4.csv");
+            read_file_to_lines(&get_witch_spells_path("osint/proxy/proxy.ipv4.csv"));
 
         for line in ans_ipv4 {
             if line.as_str().contains(&proxy) {
@@ -71,7 +71,7 @@ pub fn search_proxy(argsv: &[String]) -> i32 {
     }
 
     let ans_ipv6: Vec<String> =
-        read_file_to_lines("/var/witch_craft/witch_spells/osint/proxy/proxy.ipv6.csv");
+        read_file_to_lines(&get_witch_spells_path("osint/proxy/proxy.ipv6.csv"));
 
     for line in ans_ipv6 {
         if line.as_str().contains(&proxy) {
@@ -83,7 +83,7 @@ pub fn search_proxy(argsv: &[String]) -> i32 {
 
 pub fn cinsscore(argsv: &[String]) -> i32 {
     let ip = search_value("ip", argsv);
-    let file = read_file_to_lines("/var/witch_craft/witch_spells/osint/ci-badguys.txt");
+    let file = read_file_to_lines(&get_witch_spells_path("osint/ci-badguys.txt"));
 
     for line in file {
         if line.as_str().contains(&ip) {
