@@ -440,3 +440,22 @@ Date: Wed Oct 9 12:37:18 PM -03 2024
     → Added eviltwin http server
     → Added eviltwin local webpages clone
     → Update dataset.json
+
+Version: 0.19.0
+
+Date: Wed Oct 23 03:24:37 PM -03 2024
+
+    → Added social media osint research using headless_chrome
+    → Added cinsscore bad ip address list
+    → Added partial web osint tool
+    → Added catfish phishing modules
+    → Added profile optimizations
+    → Added read log to json function
+    → Added log system for raw_exec
+    → Added json logger for external callers
+    → Added witchrc for readrc witchrc files
+    → Update snap build
+    → Update build script
+    → Update readme
+    → Fixed missing osint search option not in dataset
+    → Fixed panic if .witchrc or log file is missing

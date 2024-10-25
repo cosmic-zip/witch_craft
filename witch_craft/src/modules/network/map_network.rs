@@ -3,7 +3,7 @@ use crate::core::structs::DataSet;
 
 pub fn map_dns(argsv: &[String]) -> i32 {
     if search_value("domain", argsv).is_empty() {
-        raise("Domain name not found, quit!", 4);
+        raise("Domain name not found, quit!", "warning");
         return 42;
     }
 
