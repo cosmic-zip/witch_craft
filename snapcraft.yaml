@@ -61,6 +61,18 @@ platforms:
     build-for: [arm64]
 
 parts:
+  spells:
+    source: ./
+    plugin: dump
+    override-build: |
+      mkdir -p $CRAFT_PRIME/var/witch_craft
+      cp -R witch_spells $CRAFT_PRIME/var/witch_craft/
+      7z x $CRAFT_PRIME/var/witch_craft/witch_spells/osint/archive.7z.001
+    stage:
+      - -var
+    prime:
+      - -var
+
   witchcraft:
     plugin: rust
     source: ./witch_craft
@@ -98,17 +110,6 @@ parts:
       - 7zip
       - libayatana-appindicator3-dev
       - librsvg2-dev
-
-    spells:
-      plugin: nil
-      override-build: |
-        mkdir -p $SNAPCRAFT_PRIME/var/witch_craft
-        cp -R witch_spells $SNAPCRAFT_PRIME/var/witch_craft
-        7z x $SNAPCRAFT_PRIME/var/witch_craft/witch_spells/osint/archive.7z.001
-      stage:
-        - -var
-      prime:
-        - var
 
 apps:
   witchcraft:
