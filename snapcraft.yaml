@@ -1,6 +1,7 @@
 name: witchcraft-cybersecurity
 version: "0.20.0"
 summary: Your OPSEC companion!
+icon: "witch_docs/media_kit/logo-1.png"
 grade: stable
 confinement: strict
 base: core24
