@@ -17,7 +17,7 @@ fi
 # Install packages
 if [ "$package_manager" == "apt" ]; then
     echo && echo "Trying to install chromium, its used for social media OSINT!"
-    sudo snap install chromium-browser -y
+    sudo snap install chromium
 
     echo && echo "Install apt depedencies"
     sudo apt update
