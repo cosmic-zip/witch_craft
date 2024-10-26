@@ -63,15 +63,16 @@ platforms:
     build-on: [arm64]
     build-for: [arm64]
 
+environment:
+  WITCH_SPELLS_ROOT_DIR: $SNAP/var/witch_craft/witch_spells/
+
 parts:
-  spells:
+  witchspells:
+    source: witch_spells
     plugin: dump
-    source: witch_spells/
-    organize:
-      witch_spells/*: witch_craft/witch_spells/
 
   witchcraft:
-    after: [spells]
+    after: [witchspells]
     plugin: rust
     source: ./witch_craft
     stage-snaps:
@@ -113,5 +114,3 @@ apps:
   witchcraft:
     command: bin/witch_craft
     plugs: [home, network, network-bind, removable-media]
-    environment:
-      WITCH_SPELLS_ROOT_DIR: ${HOME}/witch_craft/witch_spells/
