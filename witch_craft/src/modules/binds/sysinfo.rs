@@ -31,18 +31,18 @@ pub fn maid_info(_argsv: &[String]) -> i32 {
     let shell = get_os_env("SHELL");
 
     let mut text = SYSINFO_MAID.to_string();
-    text = text.replace("@@@cpu_load", &format!("cpu load: {}", cpu_load));
+    text = text.replace("@@@cpu_load", &format!("CPU load: {}", cpu_load));
     text = text.replace(
         "@@@desktop_environment",
-        &format!("desktop_environment: {}", desktop_environment),
+        &format!("DE: {}", desktop_environment),
     );
-    text = text.replace("@@@mem_total", &format!("mem total: {}", mem_total));
-    text = text.replace("@@@mem_free", &format!("mem free: {}", mem_free));
-    text = text.replace("@@@net_status", &format!("net status: {}", net_status));
-    text = text.replace("@@@os_name", &format!("os name: {}", os_name));
+    text = text.replace("@@@mem_total", &format!("Mem total: {}", mem_total));
+    text = text.replace("@@@mem_free", &format!("Mem free: {}", mem_free));
+    text = text.replace("@@@net_status", &format!("Net status: {}", net_status));
+    text = text.replace("@@@os_name", &format!("OS name: {}", os_name));
     text = text.replace(
         "@@@kernel_version",
-        &format!("kernel version: {}", kernel_version),
+        &format!("Kernel version: {}", kernel_version),
     );
     text = text.replace("@@@shell", &format!("shell: {}", shell));
 
