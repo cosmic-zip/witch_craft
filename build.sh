@@ -36,6 +36,8 @@ sudo mkdir -p /var/witch_craft
 sudo cp -r witch_spells/ /var/witch_craft
 sudo chown -R $(whoami):$(whoami) /var/witch_craft
 7z x /var/witch_craft/witch_spells/osint/archive.7z.001
+echo 'export WITCH_SPELLS_ROOT_DIR=/var/witch_craft/witch_spells/' >> ~/.bash_profile
+export WITCH_SPELLS_ROOT_DIR=/var/witch_craft/witch_spells/
 
 # Wordlist
 echo && echo "Wordlists are big (16GB) so, if you want or need then, just run:"
