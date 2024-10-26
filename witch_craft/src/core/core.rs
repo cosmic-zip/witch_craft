@@ -50,7 +50,7 @@ pub fn readargs() -> Vec<String> {
 /// for the returned path to be accurate.
 pub fn get_witch_spells_path(path: &str) -> String {
     let if_root = get_os_env("WITCH_SPELLS_ROOT_DIR");
-    raise(&if_root, "good");
+    // raise(&if_root, "good"); Show WITCH_SPELLS_ROOT_DIR value if they exists
     if if_root.is_empty() {
         return format!("{}{}", WITCH_SPELLS_ROOT_DIR, path);
     }
@@ -105,7 +105,7 @@ pub fn raise(arg: &str, warning_type: &str) -> String {
         "🟠 [ warning ] ::",
         "💀 [ bruh ] ::",
         "🔘 [ entry point ] ::",
-        "💖💖💖💖 [ GOOD ] ::",
+        "💖 [ GOOD ] ::",
     ];
 
     // Match the warning_type to find the corresponding option
