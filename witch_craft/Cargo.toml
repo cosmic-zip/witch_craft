@@ -1,6 +1,6 @@
 [package]
 name = "witch_craft"
-version = "0.19.0"
+version = "0.20.0"
 edition = "2021"
 readme = "README.md"
 homepage = "https://cosmic-zip.github.io/wiki/wiki.html"

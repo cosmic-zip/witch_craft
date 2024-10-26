@@ -32,6 +32,10 @@ fn main() {
         magic_docs();
     }
 
+    if arg_name == "version" || arg_name == "v" {
+        show_version();
+    }
+
     let code = closure_shell(join_closures, &argsv);
     if code == 11223300 {
         let code = flawless_entry_point(&argsv);
