@@ -59,23 +59,19 @@ platforms:
   amd64:
     build-on: [amd64]
     build-for: [amd64]
-  # arm64:
-  #   build-on: [arm64]
-  #   build-for: [arm64]
+  arm64:
+    build-on: [arm64]
+    build-for: [arm64]
 
 parts:
   spells:
-    source: ./
     plugin: dump
-    override-build: |
-      cp -R witch_spells $SNAP_COMMON/
-      # 7z x $SNAP_COMMON/osint/archive.7z.001
-    stage:
-      - -var
-    prime:
-      - -var
+    source: witch_spells/
+    organize:
+      witch_spells/*: witch_craft/witch_spells/
 
   witchcraft:
+    after: [spells]
     plugin: rust
     source: ./witch_craft
     stage-snaps:
@@ -117,3 +113,5 @@ apps:
   witchcraft:
     command: bin/witch_craft
     plugs: [home, network, network-bind, removable-media]
+    environment:
+      WITCH_SPELLS_ROOT_DIR: ${HOME}/witch_craft/witch_spells/
