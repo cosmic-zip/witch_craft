@@ -1,4 +1,4 @@
-use crate::{core::core::get_os_env, raise};
+use crate::core::core::get_os_env;
 use std::fs;
 
 /// Checks if the configuration file `.witchrc` exists in the user's home directory.

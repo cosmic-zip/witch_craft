@@ -279,26 +279,29 @@ pub fn magic_docs() -> i32 {
             if tuple.0 == arg_name.replace("--", "") {
                 return witch_fmt(
                     &format!("{}--{} :: {}", " ".repeat(8), tuple.0, tuple.1),
-                    72,
+                    80,
                 );
             }
         }
-        witch_fmt(&format!("{}{}", " ".repeat(8), arg_name), 72)
+        witch_fmt(&format!("{}{}", " ".repeat(8), arg_name), 80)
     }
 
     for dataset in data {
         let header =
-            witch_fmt(&format!("    {} ► {}", dataset.name, dataset.docs), 72).join("\n     ");
+            witch_fmt(&format!("    {} ► {}", dataset.name, dataset.docs), 80).join("\n     ");
         raise(&header, "");
 
         let mut out: String = dataset.meta.to_string();
         out = out.replace("/", "");
+        out = out.replace("\\", "");
         out = out.replace(",", "");
         out = out.replace("'", "");
         out = out.replace("\"", "");
         out = out.replace(";", "");
+        out = out.replace("*", "");
         out = out.replace(":", " ");
         out = out.replace("@@@", "@ @@");
+        out = out.replace("=@@", " @@");
         let args: Vec<_> = out.split(" ").collect();
         for arg in args {
             if arg.contains("@@") {
@@ -312,6 +315,7 @@ pub fn magic_docs() -> i32 {
                 }
             }
         }
+        println!("");
     }
 
     return 0;

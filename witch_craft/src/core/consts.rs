@@ -7,15 +7,24 @@ pub const WITCH_SPELLS_ROOT_DIR: &str = "/var/witch_craft/witch_spells/";
 pub const MAGIC_DOCS: &[(&str, &str)] = &[
     ("account", "Generic arguments for account info or token"),
     (
+        "address",
+        "Refers to an IPv4 or IPv6v4 or IPv4 or IPv6v6 or domain name",
+    ),
+    (
+        "ip",
+        "Refers to an IPv4 or IPv6v4 or IPv4 or IPv6v6 address",
+    ),
+    (
         "device",
         "Virtual or physical device like a HDD, SSD, Virtual disk",
     ),
     ("dns", "Domain name"),
     ("domain", "Domain name"),
     ("database_name", "Database name"),
-    ("file", "File location"),
+    ("data", "Any data input like \"some data here!\""),
+    ("file", "File location: like /some/path/file.txt"),
     ("folder", "Path to a folder"),
-    ("host", "Host name or IP address"),
+    ("host", "Host name or IPv4 or IPv6 address"),
     ("image", "Image file location"),
     (
         "interface",
@@ -43,7 +52,7 @@ pub const MAGIC_DOCS: &[(&str, &str)] = &[
         "Specify the snapshot name; not the location, by the way",
     ),
     ("table_name", "Database table name"),
-    ("target", "Refers to an IP or domain name"),
+    ("target", "Refers to an IPv4 or IPv6 or domain name"),
     ("timeout", "Timeout duration"),
     ("url", "Target complete URL path with http/https"),
     ("username", "Username; the user name to set up"),
