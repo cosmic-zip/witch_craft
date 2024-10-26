@@ -1,6 +1,6 @@
 name: witchcraft-cybersecurity
-version: "0.19.0"
-summary: Your OPSEC companion
+version: "0.20.0"
+summary: Your OPSEC companion!
 grade: stable
 confinement: strict
 base: core24
@@ -55,6 +55,7 @@ description: |
     * Usernames Wordlist
     * XSS Wordlist
     * And more, UwU!
+
 platforms:
   amd64:
     build-on: [amd64]

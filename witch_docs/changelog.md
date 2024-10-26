@@ -446,6 +446,7 @@ Version: 0.19.0
 Date: Fri Oct 25 02:22:50 PM -03 2024
 
     → Added social media osint research using headless_chrome
+    → Added version command
     → Added cinsscore bad ip address list
     → Added partial web osint tool
     → Added catfish phishing modules
@@ -462,4 +463,12 @@ Date: Fri Oct 25 02:22:50 PM -03 2024
     → Fixed get_os_env returning a slash for no reason
     → Fixed missing osint search option not in dataset
     → Fixed panic if .witchrc or log file is missing
+    → Fixed snap build
+    → Fixed magic docs
     → Removed hardcoded path in favor of WITCH_SPELLS_ROOT_DIR
+
+Version: 0.20.0
+
+Date: Sat Oct 26 07:09:02 PM -03 2024
+
+    → Launched LTS relese 0.20.0
