@@ -13,17 +13,15 @@
   <br>
 </center>
 
-<center>
-  🚧 Feel free to contribute to witch_craft by submitting issues or pull requests. 🚧
-</center>
-<hr>
+<p align="center">
+  🎉 Welcome to the WITCH_CRAFT Community!
+</p>
+
+---
 
 ### WITCH_CRAFT
 
-WITCH_CRAFT is a versatile task automation software designed to serve as the
-foundation for various cybersecurity modules. It provides capabilities for tasks
-such as forensic research, OSINT (Open Source Intelligence), scanning, backup and
-copying, intrusion testing of applications and APIs, and more.
+WITCH_CRAFT is a versatile task automation software designed to serve as the foundation for various cybersecurity modules. Whether you're diving into forensic research, conducting OSINT (Open Source Intelligence), running scans, setting up backup and copying workflows, or even performing intrusion tests on applications and APIs, WITCH_CRAFT aims to be your go-to platform.
 
 ### Visit the wiki:
 
@@ -143,16 +141,10 @@ witch_craft search.ipscore --ip 127.0.0.1
 
 ### License
 
-<center>
-  <div class="center">
-    <b>This project is licensed under the GNU General Public License v3.0.</b>
-  </div>
-</center>
+<p align="center">
+  🎉 This project is licensed under the GNU General Public License v3.0.
+</p>
 
-#### WITCH_CRAFT includes IP2Proxy LITE data available from https://www.ip2location.com/proxy-database
+**WITCH_CRAFT includes IP2Proxy LITE data available from https://www.ip2location.com/proxy-database**
 
-#### WITCH_CRAFT includes cinsscore data available from https://www.cinsscore.com
-
-```
-
-```
+**WITCH_CRAFT includes cinsscore data available from https://www.cinsscore.com**

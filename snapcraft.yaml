@@ -12,10 +12,7 @@ source-code: https://github.com/cosmic-zip/witch_craft
 description: |
   **WITCH_CRAFT**
 
-  WITCH_CRAFT is a versatile task automation software designed to serve as the
-  foundation for various cybersecurity modules. It provides capabilities for tasks
-  such as forensic research, OSINT (Open Source Intelligence), scanning, backup and
-  copying, intrusion testing of applications and APIs, and more.
+  WITCH_CRAFT is a versatile task automation software designed to serve as the foundation for various cybersecurity modules. Whether you're diving into forensic research, conducting OSINT (Open Source Intelligence), running scans, setting up backup and copying workflows, or even performing intrusion tests on applications and APIs, WITCH_CRAFT aims to be your go-to platform.
 
   **Visit the wiki:**
 
