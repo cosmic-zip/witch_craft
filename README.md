@@ -7,14 +7,12 @@
 ![GitHub License](https://img.shields.io/github/license/th3maid/witch_craft)
 ![GitHub top language](https://img.shields.io/github/languages/top/th3maid/witch_craft)
 
-<center>
-  <br>
-    <h1>WITCH_CRAFT</h1>
-  <br>
-</center>
+<p align="center">
+  <h1>WITCH_CRAFT</h1>
+</p>
 
 <p align="center">
-  🎉 Welcome to the WITCH_CRAFT Community!
+  🎉 Welcome to the witch_craft Community!
 </p>
 
 ---
@@ -29,7 +27,7 @@ https://cosmic-zip.github.io/wiki/wiki.html
 
 ### Plugins
 
-The Witch_Craft project is extensible through static files and Rust code. Moreover, it is possible to extend its functionalities using `db.json`. This file contains a list of small shell scripts, which means you can integrate anything that interacts with the terminal using ARGS (argsv, readargs(), sys.args(), etc).
+The witch_craft project is extensible through static files and Rust code. Moreover, it is possible to extend its functionalities using `db.json`. This file contains a list of small shell scripts, which means you can integrate anything that interacts with the terminal using ARGS (argsv, readargs(), sys.args(), etc).
 
 **Note**: There is a Python script called sort.py inside /var/witch_craft/witch_spells/dataset. It is used to create a sorted version of the dataset.
 
@@ -132,7 +130,7 @@ witch_craft nuke.hd --device /dev/sdx1
 ```
 
 ```bash
-witch_craft search.social --ip 172.16.0.1
+witch_craft search.meta --keywork "Anonymous"
 ```
 
 ```bash
