@@ -117,9 +117,9 @@ fn test_maidz_info() {
 
 #[test]
 fn test_gen_qrcode_from_argsv() {
+    lazy_exec("mkdir -p ~/Downloads".to_string());
     let out = gen_qrcode_from_argsv(&["--data".to_string(), "some".to_string()]);
     assert_eq!(out, 0);
-    lazy_exec("rm qrcode*".to_string());
 }
 
 #[test]
