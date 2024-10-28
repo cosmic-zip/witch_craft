@@ -1,0 +1,228 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <script src="scripts/jquery.js"></script>
+        <script src="scripts/ui.js"></script>
+    </head>
+    <body class="flex">
+        <header class="main-header">
+            <button class="main-header-btn" onclick="alert('btn')">
+                <img src="icons/terminal.png" />
+                Terminal
+            </button>
+            <button class="main-header-btn" onclick="alert('btn')">
+                <img src="icons/documents.png" />
+                Files
+            </button>
+            <button class="main-header-btn" onclick="alert('btn')">
+                <img src="icons/crt.png" />
+                Logs
+            </button>
+            <button class="main-header-btn" onclick="alert('btn')">
+                <img src="icons/compass.png" />
+                Geolocation
+            </button>
+            <button class="main-header-btn" onclick="alert('btn')">
+                <img src="icons/flash.png" />
+                Flash
+            </button>
+            <button class="main-header-btn" onclick="alert('btn')">
+                <img src="icons/server.png" />
+                Server
+            </button>
+            <button class="main-header-btn" onclick="alert('btn')">
+                <img src="icons/drives.png" />
+                Drives
+            </button>
+            <button class="main-header-btn" onclick="alert('btn')">
+                <img src="icons/settings.png" />
+                Settings
+            </button>
+            <button class="main-header-btn" onclick="alert('btn')">
+                <img src="icons/exit.png" />
+                Exit
+            </button>
+        </header>
+
+        <main class="main-ctn">
+            <!-- Side navigation -->
+            <div class="sidenav">
+                <a href="#all">All reports</a>
+                <a href="#blackcat">Blackcat</a>
+                <a href="#icebreaker">Icebreaker</a>
+                <a href="#llm">LLM</a>
+                <a href="#network">Network</a>
+                <a href="#osint">Osint</a>
+                <a href="#social">Social Engineering</a>
+            </div>
+
+            <!-- Page content -->
+            <div class="main">
+                <main class="log-main">
+                    <header class="log-header">
+                        <div class="log-title">Log header</div>
+                        <div class="log-expand-btn">EXPAND</div>
+                    </header>
+                    <section class="log-sec">
+                        2024-10-09T23:05:35.275914-03:00 wk gnome-shell[3798]: Can't update stage
+                        views actor unnamed [StBin] is on because it needs an allocation.
+                        2024-10-09T23:05:59.072097-03:00 wk com.obsproject.Studio.desktop[357334]:
+                        warning: Failed to create xdg-screensaver: 2
+                        2024-10-09T23:08:29.079679-03:00 wk com.obsproject.Studio.desktop[357334]:
+                        message repeated 5 times: [ warning: Failed to create xdg-screensaver: 2]
+                        2024-10-09T23:08:42.325260-03:00 wk systemd[3569]: Started
+                        app-gnome-org.mozilla.firefox-394319.scope - Application launched by
+                        gnome-shell. 2024-10-09T23:08:42.346370-03:00 wk systemd[3569]: Started
+                        app-flatpak-org.mozilla.firefox-394319.scope.
+                        2024-10-09T23:08:43.825149-03:00 wk gnome-shell[3798]:
+                        meta_window_set_stack_position_no_sync: assertion 'window->stack_position >=
+                        0' failed 2024-10-09T23:08:59.081375-03:00 wk
+                        com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                        xdg-screensaver: 2 2024-10-09T23:09:16.609659-03:00 wk gnome-shell[3798]:
+                        Can't update stage views actor unnamed
+                        [Gjs_ui_workspaceThumbnail_ThumbnailsBox] is on because it needs
+                    </section>
+                    <footer class="log-footer">footer</footer>
+                </main>
+                <span>
+                    <main class="log-main">
+                        <header class="log-header">
+                            <div class="log-title">Log header</div>
+                            <div class="log-expand-btn">EXPAND</div>
+                        </header>
+                        <section class="log-sec">
+                            2024-10-09T23:05:35.275914-03:00 wk gnome-shell[3798]: Can't update
+                            stage views actor unnamed [StBin] is on because it needs an allocation.
+                            2024-10-09T23:05:59.072097-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                            xdg-screensaver: 2 2024-10-09T23:08:29.079679-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: message repeated 5 times: [
+                            warning: Failed to create xdg-screensaver: 2]
+                            2024-10-09T23:08:42.325260-03:00 wk systemd[3569]: Started
+                            app-gnome-org.mozilla.firefox-394319.scope - Application launched by
+                            gnome-shell. 2024-10-09T23:08:42.346370-03:00 wk systemd[3569]: Started
+                            app-flatpak-org.mozilla.firefox-394319.scope.
+                            2024-10-09T23:08:43.825149-03:00 wk gnome-shell[3798]:
+                            meta_window_set_stack_position_no_sync: assertion
+                            'window->stack_position >= 0' failed 2024-10-09T23:08:59.081375-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                            xdg-screensaver: 2 2024-10-09T23:09:16.609659-03:00 wk
+                            gnome-shell[3798]: Can't update stage views actor unnamed
+                            [Gjs_ui_workspaceThumbnail_ThumbnailsBox] is on because it needs
+                        </section>
+                        <footer class="log-footer">footer</footer>
+                    </main>
+                    <main class="log-main">
+                        <header class="log-header">
+                            <div class="log-title">Log header</div>
+                            <div class="log-expand-btn">EXPAND</div>
+                        </header>
+                        <section class="log-sec">
+                            2024-10-09T23:05:35.275914-03:00 wk gnome-shell[3798]: Can't update
+                            stage views actor unnamed [StBin] is on because it needs an allocation.
+                            2024-10-09T23:05:59.072097-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                            xdg-screensaver: 2 2024-10-09T23:08:29.079679-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: message repeated 5 times: [
+                            warning: Failed to create xdg-screensaver: 2]
+                            2024-10-09T23:08:42.325260-03:00 wk systemd[3569]: Started
+                            app-gnome-org.mozilla.firefox-394319.scope - Application launched by
+                            gnome-shell. 2024-10-09T23:08:42.346370-03:00 wk systemd[3569]: Started
+                            app-flatpak-org.mozilla.firefox-394319.scope.
+                            2024-10-09T23:08:43.825149-03:00 wk gnome-shell[3798]:
+                            meta_window_set_stack_position_no_sync: assertion
+                            'window->stack_position >= 0' failed 2024-10-09T23:08:59.081375-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                            xdg-screensaver: 2 2024-10-09T23:09:16.609659-03:00 wk
+                            gnome-shell[3798]: Can't update stage views actor unnamed
+                            [Gjs_ui_workspaceThumbnail_ThumbnailsBox] is on because it needs
+                        </section>
+                        <footer class="log-footer">footer</footer>
+                    </main>
+                    <main class="log-main">
+                        <header class="log-header">
+                            <div class="log-title">Log header</div>
+                            <div class="log-expand-btn">EXPAND</div>
+                        </header>
+                        <section class="log-sec">
+                            2024-10-09T23:05:35.275914-03:00 wk gnome-shell[3798]: Can't update
+                            stage views actor unnamed [StBin] is on because it needs an allocation.
+                            2024-10-09T23:05:59.072097-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                            xdg-screensaver: 2 2024-10-09T23:08:29.079679-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: message repeated 5 times: [
+                            warning: Failed to create xdg-screensaver: 2]
+                            2024-10-09T23:08:42.325260-03:00 wk systemd[3569]: Started
+                            app-gnome-org.mozilla.firefox-394319.scope - Application launched by
+                            gnome-shell. 2024-10-09T23:08:42.346370-03:00 wk systemd[3569]: Started
+                            app-flatpak-org.mozilla.firefox-394319.scope.
+                            2024-10-09T23:08:43.825149-03:00 wk gnome-shell[3798]:
+                            meta_window_set_stack_position_no_sync: assertion
+                            'window->stack_position >= 0' failed 2024-10-09T23:08:59.081375-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                            xdg-screensaver: 2 2024-10-09T23:09:16.609659-03:00 wk
+                            gnome-shell[3798]: Can't update stage views actor unnamed
+                            [Gjs_ui_workspaceThumbnail_ThumbnailsBox] is on because it needs
+                        </section>
+                        <footer class="log-footer">footer</footer>
+                    </main>
+                    <main class="log-main">
+                        <header class="log-header">
+                            <div class="log-title">Log header</div>
+                            <div class="log-expand-btn">EXPAND</div>
+                        </header>
+                        <section class="log-sec">
+                            2024-10-09T23:05:35.275914-03:00 wk gnome-shell[3798]: Can't update
+                            stage views actor unnamed [StBin] is on because it needs an allocation.
+                            2024-10-09T23:05:59.072097-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                            xdg-screensaver: 2 2024-10-09T23:08:29.079679-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: message repeated 5 times: [
+                            warning: Failed to create xdg-screensaver: 2]
+                            2024-10-09T23:08:42.325260-03:00 wk systemd[3569]: Started
+                            app-gnome-org.mozilla.firefox-394319.scope - Application launched by
+                            gnome-shell. 2024-10-09T23:08:42.346370-03:00 wk systemd[3569]: Started
+                            app-flatpak-org.mozilla.firefox-394319.scope.
+                            2024-10-09T23:08:43.825149-03:00 wk gnome-shell[3798]:
+                            meta_window_set_stack_position_no_sync: assertion
+                            'window->stack_position >= 0' failed 2024-10-09T23:08:59.081375-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                            xdg-screensaver: 2 2024-10-09T23:09:16.609659-03:00 wk
+                            gnome-shell[3798]: Can't update stage views actor unnamed
+                            [Gjs_ui_workspaceThumbnail_ThumbnailsBox] is on because it needs
+                        </section>
+                        <footer class="log-footer">footer</footer>
+                    </main>
+                    <main class="log-main">
+                        <header class="log-header">
+                            <div class="log-title">Log header</div>
+                            <div class="log-expand-btn">EXPAND</div>
+                        </header>
+                        <section class="log-sec">
+                            2024-10-09T23:05:35.275914-03:00 wk gnome-shell[3798]: Can't update
+                            stage views actor unnamed [StBin] is on because it needs an allocation.
+                            2024-10-09T23:05:59.072097-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                            xdg-screensaver: 2 2024-10-09T23:08:29.079679-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: message repeated 5 times: [
+                            warning: Failed to create xdg-screensaver: 2]
+                            2024-10-09T23:08:42.325260-03:00 wk systemd[3569]: Started
+                            app-gnome-org.mozilla.firefox-394319.scope - Application launched by
+                            gnome-shell. 2024-10-09T23:08:42.346370-03:00 wk systemd[3569]: Started
+                            app-flatpak-org.mozilla.firefox-394319.scope.
+                            2024-10-09T23:08:43.825149-03:00 wk gnome-shell[3798]:
+                            meta_window_set_stack_position_no_sync: assertion
+                            'window->stack_position >= 0' failed 2024-10-09T23:08:59.081375-03:00 wk
+                            com.obsproject.Studio.desktop[357334]: warning: Failed to create
+                            xdg-screensaver: 2 2024-10-09T23:09:16.609659-03:00 wk
+                            gnome-shell[3798]: Can't update stage views actor unnamed
+                            [Gjs_ui_workspaceThumbnail_ThumbnailsBox] is on because it needs
+                        </section>
+                        <footer class="log-footer">footer</footer>
+                    </main>
+                </span>
+                <hr style="margin-bottom: 400px" />
+            </div>
+        </main>
+    </body>
+</html>

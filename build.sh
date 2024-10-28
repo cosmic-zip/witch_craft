@@ -16,10 +16,15 @@ fi
 
 # Install packages
 if [ "$package_manager" == "apt" ]; then
+    echo && echo "Trying to install chromium, its used for social media OSINT!"
+    sudo snap install chromium
+
+    echo && echo "Install apt depedencies"
     sudo apt update
     sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl \
     dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost pkg-config \
-    libssl-dev steghide doas nala
+    libssl-dev steghide doas nala libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev 7zip \
+    libayatana-appindicator3-dev librsvg2-dev
 elif [ "$package_manager" == "yum" ]; then
     sudo yum update -y
     sudo yum install -y nmap dirb dnsenum glibc-utils xxd iptables-utils iproute wget curl bind-utils traceroute
@@ -30,6 +35,14 @@ echo && echo "Install witch_spells data"
 sudo mkdir -p /var/witch_craft
 sudo cp -r witch_spells/ /var/witch_craft
 sudo chown -R $(whoami):$(whoami) /var/witch_craft
+7z x /var/witch_craft/witch_spells/osint/archive.7z.001
+echo 'export WITCH_SPELLS_ROOT_DIR=/var/witch_craft/witch_spells/' >> ~/.bash_profile
+export WITCH_SPELLS_ROOT_DIR=/var/witch_craft/witch_spells/
+
+# Wordlist
+echo && echo "Wordlists are big (16GB) so, if you want or need then, just run:"
+echo "7z x /var/witch_craft/witch_spells/wordlists/ladybug.pwned"
+echo "7z x /var/witch_craft/witch_spells/wordlists/moth.pwned.7z.001"
 
 # Build binary
 echo && echo "Cargo build"

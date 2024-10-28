@@ -1,6 +1,7 @@
 use reqwest::blocking::Client;
 use std::collections::HashMap;
 
+#[allow(dead_code)]
 pub struct Response {
     pub url: String,
     pub status: String,

@@ -440,3 +440,35 @@ Date: Wed Oct 9 12:37:18 PM -03 2024
     → Added eviltwin http server
     → Added eviltwin local webpages clone
     → Update dataset.json
+
+Version: 0.19.0
+
+Date: Fri Oct 25 02:22:50 PM -03 2024
+
+    → Added social media osint research using headless_chrome
+    → Added version command
+    → Added cinsscore bad ip address list
+    → Added partial web osint tool
+    → Added catfish phishing modules
+    → Added profile optimizations
+    → Added read log to json function
+    → Added log system for raw_exec
+    → Added json logger for external callers
+    → Added witchrc for readrc witchrc files
+    → Added default evilpages if none is given
+    → Updated snap build
+    → Updated build script
+    → Updated all eprintln with raise,
+    → Updated readme
+    → Fixed get_os_env returning a slash for no reason
+    → Fixed missing osint search option not in dataset
+    → Fixed panic if .witchrc or log file is missing
+    → Fixed snap build
+    → Fixed magic docs
+    → Removed hardcoded path in favor of WITCH_SPELLS_ROOT_DIR
+
+Version: 0.20.0
+
+Date: Sat Oct 26 07:09:02 PM -03 2024
+
+    → Launched LTS relese 0.20.0

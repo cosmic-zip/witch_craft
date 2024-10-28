@@ -1,0 +1,133 @@
+:root {
+    --trans-bg: #000000e5;
+    --bg: black;
+    --blue: #1e90ff;
+    --white: #ffffff;
+    --dark: darkgray;
+    --darker: #818181;
+    --ancient: #ffe500;
+}
+
+body {
+    margin: 0px;
+    padding: 20px;
+    overflow-y: hidden;
+    background-image: url("data/wp6.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    font-family: monospace;
+}
+
+.main-header {
+    border: solid 2px var(--ancient);
+    box-shadow: 10px 10px #444;
+    background: var(--bg);
+    height: 72px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main-header-btn {
+    background: none;
+    border: solid 2px var(--bg);
+    border-radius: 5px;
+    height: 65px;
+    width: 65px;
+    padding: 5px;
+    color: white;
+    display: grid;
+    align-items: center;
+    font-weight: bolder;
+    justify-content: center;
+}
+
+.main-header-btn:hover {
+    border: solid 2px var(--blue);
+    border-radius: 5px;
+}
+
+.main-header-btn img {
+    height: 40px;
+    width: 40px;
+    margin: auto;
+}
+
+.main-ctn {
+    border: solid 2px var(--ancient);
+    box-shadow: 10px 10px var(--ancient);
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+    height: 80vh;
+}
+
+.sidenav {
+    height: 100vh;
+    width: 20%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--trans-bg);
+    overflow-x: hidden;
+    padding-top: 20px;
+    min-width: 300px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.main {
+    height: 90vh;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+/* Main component */
+.log-main {
+    background-color: var(--darker);
+    border-radius: 20px;
+    font-family: monospace !important;
+    margin-bottom: 20px;
+}
+
+.log-header {
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+    background-color: var(--ancient);
+    display: flex;
+    justify-content: space-between;
+    font-weight: bolder;
+}
+
+.log-sec {
+    padding: 10px;
+    min-height: 200px;
+}
+
+.log-footer {
+    border-radius: 0px 0px 10px 10px;
+    padding: 10px;
+    background-color: var(--dark);
+}

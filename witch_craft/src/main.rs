@@ -1,4 +1,4 @@
-use core::{consts::WITCH, core::*};
+use core::{consts::*, core::*};
 use std::process;
 
 use modules::{
@@ -30,6 +30,10 @@ fn main() {
 
     if arg_name == "help" || arg_name == "h" {
         magic_docs();
+    }
+
+    if arg_name == "version" || arg_name == "v" {
+        show_version();
     }
 
     let code = closure_shell(join_closures, &argsv);

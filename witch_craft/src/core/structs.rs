@@ -6,7 +6,7 @@ pub struct DataSet {
 }
 
 impl DataSet {
-    pub fn new() -> Self {
+    pub fn _new() -> Self {
         DataSet {
             docs: String::new(),
             name: String::new(),

@@ -1,4 +1,3 @@
-use crate::core::consts::FSROOT;
 use crate::core::core::*;
 use std::fs;
 use std::io::{Read, Write};
@@ -9,8 +8,9 @@ fn handle_client(mut stream: TcpStream, file_path: &str) {
     stream.read(&mut buffer).unwrap();
 
     let mut path = file_path;
+    let default = &get_witch_spells_path("evilpages/default/index.html");
     if file_path.is_empty() {
-        path = "/var/witch_craft/witch_spells/evilpages/facebook/facebook.html";
+        path = default;
     }
 
     let index = fs::read_to_string(path).unwrap_or("Index file not found".to_string());
@@ -42,8 +42,9 @@ pub fn evil_server(argsv: &[String]) -> i32 {
             Ok(stream) => {
                 handle_client(stream, &file_path);
             }
-            Err(e) => {
-                eprintln!("Error accepting connection: {}", e);
+            Err(err) => {
+                let msg = format!("Error accepting connection: {:?}", err.to_string());
+                raise(&msg, "fail");
             }
         }
     }
