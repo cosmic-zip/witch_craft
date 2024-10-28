@@ -38,6 +38,7 @@ pub fn gen_qrcode_from_argsv(argsv: &[String]) -> i32 {
     let now = datetime_now();
     let image = code.render::<Luma<u8>>().build();
     let home = get_os_env("HOME");
+    lazy_exec(format!("mkdir {}/Downloads/", &home));
     image
         .save(format!("{}/Downloads/qrcode-{now}.png", home))
         .unwrap();
