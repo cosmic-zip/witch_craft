@@ -66,12 +66,12 @@ environment:
   WITCH_SPELLS_ROOT_DIR: $SNAP/var/witch_craft/witch_spells/
 
 parts:
-  # witchspells:
-  #   source: witch_spells
-  #   plugin: dump
+  witchspells:
+    source: witch_spells
+    plugin: dump
 
   witchcraft:
-    # after: [witchspells]
+    after: [witchspells]
     plugin: rust
     source: ./witch_craft
     stage-snaps:
