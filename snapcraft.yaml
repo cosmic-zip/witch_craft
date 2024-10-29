@@ -66,12 +66,12 @@ environment:
   WITCH_SPELLS_ROOT_DIR: $SNAP/var/witch_craft/witch_spells/
 
 parts:
-  witchspells:
-    source: witch_spells
-    plugin: dump
+  # witchspells:
+  #   source: witch_spells
+  #   plugin: dump
 
   witchcraft:
-    after: [witchspells]
+    # after: [witchspells]
     plugin: rust
     source: ./witch_craft
     stage-snaps:
@@ -97,17 +97,28 @@ parts:
       - tor
       - foremost
       - pkg-config
-      - libssl-dev
       - steghide
-      - doas
-      - nala
-      - libwebkit2gtk-4.1-dev
-      - build-essential
       - file
-      - libxdo-dev
       - 7zip
+      - libssl-dev
+      - libwebkit2gtk-4.1-dev
+      - libxdo-dev
+      - libglu1-mesa
+      - build-essential
       - libayatana-appindicator3-dev
       - librsvg2-dev
+      - libclang-dev
+      - liboss4-salsa-asound2
+      - freeglut3-dev
+      - libllvm15
+      - libigdgmm12
+      - libatomic1
+      - libclang1-18
+      - libatm1t64
+
+    build-packages:
+      - clang
+      - gcc
 
 apps:
   witchcraft:
