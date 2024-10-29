@@ -63,11 +63,11 @@ platforms:
     build-for: [arm64]
 
 environment:
-  WITCH_SPELLS_ROOT_DIR: $SNAP/var/witch_craft/witch_spells/
+  WITCH_SPELLS_ROOT_DIR: $SNAP/witch_spells/
 
 parts:
   witchspells:
-    source: witch_spells
+    source: archive
     plugin: dump
 
   witchcraft:
