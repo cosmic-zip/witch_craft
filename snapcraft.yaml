@@ -1,5 +1,5 @@
 name: witchcraft-cybersecurity
-version: "0.20.0"
+version: "0.20.1"
 summary: Your OPSEC companion!
 icon: "witch_docs/media_kit/logo-1.png"
 grade: stable
@@ -111,7 +111,6 @@ parts:
       - liboss4-salsa-asound2
       - freeglut3-dev
       - libllvm15
-      - libigdgmm12
       - libatomic1
       - libclang1-18
       - libatm1t64
