@@ -684,7 +684,7 @@ pub fn get_os_env(key: &str) -> String {
     match env::var_os(key) {
         Some(val) => format!("{:?}", val).replace("\"", ""),
         None => {
-            raise("Env key not found", "fail");
+            // raise("Env key not found", "fail");
             String::new()
         }
     }
@@ -692,6 +692,6 @@ pub fn get_os_env(key: &str) -> String {
 
 /// Show witch_craft software version!
 pub fn show_version() -> i32 {
-    raise("Version: 0.20.0 by cosmic-zip", "");
+    raise("Version: 0.20.1 by cosmic-zip", "");
     return 0;
 }
