@@ -5,7 +5,7 @@ echo && echo "Install dependencies"
 sudo apt update
 sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl \
 dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost pkg-config \
-libssl-dev steghide doas nala libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev 7zip \
+libssl-dev steghide libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev 7zip \
 libayatana-appindicator3-dev librsvg2-dev
 
 # Install data
