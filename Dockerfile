@@ -9,7 +9,7 @@ RUN npx @puppeteer/browsers install chrome@stable
 WORKDIR /app
 
 # Clone the repository directly into the working directory
-RUN git clone https://github.com/cosmic-zip/witch_craft --branch=trunk --depth=1
+RUN git clone https://github.com/cosmic-zip/witch_craft --branch=feature/dockerfile --depth=1
 
 # Change the working directory to the cloned repository
 WORKDIR /app/witch_craft
