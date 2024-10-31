@@ -692,6 +692,6 @@ pub fn get_os_env(key: &str) -> String {
 
 /// Show witch_craft software version!
 pub fn show_version() -> i32 {
-    raise("Version: 0.20.1 by cosmic-zip", "");
+    raise(VERSION, "");
     return 0;
 }

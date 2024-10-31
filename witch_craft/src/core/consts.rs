@@ -3,6 +3,7 @@ pub const SPLIT_II: &str = "--";
 pub const SPLIT_I: &str = "-";
 pub const DBPATH: &str = "dataset/db.json";
 pub const WITCH_SPELLS_ROOT_DIR: &str = "/var/witch_craft/witch_spells/";
+pub const VERSION: &str = "Version: 0.20.11 by cosmic-zip";
 
 pub const MAGIC_DOCS: &[(&str, &str)] = &[
     ("account", "Generic arguments for account info or token"),
