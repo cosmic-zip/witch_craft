@@ -1,5 +1,5 @@
 # Use Ubuntu as the base image
-FROM ubuntu:latest
+FROM rust:latest
 
 # Install required packages, including Chromium
 RUN apt-get update && apt-get install -y git sudo npm
