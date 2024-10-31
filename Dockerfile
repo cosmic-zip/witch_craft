@@ -2,8 +2,7 @@
 FROM rust:latest
 
 # Install required packages, including Chromium
-RUN apt-get update && apt-get install -y git sudo npm
-RUN npx @puppeteer/browsers install chrome@stable
+RUN apt-get update && apt-get install -y git sudo wget p7zip-full
 
 # Set the working directory
 WORKDIR /app
@@ -19,6 +18,8 @@ RUN chmod +x build.sh
 
 # Run the build.sh script
 RUN ./build.sh
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
 
 # Default command
 CMD ["bash"]
