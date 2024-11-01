@@ -21,6 +21,10 @@ echo && echo "Wordlists are big (16GB) so, if you want or need then, just run:"
 echo "7z x /var/witch_craft/witch_spells/wordlists/ladybug.pwned"
 echo "7z x /var/witch_craft/witch_spells/wordlists/moth.pwned.7z.001"
 
+# Install  Sussy Spyware AKA Google Chrome because snap don't support declare it was a dependency
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt-get install -y ./google-chrome-stable_current_amd64.deb
+
 # Build binary
 echo && echo "Cargo build"
 cargo build --release --manifest-path witch_craft/Cargo.toml

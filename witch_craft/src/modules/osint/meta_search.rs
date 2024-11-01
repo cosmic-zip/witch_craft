@@ -1,19 +1,22 @@
-use super::{data::META_LINKS, structs::MetaSearch};
 use crate::core::core::*;
-use crate::search_value;
+use crate::modules::osint::structs::{WebsiteEntry, WebsitesEntries};
 use headless_chrome::{Browser, LaunchOptionsBuilder};
-use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
 use reqwest::blocking::Client;
+use std::fs;
 
-pub fn exec_meta_search(data: (&str, &str, &str), keyword: &str) -> MetaSearch {
-    let timeout = std::time::Duration::from_secs(60);
-    let url = data.1.replace("@@keyword", &keyword);
+fn read_json_file(file_path: &str) -> WebsitesEntries {
+    let file_content = fs::read_to_string(file_path).expect("Failed to read file");
+    let data: WebsitesEntries = serde_json::from_str(&file_content).expect("Failed to parse JSON");
+    data
+}
+
+pub fn exec_meta_search(data: WebsiteEntry, keyword: &str) {
+    let url = &data.url.replace("@@keyword", &keyword);
+
     let client = Client::new();
-
     let browser = Browser::new(
         LaunchOptionsBuilder::default()
             .headless(true)
-            .idle_browser_timeout(timeout)
             .window_size(Some((1920, 1080)))
             .build()
             .unwrap(),
@@ -25,46 +28,30 @@ pub fn exec_meta_search(data: (&str, &str, &str), keyword: &str) -> MetaSearch {
     tab.wait_until_navigated().unwrap();
     let content = tab.get_content().unwrap();
 
-    match client.get(&url).send() {
+    fn find_contents(data: WebsiteEntry, content: String) -> String {
+        for item in data.detections {}
+    }
+
+    match client.get(url).send() {
         Ok(res) => {
             if res.status().as_u16() == 200 {
-                if content.contains(data.2) {
-                    return MetaSearch::new(200, url, data.2.to_string(), content);
-                }
-
-                raise(
-                    &format!("Found! {} {} at {}", &keyword, data.0, &url),
-                    "done",
-                );
-                return MetaSearch::new(200, url, "".to_string(), content);
+                // if content.contains(data.2) {}
             }
-
-            return MetaSearch::new(0, url, "".to_string(), content);
         }
         Err(err) => {
             raise(&format!("exec_meta_search :: {}", err.to_string()), "fail");
-            return MetaSearch::new(1, url, "".to_string(), err.to_string());
         }
     }
 }
 
-pub fn social_links(argsv: &[String]) -> i32 {
-    let keyword = search_value("keyword", argsv);
+// pub fn social_links(argsv: &[String]) -> i32 {
+//     let keyword = search_value("keyword", argsv);
+//     let data = read_json_file_as_map(&get_witch_spells_path("osint/sites.json")).unwrap();
 
-    rayon::ThreadPoolBuilder::new()
-        .num_threads(4)
-        .build_global()
-        .unwrap();
+//     let websites = data.get("websites_entries").expect("Index not found");
+//     let index_array = websites.as_array().expect("Index is not an array");
 
-    raise(
-        "Some links may have false positives, especially on websites with client-side rendering.",
-        "warning",
-    );
+//     exec_meta_search(index_array, &keyword);
 
-    META_LINKS.par_iter().for_each(|&data| {
-        exec_meta_search(data, &keyword);
-    });
-
-    raise("All tasks completed!", "done");
-    return 0;
-}
+//     return 0;
+// }
