@@ -48,11 +48,13 @@ The witch_spells package also provide:
   - _Moth_
   - _Ladybug_
 
-### Install using snap:
+### Install using snap
 
-<a href="https://snapcraft.io/witchcraft-cybersecurity">
-  <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
-</a>
+<p class=center>
+  <a href="https://snapcraft.io/witchcraft-cybersecurity">
+    <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
+  </a>
+</p>
 
 #### After installed add a snap alias:
 
