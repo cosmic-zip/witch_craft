@@ -54,6 +54,8 @@ The witch_spells package also provide:
   <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
 </a>
 
+**Add a snap alias:**
+
 ```console
 sudo snap alias witchcraft-cybersecurity.witchcraft witch_craft
 ```
