@@ -1,16 +1,65 @@
 use crate::core::core::*;
-use crate::modules::osint::structs::{WebsiteEntry, WebsitesEntries};
 use headless_chrome::{Browser, LaunchOptionsBuilder};
 use reqwest::blocking::Client;
-use std::fs;
+use serde_json;
+use std::{fs, time::Duration};
 
-fn read_json_file(file_path: &str) -> WebsitesEntries {
-    let file_content = fs::read_to_string(file_path).expect("Failed to read file");
-    let data: WebsitesEntries = serde_json::from_str(&file_content).expect("Failed to parse JSON");
+#[derive(serde::Deserialize)]
+pub struct OsintEntry {
+    pub url: String,
+    pub category: String,
+    pub global_rank: u32,
+    pub country: String,
+    pub nsfw: String,
+    pub match_positive: Vec<String>,
+    pub match_negative: Vec<String>,
+}
+
+#[derive(serde::Deserialize)]
+pub struct OsintDatabase {
+    pub index: Vec<OsintEntry>,
+}
+
+fn read_json_file(file_path: &str) -> OsintDatabase {
+    let file_content =
+        fs::read_to_string(file_path).expect("read_json_file :: Failed to read file");
+    let data: OsintDatabase =
+        serde_json::from_str(&file_content).expect("read_json_file :: Failed to parse JSON");
     data
 }
 
-pub fn exec_meta_search(data: WebsiteEntry, keyword: &str) {
+pub fn exec_meta_search(data: OsintEntry, keyword: &str) {
+    fn filter(data: OsintEntry, content: String, keyword: &str) {
+        let mut positive_found: Vec<String> = Vec::new();
+        let mut negative_found: Vec<String> = Vec::new();
+
+        if data.match_negative.is_empty() {
+            raise("Negative patterns can't be empty!", "fail");
+        }
+
+        for ps in &data.match_positive {
+            if content.contains(ps) {
+                positive_found.push(ps.to_string());
+            }
+        }
+
+        for ng in &data.match_negative {
+            if content.contains(ng) {
+                negative_found.push(ng.to_string());
+            }
+        }
+
+        if negative_found.is_empty() {
+            let key = data.url.replace("@@keyword", keyword);
+            raise(&format!("Found! :: {}", key), "good");
+            raise("Adicional information", "none");
+            raise(&format!("\t Category: {}", data.category), "none");
+            raise(&format!("\t Global rank: {}", data.global_rank), "none");
+            raise(&format!("\t Country: {}", data.country), "none");
+            raise(&format!("\t Is nsfw: {}\n", data.nsfw), "none");
+        }
+    }
+
     let url = &data.url.replace("@@keyword", &keyword);
 
     let client = Client::new();
@@ -24,34 +73,62 @@ pub fn exec_meta_search(data: WebsiteEntry, keyword: &str) {
     .unwrap();
 
     let tab = browser.new_tab().unwrap();
-    tab.navigate_to(&url).unwrap();
-    tab.wait_until_navigated().unwrap();
-    let content = tab.get_content().unwrap();
 
-    fn find_contents(data: WebsiteEntry, content: String) -> String {
-        for item in data.detections {}
+    match tab.navigate_to(&url) {
+        Ok(_) => {}
+        Err(err) => {
+            raise(
+                &format!("Failed to navigate to URL: {}", err.to_string()),
+                "fail",
+            );
+            return;
+        }
     }
+
+    match tab.wait_until_navigated() {
+        Ok(_) => {}
+        Err(err) => {
+            raise(&format!("exec_meta_search :: {}", err.to_string()), "fail");
+            return;
+        }
+    }
+
+    match tab.wait_for_element_with_custom_timeout("body", Duration::from_secs(30)) {
+        Ok(_element) => {
+            // element.click().unwrap(); // Example action
+        }
+        Err(err) => {
+            raise(
+                &format!("Element was not found within timeout: {}", err.to_string()),
+                "fail",
+            );
+            return;
+        }
+    }
+
+    let content = tab.get_content().unwrap();
 
     match client.get(url).send() {
         Ok(res) => {
-            if res.status().as_u16() == 200 {
-                // if content.contains(data.2) {}
+            if res.status().as_u16() == 200 || res.status().as_u16() == 404 {
+                filter(data, content, keyword);
             }
         }
         Err(err) => {
             raise(&format!("exec_meta_search :: {}", err.to_string()), "fail");
+            return;
         }
     }
 }
 
-// pub fn social_links(argsv: &[String]) -> i32 {
-//     let keyword = search_value("keyword", argsv);
-//     let data = read_json_file_as_map(&get_witch_spells_path("osint/sites.json")).unwrap();
+pub fn social_links(argsv: &[String]) -> i32 {
+    let keyword = search_value("keyword", argsv);
+    let data = read_json_file(&get_witch_spells_path("osint/osintdb.json"));
 
-//     let websites = data.get("websites_entries").expect("Index not found");
-//     let index_array = websites.as_array().expect("Index is not an array");
+    raise("Start scanning, this will take a while...\n", "message");
+    for dt in data.index {
+        exec_meta_search(dt, &keyword);
+    }
 
-//     exec_meta_search(index_array, &keyword);
-
-//     return 0;
-// }
+    return 0;
+}

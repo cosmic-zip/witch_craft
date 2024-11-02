@@ -150,14 +150,6 @@ fn test_blackcat_av_file() {
 }
 
 #[test]
-fn test_exec_meta_search() {
-    let data = ("youtube", "https://www.youtube.com/@@@keyword", "");
-    let out = exec_meta_search(data, "anon");
-    assert_eq!(out.status, 0);
-    assert_eq!(out.flag, "".to_string());
-}
-
-#[test]
 fn test_magic_docs() {
     let out = magic_docs();
     assert_eq!(out, 0);

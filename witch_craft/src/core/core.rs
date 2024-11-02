@@ -79,12 +79,13 @@ pub fn datetime_now() -> String {
 /// * `arg` - A string slice that holds the message to be displayed.
 /// * `warning_type` - A string slice that specifies the type of warning.
 ///   Valid options are:
-///   - "message": Indicates a general message.
-///   - "done": Indicates a successful operation.
-///   - "fail": Indicates a failure.
-///   - "warning": Indicates a warning condition.
-///   - "error": Indicates an error.
-///   - "entry": Indicates an entry point message.
+///   - 🟣 [ system says ] :: "message": Indicates a general message.
+///   - 🟢 [ well done ] :: "done": Indicates a successful operation.
+///   - 🔴 [ fail ] :: "fail": Indicates a failure.
+///   - 🟠 [ warning ] :: "warning": Indicates a warning condition.
+///   - 💀 [ bruh ] :: "error": Indicates an error.
+///   - 🔘 [ entry point ] :: "entry": Indicates an entry point message.
+///   - 💖 [ GOOD ] :: "good": Indicates an lovely message.
 ///
 /// # Returns
 ///
