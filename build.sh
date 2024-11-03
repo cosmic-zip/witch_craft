@@ -13,7 +13,7 @@ libayatana-appindicator3-dev librsvg2-dev
 echo && echo "Install witch_spells data"
 sudo cp -r archive/ /var/
 sudo chown -R $(whoami):$(whoami) /var/archive
-7z x /var/archive/witch_spells/osint/Archive.7z.001 -o /var/archive/witch_spells/osint/
+7z x /var/archive/witch_spells/osint/Archive.7z.001 -o/var/archive/witch_spells/osint/
 echo 'export WITCH_SPELLS_ROOT_DIR=/var/archive/witch_spells/' >> ~/.bash_profile
 export WITCH_SPELLS_ROOT_DIR=/var/archive/witch_spells/
 
