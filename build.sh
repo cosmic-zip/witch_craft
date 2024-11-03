@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+# Install deps
 echo && echo "Install dependencies"
 sudo apt update
 sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl \
