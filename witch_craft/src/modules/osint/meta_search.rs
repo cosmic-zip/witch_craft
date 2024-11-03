@@ -20,7 +20,7 @@ pub struct OsintDatabase {
     pub index: Vec<OsintEntry>,
 }
 
-fn read_json_file(file_path: &str) -> OsintDatabase {
+pub fn read_json_file(file_path: &str) -> OsintDatabase {
     let file_content =
         fs::read_to_string(file_path).expect("read_json_file :: Failed to read file");
     let data: OsintDatabase =

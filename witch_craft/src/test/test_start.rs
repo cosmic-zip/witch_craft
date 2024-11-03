@@ -154,3 +154,19 @@ fn test_magic_docs() {
     let out = magic_docs();
     assert_eq!(out, 0);
 }
+
+#[test]
+fn test_exec_meat_search() {
+    let keyword = "anon";
+    let data = read_json_file(&get_witch_spells_path("testing/osint_test.json"));
+
+    raise(
+        "Start scanning test, this will take a while...\n",
+        "message",
+    );
+    for dt in data.index {
+        exec_meta_search(dt, &keyword);
+    }
+    let out = magic_docs();
+    assert_eq!(out, 0);
+}
