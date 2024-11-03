@@ -1,0 +1,31 @@
+{
+    "index": [
+        {
+            "url": "https://24.wikia.com/wiki/User:@@keyword",
+            "category": "Games > Games",
+            "global_rank": 9162,
+            "country": "United States",
+            "nsfw": "false",
+            "match_positive": [],
+            "match_negative": ["mediawiki"]
+        },
+        {
+            "url": "https://500px.com/p/@@keyword",
+            "category": "Hobbies and Leisure > Photography",
+            "global_rank": 0,
+            "country": "",
+            "nsfw": "false",
+            "match_positive": [],
+            "match_negative": ["This page is no longer available"]
+        },
+        {
+            "url": "https://7cups.com/@@@keyword",
+            "category": "Health > Mental Health",
+            "global_rank": 64188,
+            "country": "United States",
+            "nsfw": "false",
+            "match_positive": [],
+            "match_negative": ["Not Found", "Not Found", "com/@@@keyword", "Profile - 7 Cups"]
+        }
+    ]
+}
