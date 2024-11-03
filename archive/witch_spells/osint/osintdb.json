@@ -186,7 +186,10 @@
             "country": "",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+              "User account ",
+              "is not registered."
+            ]
         },
         {
             "url": "https://alik.cz/u/@@keyword",
@@ -294,10 +297,12 @@
             "global_rank": 215520,
             "country": "India",
             "nsfw": "false",
-            "match_positive": [],
+            "match_positive": [
+              "\"slug\":\"",
+              "\"name\""
+            ],
             "match_negative": [
-                "\"slug\":\"",
-                "\"name\""
+                "This page could not be found."
             ]
         },
         {
@@ -389,11 +394,11 @@
             "global_rank": 128952,
             "country": "Saudi Arabia",
             "nsfw": "false",
-            "match_positive": [],
-            "match_negative": [
-                "user-name",
-                "profile/@@keyword"
-            ]
+            "match_positive": [
+              "user-name",
+              "profile/@@keyword"
+            ],
+            "match_negative": []
         },
         {
             "url": "https://apple2games.com/wiki/User:@@keyword",
@@ -402,7 +407,10 @@
             "country": "",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+              "User account ",
+              " is not registered."
+            ]
         },
         {
             "url": "https://appropedia.org/User:@@keyword",
@@ -444,6 +452,7 @@
             "match_negative": [
                 "cannot find account",
                 "cannot find account",
+                "The search engine encountered an error, which might be related to your search query. Tips for constructing search queries.",
                 "@@@keyword",
                 "@@keyword?tab"
             ]
@@ -515,10 +524,14 @@
             "url": "https://ask.fedoraproject.org/u/@@keyword",
             "category": "Computers Electronics and Technology > Programming and Developer Software",
             "global_rank": 38120,
-            "country": "India",
+            "country": "United States",
             "nsfw": "false",
-            "match_positive": [],
-            "match_negative": []
+            "match_positive": [
+              "Stats"
+            ],
+            "match_negative": [
+              "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://ask.fm/@@keyword",
@@ -569,7 +582,7 @@
             "match_positive": [],
             "match_negative": [
                 "We apologize for this inconvenience",
-                "We apologize for this inconvenience",
+                "Oops! That page can’t be found.",
                 "subheading"
             ]
         },
@@ -711,10 +724,13 @@
             "global_rank": 1359,
             "country": "United States",
             "nsfw": "true",
-            "match_positive": [],
+            "match_positive": [
+              "@@keyword",
+              "Suggest Edits"
+            ],
             "match_negative": [
-                "@@keyword",
-                "Suggest Edits"
+              "No Page",
+              "Try searching for another. Redirecting in"
             ]
         },
         {
@@ -902,8 +918,7 @@
             "nsfw": "false",
             "match_positive": [],
             "match_negative": [
-                "com/@@keyword",
-                "userName"
+                "Over 1,000,000 People Transforming Their Lives with Bodyspace"
             ]
         },
         {
@@ -922,7 +937,10 @@
             "country": "",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+                "User account",
+                "is not registered."
+            ]
         },
         {
             "url": "https://bonanza.com/booths/@@keyword",
@@ -1050,7 +1068,9 @@
             "country": "United States",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+              "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://cameraprive.com/br/@@keyword",
@@ -1070,10 +1090,12 @@
             "global_rank": 16634,
             "country": "United States",
             "nsfw": "true",
-            "match_positive": [],
+            "match_positive": [
+              "Public Chat Channel",
+              "My Media"
+            ],
             "match_negative": [
-                "Public Chat Channel",
-                "My Media"
+                "Error, page not found"
             ]
         },
         {
@@ -1285,7 +1307,9 @@
             "country": "United States",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+                "This user has not filled out their profile page yet."
+            ]
         },
         {
             "url": "https://choice.community/u/@@keyword",
@@ -1339,7 +1363,9 @@
             "country": "United States",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+              "This user has not filled out their profile page yet."
+            ]
         },
         {
             "url": "https://club.myce.com/u/@@keyword",
@@ -1406,7 +1432,9 @@
             "global_rank": 7806,
             "country": "India",
             "nsfw": "false",
-            "match_positive": [],
+            "match_positive": [
+              "Problems Successfully Solved:"
+            ],
             "match_negative": [
                 "users/@@keyword",
                 "user-profile",
@@ -1608,7 +1636,9 @@
             "country": "",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+                "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://community.gamedev.tv/u/@@keyword",
@@ -1617,7 +1647,9 @@
             "country": "United States",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+                "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://community.gemsofwar.com/u/@@keyword",
@@ -1626,7 +1658,9 @@
             "country": "",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+                "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://community.glowforge.com/u/@@keyword",
@@ -1635,7 +1669,9 @@
             "country": "United States",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+                "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://community.home-assistant.io/u/@@keyword",
@@ -1644,7 +1680,9 @@
             "country": "United States",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+                "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://community.hubitat.com/u/@@keyword",
@@ -1653,7 +1691,9 @@
             "country": "United States",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+                "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://community.icons8.com/u/@@keyword",
@@ -1662,7 +1702,9 @@
             "country": "India",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+              "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://community.ifit.com/u/@@keyword",
@@ -1671,7 +1713,9 @@
             "country": "United States",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+              ""
+            ]
         },
         {
             "url": "https://community.infiniteflight.com/u/@@keyword",
@@ -1680,7 +1724,9 @@
             "country": "United States",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+                "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://community.kodular.io/u/@@keyword",
@@ -1698,7 +1744,9 @@
             "country": "India",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+                "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://community.mycroft.ai/u/@@keyword",
@@ -1716,7 +1764,9 @@
             "country": "Iran",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+              "Oops! That page doesn’t exist or is private."
+            ]
         },
         {
             "url": "https://community.mypaint.org/u/@@keyword",
@@ -1800,7 +1850,9 @@
             "country": "United States",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+              "You are being redirected"
+            ]
         },
         {
             "url": "https://community.sweatco.in/u/@@keyword",
@@ -1854,7 +1906,10 @@
             "country": "",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+              "User account",
+              "is not registered."
+            ]
         },
         {
             "url": "https://coroflot.com/@@keyword",
@@ -1936,7 +1991,10 @@
             "country": "",
             "nsfw": "false",
             "match_positive": [],
-            "match_negative": []
+            "match_negative": [
+              "User account",
+              "is not registered."
+            ]
         },
         {
             "url": "https://creativemarket.com/@@keyword",

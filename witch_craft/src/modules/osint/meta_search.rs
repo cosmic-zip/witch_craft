@@ -38,13 +38,13 @@ pub fn exec_meta_search(data: OsintEntry, keyword: &str) {
         }
 
         for ps in &data.match_positive {
-            if content.contains(ps) {
+            if content.to_lowercase().contains(&ps.to_lowercase()) {
                 positive_found.push(ps.to_string());
             }
         }
 
         for ng in &data.match_negative {
-            if content.contains(ng) {
+            if content.to_lowercase().contains(&ng.to_lowercase()) {
                 negative_found.push(ng.to_string());
             }
         }
