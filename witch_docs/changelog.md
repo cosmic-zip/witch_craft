@@ -472,3 +472,12 @@ Version: 0.20.0
 Date: Sat Oct 26 07:09:02 PM -03 2024
 
     → Launched LTS relese 0.20.0
+
+Revision 0.20.20
+
+Date: Sun Nov 3 21:56:30 -03 2024
+
+    → Refactored OSINT meta search
+    → Added OSINT database in json format and removed rust vector database
+    → Added project webpage
+    → Small fixes for github CI/CD, Snapcraft, Dockerfile and readme
