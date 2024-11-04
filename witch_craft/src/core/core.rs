@@ -456,7 +456,7 @@ pub fn lazy_exec(command_line: String) -> i32 {
                 }
             } else {
                 let stderr = String::from_utf8_lossy(&output.stderr);
-                raise(&format!("blackcat_av :: {}", stderr.to_string()), "fail");
+                raise(&format!("{}", stderr.to_string()), "");
             }
             println!(" ");
             output.status.code().unwrap_or(128)

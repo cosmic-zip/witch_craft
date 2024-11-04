@@ -206,6 +206,11 @@
             "command": "lsof @@file"
         },
         {
+            "name": "file.str",
+            "description": "Strings alias",
+            "command": "strings @@file"
+        },
+        {
             "name": "file.clean.meta",
             "description": "Removes all metadata from an image to protect privacy",
             "command": "exiftool -all= @@image"
@@ -386,8 +391,8 @@
             "command": "search.ipscore --ip ip_address"
         },
         {
-            "name": "search.social",
-            "description": "Social media profile search",
+            "name": "search.meta",
+            "description": "Social media profile search in over 1000 platforms",
             "command": "search.social --keyword nickname"
         },
         {
