@@ -8,7 +8,13 @@ pub fn seach_number_value(key: &str, argsv: &[String]) -> i32 {
 
 pub fn dos_simple_get_span(argsv: &[String]) -> i32 {
     let mut req = Request::new();
-    req.url = search_value("domain", argsv);
+
+    let mut vurl = search_value("domain", argsv);
+    if !vurl.contains("http://") && !vurl.contains("https://") {
+        vurl = format!("https://{}", vurl);
+    }
+
+    req.url = vurl;
     req.method = "GET".to_string();
 
     let times = seach_number_value("times", argsv);
@@ -24,7 +30,14 @@ pub fn dos_long_auth_span(argsv: &[String]) -> i32 {
     // let size = seach_number_value("size", argsv);
     let seed = "3l34_=3k4vç~4vu,,20-v";
     let mut req = Request::new();
-    req.url = search_value("domain", argsv);
+
+    let mut vurl = search_value("domain", argsv);
+    if !vurl.contains("http://") && !vurl.contains("https://") {
+        vurl = format!("https://{}", vurl);
+    }
+
+    req.url = vurl;
+
     req.method = "GET".to_string();
     req.body = Some(HashMap::from([
         ("user", seed),
