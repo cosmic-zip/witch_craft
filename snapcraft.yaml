@@ -58,9 +58,9 @@ platforms:
   amd64:
     build-on: [amd64]
     build-for: [amd64]
-  arm64:
-    build-on: [arm64]
-    build-for: [arm64]
+  # arm64:
+  #   build-on: [arm64]
+  #   build-for: [arm64]
 
 environment:
   WITCH_SPELLS_ROOT_DIR: $SNAP/witch_spells/
@@ -75,6 +75,7 @@ parts:
     plugin: rust
     source: ./witch_craft
     stage-packages:
+      - chromium
       - nmap
       - whois
       - dirb
