@@ -1,19 +1,71 @@
-use super::{data::META_LINKS, structs::MetaSearch};
 use crate::core::core::*;
-use crate::search_value;
 use headless_chrome::{Browser, LaunchOptionsBuilder};
-use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
 use reqwest::blocking::Client;
+use serde_json;
+use std::{fs, time::Duration};
 
-pub fn exec_meta_search(data: (&str, &str, &str), keyword: &str) -> MetaSearch {
-    let timeout = std::time::Duration::from_secs(60);
-    let url = data.1.replace("@@keyword", &keyword);
+#[derive(serde::Deserialize)]
+pub struct OsintEntry {
+    pub url: String,
+    pub category: String,
+    pub global_rank: u32,
+    pub country: String,
+    pub nsfw: String,
+    pub match_positive: Vec<String>,
+    pub match_negative: Vec<String>,
+}
+
+#[derive(serde::Deserialize)]
+pub struct OsintDatabase {
+    pub index: Vec<OsintEntry>,
+}
+
+pub fn read_json_file(file_path: &str) -> OsintDatabase {
+    let file_content =
+        fs::read_to_string(file_path).expect("read_json_file :: Failed to read file");
+    let data: OsintDatabase =
+        serde_json::from_str(&file_content).expect("read_json_file :: Failed to parse JSON");
+    data
+}
+
+pub fn exec_meta_search(data: OsintEntry, keyword: &str) {
+    fn filter(data: OsintEntry, content: String, keyword: &str) {
+        let mut positive_found: Vec<String> = Vec::new();
+        let mut negative_found: Vec<String> = Vec::new();
+
+        if data.match_negative.is_empty() {
+            raise("Negative patterns can't be empty!", "fail");
+        }
+
+        for ps in &data.match_positive {
+            if content.to_lowercase().contains(&ps.to_lowercase()) {
+                positive_found.push(ps.to_string());
+            }
+        }
+
+        for ng in &data.match_negative {
+            if content.to_lowercase().contains(&ng.to_lowercase()) {
+                negative_found.push(ng.to_string());
+            }
+        }
+
+        if negative_found.is_empty() {
+            let key = data.url.replace("@@keyword", keyword);
+            raise(&format!("Found! :: {}", key), "good");
+            raise("Adicional information", "none");
+            raise(&format!("\t Category: {}", data.category), "none");
+            raise(&format!("\t Global rank: {}", data.global_rank), "none");
+            raise(&format!("\t Country: {}", data.country), "none");
+            raise(&format!("\t Is nsfw: {}\n", data.nsfw), "none");
+        }
+    }
+
+    let url = &data.url.replace("@@keyword", &keyword);
+
     let client = Client::new();
-
     let browser = Browser::new(
         LaunchOptionsBuilder::default()
             .headless(true)
-            .idle_browser_timeout(timeout)
             .window_size(Some((1920, 1080)))
             .build()
             .unwrap(),
@@ -21,50 +73,62 @@ pub fn exec_meta_search(data: (&str, &str, &str), keyword: &str) -> MetaSearch {
     .unwrap();
 
     let tab = browser.new_tab().unwrap();
-    tab.navigate_to(&url).unwrap();
-    tab.wait_until_navigated().unwrap();
+
+    match tab.navigate_to(&url) {
+        Ok(_) => {}
+        Err(err) => {
+            raise(
+                &format!("Failed to navigate to URL: {}", err.to_string()),
+                "fail",
+            );
+            return;
+        }
+    }
+
+    match tab.wait_until_navigated() {
+        Ok(_) => {}
+        Err(err) => {
+            raise(&format!("exec_meta_search :: {}", err.to_string()), "fail");
+            return;
+        }
+    }
+
+    match tab.wait_for_element_with_custom_timeout("body", Duration::from_secs(30)) {
+        Ok(_element) => {
+            // element.click().unwrap(); // Example action
+        }
+        Err(err) => {
+            raise(
+                &format!("Element was not found within timeout: {}", err.to_string()),
+                "fail",
+            );
+            return;
+        }
+    }
+
     let content = tab.get_content().unwrap();
 
-    match client.get(&url).send() {
+    match client.get(url).send() {
         Ok(res) => {
-            if res.status().as_u16() == 200 {
-                if content.contains(data.2) {
-                    return MetaSearch::new(200, url, data.2.to_string(), content);
-                }
-
-                raise(
-                    &format!("Found! {} {} at {}", &keyword, data.0, &url),
-                    "done",
-                );
-                return MetaSearch::new(200, url, "".to_string(), content);
+            if res.status().as_u16() == 200 || res.status().as_u16() == 404 {
+                filter(data, content, keyword);
             }
-
-            return MetaSearch::new(0, url, "".to_string(), content);
         }
         Err(err) => {
             raise(&format!("exec_meta_search :: {}", err.to_string()), "fail");
-            return MetaSearch::new(1, url, "".to_string(), err.to_string());
+            return;
         }
     }
 }
 
 pub fn social_links(argsv: &[String]) -> i32 {
     let keyword = search_value("keyword", argsv);
+    let data = read_json_file(&get_witch_spells_path("osint/osintdb.json"));
 
-    rayon::ThreadPoolBuilder::new()
-        .num_threads(4)
-        .build_global()
-        .unwrap();
+    raise("Start scanning, this will take a while...\n", "message");
+    for dt in data.index {
+        exec_meta_search(dt, &keyword);
+    }
 
-    raise(
-        "Some links may have false positives, especially on websites with client-side rendering.",
-        "warning",
-    );
-
-    META_LINKS.par_iter().for_each(|&data| {
-        exec_meta_search(data, &keyword);
-    });
-
-    raise("All tasks completed!", "done");
     return 0;
 }

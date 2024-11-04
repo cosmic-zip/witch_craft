@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+# Install deps
 echo && echo "Install dependencies"
 sudo apt update
 sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl \
@@ -12,7 +13,7 @@ libayatana-appindicator3-dev librsvg2-dev
 echo && echo "Install witch_spells data"
 sudo cp -r archive/ /var/
 sudo chown -R $(whoami):$(whoami) /var/archive
-7z x /var/archive/witch_spells/osint/Archive.7z.001
+7z x /var/archive/witch_spells/osint/Archive.7z.001 -o/var/archive/witch_spells/osint/
 echo 'export WITCH_SPELLS_ROOT_DIR=/var/archive/witch_spells/' >> ~/.bash_profile
 export WITCH_SPELLS_ROOT_DIR=/var/archive/witch_spells/
 
@@ -20,6 +21,10 @@ export WITCH_SPELLS_ROOT_DIR=/var/archive/witch_spells/
 echo && echo "Wordlists are big (16GB) so, if you want or need then, just run:"
 echo "7z x /var/witch_craft/witch_spells/wordlists/ladybug.pwned"
 echo "7z x /var/witch_craft/witch_spells/wordlists/moth.pwned.7z.001"
+
+# Install  Sussy Spyware AKA Google Chrome because snap don't support declare it was a dependency
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt-get install -y ./google-chrome-stable_current_amd64.deb
 
 # Build binary
 echo && echo "Cargo build"

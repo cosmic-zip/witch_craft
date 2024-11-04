@@ -18,8 +18,6 @@ RUN chmod +x build.sh
 
 # Run the build.sh script
 RUN ./build.sh
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
 
 # Default command
 CMD ["bash"]
