@@ -17,7 +17,7 @@ pub fn dos_simple_get_span(argsv: &[String]) -> i32 {
         let out = req.make();
         println!("{} - {}", out.url, out.status);
     }
-    0
+    return 0;
 }
 
 pub fn dos_long_auth_span(argsv: &[String]) -> i32 {
