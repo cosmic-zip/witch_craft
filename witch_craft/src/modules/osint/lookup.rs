@@ -1,7 +1,7 @@
 use crate::core::core::*;
 
 pub fn search_ans(argsv: &[String]) -> i32 {
-    let mut ans_number = search_value("asn", argsv);
+    let mut ans_number = search_value("ip", argsv);
     ans_number = ip_to_number(&ans_number);
 
     if ans_number.len() <= 10 {
