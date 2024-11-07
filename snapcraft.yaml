@@ -58,16 +58,13 @@ platforms:
   amd64:
     build-on: [amd64]
     build-for: [amd64]
-  # arm64:
-  #   build-on: [arm64]
-  #   build-for: [arm64]
 
 environment:
-  WITCH_SPELLS_ROOT_DIR: $SNAP/witch_spells/
+  WITCH_SPELLS_ROOT_DIR: $SNAP/archive/
 
 parts:
   witchspells:
-    source: archive
+    source: witch_spells
     plugin: dump
 
   witchcraft:
