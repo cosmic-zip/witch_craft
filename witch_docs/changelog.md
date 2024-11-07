@@ -481,3 +481,13 @@ Date: Wed Nov 6 10:38:08 AM -03 2024
 -   Fixed chromium deps
 -   Fixed renamed incorrectly named function from dos.simple to dos.spam
 -   Updated documentation
+
+Revision: 0.20.25
+
+Date: Thu Nov 7 18:06:53 -03 2024
+
+-   Added chkrootkit binding
+-   Remove unused files
+-   Move archive/witch_spells to witch_spells/archive
+-   Update version
+-   Removed unused dependencies
