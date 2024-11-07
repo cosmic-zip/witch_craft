@@ -123,3 +123,8 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
 
     255
 }
+
+pub fn blackcat_chkrootkit_bind(_args: &[String]) -> i32 {
+    raise("Running scan it can take a while...", "message");
+    lazy_exec("sudo chkrootkit".to_string())
+}

@@ -1,5 +1,5 @@
 name: witchcraft-cybersecurity
-version: "0.20.21"
+version: "0.20.25"
 summary: Your OPSEC companion!
 icon: "witch_docs/media_kit/logo-1.png"
 grade: stable
@@ -12,7 +12,7 @@ source-code: https://github.com/cosmic-zip/witch_craft
 description: |
   **WITCH_CRAFT**
 
-  WITCH_CRAFT is a versatile task automation software designed to serve as the foundation for various cybersecurity modules. Whether you're diving into forensic research, conducting OSINT (Open Source Intelligence), running scans, setting up backup and copying workflows, or even performing intrusion tests on applications and APIs, WITCH_CRAFT aims to be your go-to platform.
+  WITCH_CRAFT is a task automation tool for cybersecurity. It handles forensic research, OSINT, scanning, backups, data copying, and penetration testing for apps and APIs, serving as a flexible platform for diverse security tasks.
 
   **Visit the wiki:**
 
@@ -58,16 +58,13 @@ platforms:
   amd64:
     build-on: [amd64]
     build-for: [amd64]
-  # arm64:
-  #   build-on: [arm64]
-  #   build-for: [arm64]
 
 environment:
-  WITCH_SPELLS_ROOT_DIR: $SNAP/witch_spells/
+  WITCH_SPELLS_ROOT_DIR: $SNAP/archive/
 
 parts:
   witchspells:
-    source: archive
+    source: witch_spells
     plugin: dump
 
   witchcraft:
