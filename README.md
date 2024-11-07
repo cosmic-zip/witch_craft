@@ -19,7 +19,7 @@
 
 ### WITCH_CRAFT
 
-WITCH_CRAFT is a versatile task automation software designed to serve as the foundation for various cybersecurity modules. Whether you're diving into forensic research, conducting OSINT (Open Source Intelligence), running scans, setting up backup and copying workflows, or even performing intrusion tests on applications and APIs, WITCH_CRAFT aims to be your go-to platform.
+WITCH_CRAFT is a task automation tool for cybersecurity. It handles forensic research, OSINT, scanning, backups, data copying, and penetration testing for apps and APIs, serving as a flexible platform for diverse security tasks.
 
 ### Visit the wiki:
 
@@ -33,20 +33,20 @@ their final versions are merged into the main project.
 
 The witch_spells package also provide:
 
-- **Advanced osint search in over 1000 sources**
-- **Default Credentials Database**
-- **IP Lookup**
-- **A Set of Social Media Pages for Evil Twin Attacks**
-- **General Wordlists for Directories and Subdomains**
-- **MAC Address Vendor Database**
-- **Usernames Wordlist**
-- **XSS Wordlist**
-- **And more, UwU!**
+-   **Advanced osint search in over 1000 sources**
+-   **Default Credentials Database**
+-   **IP Lookup**
+-   **A Set of Social Media Pages for Evil Twin Attacks**
+-   **General Wordlists for Directories and Subdomains**
+-   **MAC Address Vendor Database**
+-   **Usernames Wordlist**
+-   **XSS Wordlist**
+-   **And more, UwU!**
 
-- **Unique Wordlists**:
+-   **Unique Wordlists**:
 
-  - _Moth_
-  - _Ladybug_
+    -   _Moth_
+    -   _Ladybug_
 
 ### Install using snap
 
@@ -128,9 +128,9 @@ The witch_craft project is extensible through static files and Rust code. Moreov
 
 ```json
 {
-  "description": "Securely deletes and overwrites the contents of a device seven times",
-  "name": "nuke.hd",
-  "command": "shred -vzn 7 @@device"
+    "description": "Securely deletes and overwrites the contents of a device seven times",
+    "name": "nuke.hd",
+    "command": "shred -vzn 7 @@device"
 }
 ```
 

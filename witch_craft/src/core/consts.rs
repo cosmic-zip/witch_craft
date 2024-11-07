@@ -3,7 +3,7 @@ pub const SPLIT_II: &str = "--";
 pub const SPLIT_I: &str = "-";
 pub const DBPATH: &str = "dataset/db.json";
 pub const WITCH_SPELLS_ROOT_DIR: &str = "/var/witch_spells/archive";
-pub const VERSION: &str = "Version: 0.20.21 by cosmic-zip";
+pub const VERSION: &str = "Version: 0.20.25 by cosmic-zip";
 
 pub const MAGIC_DOCS: &[(&str, &str)] = &[
     ("account", "Generic arguments for account info or token"),
@@ -73,11 +73,10 @@ SYNOPSIS
 
 DESCRIPTION
 
-    WITCH_CRAFT is a versatile task automation software designed to
-    serve as the foundation for various cyber security modules. It
-    provides capabilities for tasks such as forensic research, OSINT
-    (Open Source Intelligence), scanning, backup and copying, intrusion
-    testing of applications and APIs, and more.
+    WITCH_CRAFT is a task automation tool for cybersecurity. It handles
+    forensic research, OSINT, scanning, backups, data copying, and
+    penetration testing for apps and APIs, serving as a flexible
+    platform for diverse security tasks.
 
 PLUGINS
     The Witch_Craft project is extensible through static files and Rust
