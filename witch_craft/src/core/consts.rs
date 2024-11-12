@@ -2,7 +2,7 @@ pub const TONK: &str = "@@";
 pub const SPLIT_II: &str = "--";
 pub const SPLIT_I: &str = "-";
 pub const DBPATH: &str = "dataset/db.json";
-pub const WITCH_SPELLS_ROOT_DIR: &str = "/var/witch_spells/archive";
+pub const WITCH_SPELLS_ROOT_DIR: &str = "/var/witch_spells/archive/";
 pub const VERSION: &str = "Version: 0.20.25 by cosmic-zip";
 
 pub const MAGIC_DOCS: &[(&str, &str)] = &[
