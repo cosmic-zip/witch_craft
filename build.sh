@@ -26,4 +26,5 @@ echo "7z x /var/witch_craft/witch_spells/wordlists/moth.pwned.7z.001"
 echo && echo "Cargo build"
 cargo build --release --manifest-path witch_craft/Cargo.toml
 chmod +x ./witch_craft/target/release/witch_craft
-sudo cp -r ./witch_craft/target/release/witch_craft /bin
+sudo cp -r ./witch_craft/target/release/witch_craft /bin/witchcraft
+sudo ln -s /bin/witchcraft /bin/witchy
