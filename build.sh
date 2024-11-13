@@ -28,3 +28,4 @@ cargo build --release --manifest-path witch_craft/Cargo.toml
 chmod +x ./witch_craft/target/release/witch_craft
 sudo cp -r ./witch_craft/target/release/witch_craft /bin/witchcraft
 sudo ln -s /bin/witchcraft /bin/witchy
+ç
