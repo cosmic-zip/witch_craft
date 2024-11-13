@@ -28,10 +28,5 @@ jobs:
         run: |
           chmod +x build.sh
           sudo ./build.sh
-      - name: Build
-        run: |
-          cargo build --release --manifest-path witch_craft/Cargo.toml
-          sudo chmod +x ./witch_craft/target/release/witch_craft
-          sudo cp -r ./witch_craft/target/release/witch_craft /bin
       - name: Run tests
         run: cargo test --verbose --manifest-path witch_craft/Cargo.toml
