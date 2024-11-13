@@ -1,29 +1,49 @@
 use crate::core::core::*;
 use sha256::try_digest;
 use std::fs;
+use std::fs::File;
+use std::io::{self, BufRead};
 use std::path::Path;
+use std::process::exit;
 
-pub fn malware_scanner(path: String) -> Vec<String> {
-    let malware_signatures: String =
-        match fs::read_to_string(&get_witch_spells_path("malware/malware.list")) {
-            Ok(value) => value,
+pub fn malware_scanner(path: String) -> Vec<(String, String)> {
+    let malware_signatures: Vec<String> =
+        match File::open(&get_witch_spells_path("malware/full.csv")) {
+            Ok(value) => {
+                let lines = io::BufReader::new(value).lines();
+                lines.collect::<Result<Vec<_>, _>>().unwrap_or_else(|err| {
+                    raise(&format!("malware_scanner :: {}", err.to_string()), "error");
+                    Vec::new()
+                })
+            }
             Err(err) => {
-                raise(
-                    &format!("malware_scanner :: {}", err.to_string()),
-                    "message",
-                );
-                String::new()
+                raise(&format!("malware_scanner :: {}", err.to_string()), "error");
+                Vec::new()
             }
         };
 
-    let metadata = fs::metadata(&path).unwrap();
+    let metadata = match fs::metadata(&path) {
+        Ok(value) => value,
+        Err(err) => {
+            raise(
+                &format!(
+                    "malware_scanner :: invalid file or folder path :: {}",
+                    err.to_string()
+                ),
+                "error",
+            );
+            exit(1);
+        }
+    };
     let mut malware_found = Vec::new();
 
     if metadata.is_file() {
         let file_path = Path::new(&path);
         let file_sig = try_digest(file_path).unwrap();
-        if malware_signatures.contains(&file_sig) {
-            malware_found.push(file_path.to_string_lossy().to_string());
+        for sig in &malware_signatures {
+            if sig.contains(&file_sig) {
+                malware_found.push((sig.to_string(), file_path.to_string_lossy().to_string()));
+            }
         }
     }
 
@@ -32,8 +52,10 @@ pub fn malware_scanner(path: String) -> Vec<String> {
         let files = directory_lookup(fs_path);
         for file in files {
             let file_sig = try_digest(&file).unwrap();
-            if malware_signatures.contains(&file_sig) {
-                malware_found.push(file);
+            for sig in &malware_signatures {
+                if sig.contains(&file_sig) {
+                    malware_found.push((sig.to_string(), file.to_string()));
+                }
             }
         }
     }
@@ -80,29 +102,58 @@ pub fn blackcat_av(argsv: &[String]) -> i32 {
     let malware_result = malware_scanner(path.clone());
 
     if malware_result.is_empty() {
-        raise("Nothing found! :: System may be clean", "");
+        raise("Nothing found! :: System may be clean", "done");
         return 0;
+    }
+
+    fn info(path: &String, malware_result: &Vec<(String, String)>) {
+        for sig in malware_result {
+            raise(&format!("Malware found at :: {}", path), "warning");
+            let header = [
+                "first seen utc",
+                "hash sha256",
+                "hash md5",
+                "hash sha1",
+                "reporter",
+                "file name",
+                "file type guess",
+                "mime type",
+                "signature",
+                "clamav",
+                "vtpercent",
+                "imphash",
+                "ssdeep",
+                "tlsh",
+            ];
+            let data = sig.0.replace("\"", "");
+            let info: Vec<&str> = data.split(",").collect();
+            for (head, body) in header.iter().zip(info.iter()) {
+                println!("\t{}: {:?}", head, body.trim());
+            }
+        }
+        println!("");
     }
 
     let mut done: Vec<String> = Vec::new();
     let mut gone: Vec<String> = Vec::new();
 
     if action != "remove" {
-        let msg = format!(
-            "Malware found! RUN this command with --action remove ::\nLocation :: {} ",
-            &path
+        raise(
+            "Malware found! RUN this command with --action remove",
+            "warning",
         );
-        raise(&msg, "done");
-        return 0;
     }
 
-    for mal in malware_result {
-        let path = Path::new(&mal);
-        match fs::remove_file(path) {
-            Ok(_) => done.push(path.to_string_lossy().to_string()),
-            Err(err) => {
-                raise(&format!("blackcat_av :: {}", err.to_string()), "fail");
-                gone.push(path.to_string_lossy().to_string())
+    for mal in &malware_result {
+        info(&mal.1, &malware_result);
+        if action == "remove" {
+            let path = Path::new(&mal.1);
+            match fs::remove_file(path) {
+                Ok(_) => done.push(path.to_string_lossy().to_string()),
+                Err(err) => {
+                    raise(&format!("blackcat_av :: {}", err.to_string()), "fail");
+                    gone.push(path.to_string_lossy().to_string())
+                }
             }
         }
     }
