@@ -9,6 +9,11 @@ dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor fore
 libssl-dev steghide libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev 7zip \
 libayatana-appindicator3-dev librsvg2-dev chromium-browser
 
+# Install rust if not exists
+if ! command -v rustc &> /dev/null; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
 # Install data
 echo && echo "Install witch_spells data"
 sudo cp -r witch_spells/ /var/
