@@ -10,7 +10,7 @@ hidden/
 
 # Wordlists
 *.pwned
-
+full.csv
 *.snap
 
 # Rust / Cargo
