@@ -16,7 +16,7 @@ fi
 
 # Install data
 echo && echo "Install witch_spells data"
-sudo cp -r witch_spells/ /var/
+sudo cp -nr witch_spells/ /var/
 sudo chown -R $(whoami):$(whoami) /var/witch_spells
 7z x /var/witch_spells/archive/osint/Archive.7z.001 -o/var/witch_spells/archive/osint/
 7z x /var/witch_spells/archive/malware/full.7z.001 -o/var/witch_spells/archive/malware/

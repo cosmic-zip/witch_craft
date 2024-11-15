@@ -491,3 +491,12 @@ Date: Thu Nov 7 18:06:53 -03 2024
 -   Move archive/witch_spells to witch_spells/archive
 -   Update version
 -   Removed unused dependencies
+
+Revision 0.20.56
+
+-   Added build-dist.sh to build a binary a compiled version of witch_craft
+-   Fixed github CI
+-   Fixed missing file errors
+-   Fixed snap builds
+-   Fixed docker files
+-   Fixed build.sh
