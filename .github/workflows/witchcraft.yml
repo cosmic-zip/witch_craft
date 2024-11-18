@@ -31,14 +31,12 @@ jobs:
           sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl \
           dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost pkg-config \
           libssl-dev steghide libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev 7zip \
-          libayatana-appindicator3-dev librsvg2-dev chromium-browser
+          libayatana-appindicator3-dev librsvg2-dev chromium-browser git
 
           # Install data
           echo && echo "Install spellbook data"
           sudo cp -r spellbook/ /var/
           sudo chown -R $(whoami):$(whoami) /var/spellbook
-          7z x /var/spellbook/archive/osint/Archive.7z.001 -o/var/spellbook/archive/osint/
-          7z x /var/spellbook/archive/malware/full.7z.001 -o/var/spellbook/archive/malware/
           echo 'export WITCH_SPELLS_ROOT_DIR=/var/spellbook/archive/' >> ~/.bash_profile
           export WITCH_SPELLS_ROOT_DIR=/var/spellbook/archive/
 
