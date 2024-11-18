@@ -31,13 +31,13 @@ cargo build --release --manifest-path witchcraft/Cargo.toml
 chmod +x ./witchcraft/target/release/witchcraft
 sudo cp -r ./witchcraft/target/release/witchcraft /bin/witchcraft
 
-echo && echo "Creating the installer"
-cp ./spellbook/archive/scripts/installer.sh dist/
-cp ./spellbook/archive/scripts/uninstall.sh dist/
-
 echo && echo "Build dist packages"
 rm -rf ./dist
 mkdir ./dist
+
+echo && echo "Creating the installer"
+cp spellbook/archive/scripts/installer.sh dist/
+cp spellbook/archive/scripts/uninstall.sh dist/
 cp -r ./witchcraft/target/release/witchcraft ./dist/
 cp -r spellbook ./dist
 zip -r witchcraft.zip dist/ > /dev/null
