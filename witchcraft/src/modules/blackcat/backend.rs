@@ -4,23 +4,22 @@ use std::fs;
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
-use std::process::exit;
 
 pub fn malware_scanner(path: String) -> Vec<(String, String)> {
-    let malware_signatures: Vec<String> =
-        match File::open(&get_spellbook_path("malware/full.csv")) {
-            Ok(value) => {
-                let lines = io::BufReader::new(value).lines();
-                lines.collect::<Result<Vec<_>, _>>().unwrap_or_else(|err| {
-                    raise(&format!("malware_scanner :: {}", err.to_string()), "error");
-                    Vec::new()
-                })
-            }
-            Err(err) => {
+    let malware_signatures: Vec<String> = match File::open(&get_spellbook_path("malware/full.csv"))
+    {
+        Ok(value) => {
+            let lines = io::BufReader::new(value).lines();
+            lines.collect::<Result<Vec<_>, _>>().unwrap_or_else(|err| {
                 raise(&format!("malware_scanner :: {}", err.to_string()), "error");
                 Vec::new()
-            }
-        };
+            })
+        }
+        Err(err) => {
+            raise(&format!("malware_scanner :: {}", err.to_string()), "error");
+            Vec::new()
+        }
+    };
 
     let metadata = match fs::metadata(&path) {
         Ok(value) => value,
@@ -32,7 +31,7 @@ pub fn malware_scanner(path: String) -> Vec<(String, String)> {
                 ),
                 "error",
             );
-            exit(1);
+            return Vec::new();
         }
     };
     let mut malware_found = Vec::new();
