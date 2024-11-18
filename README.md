@@ -2,10 +2,10 @@
 
 ![banner](docs/documentation/images/lineBar.png)
 
-![witchcraft](https://img.shields.io/github/actions/workflow/status/th3maid/witchcraft/witchcraft.yml)
-![GitHub issues](https://img.shields.io/github/issues/th3maid/witchcraft)
-![GitHub License](https://img.shields.io/github/license/th3maid/witchcraft)
-![GitHub top language](https://img.shields.io/github/languages/top/th3maid/witchcraft)
+![witchcraft](https://img.shields.io/github/actions/workflow/status/cosmic-zip/witchcraft/witchcraft.yml)
+![GitHub issues](https://img.shields.io/github/issues/cosmic-zip/witchcraft)
+![GitHub License](https://img.shields.io/github/license/cosmic-zip/witchcraft)
+![GitHub top language](https://img.shields.io/github/languages/top/cosmic-zip/witchcraft)
 
 <p align="center">
   <h1>WITCHCRAFT 0.33.666 Final</h1>
