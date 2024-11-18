@@ -1,9 +1,0 @@
-version: "3.8"
-
-services:
-  app:
-    build: .
-    volumes:
-      - .:/app
-    working_dir: /app
-    command: bash -c "chmod +x build.sh && ./build.sh && tail -f /dev/null"

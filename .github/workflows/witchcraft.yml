@@ -1,0 +1,51 @@
+name: witchcraft
+
+on:
+  push:
+    branches:
+      - "trunk"
+      - "main"
+      - "stable"
+  pull_request:
+    branches:
+      - "*/*"
+      - "trunk"
+      - "main"
+      - "stable"
+  schedule:
+    - cron: "0 0 28-31 * *"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Depedencies
+        run: |
+          echo && echo "Install dependencies"
+          sudo apt update
+          sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl \
+          dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost pkg-config \
+          libssl-dev steghide libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev 7zip \
+          libayatana-appindicator3-dev librsvg2-dev chromium-browser git
+
+          # Install data
+          echo && echo "Install spellbook data"
+          sudo cp -r spellbook/ /var/
+          sudo chown -R $(whoami):$(whoami) /var/spellbook
+          echo 'export WITCH_SPELLS_ROOT_DIR=/var/spellbook/archive/' >> ~/.bash_profile
+          export WITCH_SPELLS_ROOT_DIR=/var/spellbook/archive/
+
+      - name: Build
+        run: |
+          cargo build --release --manifest-path witchcraft/Cargo.toml
+          sudo chmod +x ./witchcraft/target/release/witchcraft
+          sudo cp -r ./witchcraft/target/release/witchcraft /bin/witchcraft
+          sudo ln -s /bin/witchcraft /bin/witchy
+
+      - name: Run tests
+        run: cargo test --verbose --manifest-path witchcraft/Cargo.toml

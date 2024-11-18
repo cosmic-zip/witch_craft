@@ -1,5 +1,5 @@
 name: witchcraft-cybersecurity
-version: "0.20.56"
+version: "0.33.666"
 summary: Your OPSEC companion!
 icon: "witch_docs/media_kit/logo-1.png"
 grade: stable
@@ -8,11 +8,11 @@ base: core24
 type: app
 compression: lzo
 license: GPL-3.0+
-source-code: https://github.com/cosmic-zip/witch_craft
+source-code: https://github.com/cosmic-zip/witchcraft
 description: |
-  **WITCH_CRAFT**
+  **WITCHCRAFT**
 
-  WITCH_CRAFT is a task automation tool for cybersecurity. It handles forensic research, OSINT, scanning, backups, data copying, and penetration testing for apps and APIs, serving as a flexible platform for diverse security tasks.
+  WITCHCRAFT is a task automation tool for cybersecurity. It handles forensic research, OSINT, scanning, backups, data copying, and penetration testing for apps and APIs, serving as a flexible platform for diverse security tasks.
 
   **Visit the wiki:**
 
@@ -22,7 +22,7 @@ description: |
 
   The Witch_Craft project is extensible through static files and Rust code. Moreover, it is possible to extend its functionalities using `db.json`. This file contains a list of small shell scripts, which means you can integrate anything that interacts with the terminal using ARGS (argsv, readargs(), sys.args(), etc).
 
-  **Note**: There is a Python script called sort.py inside /var/witch_craft/witch_spells/dataset. It is used to create a sorted version of the dataset.
+  **Note**: There is a Python script called sort.py inside /var/witchcraft/spellbook/dataset. It is used to create a sorted version of the dataset.
 
   **RC File**
 
@@ -41,7 +41,7 @@ description: |
   are created using the best possible data analysis techniques, and
   their final versions are merged into the main project.
 
-  The witch_spells package also provide:
+  The spellbook package also provide:
 
     * Unique Wordlists : _moth_ (16Gb) and _ladybug_ (1Gb)
     * Default Credentials Database
@@ -64,13 +64,13 @@ environment:
 
 parts:
   witchspells:
-    source: witch_spells
+    source: spellbook
     plugin: dump
 
   witchcraft:
     after: [witchspells]
     plugin: rust
-    source: ./witch_craft
+    source: ./witchcraft
     stage-packages:
       - chromium
       - nmap
@@ -117,5 +117,5 @@ parts:
 
 apps:
   witchcraft:
-    command: bin/witch_craft
+    command: bin/witchcraft
     plugs: [home, network, network-bind, removable-media]
