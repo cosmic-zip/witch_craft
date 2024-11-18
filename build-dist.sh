@@ -1,7 +1,7 @@
 echo && echo "Build packages"
 mkdir ./dist
 
-cp ./witch_craft/target/release/witch_craft ./dist/
+cp -r ./witch_craft/target/release/witch_craft ./dist/
 cp witch_spells ./dist
 
 zip -r witch_craft-full.zip dist/
