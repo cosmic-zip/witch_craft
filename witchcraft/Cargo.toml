@@ -1,0 +1,32 @@
+[package]
+name = "witchcraft"
+version = "0.30.666"
+edition = "2021"
+readme = "README.md"
+homepage = "https://cosmic-zip.github.io/wiki/wiki.html"
+repository = "https://github.com/cosmic-zip/witch_craft"
+keywords = ["cli", "hacking", "pentest", "security"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+chrono = "0.4.38"
+colored = "2.1.0"
+headless_chrome = "1.0.15"
+image = "0.25.2"
+qrcode = "0.14.1"
+regex = "1.10.6"
+reqwest = { version = "0.12.5", features = ["blocking", "json"] }
+serde = { version = "1.0.204", features = ["derive"] }
+serde_json = "1.0.122"
+sha256 = "1.5.0"
+sysinfo = "0.32.0"
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+panic = "abort"
+strip = true
+opt-level = "z"
+
+[profile.dev]
+opt-level = "z"

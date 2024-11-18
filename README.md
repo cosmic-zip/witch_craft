@@ -1,25 +1,25 @@
-![banner](witch_docs/media_kit/splited.png)
+![banner](docs/documentation/media_kit/splited.png)
 
-![banner](witch_docs/images/lineBar.png)
+![banner](docs/documentation/images/lineBar.png)
 
-![witch_craft](https://img.shields.io/github/actions/workflow/status/th3maid/witch_craft/witch_craft.yml)
-![GitHub issues](https://img.shields.io/github/issues/th3maid/witch_craft)
-![GitHub License](https://img.shields.io/github/license/th3maid/witch_craft)
-![GitHub top language](https://img.shields.io/github/languages/top/th3maid/witch_craft)
+![witchcraft](https://img.shields.io/github/actions/workflow/status/th3maid/witchcraft/witchcraft.yml)
+![GitHub issues](https://img.shields.io/github/issues/th3maid/witchcraft)
+![GitHub License](https://img.shields.io/github/license/th3maid/witchcraft)
+![GitHub top language](https://img.shields.io/github/languages/top/th3maid/witchcraft)
 
 <p align="center">
-  <h1>WITCH_CRAFT</h1>
+  <h1>WITCHCRAFT</h1>
 </p>
 
 <p align="center">
-  🎉 Welcome to the witch_craft Community!
+  🎉 Welcome to the witchcraft Community!
 </p>
 
 ---
 
-### WITCH_CRAFT
+### WITCHCRAFT
 
-WITCH_CRAFT is a task automation tool for cybersecurity. It handles forensic research, OSINT, scanning, backups, data copying, and penetration testing for apps and APIs, serving as a flexible platform for diverse security tasks.
+WITCHCRAFT is a task automation tool for cybersecurity. It handles forensic research, OSINT, scanning, backups, data copying, and penetration testing for apps and APIs, serving as a flexible platform for diverse security tasks.
 
 ### Visit the wiki:
 
@@ -31,7 +31,7 @@ The project initially includes a set of default files. These files
 are created using the best possible data analysis techniques, and
 their final versions are merged into the main project.
 
-The witch_spells package also provide:
+The spellbook package also provide:
 
 -   **Advanced osint search in over 1000 sources**
 -   **Default Credentials Database**
@@ -59,7 +59,7 @@ The witch_spells package also provide:
 #### After installed add a snap alias:
 
 ```console
-sudo snap alias witchcraft-cybersecurity.witchcraft witch_craft
+sudo snap alias witchcraft-cybersecurity.witchcraft witchcraft
 ```
 
 ### Build from source using docker
@@ -81,8 +81,8 @@ To build the project, follow these instructions:
 **Step 1: Clone the Repository**
 
 ```bash
-git clone https://github.com/th3Maid/witch_craft.git --branch=trunk --depth 1
-cd witch_craft
+git clone https://github.com/th3Maid/witchcraft.git --branch=trunk --depth 1
+cd witchcraft
 ```
 
 **Step 2: Run the Build Script**
@@ -98,10 +98,10 @@ The script will prompt you to enter the root password, create a folder called 'r
 
 **Running Witch_Craft**
 
-Execute the following command to run the witch_craft application:
+Execute the following command to run the witchcraft application:
 
 ```bash
-witch_craft
+witchcraft
 ```
 
 **Note**: The first argument will always not have a "-" (minus) before it.
@@ -109,22 +109,22 @@ witch_craft
 #### This script will run like:
 
 ```bash
-witch_craft nuke.hd --device /dev/sdx1
+witchcraft nuke.hd --device /dev/sdx1
 ```
 
 ```bash
-witch_craft search.meta --keywork "Anonymous"
+witchcraft search.meta --keywork "Anonymous"
 ```
 
 ```bash
-witch_craft search.ipscore --ip 127.0.0.1
+witchcraft search.ipscore --ip 127.0.0.1
 ```
 
 ### Plugins
 
-The witch_craft project is extensible through static files and Rust code. Moreover, it is possible to extend its functionalities using `db.json`. This file contains a list of small shell scripts, which means you can integrate anything that interacts with the terminal using ARGS (argsv, readargs(), sys.args(), etc).
+The witchcraft project is extensible through static files and Rust code. Moreover, it is possible to extend its functionalities using `db.json`. This file contains a list of small shell scripts, which means you can integrate anything that interacts with the terminal using ARGS (argsv, readargs(), sys.args(), etc).
 
-**Note**: There is a Python script called sort.py inside /var/witch_craft/witch_spells/dataset. It is used to create a sorted version of the dataset.
+**Note**: There is a Python script called sort.py inside /var/witchcraft/spellbook/dataset. It is used to create a sorted version of the dataset.
 
 ```json
 {
@@ -136,7 +136,7 @@ The witch_craft project is extensible through static files and Rust code. Moreov
 
 ### Evilpages
 
-Put your cloned pages in /var/witch_craft/witch_spells/evilpages. Use the SingleFile extension or a similar tool to clone webpages:
+Put your cloned pages in /var/witchcraft/spellbook/evilpages. Use the SingleFile extension or a similar tool to clone webpages:
 
 https://addons.mozilla.org/en-US/firefox/addon/single-file/
 
@@ -160,6 +160,6 @@ path_log_file=/path/to/my/file.jsonl
   🎉 This project is licensed under the GNU General Public License v3.0.
 </p>
 
-**WITCH_CRAFT includes IP2Proxy LITE data available from https://www.ip2location.com/proxy-database**
+**WITCHCRAFT includes IP2Proxy LITE data available from https://www.ip2location.com/proxy-database**
 
-**WITCH_CRAFT includes cinsscore data available from https://www.cinsscore.com**
+**WITCHCRAFT includes cinsscore data available from https://www.cinsscore.com**
