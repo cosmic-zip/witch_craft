@@ -8,7 +8,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/th3maid/witchcraft)
 
 <p align="center">
-  <h1>WITCHCRAFT</h1>
+  <h1>WITCHCRAFT 0.33.666 Final</h1>
 </p>
 
 <p align="center">
