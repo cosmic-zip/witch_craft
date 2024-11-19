@@ -8,7 +8,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/cosmic-zip/witchcraft)
 
 <p align="center">
-  <h1>WITCHCRAFT 0.33.666 Final</h1>
+  WITCHCRAFT 0.33.666 Final
 </p>
 
 <p align="center">
@@ -62,18 +62,6 @@ The spellbook package also provide:
 sudo snap alias witchcraft-cybersecurity.witchcraft witchcraft
 ```
 
-### Build from source using docker
-
-**just run:**
-
-```console
-  echo && echo "Build docker container"
-  docker buildx build . -t witchcraft
-
-  echo && echo "Run witchcraft inside a docker container"
-  docker run -it witchcraft bash
-```
-
 ### Build from source (recommended for parrot/kali linux)
 
 To build the project, follow these instructions:
@@ -81,7 +69,7 @@ To build the project, follow these instructions:
 **Step 1: Clone the Repository**
 
 ```bash
-git clone https://github.com/th3Maid/witchcraft.git --branch=trunk --depth 1
+git clone https://github.com/cosmic-zip/witchcraft.git --branch=main --depth 1
 cd witchcraft
 ```
 
@@ -90,11 +78,11 @@ cd witchcraft
 Execute the provided build script build.sh:
 
 ```bash
-chmod +x build.sh
-./build.sh
+chmod +x build-devel.sh
+./build-devel.sh
 ```
 
-The script will prompt you to enter the root password, create a folder called 'release,' and place the built executables inside it. Additionally, it will prompt you to run the commands for extracting the archive files for OSINT and wordlists. You can choose to extract one, both, or neither, but keep in mind that the archives are required for OSINT operations.
+The script will prompt you to enter the root password, create a folder called 'release,' and place the built executables inside it. Additionally, it will prompt you to run the commands for downloading the archive files for OSINT and wordlists. You can choose to download one, both, or neither, but keep in mind that the archives are required for ip lookup operations.
 
 **Running Witch_Craft**
 
@@ -161,5 +149,4 @@ path_log_file=/path/to/my/file.jsonl
 </p>
 
 **WITCHCRAFT includes IP2Proxy LITE data available from https://www.ip2location.com/proxy-database**
-
 **WITCHCRAFT includes cinsscore data available from https://www.cinsscore.com**
