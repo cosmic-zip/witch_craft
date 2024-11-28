@@ -110,6 +110,7 @@ parts:
       - libatomic1
       - libclang1-18
       - libatm1t64
+      - git
 
     build-packages:
       - clang
