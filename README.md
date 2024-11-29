@@ -8,10 +8,6 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/cosmic-zip/witchcraft)
 
 <p align="center">
-  WITCHCRAFT 0.33.666 Final
-</p>
-
-<p align="center">
   🎉 Welcome to the witchcraft Community!
 </p>
 
