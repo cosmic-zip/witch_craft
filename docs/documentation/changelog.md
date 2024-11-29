@@ -494,9 +494,28 @@ Date: Thu Nov 7 18:06:53 -03 2024
 
 Revision 0.20.56
 
+Date: Thu Nov 7 18:06:53 -03 2024
+
 -   Added build-dist.sh to build a binary a compiled version of witchcraft
 -   Fixed github CI
 -   Fixed missing file errors
 -   Fixed snap builds
 -   Fixed docker files
 -   Fixed build.sh
+
+Version 0.33.666
+
+Date: Mon Nov 18 14:30:19 2024 -0300
+
+-   Final codebase version
+-   Splited spellbook in basic and full versions
+-   Created a new build and build-dist script
+
+Revision 0.33.700
+
+Date: Fri Nov 29 10:50:24 AM -03 2024
+
+-   Added spellbook installer
+-   Updated spellbook
+-   Updated version
+-   Updated readme/consts/snapfile

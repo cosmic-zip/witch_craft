@@ -343,7 +343,12 @@
         {
             "name": "self.setup",
             "description": "Setup and install witch_craft",
-            "command": "sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost pkg-config libssl-dev steghide libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev 7zip libayatana-appindicator3-dev librsvg2-dev chromium"
+            "command": "sudo apt install -y nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils wget curl dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost pkg-config libssl-dev steghide libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev 7zip libayatana-appindicator3-dev librsvg2-dev chromium-browser git"
+        },
+        {
+            "name": "self.spellbook",
+            "description": "Setup and install witch_craft",
+            "command": "git clone https://github.com/cosmic-zip/witchcraft-wordlists /var/spellbook/"
         },
         {
             "name": "server.eviltwin",
